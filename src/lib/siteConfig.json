@@ -7,12 +7,38 @@
     "email": "hello@sobhavitravel.com",
     "address": "Ground Floor, No. 19, 2nd Cross, NR Layout, Kalyanagar, Babusapalya, Bengaluru 560043"
   },
+  "header": {
+    "brandName": "SOBHAVI TRAVELS",
+    "logoSubtitle": "LUXURY BESPOKE JOURNEYS",
+    "phone": "+91 74069 94752",
+    "whatsapp": "7406994752",
+    "enquireButtonText": "Enquire Now",
+    "enquireButtonLink": "/enquire",
+    "announcementText": "✦ Exclusive 2026 Pilgrimage & Luxury Holiday Bookings Now Open",
+    "showAnnouncement": false
+  },
+  "footer": {
+    "aboutTitle": "SOBHAVI TRAVELS",
+    "aboutText": "Your journey. Our expertise. From quick getaways to international holidays, family vacations to special occasions — travel made memorable.",
+    "phone": "+91 74069 94752",
+    "whatsapp": "7406994752",
+    "email": "hello@sobhavitravel.com",
+    "address": "Ground Floor, No. 19, 2nd Cross, NR Layout, Kalyanagar, Babusapalya, Bengaluru 560043",
+    "workingHours": "Mon – Sat: 9:30 AM – 7:30 PM (IST)",
+    "socialHeading": "Connect With Us",
+    "copyrightText": "All rights reserved. Travel made memorable.",
+    "creditText": "codeorbit.cloud",
+    "creditLink": "https://www.codeorbit.cloud"
+  },
   "social": {
     "instagram": "https://instagram.com",
     "facebook": "https://facebook.com",
     "youtube": "https://youtube.com",
     "linkedin": "https://linkedin.com",
-    "twitter": "https://twitter.com"
+    "twitter": "https://twitter.com",
+    "whatsapp": "https://wa.me/917406994752",
+    "telegram": "https://t.me",
+    "pinterest": "https://pinterest.com"
   },
   "hero": {
     "headline": "Escape the routine.",

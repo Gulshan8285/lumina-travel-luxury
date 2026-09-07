@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BlogPost } from '@/lib/blogs';
-import { SiteConfig, DestinationPackage, HeroSlide } from '@/lib/siteConfig';
+import { SiteConfig, DestinationPackage, HeroSlide, HeaderConfig, FooterConfig, SocialConfig } from '@/lib/siteConfig';
 import { TravelCategory } from '@/lib/categories';
 import ImageUploader, { CURATED_PHOTOS } from './ImageUploader';
 import VideoUploader from './VideoUploader';
@@ -38,8 +38,8 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
   const [loginError, setLoginError] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
 
-  // Active Tab
-  const [activeTab, setActiveTab] = useState<'contact' | 'hero' | 'categories' | 'domestic' | 'international' | 'blogs' | 'enquiries'>('contact');
+  // Active Tab - Supports dedicated Header & Footer controls
+  const [activeTab, setActiveTab] = useState<'header' | 'footer' | 'hero' | 'categories' | 'domestic' | 'international' | 'contact' | 'blogs' | 'enquiries'>('footer');
 
   // Site Configuration State
   const [config, setConfig] = useState<SiteConfig>(initialConfig);
@@ -175,6 +175,70 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
     } finally {
       setSavingSection(null);
     }
+  };
+
+  // =========================================================================
+  // HEADER, FOOTER & SOCIAL DATA HANDLERS
+  // =========================================================================
+  const headerData: HeaderConfig = config.header || {
+    brandName: config.company?.brandName || "SOBHAVI TRAVELS",
+    logoSubtitle: "LUXURY BESPOKE JOURNEYS",
+    phone: config.company?.phone || "+91 74069 94752",
+    whatsapp: config.company?.whatsapp || "7406994752",
+    enquireButtonText: "Enquire Now",
+    enquireButtonLink: "/enquire",
+    announcementText: "✦ Exclusive 2026 Pilgrimage & Luxury Holiday Bookings Now Open",
+    showAnnouncement: false
+  };
+
+  const footerData: FooterConfig = config.footer || {
+    aboutTitle: config.company?.brandName || "SOBHAVI TRAVELS",
+    aboutText: config.company?.tagline || "Your journey. Our expertise. From quick getaways to international holidays, family vacations to special occasions — travel made memorable.",
+    phone: config.company?.phone || "+91 74069 94752",
+    whatsapp: config.company?.whatsapp || "7406994752",
+    email: config.company?.email || "hello@sobhavitravel.com",
+    address: config.company?.address || "Ground Floor, No. 19, 2nd Cross, NR Layout, Kalyanagar, Babusapalya, Bengaluru 560043",
+    workingHours: "Mon – Sat: 9:30 AM – 7:30 PM (IST)",
+    socialHeading: "Connect With Us",
+    copyrightText: "All rights reserved. Travel made memorable.",
+    creditText: "codeorbit.cloud",
+    creditLink: "https://www.codeorbit.cloud"
+  };
+
+  const socialData: SocialConfig = config.social || {
+    instagram: "https://instagram.com",
+    facebook: "https://facebook.com",
+    youtube: "https://youtube.com",
+    linkedin: "https://linkedin.com",
+    twitter: "https://twitter.com",
+    whatsapp: "https://wa.me/917406994752",
+    telegram: "",
+    pinterest: ""
+  };
+
+  const handleHeaderChange = (field: keyof HeaderConfig, value: any) => {
+    const updatedHeader = { ...headerData, [field]: value };
+    const updatedCompany = { ...config.company };
+    if (field === 'brandName') updatedCompany.brandName = value;
+    if (field === 'phone') updatedCompany.phone = value;
+    if (field === 'whatsapp') updatedCompany.whatsapp = value;
+    setConfig({ ...config, header: updatedHeader, company: updatedCompany });
+  };
+
+  const handleFooterChange = (field: keyof FooterConfig, value: any) => {
+    const updatedFooter = { ...footerData, [field]: value };
+    const updatedCompany = { ...config.company };
+    if (field === 'aboutTitle') updatedCompany.brandName = value;
+    if (field === 'phone') updatedCompany.phone = value;
+    if (field === 'whatsapp') updatedCompany.whatsapp = value;
+    if (field === 'email') updatedCompany.email = value;
+    if (field === 'address') updatedCompany.address = value;
+    setConfig({ ...config, footer: updatedFooter, company: updatedCompany });
+  };
+
+  const handleSocialChange = (field: keyof SocialConfig, value: any) => {
+    const updatedSocial = { ...socialData, [field]: value };
+    setConfig({ ...config, social: updatedSocial });
   };
 
   // =========================================================================
@@ -552,24 +616,31 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
       <nav className={styles.tabBar} aria-label="Admin Navigation Tabs">
         <button
           type="button"
-          className={`${styles.tabBtn} ${activeTab === 'contact' ? styles.activeTab : ''}`}
-          onClick={() => setActiveTab('contact')}
+          className={`${styles.tabBtn} ${activeTab === 'header' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('header')}
         >
-          📞 Contact &amp; Brand
+          🏷️ Header &amp; Navbar
+        </button>
+        <button
+          type="button"
+          className={`${styles.tabBtn} ${activeTab === 'footer' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('footer')}
+        >
+          🏛️ Footer &amp; Social
         </button>
         <button
           type="button"
           className={`${styles.tabBtn} ${activeTab === 'hero' ? styles.activeTab : ''}`}
           onClick={() => setActiveTab('hero')}
         >
-          🎬 Hero Videos &amp; Reels ({config.heroSlides?.length || 8})
+          🎬 Hero Videos ({config.heroSlides?.length || 8})
         </button>
         <button
           type="button"
           className={`${styles.tabBtn} ${activeTab === 'categories' ? styles.activeTab : ''}`}
           onClick={() => setActiveTab('categories')}
         >
-          ✨ Categories &amp; Experiences ({config.categories?.length || 0})
+          ✨ Categories ({config.categories?.length || 0})
         </button>
         <button
           type="button"
@@ -587,19 +658,423 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
         </button>
         <button
           type="button"
+          className={`${styles.tabBtn} ${activeTab === 'contact' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('contact')}
+        >
+          📞 Contact &amp; Brand
+        </button>
+        <button
+          type="button"
           className={`${styles.tabBtn} ${activeTab === 'blogs' ? styles.activeTab : ''}`}
           onClick={() => setActiveTab('blogs')}
         >
-          📝 Blog Articles ({blogs.length})
+          📝 Blogs ({blogs.length})
         </button>
         <button
           type="button"
           className={`${styles.tabBtn} ${activeTab === 'enquiries' ? styles.activeTab : ''}`}
           onClick={() => setActiveTab('enquiries')}
         >
-          📬 Client Leads ({enquiries.length})
+          📬 Leads ({enquiries.length})
         </button>
       </nav>
+
+      {/* ===================================================================
+          TAB: HEADER & NAVBAR SETTINGS
+          =================================================================== */}
+      {activeTab === 'header' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div className={styles.editorCard}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>Website Header &amp; Navigation Bar</h2>
+              <p className={styles.cardDesc}>
+                Customize the top navigation bar brand logo, phone number, enquiry action button, and optional top announcement banner.
+              </p>
+            </div>
+
+            <div className={styles.formRowTwo}>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Brand Logo Title *</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={headerData.brandName || ''}
+                  onChange={(e) => handleHeaderChange('brandName', e.target.value)}
+                  placeholder="SOBHAVI TRAVELS"
+                />
+                <span style={{ fontSize: '0.74rem', color: '#94a3b8', marginTop: '4px' }}>
+                  Shown in two lines on the top-left of the navbar.
+                </span>
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Logo Subtitle / Tagline</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={headerData.logoSubtitle || ''}
+                  onChange={(e) => handleHeaderChange('logoSubtitle', e.target.value)}
+                  placeholder="LUXURY BESPOKE JOURNEYS"
+                />
+              </div>
+            </div>
+
+            <div className={styles.formRowTwo}>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Header Contact Phone Number</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={headerData.phone || ''}
+                  onChange={(e) => handleHeaderChange('phone', e.target.value)}
+                  placeholder="+91 74069 94752"
+                />
+                <span style={{ fontSize: '0.74rem', color: '#94a3b8', marginTop: '4px' }}>
+                  Shown in top-right corner next to the Enquire button.
+                </span>
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Header Action Button Text</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={headerData.enquireButtonText || ''}
+                  onChange={(e) => handleHeaderChange('enquireButtonText', e.target.value)}
+                  placeholder="Enquire Now"
+                />
+              </div>
+            </div>
+
+            <div className={styles.formRowTwo}>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Header Action Button Link</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={headerData.enquireButtonLink || ''}
+                  onChange={(e) => handleHeaderChange('enquireButtonLink', e.target.value)}
+                  placeholder="/enquire"
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Mobile Drawer WhatsApp Number</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={headerData.whatsapp || ''}
+                  onChange={(e) => handleHeaderChange('whatsapp', e.target.value)}
+                  placeholder="7406994752"
+                />
+              </div>
+            </div>
+
+            {/* Announcement Bar */}
+            <div style={{ padding: '1.25rem', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)', marginTop: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                <input
+                  type="checkbox"
+                  id="showAnnouncementCheckbox"
+                  checked={Boolean(headerData.showAnnouncement)}
+                  onChange={(e) => handleHeaderChange('showAnnouncement', e.target.checked)}
+                  style={{ width: '18px', height: '18px', accentColor: '#e11d48', cursor: 'pointer' }}
+                />
+                <label htmlFor="showAnnouncementCheckbox" style={{ fontSize: '0.92rem', color: '#fff', fontWeight: 600, cursor: 'pointer' }}>
+                  Show Golden Announcement Banner at the very top of the page
+                </label>
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Announcement Banner Text</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={headerData.announcementText || ''}
+                  onChange={(e) => handleHeaderChange('announcementText', e.target.value)}
+                  placeholder="✦ Exclusive 2026 Pilgrimage & Luxury Holiday Bookings Now Open — Inquire Now"
+                />
+              </div>
+            </div>
+
+            <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'flex-end' }}>
+              <button
+                type="button"
+                className={styles.saveBtn}
+                onClick={() => handleSaveConfig('Header & Navbar')}
+                disabled={savingSection === 'Header & Navbar'}
+              >
+                {savingSection === 'Header & Navbar' ? "Saving..." : "Save Header Settings"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ===================================================================
+          TAB: FOOTER & SOCIAL MEDIA SETTINGS
+          =================================================================== */}
+      {activeTab === 'footer' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          {/* Section 1: Footer Brand & About Description */}
+          <div className={styles.editorCard}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>Footer Brand &amp; Company Overview</h2>
+              <p className={styles.cardDesc}>
+                Manage the main editorial text, brand title, address, phone numbers, and working hours displayed in the website footer.
+              </p>
+            </div>
+
+            <div className={styles.formRowTwo}>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Footer Brand Logo Title</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={footerData.aboutTitle || ''}
+                  onChange={(e) => handleFooterChange('aboutTitle', e.target.value)}
+                  placeholder="SOBHAVI TRAVELS"
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Working / Operating Hours</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={footerData.workingHours || ''}
+                  onChange={(e) => handleFooterChange('workingHours', e.target.value)}
+                  placeholder="Mon – Sat: 9:30 AM – 7:30 PM (IST)"
+                />
+              </div>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={styles.formLabel}>Footer Editorial Description / About Paragraph *</label>
+              <textarea
+                className={styles.formTextarea}
+                rows={3}
+                value={footerData.aboutText || ''}
+                onChange={(e) => handleFooterChange('aboutText', e.target.value)}
+                placeholder="Your journey. Our expertise. From quick getaways to international holidays, family vacations to special occasions — travel made memorable."
+              />
+              <span style={{ fontSize: '0.74rem', color: '#94a3b8', marginTop: '4px' }}>
+                This is the primary summary paragraph shown right beneath the brand logo in the footer.
+              </span>
+            </div>
+
+            <div className={styles.formRowThree}>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Direct Support Phone</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={footerData.phone || ''}
+                  onChange={(e) => handleFooterChange('phone', e.target.value)}
+                  placeholder="+91 74069 94752"
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>WhatsApp Support Number</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={footerData.whatsapp || ''}
+                  onChange={(e) => handleFooterChange('whatsapp', e.target.value)}
+                  placeholder="7406994752"
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Official Support Email</label>
+                <input
+                  type="email"
+                  className={styles.formInput}
+                  value={footerData.email || ''}
+                  onChange={(e) => handleFooterChange('email', e.target.value)}
+                  placeholder="hello@sobhavitravel.com"
+                />
+              </div>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={styles.formLabel}>Registered Physical Office Address</label>
+              <textarea
+                className={styles.formTextarea}
+                rows={2}
+                value={footerData.address || ''}
+                onChange={(e) => handleFooterChange('address', e.target.value)}
+                placeholder="Ground Floor, No. 19, 2nd Cross, NR Layout, Kalyanagar, Babusapalya, Bengaluru 560043"
+              />
+            </div>
+          </div>
+
+          {/* Section 2: Social Media Channels */}
+          <div className={styles.editorCard}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>Footer Social Media Accounts &amp; Icons</h2>
+              <p className={styles.cardDesc}>
+                Add or change your company social media URLs. Any platform with a link will automatically show its official icon in the footer.
+              </p>
+            </div>
+
+            <div className={styles.formGroup} style={{ marginBottom: '1.5rem' }}>
+              <label className={styles.formLabel}>Social Section Heading</label>
+              <input
+                type="text"
+                className={styles.formInput}
+                value={footerData.socialHeading || ''}
+                onChange={(e) => handleFooterChange('socialHeading', e.target.value)}
+                placeholder="Connect With Us"
+              />
+            </div>
+
+            <div className={styles.formRowTwo}>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>📸 Instagram Profile URL</label>
+                <input
+                  type="url"
+                  className={styles.formInput}
+                  value={socialData.instagram || ''}
+                  onChange={(e) => handleSocialChange('instagram', e.target.value)}
+                  placeholder="https://instagram.com/sobhavitravels"
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>📘 Facebook Page URL</label>
+                <input
+                  type="url"
+                  className={styles.formInput}
+                  value={socialData.facebook || ''}
+                  onChange={(e) => handleSocialChange('facebook', e.target.value)}
+                  placeholder="https://facebook.com/sobhavitravels"
+                />
+              </div>
+            </div>
+
+            <div className={styles.formRowTwo}>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>▶️ YouTube Channel URL</label>
+                <input
+                  type="url"
+                  className={styles.formInput}
+                  value={socialData.youtube || ''}
+                  onChange={(e) => handleSocialChange('youtube', e.target.value)}
+                  placeholder="https://youtube.com/@sobhavitravels"
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>💼 LinkedIn Company URL</label>
+                <input
+                  type="url"
+                  className={styles.formInput}
+                  value={socialData.linkedin || ''}
+                  onChange={(e) => handleSocialChange('linkedin', e.target.value)}
+                  placeholder="https://linkedin.com/company/sobhavitravels"
+                />
+              </div>
+            </div>
+
+            <div className={styles.formRowTwo}>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>🐦 X / Twitter URL</label>
+                <input
+                  type="url"
+                  className={styles.formInput}
+                  value={socialData.twitter || ''}
+                  onChange={(e) => handleSocialChange('twitter', e.target.value)}
+                  placeholder="https://twitter.com/sobhavitravels"
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>💬 Direct WhatsApp Chat Link</label>
+                <input
+                  type="url"
+                  className={styles.formInput}
+                  value={socialData.whatsapp || ''}
+                  onChange={(e) => handleSocialChange('whatsapp', e.target.value)}
+                  placeholder="https://wa.me/917406994752"
+                />
+              </div>
+            </div>
+
+            <div className={styles.formRowTwo}>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>✈️ Telegram Channel Link (Optional)</label>
+                <input
+                  type="url"
+                  className={styles.formInput}
+                  value={socialData.telegram || ''}
+                  onChange={(e) => handleSocialChange('telegram', e.target.value)}
+                  placeholder="https://t.me/sobhavitravels"
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>📌 Pinterest Profile Link (Optional)</label>
+                <input
+                  type="url"
+                  className={styles.formInput}
+                  value={socialData.pinterest || ''}
+                  onChange={(e) => handleSocialChange('pinterest', e.target.value)}
+                  placeholder="https://pinterest.com/sobhavitravels"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Section 3: Copyright & Agency Credits */}
+          <div className={styles.editorCard}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>Footer Bottom &amp; Copyright Notice</h2>
+              <p className={styles.cardDesc}>
+                Customize copyright statement and designer/agency credit line shown at the base of every page.
+              </p>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label className={styles.formLabel}>Copyright Line Text</label>
+              <input
+                type="text"
+                className={styles.formInput}
+                value={footerData.copyrightText || ''}
+                onChange={(e) => handleFooterChange('copyrightText', e.target.value)}
+                placeholder="All rights reserved. Travel made memorable."
+              />
+              <span style={{ fontSize: '0.74rem', color: '#94a3b8', marginTop: '4px' }}>
+                Prefixed by &copy; [Year] [Brand Name].
+              </span>
+            </div>
+
+            <div className={styles.formRowTwo}>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Website Creator / Agency Label</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={footerData.creditText || ''}
+                  onChange={(e) => handleFooterChange('creditText', e.target.value)}
+                  placeholder="codeorbit.cloud"
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Website Creator Link URL</label>
+                <input
+                  type="url"
+                  className={styles.formInput}
+                  value={footerData.creditLink || ''}
+                  onChange={(e) => handleFooterChange('creditLink', e.target.value)}
+                  placeholder="https://www.codeorbit.cloud"
+                />
+              </div>
+            </div>
+
+            <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'flex-end' }}>
+              <button
+                type="button"
+                className={styles.saveBtn}
+                onClick={() => handleSaveConfig('Footer & Social Media')}
+                disabled={savingSection === 'Footer & Social Media'}
+              >
+                {savingSection === 'Footer & Social Media' ? "Saving..." : "Save Footer & Social Media"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ===================================================================
           TAB 1: CONTACT & BRAND INFO

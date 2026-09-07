@@ -1,25 +1,50 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { getSiteConfig } from '@/lib/siteConfig';
 import styles from './FloatingContact.module.css';
-
-const PHONE = "917406994752";
-const DISPLAY_PHONE = "7406994752";
-const WHATSAPP_MSG = "Hello! I am looking to plan a holiday with Sobhavi Travels.";
 
 export default function FloatingContact() {
   const pathname = usePathname();
+  const [waNumber, setWaNumber] = useState<string>(() => {
+    const config = getSiteConfig();
+    return config.company?.whatsapp || "7406994752";
+  });
+
+  useEffect(() => {
+    const loadWa = () => {
+      try {
+        const saved = localStorage.getItem('sobhavi_site_config');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.company?.whatsapp || parsed.footer?.whatsapp) {
+            setWaNumber(parsed.footer?.whatsapp || parsed.company?.whatsapp);
+          }
+        }
+      } catch (e) {}
+    };
+    loadWa();
+
+    window.addEventListener('storage', loadWa);
+    window.addEventListener('sobhavi_site_config_updated', loadWa);
+    return () => {
+      window.removeEventListener('storage', loadWa);
+      window.removeEventListener('sobhavi_site_config_updated', loadWa);
+    };
+  }, []);
 
   // Hide floating buttons on admin routes
   if (pathname?.startsWith('/admin')) {
     return null;
   }
 
-  const waUrl = `https://wa.me/${PHONE}?text=${encodeURIComponent(WHATSAPP_MSG)}`;
+  const cleanWa = waNumber.replace(/[^0-9]/g, '');
+  const finalWa = cleanWa.startsWith('91') ? cleanWa : `91${cleanWa}`;
+  const waUrl = `https://wa.me/${finalWa}?text=${encodeURIComponent("Hello! I am looking to plan a holiday with Sobhavi Travels.")}`;
 
   return (
     <aside className={styles.floatingContainer} aria-label="Quick Contact Concierge">
-
       {/* WhatsApp Button */}
       <a href={waUrl} target="_blank" rel="noopener noreferrer" className={`${styles.pillBtn} ${styles.waBtn}`} aria-label="Chat on WhatsApp">
         <span className={styles.waPulse} />
