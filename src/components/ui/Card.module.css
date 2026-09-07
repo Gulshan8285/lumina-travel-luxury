@@ -1,0 +1,80 @@
+/* Magazine Style Cards */
+.magazineCard {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: var(--foreground);
+  group: true;
+}
+
+.imageReveal {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  margin-bottom: 2rem;
+}
+
+.magazineImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.magazineTag {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: var(--background);
+  color: var(--foreground);
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.magazineContent {
+  padding-right: 1rem;
+}
+
+.magazineTitle {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  transition: color 0.4s ease;
+}
+
+.magazineDesc {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.magazineCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.arrow {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover effects */
+.magazineCard:hover .magazineImage {
+  transform: scale(1.05);
+}
+
+.magazineCard:hover .magazineTitle {
+  color: var(--accent);
+}
+
+.magazineCard:hover .arrow {
+  transform: translateX(5px);
+}

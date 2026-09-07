@@ -1,0 +1,115 @@
+/* FloatingContact.module.css */
+
+.floatingContainer {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 2rem;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-end;
+  pointer-events: auto;
+}
+
+.pillBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.pillBtn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btnText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.subText {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.mainNumber {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* WhatsApp Button Styling */
+.waBtn {
+  background: #25D366;
+  color: #ffffff;
+  border: 1.5px solid #1ebe5a;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.waBtn:hover {
+  background: #1ebe5a;
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.55);
+}
+
+/* WhatsApp Pulse Animation */
+.waPulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  border: 2px solid rgba(37, 211, 102, 0.8);
+  animation: pulseEffect 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  pointer-events: none;
+}
+
+@keyframes pulseEffect {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .floatingContainer {
+    right: 1rem;
+    bottom: 1.25rem;
+    gap: 0.6rem;
+  }
+  
+  .pillBtn {
+    padding: 0.6rem 0.95rem;
+  }
+  
+  .mainNumber {
+    font-size: 0.78rem;
+  }
+}

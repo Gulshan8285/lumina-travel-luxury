@@ -1,0 +1,1397 @@
+.mainWrapper {
+  overflow-x: hidden;
+}
+
+/* Common Section Headers */
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.08;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+.sectionSubtitle {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   1. HERO SECTION
+   ========================================================================== */
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  padding: 8rem 0 5rem;
+}
+
+.heroMediaContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.heroVideoWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroImageSlide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.05);
+  animation: kenBurns 18s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurns {
+  from { transform: scale(1.03); }
+  to { transform: scale(1.12); }
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 16, 0.5) 0%,
+    rgba(10, 12, 16, 0.75) 60%,
+    rgba(10, 12, 16, 0.95) 100%
+  );
+  z-index: 2;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.heroBrand {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: inline-block;
+  padding: 0.35rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(230, 0, 102, 0.12);
+  border: 1px solid rgba(230, 0, 102, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.heroTagline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.5rem;
+}
+
+.heroHeadline {
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  line-height: 0.98;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.heroBody {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.heroButtonPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent);
+  color: #fff;
+  padding: 1.15rem 2.8rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(230, 0, 102, 0.4);
+}
+
+.heroButtonPrimary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(230, 0, 102, 0.6);
+  background-color: var(--accent-hover);
+}
+
+.heroButtonSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  padding: 1.1rem 2.2rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.heroButtonSecondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.heroLocationIndicator {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 2.5rem;
+  right: 2.5rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  pointer-events: auto;
+}
+
+.heroLocationLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(10, 12, 16, 0.6);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.heroLocationRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.heroNavBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(10, 12, 16, 0.6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.heroNavBtn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.08);
+}
+
+.heroLocationDot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .heroLocationIndicator {
+    bottom: 1.25rem;
+    left: 1rem;
+    right: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+  }
+
+  .heroLocationLeft {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .heroLocationRight {
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   2. WHERE WOULD YOU LIKE TO GO? SECTION
+   ========================================================================== */
+.destinationsSection {
+  background-color: var(--background);
+  padding: 7rem 0;
+}
+
+.destinationsDualContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.destinationGroup {
+  position: relative;
+}
+
+.destinationGroupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.destinationGroupInfo {
+  max-width: 600px;
+}
+
+.groupBadge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.groupTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.groupDesc {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.groupActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  color: var(--foreground);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  background: var(--surface);
+}
+
+.groupActionBtn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Destination Cards Grid */
+.domesticGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.internationalGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.destCard {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 3 / 4;
+  background-color: var(--surface-alt);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.destCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.destCardImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.destCard:hover .destCardImage {
+  transform: scale(1.08);
+}
+
+.destCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+  transition: opacity 0.3s ease;
+}
+
+.destCardBadge {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.destCardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.8rem;
+  color: #fff;
+  z-index: 2;
+}
+
+.destCardName {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+  color: #fff;
+}
+
+.destCardTagline {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+}
+
+.destCardArrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: transform 0.3s ease;
+}
+
+.destCard:hover .destCardArrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   3. EXPERIENCES SECTION
+   ========================================================================== */
+.experiencesSection {
+  background-color: var(--surface-alt);
+  padding: 7rem 0;
+  position: relative;
+}
+
+.experiencesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.expCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.expCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+  border-color: rgba(230, 0, 102, 0.3);
+}
+
+.expImageWrapper {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.expImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.expCard:hover .expImage {
+  transform: scale(1.08);
+}
+
+.expImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+.expTag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(10, 12, 16, 0.65);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.expBody {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.expTitle {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  color: var(--foreground);
+}
+
+.expDesc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.expLink {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.expCard:hover .expLink {
+  text-decoration: underline;
+}
+
+.experiencesFooterAction {
+  text-align: center;
+  margin-top: 3.5rem;
+}
+
+.exploreExperiencesBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 1.05rem 2.8rem;
+  background: #0b0f19;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.exploreExperiencesBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transition: left 0.6s ease;
+}
+
+.exploreExperiencesBtn:hover::before {
+  left: 100%;
+}
+
+.exploreExperiencesBtn:hover {
+  background: #e11d48;
+  color: #ffffff;
+  border-color: #e11d48;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 36px -6px rgba(225, 29, 72, 0.45);
+}
+
+.exploreExperiencesBtn svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.exploreExperiencesBtn:hover svg {
+  transform: translateX(5px);
+}
+
+/* ==========================================================================
+   4. EVERYTHING YOU NEED TO TRAVEL (SERVICES)
+   ========================================================================== */
+.servicesSection {
+  background-color: var(--background);
+  padding: 7rem 0;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.serviceCard {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.serviceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  transition: background-color 0.3s ease;
+  z-index: 3;
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(230, 0, 102, 0.35);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+}
+
+.serviceCard:hover::before {
+  background: var(--accent);
+}
+
+.serviceImageWrapper {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  width: 100%;
+}
+
+.serviceImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.serviceCard:hover .serviceImage {
+  transform: scale(1.08);
+}
+
+.serviceImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+.serviceIconFloating {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.25rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(10, 12, 16, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.serviceBody {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.serviceName {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+  color: var(--foreground);
+}
+
+.serviceDesc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   5. WHY SOBHAVI SECTION
+   ========================================================================== */
+.whySobhaviSection {
+  background-color: var(--surface-alt);
+  padding: 7rem 0;
+}
+
+.whySobhaviHeader {
+  max-width: 800px;
+  margin-bottom: 4.5rem;
+}
+
+.whySobhaviSubtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.whySobhaviDesc {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.pillarCard {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.pillarCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(230, 0, 102, 0.3);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+}
+
+.pillarImageWrapper {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  width: 100%;
+}
+
+.pillarImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pillarCard:hover .pillarImage {
+  transform: scale(1.08);
+}
+
+.pillarImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+.pillarNumberBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 12px rgba(230, 0, 102, 0.4);
+  z-index: 2;
+}
+
+.pillarBody {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.pillarTitle {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  color: var(--foreground);
+}
+
+.pillarText {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   6. FINAL CTA & SIGNOFF
+   ========================================================================== */
+.finalCtaSection {
+  position: relative;
+  background-color: #0b0d11;
+  color: #fff;
+  padding: 8rem 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.finalCtaBg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  filter: saturate(1.2);
+}
+
+.finalCtaOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(11, 13, 17, 0.7) 0%, rgba(11, 13, 17, 0.95) 100%);
+}
+
+.finalCtaContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.finalCtaTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.6rem, 5.5vw, 5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+.finalCtaDesc {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2.8rem;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.finalCtaActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.finalCtaSignoff {
+  padding-top: 3.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.signoffBrand {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+}
+
+.signoffMotto {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.signoffContacts {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.signoffLink {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s ease;
+}
+
+.signoffLink:hover {
+  color: #fff;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (Mobile & Tablet Perfection)
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .domesticGrid,
+  .internationalGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .domesticGrid,
+  .internationalGrid,
+  .experiencesGrid,
+  .servicesGrid,
+  .pillarsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .destinationGroupHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .destinationsDualContainer {
+    gap: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding: calc(65px + 1.25rem) 1.25rem 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .heroContent {
+    padding: 0;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Hide extra text on phone view as requested: keep only ESCAPE THE ROUTINE + 2 CTA Buttons */
+  .heroBrand,
+  .heroTagline,
+  .heroBody,
+  .heroLocationIndicator {
+    display: none !important;
+  }
+
+  .heroHeadline {
+    font-size: clamp(2.2rem, 9.5vw, 3.3rem);
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.75rem;
+    text-transform: uppercase;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 0.75rem;
+  }
+
+  .heroButtonPrimary,
+  .heroButtonSecondary {
+    width: 100%;
+    justify-content: center;
+    padding: 0.95rem 1.6rem;
+    font-size: 0.9rem;
+  }
+
+  .destinationsSection,
+  .experiencesSection,
+  .servicesSection,
+  .whySobhaviSection,
+  .finalCtaSection {
+    padding: 3rem 0;
+  }
+
+  .sectionHeader {
+    margin-bottom: 1.75rem;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.75rem, 6.2vw, 2.35rem);
+    line-height: 1.12;
+    margin-bottom: 0.65rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .destinationsDualContainer {
+    gap: 2.75rem;
+  }
+
+  .destinationGroupHeader {
+    margin-bottom: 1.25rem;
+    gap: 1rem;
+  }
+
+  .groupBadge {
+    font-size: 0.7rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .groupTitle {
+    font-size: 1.65rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .groupDesc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .groupActionBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1.4rem;
+    font-size: 0.82rem;
+  }
+
+  .domesticGrid,
+  .internationalGrid,
+  .experiencesGrid,
+  .servicesGrid,
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .destCard {
+    aspect-ratio: 16 / 11;
+    min-height: 235px;
+    border-radius: 12px;
+  }
+
+  .destCardBadge {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.68rem;
+  }
+
+  .destCardContent {
+    padding: 1.2rem 1.15rem;
+  }
+
+  .destCardName {
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .destCardTagline {
+    font-size: 0.82rem;
+    line-height: 1.35;
+    margin-bottom: 0.45rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .destCardArrow {
+    font-size: 0.75rem;
+  }
+
+  .expCard {
+    border-radius: 12px;
+  }
+
+  .expImageWrapper {
+    aspect-ratio: 16 / 9;
+  }
+
+  .expBody {
+    padding: 1.2rem 1.15rem;
+  }
+
+  .expTitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .expDesc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+
+  .expLink {
+    font-size: 0.78rem;
+  }
+
+  .experiencesFooterAction {
+    margin-top: 1.75rem;
+  }
+
+  .exploreExperiencesBtn {
+    width: 100%;
+    padding: 0.95rem 1.4rem;
+    font-size: 0.82rem;
+  }
+
+  .serviceCard,
+  .pillarCard {
+    padding: 0 !important;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .serviceImageWrapper,
+  .pillarImageWrapper {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  .serviceIconFloating {
+    width: 38px;
+    height: 38px;
+    bottom: 0.75rem;
+    left: 1rem;
+  }
+
+  .serviceBody,
+  .pillarBody {
+    padding: 1.2rem 1.15rem;
+  }
+
+  .serviceName,
+  .pillarTitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .serviceDesc,
+  .pillarText {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .whySobhaviHeader {
+    margin-bottom: 2rem;
+  }
+
+  .whySobhaviSubtitle {
+    font-size: clamp(1.5rem, 5.5vw, 2.1rem);
+    margin-bottom: 0.6rem;
+  }
+
+  .whySobhaviDesc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .pillarNumberBadge {
+    top: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  .finalCtaSection {
+    padding: 3.75rem 1.25rem 2.75rem;
+  }
+
+  .finalCtaContent {
+    padding: 0;
+  }
+
+  .finalCtaTitle {
+    font-size: clamp(1.85rem, 7.5vw, 2.6rem);
+    line-height: 1.1;
+    margin-bottom: 0.85rem;
+  }
+
+  .finalCtaDesc {
+    font-size: 0.92rem;
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+
+  .finalCtaActions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 2.25rem;
+    gap: 0.75rem;
+  }
+
+  .finalCtaActions a {
+    width: 100%;
+    text-align: center;
+    padding: 0.95rem 1.5rem !important;
+    font-size: 0.88rem !important;
+  }
+
+  .finalCtaSignoff {
+    padding-top: 1.75rem;
+  }
+
+  .signoffBrand {
+    font-size: 1.35rem;
+    letter-spacing: 0.15em;
+  }
+
+  .signoffMotto {
+    font-size: 0.85rem;
+  }
+
+  .signoffContacts {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .signoffLink {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: calc(60px + 1rem) 1rem 2rem;
+  }
+
+  .heroHeadline {
+    font-size: clamp(1.95rem, 9.5vw, 2.75rem);
+    margin-bottom: 1.6rem;
+  }
+
+  .heroActions {
+    max-width: 100%;
+  }
+
+  .destCard {
+    aspect-ratio: 16 / 11;
+    min-height: 220px;
+  }
+
+  .destCardName {
+    font-size: 1.3rem;
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.65rem, 7vw, 2.1rem);
+  }
+
+  .groupActionBtn {
+    width: 100%;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  .exploreExperiencesBtn {
+    width: 100%;
+    padding: 0.9rem 1.25rem;
+    font-size: 0.82rem;
+  }
+}

@@ -1,1 +1,207 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Light Theme (Requested) */
+  --background: #ffffff;
+  --foreground: #111111;
+  
+  --primary: #000000;
+  --secondary: #f4f4f4;
+  --accent: #eb2174; /* Black Tomato Pink */
+  
+  --surface: #ffffff;
+  --surface-alt: #f9f9f9;
+  
+  --border: #e0e0e0;
+  --border-light: #eeeeee;
+  
+  --text-muted: #666666;
+  --text-light: #999999;
+  
+  --font-heading: 'Oswald', sans-serif;
+  --font-serif: var(--font-heading);
+  --font-sans: 'Inter', sans-serif;
+  
+  --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.4s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Typography matching screenshot */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+}
+
+h1 { font-size: clamp(2rem, 7vw, 6.5rem); }
+h2 { font-size: clamp(1.65rem, 5vw, 4rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 2.5rem); }
+
+a, button {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+
+.section {
+  padding: 8vw 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+  .section {
+    padding: 3.25rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Buttons matching luxury aesthetic */
+.btn-primary, .btn-outline, .btn-pink, .btn-black, .btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 2.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 999px; /* Luxury pill */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .btn-primary, .btn-outline, .btn-pink, .btn-black, .btn-outline-dark {
+    padding: 0.85rem 1.6rem;
+    font-size: 0.78rem;
+  }
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.btn-outline:hover {
+  background-color: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline-dark {
+  background-color: transparent;
+  color: #0b0f19;
+  border: 1.5px solid #0b0f19;
+}
+
+.btn-outline-dark:hover {
+  background-color: #0b0f19;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(11, 15, 25, 0.2);
+}
+
+.btn-black {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.btn-black:hover {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-dark {
+  background-color: #111111;
+  color: #ffffff;
+  border: 1px solid #111111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+}
+
+.btn-dark:hover {
+  background-color: transparent;
+  color: #111111;
+}
+
+.btn-pink {
+  background-color: var(--accent);
+  color: #ffffff;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.75rem;
+}
+
+.btn-pink:hover {
+  background-color: #d11560;
+  border-color: #d11560;
+}
+
+.image-reveal {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.image-reveal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.image-reveal:hover img {
+  transform: scale(1.05);
+}

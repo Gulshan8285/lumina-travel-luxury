@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Enquiry {
+  id                   String   @id @default(cuid())
+  name                 String
+  whatsapp             String
+  email                String?
+  destination          String?
+  journey              String?
+  travellers           String?
+  travelDate           String?
+  duration             String?
+  budget               String?
+  experience           String?
+  specialRequirements  String?
+  status               String   @default("New") // New, Contacted, Planning, Proposal Sent, Confirmed, Completed, Cancelled
+  createdAt            DateTime @default(now())
+}

@@ -1,0 +1,359 @@
+.main {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ==========================================================================
+   CLEAN LUXURY HERO SECTION (NO FORM WIDGET)
+   ========================================================================== */
+.heroSection {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  padding: 9rem 0 5rem;
+  background: linear-gradient(180deg, rgba(11, 15, 25, 0.82) 0%, rgba(11, 15, 25, 0.95) 100%),
+              url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+  color: #ffffff;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.35rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e11d48;
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.heroDesc {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.perksRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.perkItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.perkIcon {
+  color: #e11d48;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   DESTINATIONS GRID (4 REQUESTED DESTINATIONS)
+   ========================================================================== */
+.destinationsSection {
+  padding: 6rem 0 8rem;
+  background: #ffffff;
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 4rem;
+}
+
+.sectionEyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e11d48;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #0b0f19;
+}
+
+.sectionDesc {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.destCard {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.destCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: rgba(225, 29, 72, 0.3);
+}
+
+.imageWrapper {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+.destBadge {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  background: rgba(11, 15, 25, 0.85);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cardContent {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.destName {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+  color: #0b0f19;
+}
+
+.destTagline {
+  font-size: 0.9rem;
+  color: #e11d48;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.destOverview {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #475569;
+  margin: 0 0 1.25rem;
+  flex: 1;
+}
+
+.inclusionsBox {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid #e11d48;
+}
+
+.inclusionsTitle {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
+.inclusionsList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.inclusionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.checkIcon {
+  color: #10b981;
+  font-weight: bold;
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.bookBtn {
+  flex: 1;
+  text-align: center;
+  padding: 0.85rem 1.2rem;
+  background: #0b0f19;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.bookBtn:hover {
+  background: #e11d48;
+}
+
+.whatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.1rem;
+  background: #25d366;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  gap: 0.4rem;
+  transition: all 0.25s ease;
+}
+
+.whatsappBtn:hover {
+  background: #1ebc59;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: auto;
+    padding: 6.5rem 1rem 3.5rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.9rem, 7.5vw, 2.8rem);
+  }
+
+  .heroDesc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .perksRow {
+    gap: 0.75rem 1.25rem;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+  }
+
+  .perkItem {
+    font-size: 0.78rem;
+  }
+
+  .destinationsSection {
+    padding: 3.5rem 0 5rem;
+  }
+
+  .cardContent {
+    padding: 1.35rem 1.25rem;
+  }
+
+  .cardTitle {
+    font-size: 1.45rem;
+  }
+
+  .cardOverview {
+    font-size: 0.88rem;
+  }
+
+  .cardActions {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .bookBtn,
+  .whatsappBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem;
+  }
+}

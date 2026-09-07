@@ -1,0 +1,57 @@
+.main {
+  background-color: var(--background);
+}
+
+.hero {
+  position: relative;
+  padding: 10rem 0 6rem;
+  text-align: left;
+  background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 13, 17, 0.75) 0%, rgba(11, 13, 17, 0.95) 100%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  max-width: 800px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 650px;
+  line-height: 1.7;
+}
+
+.formSection {
+  padding: 0 0 10rem;
+}
+
+.loading {
+  text-align: left;
+  padding: 4rem 0;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  font-style: italic;
+}

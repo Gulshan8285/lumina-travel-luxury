@@ -1,0 +1,204 @@
+.main {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.heroSection {
+  position: relative;
+  min-height: 45vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 3.5rem;
+  background: linear-gradient(180deg, rgba(11, 15, 25, 0.88) 0%, rgba(11, 15, 25, 0.98) 100%),
+              url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=72&w=720&auto=format&fit=crop') center/cover no-repeat;
+  color: #ffffff;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e11d48;
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.heroDesc {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.lastUpdated {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.05em;
+}
+
+.contentSection {
+  padding: 5rem 0 7rem;
+  background: #ffffff;
+}
+
+.contentContainer {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.introBox {
+  background: #f8fafc;
+  border-left: 4px solid #e11d48;
+  padding: 1.75rem 2rem;
+  border-radius: 0 12px 12px 0;
+  margin-bottom: 3.5rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.sectionBlock {
+  margin-bottom: 3.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0b0f19;
+  margin: 0 0 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sectionNumber {
+  color: #e11d48;
+  font-size: 1.1rem;
+}
+
+.text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #475569;
+  margin: 0 0 1rem;
+}
+
+.bulletList {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.bulletItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #334155;
+}
+
+.bulletIcon {
+  color: #e11d48;
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.contactCard {
+  background: #0b0f19;
+  color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  margin-top: 4rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.contactCardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contactCardDesc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.contactLink {
+  color: #e11d48;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.contactLink:hover {
+  color: #fb7185;
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 7rem 0 3rem;
+  }
+  
+  .contentSection {
+    padding: 3.5rem 0 5rem;
+  }
+  
+  .introBox {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .contactCard {
+    padding: 1.75rem;
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "company": {
+    "brandName": "SOBHAVI TRAVELS",
+    "tagline": "Your journey. Our expertise.",
+    "phone": "+91 74069 94752",
+    "whatsapp": "7406994752",
+    "email": "hello@sobhavitravel.com",
+    "address": "Ground Floor, No. 19, 2nd Cross, NR Layout, Kalyanagar, Babusapalya, Bengaluru 560043"
+  },
+  "social": {
+    "instagram": "https://instagram.com",
+    "facebook": "https://facebook.com",
+    "youtube": "https://youtube.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com"
+  },
+  "hero": {
+    "headline": "Escape the routine.",
+    "tagline": "Your journey. Our expertise.",
+    "subheading": "From quick getaways to international holidays, family vacations to special occasions — we help you plan the trip, while taking care of the details.",
+    "videoUrl": "/videos/destinations/dubai.mp4",
+    "posterUrl": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=75&w=1200&auto=format&fit=crop"
+  },
+  "domesticDestinations": [
+    {
+      "id": "rajasthan",
+      "name": "Rajasthan",
+      "tagline": "Royal Palaces, Forts & Thar Desert Glamping",
+      "image": "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=72&w=720&auto=format&fit=crop",
+      "videoUrl": "/videos/destinations/rajasthan.mp4",
+      "duration": "6 Nights / 7 Days",
+      "bestTime": "October – March",
+      "overview": "Experience regal hospitality across Jaipur, Udaipur, Jodhpur, and Jaisalmer. Stay in historic heritage palaces, embark on private desert camel safaris under starlit skies, and savor lavish royal thalis.",
+      "inclusions": [
+        "5-Star Heritage Haveli Stays",
+        "Daily Breakfast & Royal Dinner",
+        "Private Chauffeur-Driven AC Sedan",
+        "Guided Palace & Fort Tours"
+      ]
+    },
+    {
+      "id": "shimla-manali",
+      "name": "Shimla Manali",
+      "tagline": "Snow Peaks, Alpine Pine Valleys & Thrilling Passes",
+      "image": "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=72&w=720&auto=format&fit=crop",
+      "videoUrl": "/videos/destinations/shimla-manali.mp4",
+      "duration": "5 Nights / 6 Days",
+      "bestTime": "Year-Round (Snow: Dec–Feb)",
+      "overview": "Breath-taking Himalayan panoramas, cedar forests, colonial heritage on Shimla's Mall Road, and high-altitude adventures in Solang Valley and Rohtang Pass.",
+      "inclusions": [
+        "Luxury Cedar Chalet / 5-Star Mountain Resort",
+        "Breakfast & Dinner Included",
+        "Private 4x4 Mountain Cab with Driver",
+        "Rohtang & Solang Valley Excursion"
+      ]
+    },
+    {
+      "id": "kerala",
+      "name": "Kerala",
+      "tagline": "Tranquil Backwaters, Tea Plantations & Ayurvedic Wellness",
+      "image": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=72&w=720&auto=format&fit=crop",
+      "videoUrl": "/videos/destinations/kerala.mp4",
+      "duration": "5 Nights / 6 Days",
+      "bestTime": "September – April",
+      "overview": "Cruise serene palm-fringed backwaters aboard private luxury houseboats, wander misty tea gardens in Munnar, and rejuvenate with authentic Ayurvedic spa therapies.",
+      "inclusions": [
+        "Private Luxury AC Houseboat & Resorts",
+        "All Meals on Houseboat + Daily Breakfasts",
+        "Private AC Cab & Expert Chauffeur",
+        "Kathakali Cultural Evening Tickets"
+      ]
+    },
+    {
+      "id": "andaman",
+      "name": "Andaman",
+      "tagline": "Emerald Lagoons, Coral Reefs & Radhanagar Beach",
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=72&w=720&auto=format&fit=crop",
+      "videoUrl": "/videos/destinations/andaman.mp4",
+      "duration": "5 Nights / 6 Days",
+      "bestTime": "October – May",
+      "overview": "White sandy beaches, turquoise lagoons, and world-class scuba diving. From Port Blair's Cellular Jail to Havelock's Radhanagar Beach (ranked among Asia's best).",
+      "inclusions": [
+        "Premium Beachfront Cottages & Resorts",
+        "Daily Breakfast & Chef Dinner",
+        "Private Ferry (Makruzz/Nautika) Tickets",
+        "All Island Private AC Transfers"
+      ]
+    }
+  ],
+  "internationalDestinations": [
+    {
+      "id": "dubai",
+      "name": "Dubai",
+      "tagline": "Futuristic Skylines, Luxury Desert Safari & Royal Marina",
+      "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=72&w=720&auto=format&fit=crop",
+      "videoUrl": "/videos/destinations/dubai.mp4",
+      "duration": "5 Nights / 6 Days",
+      "bestTime": "October – April",
+      "overview": "Ascend Burj Khalifa's 148th floor At The Top Sky, race across golden red dunes in private 4x4 desert safaris, cruise Dubai Marina on a luxury yacht, and indulge in world-class shopping.",
+      "inclusions": [
+        "5-Star Downtown / Marina Hotel",
+        "Daily Buffet Breakfast & Gourmet Dinners",
+        "Private AC Luxury Vehicle for All Transfers",
+        "Burj Khalifa & Marina Yacht Charter Tickets"
+      ]
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "tagline": "Gardens by the Bay, Marina Bay Sands & Sentosa Island",
+      "image": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=72&w=720&auto=format&fit=crop",
+      "videoUrl": "/videos/destinations/singapore.mp4",
+      "duration": "4 Nights / 5 Days",
+      "bestTime": "Year-Round",
+      "overview": "Marvel at Avatar-like Supertree structures, walk through the Cloud Forest dome, take a cable car across to Sentosa Island, and enjoy nightlife along Clarke Quay.",
+      "inclusions": [
+        "5-Star Marina Bay / Orchard Road Hotel",
+        "Daily Breakfast Included",
+        "Private Airport & Sightseeing Transfers",
+        "Universal Studios & Gardens by the Bay Passes"
+      ]
+    },
+    {
+      "id": "bali",
+      "name": "Bali",
+      "tagline": "Private Pool Villas, Sacred Temples & Nusa Penida Cliffs",
+      "image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=72&w=720&auto=format&fit=crop",
+      "videoUrl": "/videos/destinations/bali.mp4",
+      "duration": "6 Nights / 7 Days",
+      "bestTime": "April – October",
+      "overview": "Wake up in a private jungle pool villa in Ubud, visit the dramatic sea temple at Uluwatu, swing over emerald Tegallalang rice terraces, and speed boat to the white sands of Nusa Penida.",
+      "inclusions": [
+        "Luxury Private Pool Villa (Ubud & Seminyak)",
+        "Daily Floating Breakfast & Gourmet Dinners",
+        "Private Dedicated AC Chauffeur & Guide",
+        "Nusa Penida Island Speedboat Day Tour"
+      ]
+    },
+    {
+      "id": "maldives",
+      "name": "Maldives",
+      "tagline": "Overwater Coral Villas & All-Inclusive Island Indulgence",
+      "image": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=72&w=720&auto=format&fit=crop",
+      "videoUrl": "/videos/destinations/maldives.mp4",
+      "duration": "4 Nights / 5 Days",
+      "bestTime": "November – April",
+      "overview": "Pure tropical barefoot luxury. Sleep directly above vibrant turquoise lagoons in private overwater villas, snorkel with sea turtles and manta rays, and enjoy curated sandbank dining.",
+      "inclusions": [
+        "Luxury Overwater Pool Villa",
+        "All-Inclusive Plan: Breakfast, Lunch, Dinner & Drinks",
+        "Return Scenic Seaplane / Speedboat Transfers",
+        "Complimentary Snorkeling Equipment & Dolphin Cruise"
+      ]
+    }
+  ]
+}
