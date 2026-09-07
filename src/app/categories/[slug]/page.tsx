@@ -4,23 +4,66 @@ import { useState, useEffect, use } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
-import { travelCategories } from '@/lib/categories';
+import { travelCategories, TravelCategory } from '@/lib/categories';
+import { getSiteConfig } from '@/lib/siteConfig';
 import SinglePageForm from '@/components/ui/SinglePageForm';
 import styles from './page.module.css';
 
 export default function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
-  const category = travelCategories.find(c => c.slug === slug);
-  if (!category) notFound();
+
+  // Initialize categories from siteConfig (with fallback to default travelCategories)
+  const [categoriesList, setCategoriesList] = useState<TravelCategory[]>(() => {
+    const config = getSiteConfig();
+    return (config.categories && config.categories.length > 0) ? config.categories : travelCategories;
+  });
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('sobhavi_site_config');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed.categories) && parsed.categories.length > 0) {
+          setCategoriesList(parsed.categories);
+        }
+      }
+    } catch (e) {
+      console.error('Error loading custom categories:', e);
+    }
+  }, []);
+
+  // Match category by slug case-insensitively
+  const category = categoriesList.find(c => c.slug.toLowerCase() === slug.toLowerCase()) 
+    || travelCategories.find(c => c.slug.toLowerCase() === slug.toLowerCase());
+
+  if (!category) {
+    notFound();
+  }
+
+  // Safe images fallback
+  const galleryImages: string[] = (Array.isArray(category.images) && category.images.length > 0)
+    ? category.images
+    : (category.heroImage ? [category.heroImage] : [
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"
+      ]);
+
+  // Safe article fields
+  const articleIntro = category.article?.intro || category.description;
+  const articleBody = (category.article?.body && category.article.body.length > 0)
+    ? category.article.body
+    : [category.description, "Every custom bespoke journey curated by Sobhavi Travels is designed with passion, impeccable detail, and private transfers tailored to your vision."];
+  const articleQuote = category.article?.quote || "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.";
+  const articleQuoteAuthor = category.article?.quoteAuthor || "— Sobhavi Travels Specialists";
 
   const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
+    if (galleryImages.length <= 1) return;
     const timer = setInterval(() => {
-      setActiveImage(prev => (prev + 1) % category.images.length);
+      setActiveImage(prev => (prev + 1) % galleryImages.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, [category.images.length]);
+  }, [galleryImages.length]);
 
   return (
     <>
@@ -29,7 +72,7 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
         {/* Hero */}
         <section className={styles.hero}>
           <div className={styles.heroImageWrapper}>
-            {category.images.map((img, i) => (
+            {galleryImages.map((img, i) => (
               <div
                 key={i}
                 className={`${styles.heroImage} ${i === activeImage ? styles.active : ''}`}
@@ -45,32 +88,35 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
           </div>
 
           {/* Thumbnail Strip */}
-          <div className={styles.thumbnailStrip}>
-            {category.images.map((img, i) => (
-              <button
-                key={i}
-                className={`${styles.thumbnail} ${i === activeImage ? styles.activeThumbnail : ''}`}
-                onClick={() => setActiveImage(i)}
-                style={{ backgroundImage: `url(${img})` }}
-                aria-label={`Image ${i + 1}`}
-              />
-            ))}
-          </div>
+          {galleryImages.length > 1 && (
+            <div className={styles.thumbnailStrip}>
+              {galleryImages.map((img, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className={`${styles.thumbnail} ${i === activeImage ? styles.activeThumbnail : ''}`}
+                  onClick={() => setActiveImage(i)}
+                  style={{ backgroundImage: `url(${img})` }}
+                  aria-label={`Image ${i + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Article Section */}
         <section className={styles.articleSection}>
           <div className={styles.articleGrid}>
             <div className={styles.articleMain}>
-              <p className={styles.articleIntro}>{category.article.intro}</p>
-              {category.article.body.map((para, i) => (
+              <p className={styles.articleIntro}>{articleIntro}</p>
+              {articleBody.map((para, i) => (
                 <p key={i} className={styles.articleBody}>{para}</p>
               ))}
 
               {/* Blockquote */}
               <blockquote className={styles.blockquote}>
-                <p>{category.article.quote}</p>
-                <cite>{category.article.quoteAuthor}</cite>
+                <p>{articleQuote}</p>
+                <cite>{articleQuoteAuthor}</cite>
               </blockquote>
             </div>
 
@@ -79,7 +125,7 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
               <div className={styles.sidebarCard}>
                 <h3>Plan This Trip</h3>
                 <p>Tell us your dream and we'll make it real.</p>
-                <Link href={`/enquire?category=${category.slug}`} className="btn-dark" style={{ marginTop: '2rem', display: 'block', textAlign: 'center', padding: '1rem' }}>
+                <Link href={`/enquire?category=${encodeURIComponent(category.slug)}`} className="btn-dark" style={{ marginTop: '2rem', display: 'block', textAlign: 'center', padding: '1rem' }}>
                   Start Planning
                 </Link>
               </div>
@@ -92,13 +138,13 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
         </section>
 
         {/* Visual Photo Gallery */}
-        {category.images && category.images.length > 0 && (
+        {galleryImages.length > 0 && (
           <section className={styles.gallerySection}>
             <div className="container">
               <span className={styles.galleryEyebrow}>VISUAL JOURNAL</span>
               <h2 className={styles.galleryTitle}>{category.name} in Pictures</h2>
               <div className={styles.galleryGrid}>
-                {category.images.map((img, idx) => (
+                {galleryImages.map((img, idx) => (
                   <div key={idx} className={styles.galleryCard}>
                     <img 
                       src={img} 
@@ -122,7 +168,7 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
               <div className={styles.videoWrapper}>
                 <video
                   src={category.videoUrl}
-                  poster={category.images?.[0] || category.heroImage}
+                  poster={galleryImages[0] || category.heroImage}
                   autoPlay
                   muted
                   loop
@@ -142,7 +188,7 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
         {/* Highlighted Enquiry Form Section */}
         <section className={styles.formSection}>
           <div className="container">
-            <SinglePageForm initialDestination="" />
+            <SinglePageForm initialDestination={category.name} />
           </div>
         </section>
       </main>

@@ -742,6 +742,142 @@
   text-align: center;
 }
 
+.stickySaveBar {
+  position: sticky;
+  top: 15px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(225, 29, 72, 0.4);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(225, 29, 72, 0.2);
+  border-radius: 12px;
+  padding: 0.9rem 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stickySaveInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.saveStatusBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fb7185;
+  background: rgba(225, 29, 72, 0.15);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(225, 29, 72, 0.3);
+}
+
+.saveStatusText {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.saveAllBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+  transition: all 0.25s ease;
+}
+
+.saveAllBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(225, 29, 72, 0.6);
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+}
+
+.saveAllBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cardHeaderBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.itemNumberBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.addBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.35rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.addBtn:hover {
+  background: #10b981;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.deleteItemBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #f87171;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.deleteItemBtn:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
 @media (max-width: 768px) {
   .formRowTwo,
   .formRowThree {
@@ -754,5 +890,17 @@
 
   .loginCard {
     padding: 2.2rem 1.5rem;
+  }
+
+  .stickySaveBar {
+    position: static;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .saveAllBtn {
+    width: 100%;
+    justify-content: center;
   }
 }

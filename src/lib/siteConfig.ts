@@ -1,4 +1,5 @@
 import defaultConfig from './siteConfig.json';
+import { TravelCategory } from './categories';
 
 export interface CompanyConfig {
   brandName: string;
@@ -25,6 +26,15 @@ export interface HeroConfig {
   posterUrl: string;
 }
 
+export interface HeroSlide {
+  id: string;
+  category: string;
+  name: string;
+  tagline: string;
+  videoUrl: string;
+  posterUrl: string;
+}
+
 export interface DestinationPackage {
   id: string;
   name: string;
@@ -41,6 +51,8 @@ export interface SiteConfig {
   company: CompanyConfig;
   social: SocialConfig;
   hero: HeroConfig;
+  heroSlides: HeroSlide[];
+  categories: TravelCategory[];
   domesticDestinations: DestinationPackage[];
   internationalDestinations: DestinationPackage[];
 }
@@ -52,7 +64,7 @@ export function getSiteConfig(): SiteConfig {
   if (inMemoryConfig) {
     return inMemoryConfig;
   }
-  return (defaultConfig as SiteConfig);
+  return (defaultConfig as unknown as SiteConfig);
 }
 
 export function saveSiteConfig(newConfig: Partial<SiteConfig>): SiteConfig {
@@ -63,6 +75,8 @@ export function saveSiteConfig(newConfig: Partial<SiteConfig>): SiteConfig {
     company: { ...current.company, ...(newConfig.company || {}) },
     social: { ...current.social, ...(newConfig.social || {}) },
     hero: { ...current.hero, ...(newConfig.hero || {}) },
+    heroSlides: newConfig.heroSlides || current.heroSlides,
+    categories: newConfig.categories || current.categories,
     domesticDestinations: newConfig.domesticDestinations || current.domesticDestinations,
     internationalDestinations: newConfig.internationalDestinations || current.internationalDestinations
   };
@@ -72,7 +86,6 @@ export function saveSiteConfig(newConfig: Partial<SiteConfig>): SiteConfig {
   // Server-only dynamic filesystem write
   if (typeof window === 'undefined') {
     try {
-      // Dynamic require to prevent client bundlers from analyzing fs
       const reqFs = eval("require('fs')");
       const reqPath = eval("require('path')");
       const configFile = reqPath.join(process.cwd(), 'src/lib/siteConfig.json');

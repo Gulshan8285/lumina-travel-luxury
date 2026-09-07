@@ -21,6 +21,166 @@
     "videoUrl": "/videos/destinations/dubai.mp4",
     "posterUrl": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=75&w=1200&auto=format&fit=crop"
   },
+  "heroSlides": [
+    {
+      "id": "rajasthan",
+      "category": "Domestic",
+      "name": "Rajasthan",
+      "tagline": "Palaces, Forts & Thar Desert Glamping",
+      "videoUrl": "/videos/destinations/rajasthan.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      "id": "dubai",
+      "category": "International",
+      "name": "Dubai",
+      "tagline": "Futuristic Skylines, Burj Khalifa & Luxury Marina",
+      "videoUrl": "/videos/destinations/dubai.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      "id": "shimla-manali",
+      "category": "Domestic",
+      "name": "Shimla Manali",
+      "tagline": "Snow Peaks & Himalayan Pine Valleys",
+      "videoUrl": "/videos/destinations/shimla-manali.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      "id": "singapore",
+      "category": "International",
+      "name": "Singapore",
+      "tagline": "Gardens by the Bay & Marina Bay Sands",
+      "videoUrl": "/videos/destinations/singapore.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      "id": "kerala",
+      "category": "Domestic",
+      "name": "Kerala",
+      "tagline": "Tranquil Backwaters & Lush Tea Plantations",
+      "videoUrl": "/videos/destinations/kerala.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      "id": "bali",
+      "category": "International",
+      "name": "Bali",
+      "tagline": "Sacred Temples, Rice Terraces & Private Pool Villas",
+      "videoUrl": "/videos/destinations/bali.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      "id": "andaman",
+      "category": "Domestic",
+      "name": "Andaman",
+      "tagline": "Emerald Lagoons, Coral Reefs & Radhanagar Beach",
+      "videoUrl": "/videos/destinations/andaman.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      "id": "maldives",
+      "category": "International",
+      "name": "Maldives",
+      "tagline": "Overwater Coral Villas & All-Inclusive Island Indulgence",
+      "videoUrl": "/videos/destinations/maldives.mp4",
+      "posterUrl": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1200&auto=format&fit=crop"
+    }
+  ],
+  "categories": [
+    {
+      "slug": "chardham-yatra",
+      "name": "Chardham Yatra",
+      "tagline": "Thoughtfully planned spiritual journeys, with the details taken care of.",
+      "description": "Divine pilgrimage through Yamunotri, Gangotri, Kedarnath, and Badrinath with VIP darshan and helicopter charters.",
+      "heroImage": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=720&q=72&auto=format&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=720&q=72&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=720&q=72&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=720&q=72&auto=format&fit=crop"
+      ],
+      "videoUrl": "/videos/adventure.mp4"
+    },
+    {
+      "slug": "honeymoon",
+      "name": "Honeymoon Holidays",
+      "tagline": "Beautiful destinations and memorable stays for a special beginning.",
+      "description": "Romantic escapes designed to make your first adventure together truly unforgettable.",
+      "heroImage": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=720&q=72&auto=format&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=720&q=72&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=720&q=72&auto=format&fit=crop"
+      ],
+      "videoUrl": "/videos/ocean.mp4"
+    },
+    {
+      "slug": "family",
+      "name": "Family Holidays",
+      "tagline": "More time together, less time spent planning.",
+      "description": "Family adventures crafted so every age group — from toddlers to grandparents — finds their moment of wonder.",
+      "heroImage": "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=720&q=72&auto=format&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=720&q=72&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=720&q=72&auto=format&fit=crop"
+      ],
+      "videoUrl": "/videos/safari.mp4"
+    },
+    {
+      "slug": "group",
+      "name": "Group Tours",
+      "tagline": "Travel together. Make memories together.",
+      "description": "From office offsites to friend reunions, we turn any group into an unforgettable journey.",
+      "heroImage": "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=720&q=72&auto=format&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=720&q=72&auto=format&fit=crop"
+      ],
+      "videoUrl": "/videos/adventure.mp4"
+    },
+    {
+      "slug": "luxury",
+      "name": "Luxury Holidays",
+      "tagline": "Exceptional stays and experiences for a little extra indulgence.",
+      "description": "World-class 5-star resorts, private villas, chartered yachts, and bespoke itineraries tailored to the finest detail.",
+      "heroImage": "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=720&q=72&auto=format&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=720&q=72&auto=format&fit=crop"
+      ],
+      "videoUrl": "/videos/ocean.mp4"
+    },
+    {
+      "slug": "adventure",
+      "name": "Adventure & Wildlife",
+      "tagline": "For those who want to explore, discover and experience something different.",
+      "description": "Jungle safaris, Himalayan treks, scuba diving, and thrilling encounters in nature.",
+      "heroImage": "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=720&q=72&auto=format&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=720&q=72&auto=format&fit=crop"
+      ],
+      "videoUrl": "/videos/safari.mp4"
+    },
+    {
+      "slug": "anniversary",
+      "name": "Anniversary Celebrations",
+      "tagline": "Celebrate the years. Cherish the story.",
+      "description": "Mark another year of love with a journey so extraordinary it feels like falling in love all over again.",
+      "heroImage": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=720&q=72&auto=format&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=720&q=72&auto=format&fit=crop"
+      ],
+      "videoUrl": "/videos/ocean.mp4"
+    },
+    {
+      "slug": "wellness",
+      "name": "Wellness & Retreat",
+      "tagline": "Restore. Renew. Return whole.",
+      "description": "Luxury wellness travel that goes beyond the spa — transformative experiences for mind and soul.",
+      "heroImage": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=720&q=72&auto=format&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=720&q=72&auto=format&fit=crop"
+      ],
+      "videoUrl": "/videos/ocean.mp4"
+    }
+  ],
   "domesticDestinations": [
     {
       "id": "rajasthan",

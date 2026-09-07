@@ -99,8 +99,8 @@ export default function Home() {
     };
   }, []);
 
-  // Exact 8 destinations requested by the user: Domestic & International
-  const heroSlides = [
+  // Default 8 destinations requested by the user: Domestic & International
+  const defaultHeroSlides = [
     {
       id: "rajasthan",
       category: "Domestic",
@@ -167,11 +167,23 @@ export default function Home() {
     }
   ];
 
+  const heroSlides = (siteConfig.heroSlides && siteConfig.heroSlides.length > 0)
+    ? siteConfig.heroSlides
+    : defaultHeroSlides;
+
   // Dual-channel video player for gapless, black-screen-free crossfading
   const [activeChannel, setActiveChannel] = useState<0 | 1>(0);
   const [channel0Index, setChannel0Index] = useState(0);
   const [channel1Index, setChannel1Index] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slide0 = heroSlides[channel0Index] || heroSlides[0] || defaultHeroSlides[0];
+  const slide1 = heroSlides[channel1Index] || heroSlides[0] || defaultHeroSlides[0];
+  const activeSlide = heroSlides[currentSlide] || heroSlides[0] || defaultHeroSlides[0];
+
+  const categoriesList = (siteConfig.categories && siteConfig.categories.length > 0)
+    ? siteConfig.categories
+    : travelCategories;
 
   const videoRef0 = useRef<HTMLVideoElement | null>(null);
   const videoRef1 = useRef<HTMLVideoElement | null>(null);
@@ -419,18 +431,18 @@ export default function Home() {
               >
                 <div
                   className={styles.channelPoster}
-                  style={{ backgroundImage: `url(${heroSlides[channel0Index].posterUrl})` }}
+                  style={{ backgroundImage: `url(${slide0.posterUrl})` }}
                 />
                 <video
                   ref={videoRef0}
-                  src={heroSlides[channel0Index].videoUrl}
+                  src={slide0.videoUrl}
                   className={styles.heroVideo}
                   autoPlay
                   muted
                   loop
                   playsInline
                   preload="auto"
-                  poster={heroSlides[channel0Index].posterUrl}
+                  poster={slide0.posterUrl}
                 />
               </div>
 
@@ -440,17 +452,17 @@ export default function Home() {
               >
                 <div
                   className={styles.channelPoster}
-                  style={{ backgroundImage: `url(${heroSlides[channel1Index].posterUrl})` }}
+                  style={{ backgroundImage: `url(${slide1.posterUrl})` }}
                 />
                 <video
                   ref={videoRef1}
-                  src={heroSlides[channel1Index].videoUrl}
+                  src={slide1.videoUrl}
                   className={styles.heroVideo}
                   muted
                   loop
                   playsInline
                   preload="auto"
-                  poster={heroSlides[channel1Index].posterUrl}
+                  poster={slide1.posterUrl}
                 />
               </div>
             </div>
@@ -492,7 +504,7 @@ export default function Home() {
             <div className={styles.heroLocationLeft}>
               <span className={styles.heroLocationDot}></span>
               <span>
-                <strong>{heroSlides[currentSlide].name}</strong> ({heroSlides[currentSlide].category}) &mdash; {heroSlides[currentSlide].tagline}
+                <strong>{activeSlide.name}</strong> ({activeSlide.category}) &mdash; {activeSlide.tagline}
               </span>
             </div>
             <div className={styles.heroLocationRight}>
@@ -638,7 +650,7 @@ export default function Home() {
             </div>
 
             <div className={styles.experiencesGrid}>
-              {travelCategories.map((cat, i) => (
+              {categoriesList.map((cat, i) => (
                 <motion.div
                   key={cat.slug}
                   initial={{ opacity: 0, y: 50 }}

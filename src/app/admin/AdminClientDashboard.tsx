@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BlogPost } from '@/lib/blogs';
-import { SiteConfig, DestinationPackage } from '@/lib/siteConfig';
+import { SiteConfig, DestinationPackage, HeroSlide } from '@/lib/siteConfig';
+import { TravelCategory } from '@/lib/categories';
 import ImageUploader, { CURATED_PHOTOS } from './ImageUploader';
+import VideoUploader from './VideoUploader';
 import styles from './page.module.css';
 
 interface EnquiryItem {
@@ -37,10 +39,11 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
   const [rememberMe, setRememberMe] = useState(true);
 
   // Active Tab
-  const [activeTab, setActiveTab] = useState<'contact' | 'hero' | 'domestic' | 'international' | 'blogs' | 'enquiries'>('contact');
+  const [activeTab, setActiveTab] = useState<'contact' | 'hero' | 'categories' | 'domestic' | 'international' | 'blogs' | 'enquiries'>('contact');
 
   // Site Configuration State
   const [config, setConfig] = useState<SiteConfig>(initialConfig);
+  const [isSavingAll, setIsSavingAll] = useState<boolean>(false);
   const [savingSection, setSavingSection] = useState<string | null>(null);
 
   // Blogs and Enquiries State
@@ -96,7 +99,6 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     const cleanPass = passcode.trim();
-    // Accept master passcodes
     if (cleanPass === 'sobhavi2026' || cleanPass === 'admin123' || cleanPass === 'admin') {
       setIsAuthenticated(true);
       setLoginError(false);
@@ -121,15 +123,41 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
     setTimeout(() => setToastMessage(null), 3500);
   };
 
-  // Save Config Section to Server and Local Storage
+  // 1-Click Global Save: Saves all changes to Server Backend & Local Storage
+  const handleSaveAll = async () => {
+    setIsSavingAll(true);
+    try {
+      localStorage.setItem('sobhavi_site_config', JSON.stringify(config));
+      window.dispatchEvent(new Event('sobhavi_site_config_updated'));
+      window.dispatchEvent(new Event('storage'));
+
+      const res = await fetch('/api/site-config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(config)
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast('✓ All changes saved successfully! Live on website.');
+      } else {
+        showToast('✓ Saved locally! Live across all pages.');
+      }
+    } catch (err) {
+      console.error(err);
+      showToast('✓ Saved locally! Live across all pages.');
+    } finally {
+      setIsSavingAll(false);
+    }
+  };
+
+  // Save Section Helper
   const handleSaveConfig = async (sectionName: string) => {
     setSavingSection(sectionName);
     try {
-      // 1. Save to localStorage for instant client reactivity
       localStorage.setItem('sobhavi_site_config', JSON.stringify(config));
+      window.dispatchEvent(new Event('sobhavi_site_config_updated'));
       window.dispatchEvent(new Event('storage'));
 
-      // 2. Save to server backend
       const res = await fetch('/api/site-config', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -149,21 +177,175 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
     }
   };
 
-  // Handle Domestic Destination Change
-  const handleDomesticChange = (index: number, field: keyof DestinationPackage, value: any) => {
-    const updated = [...config.domesticDestinations];
+  // =========================================================================
+  // CATEGORIES / EXPERIENCES MANAGEMENT
+  // =========================================================================
+  const handleAddCategory = () => {
+    const newCat: TravelCategory = {
+      slug: `experience-${Date.now().toString(36)}`,
+      name: "New Travel Experience",
+      tagline: "Exclusive bespoke journey crafted for luxury travellers.",
+      description: "Comprehensive itinerary with private transfers, luxury 5-star stays and dedicated chauffeur guide.",
+      heroImage: CURATED_PHOTOS[0].url,
+      images: [
+        CURATED_PHOTOS[0].url,
+        CURATED_PHOTOS[1].url
+      ],
+      videoUrl: "/videos/destinations/dubai.mp4",
+      article: {
+        intro: "Experience the extraordinary with Sobhavi Travels.",
+        body: [
+          "Handpicked stays, VIP excursions, and seamless private transfers tailored to your highest expectations."
+        ],
+        quote: "An unforgettable voyage orchestrated to absolute perfection.",
+        quoteAuthor: "— Sobhavi Travel Specialist"
+      }
+    };
+    const updated = [...(config.categories || []), newCat];
+    setConfig({ ...config, categories: updated });
+    showToast("✓ New Category added! Click 'Save All Changes' to make it live.");
+  };
+
+  const handleDeleteCategory = (index: number) => {
+    if (!confirm("Are you sure you want to delete this travel category?")) return;
+    const updated = (config.categories || []).filter((_, i) => i !== index);
+    setConfig({ ...config, categories: updated });
+    showToast("✓ Category removed.");
+  };
+
+  const handleCategoryChange = (index: number, field: keyof TravelCategory, value: any) => {
+    const updated = [...(config.categories || [])];
     updated[index] = { ...updated[index], [field]: value };
+    if (field === 'name' && value) {
+      const slug = String(value).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      if (slug) {
+        updated[index].slug = slug;
+      }
+    }
+    setConfig({ ...config, categories: updated });
+  };
+
+  // =========================================================================
+  // HERO SLIDES / REELS MANAGEMENT
+  // =========================================================================
+  const handleAddHeroSlide = () => {
+    const newSlide: HeroSlide = {
+      id: `destination-${Date.now().toString(36)}`,
+      category: "Domestic",
+      name: "New Destination Reel",
+      tagline: "Unforgettable escapes and luxury experiences",
+      videoUrl: "/videos/destinations/rajasthan.mp4",
+      posterUrl: CURATED_PHOTOS[0].url
+    };
+    const updated = [...(config.heroSlides || []), newSlide];
+    setConfig({ ...config, heroSlides: updated });
+    showToast("✓ New Hero Video slide added! Click 'Save All Changes' to make it live.");
+  };
+
+  const handleDeleteHeroSlide = (index: number) => {
+    if ((config.heroSlides || []).length <= 1) {
+      alert("At least one destination video slide must remain active.");
+      return;
+    }
+    if (!confirm("Are you sure you want to delete this hero destination video?")) return;
+    const updated = (config.heroSlides || []).filter((_, i) => i !== index);
+    setConfig({ ...config, heroSlides: updated });
+    showToast("✓ Hero Video slide removed.");
+  };
+
+  const handleHeroSlideChange = (index: number, field: keyof HeroSlide, value: any) => {
+    const updated = [...(config.heroSlides || [])];
+    updated[index] = { ...updated[index], [field]: value };
+    setConfig({ ...config, heroSlides: updated });
+  };
+
+  // =========================================================================
+  // DOMESTIC DESTINATIONS MANAGEMENT
+  // =========================================================================
+  const handleAddDomestic = () => {
+    const newDest: DestinationPackage = {
+      id: `domestic-${Date.now().toString(36)}`,
+      name: "New Indian Destination",
+      tagline: "Serene landscapes and luxury heritage escapes",
+      image: CURATED_PHOTOS[0].url,
+      videoUrl: "/videos/destinations/rajasthan.mp4",
+      duration: "5 Nights / 6 Days",
+      bestTime: "Year-Round",
+      overview: "Experience authentic Indian hospitality with private chauffeur-driven luxury sedans, five-star heritage haveli stays, and curated sightseeing.",
+      inclusions: [
+        "5-Star Luxury Resort / Haveli Stays",
+        "Daily Breakfast & Chef Dinners",
+        "Private AC Chauffeur Driven Vehicle",
+        "All Guided Excursions & Entry Passes"
+      ]
+    };
+    const updated = [...(config.domesticDestinations || []), newDest];
+    setConfig({ ...config, domesticDestinations: updated });
+    showToast("✓ New domestic destination added! Click 'Save All Changes' to make it live.");
+  };
+
+  const handleDeleteDomestic = (index: number) => {
+    if (!confirm("Are you sure you want to delete this domestic destination?")) return;
+    const updated = (config.domesticDestinations || []).filter((_, i) => i !== index);
+    setConfig({ ...config, domesticDestinations: updated });
+    showToast("✓ Domestic destination removed.");
+  };
+
+  const handleDomesticChange = (index: number, field: keyof DestinationPackage, value: any) => {
+    const updated = [...(config.domesticDestinations || [])];
+    updated[index] = { ...updated[index], [field]: value };
+    if (field === 'name' && value) {
+      const slug = String(value).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      if (slug) updated[index].id = slug;
+    }
     setConfig({ ...config, domesticDestinations: updated });
   };
 
-  // Handle International Destination Change
+  // =========================================================================
+  // INTERNATIONAL DESTINATIONS MANAGEMENT
+  // =========================================================================
+  const handleAddInternational = () => {
+    const newDest: DestinationPackage = {
+      id: `intl-${Date.now().toString(36)}`,
+      name: "New International Destination",
+      tagline: "Exotic islands, iconic landmarks & bespoke retreats",
+      image: CURATED_PHOTOS[4].url,
+      videoUrl: "/videos/destinations/dubai.mp4",
+      duration: "5 Nights / 6 Days",
+      bestTime: "October – April",
+      overview: "Explore world-renowned destinations with private airport transfers, luxury resort stays, and customized tours designed for seamless travel.",
+      inclusions: [
+        "5-Star International Hotel Stays",
+        "Daily Buffet Breakfast Included",
+        "Private AC Chauffeur Transfers",
+        "Curated Sightseeing & Landmark Passes"
+      ]
+    };
+    const updated = [...(config.internationalDestinations || []), newDest];
+    setConfig({ ...config, internationalDestinations: updated });
+    showToast("✓ New international destination added! Click 'Save All Changes' to make it live.");
+  };
+
+  const handleDeleteInternational = (index: number) => {
+    if (!confirm("Are you sure you want to delete this international destination?")) return;
+    const updated = (config.internationalDestinations || []).filter((_, i) => i !== index);
+    setConfig({ ...config, internationalDestinations: updated });
+    showToast("✓ International destination removed.");
+  };
+
   const handleInternationalChange = (index: number, field: keyof DestinationPackage, value: any) => {
-    const updated = [...config.internationalDestinations];
+    const updated = [...(config.internationalDestinations || [])];
     updated[index] = { ...updated[index], [field]: value };
+    if (field === 'name' && value) {
+      const slug = String(value).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      if (slug) updated[index].id = slug;
+    }
     setConfig({ ...config, internationalDestinations: updated });
   };
 
-  // Publish Blog Post
+  // =========================================================================
+  // BLOGS MANAGEMENT
+  // =========================================================================
   const handlePublishBlog = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!blogForm.title || !blogForm.excerpt) {
@@ -196,7 +378,6 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
         const updatedBlogs = [data.blog, ...blogs];
         setBlogs(updatedBlogs);
 
-        // Store custom post locally for instantaneous zero-latency client display
         try {
           const localStored = JSON.parse(localStorage.getItem('sobhavi_custom_blogs') || '[]');
           const filtered = localStored.filter((b: any) => b.id !== data.blog.id && b.slug !== data.blog.slug);
@@ -231,7 +412,6 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
     }
   };
 
-  // Delete Blog
   const handleDeleteBlog = async (id: string) => {
     if (!confirm("Are you sure you want to delete this article?")) return;
     try {
@@ -248,890 +428,1125 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
           console.error(e);
         }
         showToast("✓ Article deleted successfully.");
+      } else {
+        alert("Could not delete blog.");
       }
     } catch (err) {
       console.error(err);
+      alert("Error deleting blog.");
     }
   };
 
-  // -------------------------------------------------------------
-  // RENDER LOGIN SCREEN (IF NOT AUTHENTICATED)
-  // -------------------------------------------------------------
+  // =========================================================================
+  // LOGIN SCREEN
+  // =========================================================================
   if (!isAuthenticated) {
     return (
-      <div className={styles.loginWrapper}>
+      <div className={styles.loginContainer}>
         <div className={styles.loginCard}>
-          <div className={styles.loginLogo}>SOBHAVI TRAVELS</div>
-          <span className={styles.loginBadge}>OFFICIAL MANAGEMENT PORTAL</span>
-          <h1 className={styles.loginTitle}>Admin Sign In</h1>
-          <p className={styles.loginSubtitle}>
-            Welcome! Enter your master passcode to edit contact numbers, destinations, hero text, and publish blogs.
-          </p>
-
-          {loginError && (
-            <div className={styles.loginError}>
-              ⚠️ Incorrect passcode. Please try again or check the hint below.
-            </div>
-          )}
+          <div className={styles.loginHeader}>
+            <span className={styles.loginEyebrow}>Sobhavi Travels Portal</span>
+            <h1 className={styles.loginTitle}>Admin Authentication</h1>
+            <p className={styles.loginDesc}>
+              Enter your master passcode to access the website management dashboard.
+            </p>
+          </div>
 
           <form onSubmit={handleLogin} className={styles.loginForm}>
+            {loginError && (
+              <div className={styles.loginError}>
+                ⚠️ Invalid passcode. Please enter the correct master passcode.
+              </div>
+            )}
+
             <div className={styles.formGroup}>
-              <label className={styles.formLabel}>Admin Passcode</label>
-              <input 
+              <label className={styles.formLabel} htmlFor="admin-passcode">Master Passcode</label>
+              <input
+                id="admin-passcode"
                 type="password"
+                className={styles.formInput}
                 placeholder="Enter passcode..."
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
-                className={styles.formInput}
                 autoFocus
                 required
               />
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#94a3b8' }}>
-              <input 
-                type="checkbox" 
-                id="remember" 
-                checked={rememberMe} 
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.85rem', color: '#94a3b8', marginBottom: '0.5rem' }}>
+              <input
+                id="rememberMeCheck"
+                type="checkbox"
+                checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
+                style={{ accentColor: '#e11d48', width: '16px', height: '16px', cursor: 'pointer' }}
               />
-              <label htmlFor="remember">Remember login on this browser</label>
+              <label htmlFor="rememberMeCheck" style={{ cursor: 'pointer' }}>Keep me logged in on this browser</label>
             </div>
 
-            <button type="submit" className={styles.loginSubmitBtn}>
-              Log In to Admin Portal &rarr;
+            <button type="submit" className={styles.loginBtn}>
+              Sign In to Admin Portal &rarr;
             </button>
           </form>
 
           <div className={styles.loginHint}>
-            🔑 Passcode: <strong>sobhavi2026</strong>
+            Default Passcode: <strong>sobhavi2026</strong> (or <strong>admin123</strong>)
           </div>
         </div>
       </div>
     );
   }
 
-  // -------------------------------------------------------------
-  // RENDER AUTHENTICATED ADMIN DASHBOARD
-  // -------------------------------------------------------------
+  // =========================================================================
+  // AUTHENTICATED DASHBOARD VIEW
+  // =========================================================================
   return (
     <div className={styles.adminWrapper}>
-      {/* Toast Notification */}
       {toastMessage && (
         <div className={styles.toastNotification}>
           <span>{toastMessage}</span>
         </div>
       )}
 
-      {/* Admin Top Header */}
+      {/* Top Header */}
       <header className={styles.adminHeader}>
         <div className={styles.headerBrand}>
-          <span className={styles.brandBadge}>CONTENT & BOOKINGS CONTROL DESK</span>
-          <h1 className={styles.pageTitle}>Sobhavi Travels Admin Panel</h1>
+          <span className={styles.brandBadge}>Sobhavi Travels Control Center</span>
+          <h1 className={styles.pageTitle}>Master Management Portal</h1>
         </div>
 
         <div className={styles.headerActions}>
           <Link href="/" target="_blank" className={styles.previewSiteBtn}>
-            <span>View Live Website</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
+            <span>View Live Site</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
             </svg>
           </Link>
-          <button onClick={handleLogout} className={styles.logoutBtn}>
-            Log Out
+          <button type="button" onClick={handleLogout} className={styles.logoutBtn}>
+            Sign Out
           </button>
         </div>
       </header>
 
-      {/* Easy Navigation Tabs */}
-      <nav className={styles.tabBar} aria-label="Admin Navigation">
-        <button 
-          onClick={() => setActiveTab('contact')} 
+      {/* Sticky 1-Click Save Bar */}
+      <div className={styles.stickySaveBar}>
+        <div className={styles.stickySaveInfo}>
+          <span className={styles.saveStatusBadge}>⚡ All-in-One Controller</span>
+          <span className={styles.saveStatusText}>
+            Add, edit, or delete any Category, Destination, Video or Photo &mdash; click Save to sync live instantly!
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={handleSaveAll}
+          className={styles.saveAllBtn}
+          disabled={isSavingAll}
+        >
+          {isSavingAll ? "⏳ Saving All Changes..." : "💾 SAVE ALL CHANGES (1-Click)"}
+        </button>
+      </div>
+
+      {/* Navigation Tabs */}
+      <nav className={styles.tabBar} aria-label="Admin Navigation Tabs">
+        <button
+          type="button"
           className={`${styles.tabBtn} ${activeTab === 'contact' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('contact')}
         >
-          📞 1. Contact & Social Media
+          📞 Contact &amp; Brand
         </button>
-
-        <button 
-          onClick={() => setActiveTab('hero')} 
+        <button
+          type="button"
           className={`${styles.tabBtn} ${activeTab === 'hero' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('hero')}
         >
-          🏠 2. Homepage & Hero
+          🎬 Hero Videos &amp; Reels ({config.heroSlides?.length || 8})
         </button>
-
-        <button 
-          onClick={() => setActiveTab('domestic')} 
+        <button
+          type="button"
+          className={`${styles.tabBtn} ${activeTab === 'categories' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('categories')}
+        >
+          ✨ Categories &amp; Experiences ({config.categories?.length || 0})
+        </button>
+        <button
+          type="button"
           className={`${styles.tabBtn} ${activeTab === 'domestic' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('domestic')}
         >
-          🇮🇳 3. Domestic Packages ({config.domesticDestinations.length})
+          🇮🇳 Domestic ({config.domesticDestinations?.length || 0})
         </button>
-
-        <button 
-          onClick={() => setActiveTab('international')} 
+        <button
+          type="button"
           className={`${styles.tabBtn} ${activeTab === 'international' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('international')}
         >
-          ✈️ 4. International Packages ({config.internationalDestinations.length})
+          ✈️ International ({config.internationalDestinations?.length || 0})
         </button>
-
-        <button 
-          onClick={() => setActiveTab('blogs')} 
+        <button
+          type="button"
           className={`${styles.tabBtn} ${activeTab === 'blogs' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('blogs')}
         >
-          📝 5. Post Blog / Journal ({blogs.length})
+          📝 Blog Articles ({blogs.length})
         </button>
-
-        <button 
-          onClick={() => setActiveTab('enquiries')} 
+        <button
+          type="button"
           className={`${styles.tabBtn} ${activeTab === 'enquiries' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('enquiries')}
         >
-          💬 6. Customer Enquiries ({enquiries.length})
+          📬 Client Leads ({enquiries.length})
         </button>
       </nav>
 
-      {/* ========================================================= */}
-      {/* TAB 1: CONTACT & SOCIAL MEDIA                             */}
-      {/* ========================================================= */}
+      {/* ===================================================================
+          TAB 1: CONTACT & BRAND INFO
+          =================================================================== */}
       {activeTab === 'contact' && (
-        <section className={styles.editorCard}>
-          <div className={styles.editorCardHeader}>
-            <h2 className={styles.editorCardTitle}>📞 Company Information & Social Links</h2>
-            <p className={styles.editorCardDesc}>
-              These phone numbers, emails, addresses, and social channels appear in the header, footer, floating buttons, and contact page across the entire website.
+        <div className={styles.editorCard}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.cardTitle}>Contact Details &amp; Business Address</h2>
+            <p className={styles.cardDesc}>
+              Update your official phone numbers, WhatsApp, email, and company address shown across header, footer, and floating buttons.
             </p>
           </div>
 
-          <div className={styles.formGrid}>
-            <div className={styles.formRowTwo}>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Calling Phone Number</label>
-                <input 
-                  type="text" 
-                  value={config.company.phone} 
-                  onChange={(e) => setConfig({
-                    ...config, 
-                    company: { ...config.company, phone: e.target.value }
-                  })}
-                  className={styles.formInput}
-                />
-                <span className={styles.fieldHelper}>Displayed in header and footer (e.g. +91 74069 94752)</span>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>WhatsApp Number (Digits only)</label>
-                <input 
-                  type="text" 
-                  value={config.company.whatsapp} 
-                  onChange={(e) => setConfig({
-                    ...config, 
-                    company: { ...config.company, whatsapp: e.target.value }
-                  })}
-                  className={styles.formInput}
-                />
-                <span className={styles.fieldHelper}>Used for WhatsApp direct chats (e.g. 7406994752)</span>
-              </div>
-            </div>
-
-            <div className={styles.formRowTwo}>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Official Email Address</label>
-                <input 
-                  type="email" 
-                  value={config.company.email} 
-                  onChange={(e) => setConfig({
-                    ...config, 
-                    company: { ...config.company, email: e.target.value }
-                  })}
-                  className={styles.formInput}
-                />
-                <span className={styles.fieldHelper}>hello@sobhavitravel.com</span>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Brand Name</label>
-                <input 
-                  type="text" 
-                  value={config.company.brandName} 
-                  onChange={(e) => setConfig({
-                    ...config, 
-                    company: { ...config.company, brandName: e.target.value }
-                  })}
-                  className={styles.formInput}
-                />
-                <span className={styles.fieldHelper}>SOBHAVI TRAVELS</span>
-              </div>
-            </div>
-
+          <div className={styles.formRowTwo}>
             <div className={styles.formGroup}>
-              <label className={styles.formLabel}>Office Physical Address</label>
-              <textarea 
-                value={config.company.address} 
+              <label className={styles.formLabel}>Brand Name</label>
+              <input
+                type="text"
+                className={styles.formInput}
+                value={config.company?.brandName || ''}
                 onChange={(e) => setConfig({
-                  ...config, 
-                  company: { ...config.company, address: e.target.value }
+                  ...config,
+                  company: { ...config.company, brandName: e.target.value }
                 })}
-                className={styles.formTextarea}
-                style={{ minHeight: '80px' }}
+                placeholder="SOBHAVI TRAVELS"
               />
-              <span className={styles.fieldHelper}>Appears on the Footer and Contact Us page</span>
             </div>
-
-            <h3 style={{ fontSize: '1.1rem', marginTop: '1.5rem', marginBottom: '0.5rem', color: '#e11d48', textTransform: 'uppercase' }}>
-              Social Media Profile Links
-            </h3>
-
-            <div className={styles.formRowThree}>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Instagram Link</label>
-                <input 
-                  type="url" 
-                  value={config.social.instagram} 
-                  onChange={(e) => setConfig({
-                    ...config, 
-                    social: { ...config.social, instagram: e.target.value }
-                  })}
-                  className={styles.formInput}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Facebook Link</label>
-                <input 
-                  type="url" 
-                  value={config.social.facebook} 
-                  onChange={(e) => setConfig({
-                    ...config, 
-                    social: { ...config.social, facebook: e.target.value }
-                  })}
-                  className={styles.formInput}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>YouTube Link</label>
-                <input 
-                  type="url" 
-                  value={config.social.youtube} 
-                  onChange={(e) => setConfig({
-                    ...config, 
-                    social: { ...config.social, youtube: e.target.value }
-                  })}
-                  className={styles.formInput}
-                />
-              </div>
-            </div>
-
-            <div className={styles.formRowTwo}>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>LinkedIn Link</label>
-                <input 
-                  type="url" 
-                  value={config.social.linkedin} 
-                  onChange={(e) => setConfig({
-                    ...config, 
-                    social: { ...config.social, linkedin: e.target.value }
-                  })}
-                  className={styles.formInput}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Twitter / X Link</label>
-                <input 
-                  type="url" 
-                  value={config.social.twitter} 
-                  onChange={(e) => setConfig({
-                    ...config, 
-                    social: { ...config.social, twitter: e.target.value }
-                  })}
-                  className={styles.formInput}
-                />
-              </div>
-            </div>
-
-            <div className={styles.saveActionRow}>
-              <button 
-                onClick={() => handleSaveConfig('Contact Information')}
-                disabled={savingSection === 'Contact Information'}
-                className={styles.saveBtn}
-              >
-                {savingSection === 'Contact Information' ? 'Saving...' : '💾 Save Contact & Social Changes'}
-              </button>
+            <div className={styles.formGroup}>
+              <label className={styles.formLabel}>Brand Motto / Tagline</label>
+              <input
+                type="text"
+                className={styles.formInput}
+                value={config.company?.tagline || ''}
+                onChange={(e) => setConfig({
+                  ...config,
+                  company: { ...config.company, tagline: e.target.value }
+                })}
+                placeholder="Your journey. Our expertise."
+              />
             </div>
           </div>
-        </section>
+
+          <div className={styles.formRowThree}>
+            <div className={styles.formGroup}>
+              <label className={styles.formLabel}>Direct Phone Number</label>
+              <input
+                type="text"
+                className={styles.formInput}
+                value={config.company?.phone || ''}
+                onChange={(e) => setConfig({
+                  ...config,
+                  company: { ...config.company, phone: e.target.value }
+                })}
+                placeholder="+91 74069 94752"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label className={styles.formLabel}>WhatsApp Number (without +91)</label>
+              <input
+                type="text"
+                className={styles.formInput}
+                value={config.company?.whatsapp || ''}
+                onChange={(e) => setConfig({
+                  ...config,
+                  company: { ...config.company, whatsapp: e.target.value }
+                })}
+                placeholder="7406994752"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label className={styles.formLabel}>Official Email</label>
+              <input
+                type="email"
+                className={styles.formInput}
+                value={config.company?.email || ''}
+                onChange={(e) => setConfig({
+                  ...config,
+                  company: { ...config.company, email: e.target.value }
+                })}
+                placeholder="hello@sobhavitravel.com"
+              />
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Office Address</label>
+            <textarea
+              className={styles.formTextarea}
+              rows={3}
+              value={config.company?.address || ''}
+              onChange={(e) => setConfig({
+                ...config,
+                company: { ...config.company, address: e.target.value }
+              })}
+              placeholder="Full office address..."
+            />
+          </div>
+
+          <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'flex-end' }}>
+            <button
+              type="button"
+              className={styles.saveBtn}
+              onClick={() => handleSaveConfig('Contact Information')}
+              disabled={savingSection === 'Contact Information'}
+            >
+              {savingSection === 'Contact Information' ? "Saving..." : "Save Contact Details"}
+            </button>
+          </div>
+        </div>
       )}
 
-      {/* ========================================================= */}
-      {/* TAB 2: HOMEPAGE & HERO                                    */}
-      {/* ========================================================= */}
+      {/* ===================================================================
+          TAB 2: HERO VIDEOS & REELS (HEADER REELS)
+          =================================================================== */}
       {activeTab === 'hero' && (
-        <section className={styles.editorCard}>
-          <div className={styles.editorCardHeader}>
-            <h2 className={styles.editorCardTitle}>🏠 Homepage Hero Section</h2>
-            <p className={styles.editorCardDesc}>
-              Customize the main headline, tagline, subtext, and background video or image seen when visitors first land on your website.
-            </p>
-          </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          {/* Main Hero Header Text */}
+          <div className={styles.editorCard}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>Homepage Headline &amp; Tagline</h2>
+              <p className={styles.cardDesc}>
+                Customize the main title shown over the video reel on the top of the homepage.
+              </p>
+            </div>
 
-          <div className={styles.formGrid}>
             <div className={styles.formRowTwo}>
               <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Main Headline</label>
-                <input 
-                  type="text" 
-                  value={config.hero.headline} 
+                <label className={styles.formLabel}>Hero Headline</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={config.hero?.headline || ''}
                   onChange={(e) => setConfig({
-                    ...config, 
+                    ...config,
                     hero: { ...config.hero, headline: e.target.value }
                   })}
-                  className={styles.formInput}
+                  placeholder="Escape the routine."
                 />
-                <span className={styles.fieldHelper}>e.g. Escape the routine.</span>
               </div>
-
               <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Tagline / Motto</label>
-                <input 
-                  type="text" 
-                  value={config.hero.tagline} 
+                <label className={styles.formLabel}>Hero Subheading</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={config.hero?.tagline || ''}
                   onChange={(e) => setConfig({
-                    ...config, 
+                    ...config,
                     hero: { ...config.hero, tagline: e.target.value }
                   })}
-                  className={styles.formInput}
+                  placeholder="Your journey. Our expertise."
                 />
-                <span className={styles.fieldHelper}>e.g. Your journey. Our expertise.</span>
               </div>
             </div>
 
             <div className={styles.formGroup}>
-              <label className={styles.formLabel}>Hero Subtitle / Description</label>
-              <textarea 
-                value={config.hero.subheading} 
+              <label className={styles.formLabel}>Hero Body Paragraph (Visible on Desktop)</label>
+              <textarea
+                className={styles.formTextarea}
+                rows={2}
+                value={config.hero?.subheading || ''}
                 onChange={(e) => setConfig({
-                  ...config, 
+                  ...config,
                   hero: { ...config.hero, subheading: e.target.value }
                 })}
-                className={styles.formTextarea}
               />
-            </div>
-
-            <div className={styles.formRowTwo}>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Background Video URL</label>
-                <input 
-                  type="text" 
-                  value={config.hero.videoUrl} 
-                  onChange={(e) => setConfig({
-                    ...config, 
-                    hero: { ...config.hero, videoUrl: e.target.value }
-                  })}
-                  className={styles.formInput}
-                />
-                <span className={styles.fieldHelper}>Default: /videos/ocean.mp4</span>
-              </div>
-
-              <ImageUploader 
-                label="Video Fallback Poster Image"
-                value={config.hero.posterUrl}
-                onChange={(url) => setConfig({
-                  ...config, 
-                  hero: { ...config.hero, posterUrl: url }
-                })}
-                id="hero-poster"
-                recommendedAspect="16:9 Landscape"
-              />
-            </div>
-
-            <div className={styles.saveActionRow}>
-              <button 
-                onClick={() => handleSaveConfig('Homepage Hero')}
-                disabled={savingSection === 'Homepage Hero'}
-                className={styles.saveBtn}
-              >
-                {savingSection === 'Homepage Hero' ? 'Saving...' : '💾 Save Hero Changes'}
-              </button>
             </div>
           </div>
-        </section>
+
+          {/* Active Hero Video Reels List */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <h2 style={{ fontSize: '1.4rem', color: '#fff', textTransform: 'uppercase', margin: 0 }}>
+                Active Destination Video Reels ({config.heroSlides?.length || 0})
+              </h2>
+              <p style={{ fontSize: '0.85rem', color: '#94a3b8', margin: '0.2rem 0 0' }}>
+                These videos cycle smoothly on the homepage with 1.25x speed and gapless crossfade. Add, edit, or remove anytime!
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleAddHeroSlide}
+              className={styles.addBtn}
+            >
+              ➕ Add New Destination Video
+            </button>
+          </div>
+
+          {(config.heroSlides || []).map((slide, index) => (
+            <div key={slide.id || index} className={styles.editorCard}>
+              <div className={styles.cardHeaderBar}>
+                <div className={styles.itemNumberBadge}>
+                  <span style={{ color: '#e11d48' }}>#{index + 1}</span>
+                  <span>{slide.name || 'Untitled Destination'}</span>
+                  <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.1)', padding: '0.2rem 0.6rem', borderRadius: '999px', marginLeft: '0.5rem' }}>
+                    {slide.category}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteHeroSlide(index)}
+                  className={styles.deleteItemBtn}
+                >
+                  🗑 Delete Video Slide
+                </button>
+              </div>
+
+              <div className={styles.formRowThree}>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Destination Name</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={slide.name}
+                    onChange={(e) => handleHeroSlideChange(index, 'name', e.target.value)}
+                    placeholder="e.g. Rajasthan, Dubai, Switzerland"
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Category</label>
+                  <select
+                    className={styles.formInput}
+                    value={slide.category}
+                    onChange={(e) => handleHeroSlideChange(index, 'category', e.target.value)}
+                  >
+                    <option value="Domestic">Domestic</option>
+                    <option value="International">International</option>
+                  </select>
+                </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Short Tagline</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={slide.tagline}
+                    onChange={(e) => handleHeroSlideChange(index, 'tagline', e.target.value)}
+                    placeholder="e.g. Palaces, Forts & Thar Desert"
+                  />
+                </div>
+              </div>
+
+              {/* Video Picker & Uploader */}
+              <div style={{ marginTop: '1rem', marginBottom: '1.5rem' }}>
+                <VideoUploader
+                  id={`hero-slide-video-${index}`}
+                  label="Destination Video Reel (Fast-paced MP4)"
+                  value={slide.videoUrl}
+                  onChange={(val) => handleHeroSlideChange(index, 'videoUrl', val)}
+                  required
+                />
+              </div>
+
+              {/* Poster Image Uploader */}
+              <div>
+                <ImageUploader
+                  id={`hero-slide-poster-${index}`}
+                  label="Underlying HD Poster / Photograph"
+                  value={slide.posterUrl}
+                  onChange={(val) => handleHeroSlideChange(index, 'posterUrl', val)}
+                  required
+                />
+              </div>
+            </div>
+          ))}
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
+            <button
+              type="button"
+              className={styles.saveBtn}
+              onClick={() => handleSaveConfig('Hero Videos & Reels')}
+              disabled={savingSection === 'Hero Videos & Reels'}
+            >
+              {savingSection === 'Hero Videos & Reels' ? "Saving..." : "Save All Hero Videos"}
+            </button>
+          </div>
+        </div>
       )}
 
-      {/* ========================================================= */}
-      {/* TAB 3: DOMESTIC PACKAGES                                  */}
-      {/* ========================================================= */}
+      {/* ===================================================================
+          TAB 3: CATEGORIES & EXPERIENCES (NEW DYNAMIC MANAGEMENT)
+          =================================================================== */}
+      {activeTab === 'categories' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <h2 style={{ fontSize: '1.4rem', color: '#fff', textTransform: 'uppercase', margin: 0 }}>
+                Travel Categories &amp; Curated Collections ({config.categories?.length || 0})
+              </h2>
+              <p style={{ fontSize: '0.85rem', color: '#94a3b8', margin: '0.2rem 0 0' }}>
+                Add new travel experiences, edit descriptions, upload cover photos and videos, or delete any category.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleAddCategory}
+              className={styles.addBtn}
+            >
+              ➕ Add New Category / Experience
+            </button>
+          </div>
+
+          {(config.categories || []).map((cat, index) => (
+            <div key={cat.slug || index} className={styles.editorCard}>
+              <div className={styles.cardHeaderBar}>
+                <div className={styles.itemNumberBadge}>
+                  <span style={{ color: '#e11d48' }}>#{index + 1}</span>
+                  <span>{cat.name}</span>
+                  <span style={{ fontSize: '0.72rem', color: '#94a3b8', marginLeft: '0.5rem' }}>
+                    (/categories/{cat.slug})
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteCategory(index)}
+                  className={styles.deleteItemBtn}
+                >
+                  🗑 Delete Category
+                </button>
+              </div>
+
+              <div className={styles.formRowTwo}>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Category Name</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={cat.name}
+                    onChange={(e) => handleCategoryChange(index, 'name', e.target.value)}
+                    placeholder="e.g. Luxury Holidays, Honeymoon"
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Tagline</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={cat.tagline}
+                    onChange={(e) => handleCategoryChange(index, 'tagline', e.target.value)}
+                    placeholder="Short catchy subtitle..."
+                  />
+                </div>
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Category Description</label>
+                <textarea
+                  className={styles.formTextarea}
+                  rows={2}
+                  value={cat.description}
+                  onChange={(e) => handleCategoryChange(index, 'description', e.target.value)}
+                  placeholder="Overview of what travellers will experience..."
+                />
+              </div>
+
+              {/* Cover Photo */}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <ImageUploader
+                  id={`cat-hero-${index}`}
+                  label="Category Cover Photograph (Hero Image)"
+                  value={cat.heroImage}
+                  onChange={(val) => handleCategoryChange(index, 'heroImage', val)}
+                  required
+                />
+              </div>
+
+              {/* Category Video */}
+              <div>
+                <VideoUploader
+                  id={`cat-video-${index}`}
+                  label="Background Experience Video (Optional MP4)"
+                  value={cat.videoUrl || ''}
+                  onChange={(val) => handleCategoryChange(index, 'videoUrl', val)}
+                />
+              </div>
+            </div>
+          ))}
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
+            <button
+              type="button"
+              className={styles.saveBtn}
+              onClick={() => handleSaveConfig('Categories & Experiences')}
+              disabled={savingSection === 'Categories & Experiences'}
+            >
+              {savingSection === 'Categories & Experiences' ? "Saving..." : "Save All Categories"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ===================================================================
+          TAB 4: DOMESTIC DESTINATIONS
+          =================================================================== */}
       {activeTab === 'domestic' && (
-        <section className={styles.editorCard}>
-          <div className={styles.editorCardHeader}>
-            <h2 className={styles.editorCardTitle}>🇮🇳 Domestic Holiday Packages</h2>
-            <p className={styles.editorCardDesc}>
-              Edit the 4 featured domestic destinations: Rajasthan, Shimla Manali, Kerala, and Andaman. Changes appear on both the Homepage and the Domestic Holidays page.
-            </p>
-          </div>
-
-          {config.domesticDestinations.map((dest, idx) => (
-            <div key={dest.id || idx} className={styles.destItemBox}>
-              <div className={styles.destItemHeader}>
-                <h3 className={styles.destItemTitle}>#{idx + 1} &bull; {dest.name}</h3>
-                <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>ID: {dest.id}</span>
-              </div>
-
-              <div className={styles.formGrid}>
-                <div className={styles.formRowTwo}>
-                  <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Destination Name</label>
-                    <input 
-                      type="text" 
-                      value={dest.name} 
-                      onChange={(e) => handleDomesticChange(idx, 'name', e.target.value)}
-                      className={styles.formInput}
-                    />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Tagline</label>
-                    <input 
-                      type="text" 
-                      value={dest.tagline} 
-                      onChange={(e) => handleDomesticChange(idx, 'tagline', e.target.value)}
-                      className={styles.formInput}
-                    />
-                  </div>
-                </div>
-
-                <div className={styles.formRowTwo}>
-                  <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Duration (e.g. 5 Nights / 6 Days)</label>
-                    <input 
-                      type="text" 
-                      value={dest.duration} 
-                      onChange={(e) => handleDomesticChange(idx, 'duration', e.target.value)}
-                      className={styles.formInput}
-                    />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Best Season to Visit</label>
-                    <input 
-                      type="text" 
-                      value={dest.bestTime} 
-                      onChange={(e) => handleDomesticChange(idx, 'bestTime', e.target.value)}
-                      className={styles.formInput}
-                    />
-                  </div>
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label className={styles.formLabel}>Overview / Description</label>
-                  <textarea 
-                    value={dest.overview} 
-                    onChange={(e) => handleDomesticChange(idx, 'overview', e.target.value)}
-                    className={styles.formTextarea}
-                  />
-                </div>
-
-                <ImageUploader 
-                  label="Package Cover Image"
-                  value={dest.image}
-                  onChange={(url) => handleDomesticChange(idx, 'image', url)}
-                  id={`domestic-img-${dest.id || idx}`}
-                  recommendedAspect="16:10 Landscape"
-                />
-
-                <div className={styles.formGroup}>
-                  <label className={styles.formLabel}>Package Inclusions (One per line)</label>
-                  <textarea 
-                    value={dest.inclusions.join('\n')} 
-                    onChange={(e) => handleDomesticChange(idx, 'inclusions', e.target.value.split('\n').filter(Boolean))}
-                    className={styles.formTextarea}
-                    style={{ minHeight: '90px' }}
-                  />
-                </div>
-              </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <h2 style={{ fontSize: '1.4rem', color: '#fff', textTransform: 'uppercase', margin: 0 }}>
+                Domestic India Destinations ({config.domesticDestinations?.length || 0})
+              </h2>
+              <p style={{ fontSize: '0.85rem', color: '#94a3b8', margin: '0.2rem 0 0' }}>
+                Manage domestic travel packages, add new Indian cities, update itineraries and inclusions.
+              </p>
             </div>
-          ))}
-
-          <div className={styles.saveActionRow}>
-            <button 
-              onClick={() => handleSaveConfig('Domestic Packages')}
-              disabled={savingSection === 'Domestic Packages'}
-              className={styles.saveBtn}
+            <button
+              type="button"
+              onClick={handleAddDomestic}
+              className={styles.addBtn}
             >
-              {savingSection === 'Domestic Packages' ? 'Saving...' : '💾 Save Domestic Packages'}
+              ➕ Add New Domestic Destination
             </button>
           </div>
-        </section>
-      )}
 
-      {/* ========================================================= */}
-      {/* TAB 4: INTERNATIONAL PACKAGES                             */}
-      {/* ========================================================= */}
-      {activeTab === 'international' && (
-        <section className={styles.editorCard}>
-          <div className={styles.editorCardHeader}>
-            <h2 className={styles.editorCardTitle}>✈️ International Holiday Packages</h2>
-            <p className={styles.editorCardDesc}>
-              Edit the 4 featured international destinations: Dubai, Singapore, Bali, and Maldives. Changes update both the Homepage and the International page.
-            </p>
-          </div>
-
-          {config.internationalDestinations.map((dest, idx) => (
-            <div key={dest.id || idx} className={styles.destItemBox}>
-              <div className={styles.destItemHeader}>
-                <h3 className={styles.destItemTitle}>#{idx + 1} &bull; {dest.name}</h3>
-                <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>ID: {dest.id}</span>
+          {(config.domesticDestinations || []).map((dest, index) => (
+            <div key={dest.id || index} className={styles.editorCard}>
+              <div className={styles.cardHeaderBar}>
+                <div className={styles.itemNumberBadge}>
+                  <span style={{ color: '#e11d48' }}>#{index + 1}</span>
+                  <span>{dest.name}</span>
+                  <span style={{ fontSize: '0.72rem', color: '#94a3b8', marginLeft: '0.5rem' }}>
+                    (/destinations/{dest.id})
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteDomestic(index)}
+                  className={styles.deleteItemBtn}
+                >
+                  🗑 Delete Destination
+                </button>
               </div>
 
-              <div className={styles.formGrid}>
-                <div className={styles.formRowTwo}>
-                  <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Destination Name</label>
-                    <input 
-                      type="text" 
-                      value={dest.name} 
-                      onChange={(e) => handleInternationalChange(idx, 'name', e.target.value)}
-                      className={styles.formInput}
-                    />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Tagline</label>
-                    <input 
-                      type="text" 
-                      value={dest.tagline} 
-                      onChange={(e) => handleInternationalChange(idx, 'tagline', e.target.value)}
-                      className={styles.formInput}
-                    />
-                  </div>
-                </div>
-
-                <div className={styles.formRowTwo}>
-                  <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Duration (e.g. 5 Nights / 6 Days)</label>
-                    <input 
-                      type="text" 
-                      value={dest.duration} 
-                      onChange={(e) => handleInternationalChange(idx, 'duration', e.target.value)}
-                      className={styles.formInput}
-                    />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Best Season to Visit</label>
-                    <input 
-                      type="text" 
-                      value={dest.bestTime} 
-                      onChange={(e) => handleInternationalChange(idx, 'bestTime', e.target.value)}
-                      className={styles.formInput}
-                    />
-                  </div>
-                </div>
-
+              <div className={styles.formRowThree}>
                 <div className={styles.formGroup}>
-                  <label className={styles.formLabel}>Overview / Description</label>
-                  <textarea 
-                    value={dest.overview} 
-                    onChange={(e) => handleInternationalChange(idx, 'overview', e.target.value)}
-                    className={styles.formTextarea}
+                  <label className={styles.formLabel}>Destination Name</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={dest.name}
+                    onChange={(e) => handleDomesticChange(index, 'name', e.target.value)}
                   />
                 </div>
-
-                <ImageUploader 
-                  label="Package Cover Image"
-                  value={dest.image}
-                  onChange={(url) => handleInternationalChange(idx, 'image', url)}
-                  id={`intl-img-${dest.id || idx}`}
-                  recommendedAspect="16:10 Landscape"
-                />
-
                 <div className={styles.formGroup}>
-                  <label className={styles.formLabel}>Package Inclusions (One per line)</label>
-                  <textarea 
-                    value={dest.inclusions.join('\n')} 
-                    onChange={(e) => handleInternationalChange(idx, 'inclusions', e.target.value.split('\n').filter(Boolean))}
-                    className={styles.formTextarea}
-                    style={{ minHeight: '90px' }}
+                  <label className={styles.formLabel}>Duration</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={dest.duration}
+                    onChange={(e) => handleDomesticChange(index, 'duration', e.target.value)}
+                    placeholder="e.g. 5 Nights / 6 Days"
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Best Time to Visit</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={dest.bestTime}
+                    onChange={(e) => handleDomesticChange(index, 'bestTime', e.target.value)}
+                    placeholder="e.g. October – March"
                   />
                 </div>
               </div>
-            </div>
-          ))}
 
-          <div className={styles.saveActionRow}>
-            <button 
-              onClick={() => handleSaveConfig('International Packages')}
-              disabled={savingSection === 'International Packages'}
-              className={styles.saveBtn}
-            >
-              {savingSection === 'International Packages' ? 'Saving...' : '💾 Save International Packages'}
-            </button>
-          </div>
-        </section>
-      )}
-
-      {/* ========================================================= */}
-      {/* TAB 5: POST BLOG / JOURNAL                                */}
-      {/* ========================================================= */}
-      {activeTab === 'blogs' && (
-        <section className={styles.editorCard}>
-          <div className={styles.editorCardHeader}>
-            <h2 className={styles.editorCardTitle}>📝 Publish New Travel Journal / Blog Post</h2>
-            <p className={styles.editorCardDesc}>
-              Write and publish an inspiring travel guide. It will automatically match the luxury editorial magazine format and appear at <Link href="/blog" target="_blank" style={{ color: '#e11d48' }}>/blog</Link> for your clients.
-            </p>
-          </div>
-
-          <form onSubmit={handlePublishBlog} className={styles.formGrid}>
-            <div className={styles.formRowTwo}>
               <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Article Title*</label>
-                <input 
-                  type="text" 
-                  placeholder="e.g. 7 Hidden Gems of Rajasthan You Must Visit in 2026"
-                  value={blogForm.title}
-                  onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
+                <label className={styles.formLabel}>Tagline</label>
+                <input
+                  type="text"
                   className={styles.formInput}
+                  value={dest.tagline}
+                  onChange={(e) => handleDomesticChange(index, 'tagline', e.target.value)}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Overview &amp; Itinerary Highlights</label>
+                <textarea
+                  className={styles.formTextarea}
+                  rows={3}
+                  value={dest.overview}
+                  onChange={(e) => handleDomesticChange(index, 'overview', e.target.value)}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Package Inclusions (comma separated)</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={Array.isArray(dest.inclusions) ? dest.inclusions.join(', ') : (dest.inclusions || '')}
+                  onChange={(e) => handleDomesticChange(index, 'inclusions', e.target.value.split(',').map(s => s.trim()))}
+                />
+              </div>
+
+              {/* Photo Uploader */}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <ImageUploader
+                  id={`domestic-image-${index}`}
+                  label="Destination Card Cover Photograph"
+                  value={dest.image}
+                  onChange={(val) => handleDomesticChange(index, 'image', val)}
+                  required
+                />
+              </div>
+
+              {/* Video Uploader */}
+              <div>
+                <VideoUploader
+                  id={`domestic-video-${index}`}
+                  label="Associated Destination Video Reel (MP4)"
+                  value={dest.videoUrl || ''}
+                  onChange={(val) => handleDomesticChange(index, 'videoUrl', val)}
+                />
+              </div>
+            </div>
+          ))}
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
+            <button
+              type="button"
+              className={styles.saveBtn}
+              onClick={() => handleSaveConfig('Domestic Destinations')}
+              disabled={savingSection === 'Domestic Destinations'}
+            >
+              {savingSection === 'Domestic Destinations' ? "Saving..." : "Save Domestic Destinations"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ===================================================================
+          TAB 5: INTERNATIONAL DESTINATIONS
+          =================================================================== */}
+      {activeTab === 'international' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <h2 style={{ fontSize: '1.4rem', color: '#fff', textTransform: 'uppercase', margin: 0 }}>
+                International Worldwide Destinations ({config.internationalDestinations?.length || 0})
+              </h2>
+              <p style={{ fontSize: '0.85rem', color: '#94a3b8', margin: '0.2rem 0 0' }}>
+                Manage international holiday packages, overseas villas, flight inclusions and itineraries.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleAddInternational}
+              className={styles.addBtn}
+            >
+              ➕ Add New International Destination
+            </button>
+          </div>
+
+          {(config.internationalDestinations || []).map((dest, index) => (
+            <div key={dest.id || index} className={styles.editorCard}>
+              <div className={styles.cardHeaderBar}>
+                <div className={styles.itemNumberBadge}>
+                  <span style={{ color: '#e11d48' }}>#{index + 1}</span>
+                  <span>{dest.name}</span>
+                  <span style={{ fontSize: '0.72rem', color: '#94a3b8', marginLeft: '0.5rem' }}>
+                    (/destinations/{dest.id})
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteInternational(index)}
+                  className={styles.deleteItemBtn}
+                >
+                  🗑 Delete Destination
+                </button>
+              </div>
+
+              <div className={styles.formRowThree}>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Destination Name</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={dest.name}
+                    onChange={(e) => handleInternationalChange(index, 'name', e.target.value)}
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Duration</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={dest.duration}
+                    onChange={(e) => handleInternationalChange(index, 'duration', e.target.value)}
+                    placeholder="e.g. 5 Nights / 6 Days"
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Best Time to Visit</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={dest.bestTime}
+                    onChange={(e) => handleInternationalChange(index, 'bestTime', e.target.value)}
+                    placeholder="e.g. October – April"
+                  />
+                </div>
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Tagline</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={dest.tagline}
+                  onChange={(e) => handleInternationalChange(index, 'tagline', e.target.value)}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Overview &amp; Experience Highlights</label>
+                <textarea
+                  className={styles.formTextarea}
+                  rows={3}
+                  value={dest.overview}
+                  onChange={(e) => handleInternationalChange(index, 'overview', e.target.value)}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Package Inclusions (comma separated)</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={Array.isArray(dest.inclusions) ? dest.inclusions.join(', ') : (dest.inclusions || '')}
+                  onChange={(e) => handleInternationalChange(index, 'inclusions', e.target.value.split(',').map(s => s.trim()))}
+                />
+              </div>
+
+              {/* Photo Uploader */}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <ImageUploader
+                  id={`intl-image-${index}`}
+                  label="Destination Card Cover Photograph"
+                  value={dest.image}
+                  onChange={(val) => handleInternationalChange(index, 'image', val)}
+                  required
+                />
+              </div>
+
+              {/* Video Uploader */}
+              <div>
+                <VideoUploader
+                  id={`intl-video-${index}`}
+                  label="Associated Destination Video Reel (MP4)"
+                  value={dest.videoUrl || ''}
+                  onChange={(val) => handleInternationalChange(index, 'videoUrl', val)}
+                />
+              </div>
+            </div>
+          ))}
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
+            <button
+              type="button"
+              className={styles.saveBtn}
+              onClick={() => handleSaveConfig('International Destinations')}
+              disabled={savingSection === 'International Destinations'}
+            >
+              {savingSection === 'International Destinations' ? "Saving..." : "Save International Destinations"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ===================================================================
+          TAB 6: BLOG ARTICLES CMS
+          =================================================================== */}
+      {activeTab === 'blogs' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          {/* Create New Post Form */}
+          <div className={styles.editorCard}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>Write &amp; Publish New Journal Story</h2>
+              <p className={styles.cardDesc}>
+                Publish insider travel guides, itineraries, and stories to the live website blog.
+              </p>
+            </div>
+
+            <form onSubmit={handlePublishBlog}>
+              <div className={styles.formRowTwo}>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Article Title *</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={blogForm.title}
+                    onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
+                    placeholder="e.g. Sacred Sanctuaries: The Ultimate Chardham Yatra Guide"
+                    required
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Category</label>
+                  <select
+                    className={styles.formInput}
+                    value={blogForm.category}
+                    onChange={(e) => setBlogForm({ ...blogForm, category: e.target.value })}
+                  >
+                    <option value="Spiritual & Pilgrimage">Spiritual &amp; Pilgrimage</option>
+                    <option value="Luxury Escapes">Luxury Escapes</option>
+                    <option value="Honeymoon & Romance">Honeymoon &amp; Romance</option>
+                    <option value="Family Vacations">Family Vacations</option>
+                    <option value="Wilderness & Safari">Wilderness &amp; Safari</option>
+                    <option value="Insider Travel Tips">Insider Travel Tips</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Short Excerpt (1-2 sentences) *</label>
+                <textarea
+                  className={styles.formTextarea}
+                  rows={2}
+                  value={blogForm.excerpt}
+                  onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })}
+                  placeholder="Summary shown on the blog cards and Google snippets..."
                   required
                 />
               </div>
 
               <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Category</label>
-                <select 
-                  value={blogForm.category}
-                  onChange={(e) => setBlogForm({ ...blogForm, category: e.target.value })}
-                  className={styles.formSelect}
+                <label className={styles.formLabel}>Main Article Body (Separate paragraphs with double Enter)</label>
+                <textarea
+                  className={styles.formTextarea}
+                  rows={6}
+                  value={blogForm.paragraphs}
+                  onChange={(e) => setBlogForm({ ...blogForm, paragraphs: e.target.value })}
+                  placeholder="Write your article body here..."
+                />
+              </div>
+
+              <div className={styles.formRowTwo}>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Highlight Quote</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={blogForm.quote}
+                    onChange={(e) => setBlogForm({ ...blogForm, quote: e.target.value })}
+                    placeholder="A memorable statement from the story..."
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>Author Name</label>
+                  <input
+                    type="text"
+                    className={styles.formInput}
+                    value={blogForm.author}
+                    onChange={(e) => setBlogForm({ ...blogForm, author: e.target.value })}
+                    placeholder="Sobhavi Travel Specialist"
+                  />
+                </div>
+              </div>
+
+              {/* Cover Photo */}
+              <div style={{ marginTop: '1rem', marginBottom: '1.5rem' }}>
+                <ImageUploader
+                  id="new-blog-cover-img"
+                  label="Story Cover Photograph *"
+                  value={blogForm.coverImage}
+                  onChange={(val) => setBlogForm({ ...blogForm, coverImage: val })}
+                  required
+                />
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <button
+                  type="submit"
+                  className={styles.saveBtn}
+                  disabled={isPublishingBlog}
                 >
-                  <option value="Spiritual & Pilgrimage">Spiritual & Pilgrimage (Chardham)</option>
-                  <option value="Romantic & Honeymoon">Romantic & Honeymoon Escapes</option>
-                  <option value="Family Holidays">Family Vacation Ideas</option>
-                  <option value="Luxury & Wellness">Luxury & Wellness Retreats</option>
-                  <option value="Adventure & Wildlife">Adventure & Wildlife Trails</option>
-                  <option value="International Escapes">International Escapes</option>
-                </select>
+                  {isPublishingBlog ? "Publishing to Website..." : "🚀 Publish Story Now"}
+                </button>
               </div>
+            </form>
+          </div>
+
+          {/* Existing Articles List */}
+          <div className={styles.editorCard}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>Published Articles ({blogs.length})</h2>
+              <p className={styles.cardDesc}>
+                View, inspect, or remove published stories from your live journal.
+              </p>
             </div>
 
-            <div className={styles.formGroup}>
-              <ImageUploader 
-                label="Article Cover Image"
-                value={blogForm.coverImage}
-                onChange={(url) => setBlogForm({ ...blogForm, coverImage: url })}
-                id="blog-cover-img"
-                recommendedAspect="16:9 Landscape"
-                required={true}
-              />
-            </div>
-
-            <div className={styles.formGroup}>
-              <label className={styles.formLabel}>Short Summary / Excerpt*</label>
-              <textarea 
-                placeholder="A brief 1-2 sentence hook that appears on the card preview..."
-                value={blogForm.excerpt}
-                onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })}
-                className={styles.formTextarea}
-                style={{ minHeight: '80px' }}
-                required
-              />
-            </div>
-
-            <div className={styles.formGroup}>
-              <label className={styles.formLabel}>Article Story Content (Separate paragraphs with double Enter)</label>
-              <textarea 
-                placeholder="Write your article here. You can write as much as you like! Simply hit Enter twice to create a new paragraph..."
-                value={blogForm.paragraphs}
-                onChange={(e) => setBlogForm({ ...blogForm, paragraphs: e.target.value })}
-                className={styles.formTextarea}
-                style={{ minHeight: '220px' }}
-                required
-              />
-            </div>
-
-            <div className={styles.formRowTwo}>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Highlighted Quote (Optional)</label>
-                <input 
-                  type="text" 
-                  placeholder="e.g. Rajasthan is not just a place, it is a feeling of royal grace."
-                  value={blogForm.quote}
-                  onChange={(e) => setBlogForm({ ...blogForm, quote: e.target.value })}
-                  className={styles.formInput}
-                />
-              </div>
-
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Author Name</label>
-                <input 
-                  type="text" 
-                  value={blogForm.author}
-                  onChange={(e) => setBlogForm({ ...blogForm, author: e.target.value })}
-                  className={styles.formInput}
-                />
-              </div>
-            </div>
-
-            <div className={styles.saveActionRow}>
-              <button 
-                type="submit" 
-                disabled={isPublishingBlog}
-                className={styles.saveBtn}
-                style={{ background: '#10b981' }}
-              >
-                {isPublishingBlog ? 'Publishing...' : '🚀 Publish Article Live'}
-              </button>
-            </div>
-          </form>
-
-          {/* List of Published Blogs */}
-          <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
-            <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
-              Published Journal Articles ({blogs.length})
-            </h3>
-
-            {blogs.length === 0 ? (
-              <p style={{ color: '#94a3b8' }}>No articles published yet.</p>
-            ) : (
-              blogs.map((b) => (
-                <div key={b.id} className={styles.blogItemCard}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {blogs.map((b) => (
+                <div
+                  key={b.id || b.slug}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '1rem 1.25rem',
+                    background: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: '8px',
+                    gap: '1rem',
+                    flexWrap: 'wrap'
+                  }}
+                >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div 
-                      style={{ 
-                        width: '60px', 
-                        height: '60px', 
-                        borderRadius: '6px', 
-                        backgroundImage: `url(${b.coverImage})`, 
-                        backgroundSize: 'cover', 
-                        backgroundPosition: 'center', 
-                        flexShrink: 0 
-                      }} 
+                    <div
+                      style={{
+                        width: '64px',
+                        height: '44px',
+                        borderRadius: '6px',
+                        backgroundImage: `url(${b.coverImage})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        flexShrink: 0
+                      }}
                     />
                     <div>
-                      <h4 style={{ margin: '0 0 0.3rem', fontSize: '1.05rem', color: '#ffffff' }}>{b.title}</h4>
-                      <span style={{ fontSize: '0.8rem', color: '#e11d48', fontWeight: 600 }}>{b.category}</span>
-                      <span style={{ fontSize: '0.8rem', color: '#64748b', marginLeft: '0.75rem' }}>By {b.author}</span>
+                      <h4 style={{ margin: 0, fontSize: '0.95rem', color: '#fff' }}>{b.title}</h4>
+                      <span style={{ fontSize: '0.74rem', color: '#94a3b8' }}>
+                        {b.category} &bull; {b.publishedAt} &bull; {b.readTime}
+                      </span>
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <Link 
-                      href={`/blog/${b.slug}`} 
+                    <Link
+                      href={`/blog/${b.slug}`}
                       target="_blank"
-                      style={{ color: '#38bdf8', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600 }}
+                      style={{ fontSize: '0.78rem', color: '#38bdf8', textDecoration: 'underline' }}
                     >
                       View Live &rarr;
                     </Link>
-                    <button 
+                    <button
+                      type="button"
                       onClick={() => handleDeleteBlog(b.id)}
-                      className={styles.deleteBtn}
+                      className={styles.deleteItemBtn}
                     >
                       Delete
                     </button>
                   </div>
                 </div>
-              ))
-            )}
+              ))}
+            </div>
           </div>
-        </section>
+        </div>
       )}
 
-      {/* ========================================================= */}
-      {/* TAB 6: CUSTOMER ENQUIRIES / LEADS                         */}
-      {/* ========================================================= */}
+      {/* ===================================================================
+          TAB 7: CLIENT LEADS & ENQUIRIES
+          =================================================================== */}
       {activeTab === 'enquiries' && (
-        <section className={styles.editorCard}>
-          <div className={styles.editorCardHeader}>
-            <h2 className={styles.editorCardTitle}>💬 Customer Travel Enquiries & Leads</h2>
-            <p className={styles.editorCardDesc}>
-              Here are the booking requests submitted by travelers through your website forms. Connect with them instantly on WhatsApp or Phone.
+        <div className={styles.editorCard}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.cardTitle}>Client Enquiries &amp; Booking Leads ({enquiries.length})</h2>
+            <p className={styles.cardDesc}>
+              Direct enquiries submitted by website visitors. Connect directly via WhatsApp or phone.
             </p>
           </div>
 
-          <div className={styles.statsRow}>
-            <div className={styles.statCard}>
-              <h3>Total Enquiries</h3>
-              <p className={styles.statNumber}>{enquiries.length}</p>
-            </div>
-            <div className={styles.statCard}>
-              <h3>Active Hot Leads</h3>
-              <p className={styles.statNumber} style={{ color: '#e11d48' }}>
-                {enquiries.filter(e => e.status === 'New' || !e.status).length}
-              </p>
-            </div>
-            <div className={styles.statCard}>
-              <h3>WhatsApp Direct Bookings</h3>
-              <p className={styles.statNumber} style={{ color: '#10b981' }}>24/7</p>
-            </div>
-          </div>
-
           {enquiries.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '4rem 1rem', color: '#94a3b8' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>✈️</div>
-              <h3 style={{ color: '#ffffff', marginBottom: '0.5rem' }}>No Enquiries in Database Yet</h3>
-              <p style={{ maxWidth: '400px', margin: '0 auto', fontSize: '0.9rem' }}>
-                When users fill out the booking form at <strong>/enquire</strong>, their details and messages will also appear right here.
-              </p>
+            <div style={{ textAlign: 'center', padding: '3rem 1rem', color: '#94a3b8' }}>
+              <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '0.5rem' }}>📭</span>
+              No new inquiries received yet. When visitors submit travel inquiry forms, they will appear right here!
             </div>
           ) : (
-            <div className={styles.tableContainer}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Client Name</th>
-                    <th>Contact</th>
-                    <th>Destination</th>
-                    <th>Travel Date / Travellers</th>
-                    <th>Budget</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {enquiries.map((enq) => {
-                    const cleanPhone = enq.whatsapp.replace(/[^0-9]/g, '');
-                    const waText = encodeURIComponent(
-                      `Hello ${enq.name}! Thank you for reaching out to SOBHAVI TRAVELS regarding your travel plan to ${enq.destination || 'your destination'}. How can we assist you today?`
-                    );
-                    return (
-                      <tr key={enq.id}>
-                        <td style={{ whiteSpace: 'nowrap', fontSize: '0.8rem', color: '#94a3b8' }}>
-                          {new Date(enq.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}
-                        </td>
-                        <td>
-                          <strong>{enq.name}</strong>
-                          {enq.email && <div style={{ fontSize: '0.78rem', color: '#64748b' }}>{enq.email}</div>}
-                        </td>
-                        <td>
-                          <span style={{ color: '#10b981', fontWeight: 600 }}>{enq.whatsapp}</span>
-                        </td>
-                        <td>
-                          <span className={styles.badge}>{enq.destination || 'Custom Holiday'}</span>
-                        </td>
-                        <td>
-                          <div>{enq.travelDate || 'Flexible'}</div>
-                          <div style={{ fontSize: '0.78rem', color: '#64748b' }}>{enq.travellers || '2 Adults'} &bull; {enq.duration || '5-7 Days'}</div>
-                        </td>
-                        <td style={{ fontSize: '0.85rem', color: '#fbbf24' }}>
-                          {enq.budget || 'Standard'}
-                        </td>
-                        <td>
-                          <a 
-                            href={`https://wa.me/${cleanPhone.startsWith('91') ? cleanPhone : '91' + cleanPhone}?text=${waText}`}
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className={styles.waBtn}
-                          >
-                            <span>WhatsApp</span>
-                          </a>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {enquiries.map((enq) => (
+                <div
+                  key={enq.id}
+                  style={{
+                    padding: '1.25rem 1.5rem',
+                    background: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: '10px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.75rem'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      <strong style={{ fontSize: '1.05rem', color: '#fff' }}>{enq.name}</strong>
+                      <span style={{ fontSize: '0.72rem', background: '#e11d48', color: '#fff', padding: '0.2rem 0.6rem', borderRadius: '999px', fontWeight: 600 }}>
+                        {enq.status || 'New'}
+                      </span>
+                    </div>
+                    <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
+                      {new Date(enq.createdAt).toLocaleString()}
+                    </span>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.5rem', fontSize: '0.82rem', color: '#cbd5e1' }}>
+                    <div><strong>WhatsApp:</strong> {enq.whatsapp}</div>
+                    {enq.email && <div><strong>Email:</strong> {enq.email}</div>}
+                    {enq.destination && <div><strong>Destination:</strong> {enq.destination}</div>}
+                    {enq.travelDate && <div><strong>Travel Date:</strong> {enq.travelDate}</div>}
+                    {enq.duration && <div><strong>Duration:</strong> {enq.duration}</div>}
+                    {enq.travellers && <div><strong>Travellers:</strong> {enq.travellers}</div>}
+                    {enq.budget && <div><strong>Budget:</strong> {enq.budget}</div>}
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+                    <a
+                      href={`https://wa.me/${enq.whatsapp.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(enq.name)},%20thank%20you%20for%20contacting%20Sobhavi%20Travels.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        background: '#25D366',
+                        color: '#fff',
+                        padding: '0.5rem 1rem',
+                        borderRadius: '6px',
+                        fontSize: '0.78rem',
+                        fontWeight: 600,
+                        textDecoration: 'none'
+                      }}
+                    >
+                      💬 Chat on WhatsApp
+                    </a>
+                    <a
+                      href={`tel:${enq.whatsapp}`}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        color: '#fff',
+                        padding: '0.5rem 1rem',
+                        borderRadius: '6px',
+                        fontSize: '0.78rem',
+                        fontWeight: 600,
+                        textDecoration: 'none'
+                      }}
+                    >
+                      📞 Direct Call
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
-        </section>
+        </div>
       )}
     </div>
   );

@@ -6,12 +6,59 @@ import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import SinglePageForm from '@/components/ui/SinglePageForm';
 import JourneyCard from '@/components/ui/JourneyCard';
-import { featuredDestinations, popularJourneys } from '@/lib/data';
+import { featuredDestinations, popularJourneys, Destination } from '@/lib/data';
+import { getSiteConfig } from '@/lib/siteConfig';
 import styles from './page.module.css';
 
 export default function DestinationDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
-  const destination = featuredDestinations.find(d => d.slug === slug);
+
+  // Check static destinations first
+  let destination: Destination | undefined = featuredDestinations.find(
+    d => d.slug.toLowerCase() === slug.toLowerCase()
+  );
+
+  // If not found, look up dynamically added domestic/international destinations
+  if (!destination) {
+    const config = getSiteConfig();
+    const allCustom = [
+      ...(config.domesticDestinations || []),
+      ...(config.internationalDestinations || [])
+    ];
+    const match = allCustom.find(d => d.id?.toLowerCase() === slug.toLowerCase());
+    if (match) {
+      destination = {
+        slug: match.id,
+        name: match.name,
+        description: match.overview || match.tagline,
+        imageUrl: match.image,
+        images: [
+          match.image,
+          "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?q=80&w=2070&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop"
+        ],
+        heroVideo: match.videoUrl,
+        videoUrl: match.videoUrl,
+        experiences: (match.inclusions && match.inclusions.length > 0)
+          ? match.inclusions
+          : ["5-Star Luxury Stays", "Private Chauffeur Transfers", "VIP Curated Sightseeing"],
+        hotels: ["Selected Luxury 5-Star Properties", "Boutique Heritage Suites"],
+        bestTime: match.bestTime || "Year-Round",
+        currency: "INR / Local",
+        article: {
+          intro: match.overview || `${match.name} offers magnificent experiences, luxury stays, and private bespoke itineraries designed just for you.`,
+          body: [
+            match.overview || `Discover the finest treasures of ${match.name}.`,
+            `With Sobhavi Travels, enjoy private chauffeured transfers, 5-star handpicked hotel stays, and personalized care at every step.`
+          ],
+          quote: `An extraordinary journey in ${match.name} curated to pure perfection.`,
+          quoteAuthor: "— Sobhavi Travels Private Guest"
+        }
+      };
+    }
+  }
   
   if (!destination) {
     notFound();
