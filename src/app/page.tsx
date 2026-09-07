@@ -167,30 +167,77 @@ export default function Home() {
     }
   ];
 
+  // Dual-channel video player for gapless, black-screen-free crossfading
+  const [activeChannel, setActiveChannel] = useState<0 | 1>(0);
+  const [channel0Index, setChannel0Index] = useState(0);
+  const [channel1Index, setChannel1Index] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5500);
-    return () => clearInterval(timer);
-  }, [heroSlides.length]);
+  const videoRef0 = useRef<HTMLVideoElement | null>(null);
+  const videoRef1 = useRef<HTMLVideoElement | null>(null);
+  const crossfadeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Make the destination video playback faster (1.25x) for energetic, attractive movement
-  useEffect(() => {
-    if (videoRef.current) {
+  // Transition seamlessly between destinations without any black gap
+  const goToSlide = (targetIndex: number) => {
+    if (targetIndex === currentSlide) return;
+
+    if (crossfadeTimerRef.current) {
+      clearTimeout(crossfadeTimerRef.current);
+    }
+
+    const nextChannel = activeChannel === 0 ? 1 : 0;
+    const incomingRef = nextChannel === 0 ? videoRef0 : videoRef1;
+    const outgoingRef = activeChannel === 0 ? videoRef0 : videoRef1;
+
+    if (nextChannel === 0) {
+      setChannel0Index(targetIndex);
+    } else {
+      setChannel1Index(targetIndex);
+    }
+
+    setCurrentSlide(targetIndex);
+
+    // Prepare incoming video playback
+    if (incomingRef.current) {
       try {
-        videoRef.current.playbackRate = 1.25;
-        const playPromise = videoRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {});
-        }
+        incomingRef.current.playbackRate = 1.25;
+        incomingRef.current.currentTime = 0;
+        const p = incomingRef.current.play();
+        if (p !== undefined) p.catch(() => {});
       } catch (err) {
-        console.warn('Video playback rate error:', err);
+        console.warn('Video transition error:', err);
       }
     }
-  }, [currentSlide]);
+
+    // Switch active channel so CSS opacity cross-fades smoothly over 1.2s
+    setActiveChannel(nextChannel);
+
+    // Pause outgoing video after fade-out finishes (1.3s) to save performance
+    crossfadeTimerRef.current = setTimeout(() => {
+      if (outgoingRef.current) {
+        outgoingRef.current.pause();
+      }
+    }, 1300);
+  };
+
+  // Auto-cycle through destination videos every 6 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      goToSlide((currentSlide + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [currentSlide, activeChannel, heroSlides.length]);
+
+  // Initial playback on mount
+  useEffect(() => {
+    if (videoRef0.current) {
+      try {
+        videoRef0.current.playbackRate = 1.25;
+        const p = videoRef0.current.play();
+        if (p !== undefined) p.catch(() => {});
+      } catch (e) {}
+    }
+  }, []);
 
   // Destination Highlights linked dynamically to Admin Site Config
   const domesticDests = siteConfig.domesticDestinations && siteConfig.domesticDestinations.length > 0
@@ -366,19 +413,46 @@ export default function Home() {
         <section className={styles.heroSection}>
           <div className={styles.heroMediaContainer}>
             <div className={styles.heroVideoWrapper}>
-              <video
-                ref={videoRef}
-                key={heroSlides[currentSlide].videoUrl}
-                className={styles.heroVideo}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                poster={heroSlides[currentSlide].posterUrl}
+              {/* Channel 0 */}
+              <div
+                className={`${styles.heroVideoChannel} ${activeChannel === 0 ? styles.channelActive : styles.channelInactive}`}
               >
-                <source src={heroSlides[currentSlide].videoUrl} type="video/mp4" />
-              </video>
+                <div
+                  className={styles.channelPoster}
+                  style={{ backgroundImage: `url(${heroSlides[channel0Index].posterUrl})` }}
+                />
+                <video
+                  ref={videoRef0}
+                  src={heroSlides[channel0Index].videoUrl}
+                  className={styles.heroVideo}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  poster={heroSlides[channel0Index].posterUrl}
+                />
+              </div>
+
+              {/* Channel 1 */}
+              <div
+                className={`${styles.heroVideoChannel} ${activeChannel === 1 ? styles.channelActive : styles.channelInactive}`}
+              >
+                <div
+                  className={styles.channelPoster}
+                  style={{ backgroundImage: `url(${heroSlides[channel1Index].posterUrl})` }}
+                />
+                <video
+                  ref={videoRef1}
+                  src={heroSlides[channel1Index].videoUrl}
+                  className={styles.heroVideo}
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  poster={heroSlides[channel1Index].posterUrl}
+                />
+              </div>
             </div>
             <div className={styles.heroOverlay} />
           </div>
@@ -425,7 +499,7 @@ export default function Home() {
               <button
                 type="button"
                 className={styles.heroNavBtn}
-                onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+                onClick={() => goToSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)}
                 aria-label="Previous destination video"
               >
                 &#8592;
@@ -433,7 +507,7 @@ export default function Home() {
               <button
                 type="button"
                 className={styles.heroNavBtn}
-                onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
+                onClick={() => goToSlide((currentSlide + 1) % heroSlides.length)}
                 aria-label="Next destination video"
               >
                 &#8594;
