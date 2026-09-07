@@ -289,13 +289,6 @@ export default function Footer() {
             <Link href="/terms" className={styles.legalLink}>Terms of Service</Link>
           </div>
         </div>
-        <div className={styles.credit}>
-          <p>
-            Created by — <a href={footer.creditLink || "https://www.codeorbit.cloud"} target="_blank" rel="noopener noreferrer" className={styles.creditLink}>
-              {footer.creditText || "codeorbit.cloud"}
-            </a>
-          </p>
-        </div>
       </div>
     </footer>
   );

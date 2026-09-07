@@ -1039,29 +1039,6 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
               </span>
             </div>
 
-            <div className={styles.formRowTwo}>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Website Creator / Agency Label</label>
-                <input
-                  type="text"
-                  className={styles.formInput}
-                  value={footerData.creditText || ''}
-                  onChange={(e) => handleFooterChange('creditText', e.target.value)}
-                  placeholder="codeorbit.cloud"
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>Website Creator Link URL</label>
-                <input
-                  type="url"
-                  className={styles.formInput}
-                  value={footerData.creditLink || ''}
-                  onChange={(e) => handleFooterChange('creditLink', e.target.value)}
-                  placeholder="https://www.codeorbit.cloud"
-                />
-              </div>
-            </div>
-
             <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'flex-end' }}>
               <button
                 type="button"
