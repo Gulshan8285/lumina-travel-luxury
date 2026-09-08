@@ -51,7 +51,7 @@ export default function CinematicHero({
     if (!isMultiSlide) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % (videos?.length ?? 1));
-    }, 8500);
+    }, 2000);
     return () => clearInterval(interval);
   }, [isMultiSlide, videos]);
 
@@ -67,7 +67,7 @@ export default function CinematicHero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 2.5, ease: "easeInOut" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
               className={styles.videoWrapper}
             >
               {videos![currentIndex].url ? (
