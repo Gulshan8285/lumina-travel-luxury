@@ -176,7 +176,6 @@ export default function Home() {
   const [channel0Index, setChannel0Index] = useState(0);
   const [channel1Index, setChannel1Index] = useState(1);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
 
   const slide0 = heroSlides[channel0Index] || heroSlides[0] || defaultHeroSlides[0];
   const slide1 = heroSlides[channel1Index] || heroSlides[0] || defaultHeroSlides[0];
@@ -190,7 +189,7 @@ export default function Home() {
   const videoRef1 = useRef<HTMLVideoElement | null>(null);
   const crossfadeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Transition seamlessly between destinations without any black gap
+  // Transition seamlessly between destinations without stutter or black gap
   const goToSlide = (targetIndex: number) => {
     if (targetIndex === currentSlide) return;
 
@@ -210,11 +209,10 @@ export default function Home() {
 
     setCurrentSlide(targetIndex);
 
-    // Prepare incoming video playback with immediate smooth start
+    // Play incoming video smoothly at natural 1.0 speed
     if (incomingRef.current) {
       try {
-        incomingRef.current.playbackRate = 1.15;
-        incomingRef.current.currentTime = 0;
+        incomingRef.current.playbackRate = 1.0;
         const p = incomingRef.current.play();
         if (p !== undefined) p.catch(() => {});
       } catch (err) {
@@ -222,31 +220,24 @@ export default function Home() {
       }
     }
 
-    // Switch active channel so CSS opacity cross-fades smoothly over 0.6s
+    // Switch active channel so CSS opacity cross-fades smoothly over 0.8s
     setActiveChannel(nextChannel);
 
-    // Preload next upcoming slide onto the inactive channel after fade completes
-    const preloadNextIndex = (targetIndex + 1) % heroSlides.length;
+    // Pause outgoing video after fade-out completes to save GPU/CPU resources
     crossfadeTimerRef.current = setTimeout(() => {
       if (outgoingRef.current) {
         outgoingRef.current.pause();
       }
-      if (nextChannel === 0) {
-        setChannel1Index(preloadNextIndex);
-      } else {
-        setChannel0Index(preloadNextIndex);
-      }
-    }, 650);
+    }, 900);
   };
 
-  // Auto-cycle through destination videos every 2 seconds as requested
+  // Auto-cycle through destination videos smoothly every 4.5 seconds
   useEffect(() => {
-    if (!isPlaying) return;
     const timer = setInterval(() => {
       goToSlide((currentSlide + 1) % heroSlides.length);
-    }, 2000);
+    }, 4500);
     return () => clearInterval(timer);
-  }, [currentSlide, activeChannel, heroSlides.length, isPlaying]);
+  }, [currentSlide, activeChannel, heroSlides.length]);
 
   // Initial playback on mount
   useEffect(() => {
@@ -508,82 +499,27 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* 2-Second Destination Video Reels Progress Bar */}
-          <div className={styles.heroReelsIndicator}>
-            {heroSlides.map((slide, idx) => {
-              const isActive = idx === currentSlide;
-              const isPast = idx < currentSlide;
-              return (
-                <button
-                  key={slide.id || idx}
-                  type="button"
-                  className={`${styles.reelSegment} ${isActive ? styles.reelSegmentActive : ''}`}
-                  onClick={() => goToSlide(idx)}
-                  title={`${slide.name} — ${slide.tagline}`}
-                  aria-label={`Jump to ${slide.name} video reel`}
-                >
-                  <span className={styles.reelBarTrack}>
-                    <span
-                      key={isActive ? `active-${currentSlide}-${isPlaying}` : `idle-${idx}`}
-                      className={`${styles.reelBarFill} ${
-                        isActive
-                          ? (isPlaying ? styles.reelBarFillActive : styles.reelBarFillPaused)
-                          : isPast
-                          ? styles.reelBarFillComplete
-                          : ''
-                      }`}
-                    />
-                  </span>
-                  <span className={styles.reelLabel}>{slide.name}</span>
-                </button>
-              );
-            })}
-          </div>
-
           <div className={styles.heroLocationIndicator}>
             <div className={styles.heroLocationLeft}>
               <span className={styles.heroLocationDot}></span>
-              <span className={styles.heroLocationText}>
-                <strong>{activeSlide.name}</strong> <span className={styles.heroCategoryBadge}>{activeSlide.category}</span> &mdash; {activeSlide.tagline}
+              <span>
+                <strong>{activeSlide.name}</strong> ({activeSlide.category}) &mdash; {activeSlide.tagline}
               </span>
             </div>
             <div className={styles.heroLocationRight}>
-              <span className={styles.heroSlideCounter}>
-                {String(currentSlide + 1).padStart(2, '0')}&thinsp;/&thinsp;{String(heroSlides.length).padStart(2, '0')}
-              </span>
               <button
                 type="button"
                 className={styles.heroNavBtn}
                 onClick={() => goToSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)}
                 aria-label="Previous destination video"
-                title="Previous destination"
               >
                 &#8592;
               </button>
               <button
                 type="button"
                 className={styles.heroNavBtn}
-                onClick={() => setIsPlaying(!isPlaying)}
-                aria-label={isPlaying ? "Pause rotation" : "Play rotation"}
-                title={isPlaying ? "Pause rotation" : "Play rotation"}
-              >
-                {isPlaying ? (
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="5" y="4" width="4" height="16" rx="1"/>
-                    <rect x="15" y="4" width="4" height="16" rx="1"/>
-                  </svg>
-                ) : (
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="6 4 20 12 6 20 6 4"/>
-                  </svg>
-                )}
-              </button>
-              <button
-                type="button"
-                className={styles.heroNavBtn}
                 onClick={() => goToSlide((currentSlide + 1) % heroSlides.length)}
                 aria-label="Next destination video"
-                title="Next destination"
               >
                 &#8594;
               </button>
