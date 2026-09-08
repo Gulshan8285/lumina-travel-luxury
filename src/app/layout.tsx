@@ -18,6 +18,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "SOBHAVI TRAVELS | Your journey. Our expertise.",
   description: "From quick getaways to international holidays, family vacations to special occasions - we help you plan the trip, while taking care of the details.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

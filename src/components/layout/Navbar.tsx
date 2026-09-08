@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getSiteConfig, SiteConfig } from '@/lib/siteConfig';
@@ -66,9 +67,6 @@ export default function Navbar() {
   };
 
   const brandName = header.brandName || config.company?.brandName || "SOBHAVI TRAVELS";
-  const nameParts = brandName.trim().split(' ');
-  const firstWord = nameParts[0] || "SOBHAVI";
-  const secondPart = nameParts.slice(1).join(' ') || "TRAVELS";
 
   const directPhone = header.phone || config.company?.phone || "+91 74069 94752";
   const cleanPhone = directPhone.replace(/[^0-9+]/g, '');
@@ -79,9 +77,8 @@ export default function Navbar() {
   const navLinks = [
     { label: "Domestic", href: "/domestic" },
     { label: "International", href: "/international" },
-    { label: "Flights", href: "/flights" },
-    { label: "Hotels", href: "/hotels" },
     { label: "Experiences", href: "/journeys" },
+    { label: "Destinations", href: "/destinations" },
     { label: "Journal", href: "/blog" },
   ];
 
@@ -95,8 +92,15 @@ export default function Navbar() {
       <nav className={`${styles.navbar} ${isSolid ? styles.scrolled : ''}`} style={header.showAnnouncement && header.announcementText ? { top: '32px' } : undefined}>
         <div className={styles.navContainer}>
           {/* Left: Dynamic Brand Logo */}
-          <Link href="/" className={styles.logo}>
-            {firstWord}<br />{secondPart}
+          <Link href="/" className={styles.logo} aria-label={brandName}>
+            <Image
+              src="/logo.png"
+              alt={brandName}
+              width={160}
+              height={70}
+              className={styles.logoImage}
+              priority
+            />
           </Link>
 
           {/* Center: Desktop Links */}

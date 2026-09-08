@@ -24,13 +24,24 @@
 }
 
 .logo {
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+}
+
+.logoImage {
+  height: 54px;
+  width: auto;
+  max-width: 195px;
+  object-fit: contain;
   display: block;
-  margin-bottom: 1.5rem;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.logo:hover .logoImage {
+  transform: scale(1.02);
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.45));
 }
 
 .tagline {
@@ -249,8 +260,12 @@
   }
 
   .logo {
-    font-size: 1.85rem;
     margin-bottom: 0.85rem;
+  }
+
+  .logoImage {
+    height: 42px;
+    max-width: 155px;
   }
 
   .tagline {

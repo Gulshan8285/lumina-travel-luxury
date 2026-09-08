@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getSiteConfig, SiteConfig } from '@/lib/siteConfig';
 import styles from './Footer.module.css';
 
@@ -73,8 +74,14 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <Link href="/" className={styles.logo}>
-              {footer.aboutTitle || company.brandName || "SOBHAVI TRAVELS"}
+            <Link href="/" className={styles.logo} aria-label={footer.aboutTitle || company.brandName || "SOBHAVI TRAVELS"}>
+              <Image
+                src="/logo.png"
+                alt={footer.aboutTitle || company.brandName || "SOBHAVI TRAVELS"}
+                width={190}
+                height={83}
+                className={styles.logoImage}
+              />
             </Link>
             <p className={styles.tagline}>
               {footer.aboutText || company.tagline || "Your journey. Our expertise. From quick getaways to international holidays, family vacations to special occasions — travel made memorable."}
