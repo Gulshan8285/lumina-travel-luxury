@@ -285,6 +285,17 @@ export default function Footer() {
         <div className={styles.bottom}>
           <p>&copy; {new Date().getFullYear()} {footer.aboutTitle || company.brandName || "SOBHAVI TRAVELS"}. {footer.copyrightText || "Travel made memorable. All rights reserved."}</p>
           <div className={styles.legal}>
+            <span className={styles.createdBy}>
+              Created by{' '}
+              <a
+                href="https://codeorbit.cloud"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.creatorLink}
+              >
+                codeorbit.cloud
+              </a>
+            </span>
             <Link href="/privacy" className={styles.legalLink}>Privacy Policy</Link>
             <Link href="/terms" className={styles.legalLink}>Terms of Service</Link>
           </div>

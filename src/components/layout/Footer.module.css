@@ -200,7 +200,9 @@
 
 .legal {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
 }
 
 .legalLink {
@@ -209,6 +211,26 @@
 
 .legalLink:hover {
   color: #fff;
+}
+
+.createdBy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+.creatorLink {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s ease, text-decoration 0.2s ease;
+}
+
+.creatorLink:hover {
+  text-decoration: underline;
+  opacity: 0.9;
 }
 
 @media (max-width: 768px) {
