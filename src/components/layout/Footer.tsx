@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getSiteConfig, SiteConfig } from '@/lib/siteConfig';
+import { LEISURE_DESTINATIONS } from '@/lib/destinationsData';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -255,6 +256,129 @@ export default function Footer() {
               <Link href="/about" className={styles.link}>About Us</Link>
               <Link href="/contact" className={styles.link}>Contact Us</Link>
               <Link href="/blog" className={styles.highlightedLink}>✦ Travel Journal / Blog</Link>
+            </div>
+          </div>
+        </div>
+        
+        {/* === POPULAR LEISURE DESTINATIONS DIRECTORY === */}
+        <div className={styles.directorySection}>
+          <div className={styles.directoryHeader}>
+            <div className={styles.directoryTitleBox}>
+              <span className={styles.directoryEyebrow}>BESPOKE LEISURE NETWORK</span>
+              <h3 className={styles.directoryHeading}>Popular Leisure Destinations & City Getaways</h3>
+              <p className={styles.directorySubheading}>
+                Explore our portfolio of 22 celebrated Indian states & union territories and 7 premier international destinations, each featuring signature sights, 5-star handpicked stays, and dedicated travel specialists.
+              </p>
+            </div>
+            <Link href="/destinations" className={styles.directoryAllLink}>
+              Browse Full Directory (29 Escapes) &rarr;
+            </Link>
+          </div>
+
+          <div className={styles.directoryGrid}>
+            {/* 1. North India & Himalayas */}
+            <div className={styles.directoryCol}>
+              <h4 className={styles.directoryGroupTitle}>
+                <span className={styles.groupIcon}>🏔️</span>
+                <span>North & Himalayas</span>
+              </h4>
+              <ul className={styles.destList}>
+                {LEISURE_DESTINATIONS.filter(d => d.regionGroup === 'North & Himalayas').map(dest => (
+                  <li key={dest.slug} className={styles.destItem}>
+                    <Link href={`/destinations/${dest.slug}`} className={styles.destStateLink}>
+                      {dest.name}
+                    </Link>
+                    <span className={styles.destCitiesPreview}>
+                      {dest.famousPlaces.slice(0, 4).map(p => p.name).join(', ')}
+                      {dest.famousPlaces.length > 4 && '...'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 2. South India */}
+            <div className={styles.directoryCol}>
+              <h4 className={styles.directoryGroupTitle}>
+                <span className={styles.groupIcon}>🌴</span>
+                <span>South India Escapes</span>
+              </h4>
+              <ul className={styles.destList}>
+                {LEISURE_DESTINATIONS.filter(d => d.regionGroup === 'South India').map(dest => (
+                  <li key={dest.slug} className={styles.destItem}>
+                    <Link href={`/destinations/${dest.slug}`} className={styles.destStateLink}>
+                      {dest.name}
+                    </Link>
+                    <span className={styles.destCitiesPreview}>
+                      {dest.famousPlaces.slice(0, 4).map(p => p.name).join(', ')}
+                      {dest.famousPlaces.length > 4 && '...'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 3. West & Central India */}
+            <div className={styles.directoryCol}>
+              <h4 className={styles.directoryGroupTitle}>
+                <span className={styles.groupIcon}>🏰</span>
+                <span>West & Central India</span>
+              </h4>
+              <ul className={styles.destList}>
+                {LEISURE_DESTINATIONS.filter(d => d.regionGroup === 'West & Central').map(dest => (
+                  <li key={dest.slug} className={styles.destItem}>
+                    <Link href={`/destinations/${dest.slug}`} className={styles.destStateLink}>
+                      {dest.name}
+                    </Link>
+                    <span className={styles.destCitiesPreview}>
+                      {dest.famousPlaces.slice(0, 4).map(p => p.name).join(', ')}
+                      {dest.famousPlaces.length > 4 && '...'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 4. East & Islands */}
+            <div className={styles.directoryCol}>
+              <h4 className={styles.directoryGroupTitle}>
+                <span className={styles.groupIcon}>🏝️</span>
+                <span>East & Island Escapes</span>
+              </h4>
+              <ul className={styles.destList}>
+                {LEISURE_DESTINATIONS.filter(d => d.regionGroup === 'East & Islands').map(dest => (
+                  <li key={dest.slug} className={styles.destItem}>
+                    <Link href={`/destinations/${dest.slug}`} className={styles.destStateLink}>
+                      {dest.name}
+                    </Link>
+                    <span className={styles.destCitiesPreview}>
+                      {dest.famousPlaces.slice(0, 4).map(p => p.name).join(', ')}
+                      {dest.famousPlaces.length > 4 && '...'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 5. International Luxury */}
+            <div className={styles.directoryCol}>
+              <h4 className={styles.directoryGroupTitle}>
+                <span className={styles.groupIcon}>✈️</span>
+                <span>International Luxury</span>
+              </h4>
+              <ul className={styles.destList}>
+                {LEISURE_DESTINATIONS.filter(d => d.regionGroup === 'International').map(dest => (
+                  <li key={dest.slug} className={styles.destItem}>
+                    <Link href={`/destinations/${dest.slug}`} className={styles.destStateLink}>
+                      {dest.name}
+                    </Link>
+                    <span className={styles.destCitiesPreview}>
+                      {dest.famousPlaces.slice(0, 4).map(p => p.name).join(', ')}
+                      {dest.famousPlaces.length > 4 && '...'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
