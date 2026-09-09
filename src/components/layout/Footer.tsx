@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getSiteConfig, SiteConfig } from '@/lib/siteConfig';
-import { LEISURE_DESTINATIONS } from '@/lib/destinationsData';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -32,10 +31,6 @@ export default function Footer() {
       window.removeEventListener('sobhavi_site_config_updated', handleStorage);
     };
   }, []);
-
-  const [isDirectoryExpanded, setIsDirectoryExpanded] = useState(false);
-  const [directorySearch, setDirectorySearch] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState('all');
 
   const company = config.company || {
     brandName: "SOBHAVI TRAVELS",
@@ -261,268 +256,19 @@ export default function Footer() {
               <Link href="/contact" className={styles.link}>Contact Us</Link>
               <Link href="/blog" className={styles.highlightedLink}>✦ Travel Journal / Blog</Link>
               
-              {/* Expandable Destinations Directory Button requested by user */}
-              <button
-                type="button"
-                onClick={() => setIsDirectoryExpanded(prev => !prev)}
+              <Link
+                href="/destinations"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.directoryTriggerBtn}
-                aria-expanded={isDirectoryExpanded}
-                aria-controls="footer-destinations-directory"
+                title="Open Complete Destinations Directory in New Page"
               >
                 <span className={styles.triggerBtnText}>✦ Popular Destinations (29)</span>
-                <span className={styles.triggerBtnArrow}>{isDirectoryExpanded ? '▲' : '▼'}</span>
-              </button>
+                <span className={styles.triggerBtnArrow}>↗</span>
+              </Link>
             </div>
           </div>
         </div>
-        
-        {/* === EXPANDABLE LEISURE DESTINATIONS DIRECTORY (OPENS ON CLICK) === */}
-        {isDirectoryExpanded && (
-          <div id="footer-destinations-directory" className={styles.directorySection}>
-            <div className={styles.directoryHeader}>
-              <div className={styles.directoryTitleBox}>
-                <span className={styles.directoryEyebrow}>BESPOKE LEISURE NETWORK</span>
-                <h3 className={styles.directoryHeading}>Popular Leisure Destinations & City Getaways</h3>
-                <p className={styles.directorySubheading}>
-                  Explore our portfolio of 22 celebrated Indian states & union territories and 7 premier international destinations, each featuring signature sights, 5-star handpicked stays, and dedicated travel specialists.
-                </p>
-              </div>
-
-              <div className={styles.drawerActions}>
-                <Link href="/destinations" className={styles.directoryAllLink}>
-                  Browse Full Directory (29 Escapes) &rarr;
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => setIsDirectoryExpanded(false)}
-                  className={styles.closeDirectoryBtn}
-                  aria-label="Close directory"
-                >
-                  ✕ Close
-                </button>
-              </div>
-            </div>
-
-            {/* Quick Filter & Search Bar inside Drawer */}
-            <div className={styles.drawerControls}>
-              <div className={styles.drawerSearchBox}>
-                <svg className={styles.drawerSearchIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="Filter city or destination (e.g. Dubai, Ooty, Manali, Jaipur)..."
-                  value={directorySearch}
-                  onChange={(e) => setDirectorySearch(e.target.value)}
-                  className={styles.drawerSearchInput}
-                />
-                {directorySearch && (
-                  <button type="button" onClick={() => setDirectorySearch('')} className={styles.clearDrawerSearch} aria-label="Clear filter">
-                    ✕
-                  </button>
-                )}
-              </div>
-
-              <div className={styles.drawerFilterPills}>
-                <button
-                  type="button"
-                  onClick={() => setSelectedRegion('all')}
-                  className={`${styles.drawerPill} ${selectedRegion === 'all' ? styles.activePill : ''}`}
-                >
-                  All (29)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSelectedRegion('North & Himalayas')}
-                  className={`${styles.drawerPill} ${selectedRegion === 'North & Himalayas' ? styles.activePill : ''}`}
-                >
-                  🏔️ North (6)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSelectedRegion('South India')}
-                  className={`${styles.drawerPill} ${selectedRegion === 'South India' ? styles.activePill : ''}`}
-                >
-                  🌴 South (7)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSelectedRegion('West & Central')}
-                  className={`${styles.drawerPill} ${selectedRegion === 'West & Central' ? styles.activePill : ''}`}
-                >
-                  🏰 West & Central (4)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSelectedRegion('East & Islands')}
-                  className={`${styles.drawerPill} ${selectedRegion === 'East & Islands' ? styles.activePill : ''}`}
-                >
-                  🏝️ East & Islands (5)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSelectedRegion('International')}
-                  className={`${styles.drawerPill} ${selectedRegion === 'International' ? styles.activePill : ''}`}
-                >
-                  ✈️ International (7)
-                </button>
-              </div>
-            </div>
-
-            <div className={styles.directoryGrid}>
-              {/* 1. North India & Himalayas */}
-              {(selectedRegion === 'all' || selectedRegion === 'North & Himalayas') && (
-                <div className={styles.directoryCol}>
-                  <h4 className={styles.directoryGroupTitle}>
-                    <span className={styles.groupIcon}>🏔️</span>
-                    <span>North & Himalayas</span>
-                  </h4>
-                  <ul className={styles.destList}>
-                    {LEISURE_DESTINATIONS
-                      .filter(d => d.regionGroup === 'North & Himalayas')
-                      .filter(d => {
-                        if (!directorySearch.trim()) return true;
-                        const q = directorySearch.toLowerCase();
-                        return d.name.toLowerCase().includes(q) || d.famousPlaces.some(p => p.name.toLowerCase().includes(q));
-                      })
-                      .map(dest => (
-                        <li key={dest.slug} className={styles.destItem}>
-                          <Link href={`/destinations/${dest.slug}`} className={styles.destStateLink}>
-                            {dest.name}
-                          </Link>
-                          <span className={styles.destCitiesPreview}>
-                            {dest.famousPlaces.slice(0, 4).map(p => p.name).join(', ')}
-                            {dest.famousPlaces.length > 4 && '...'}
-                          </span>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* 2. South India */}
-              {(selectedRegion === 'all' || selectedRegion === 'South India') && (
-                <div className={styles.directoryCol}>
-                  <h4 className={styles.directoryGroupTitle}>
-                    <span className={styles.groupIcon}>🌴</span>
-                    <span>South India Escapes</span>
-                  </h4>
-                  <ul className={styles.destList}>
-                    {LEISURE_DESTINATIONS
-                      .filter(d => d.regionGroup === 'South India')
-                      .filter(d => {
-                        if (!directorySearch.trim()) return true;
-                        const q = directorySearch.toLowerCase();
-                        return d.name.toLowerCase().includes(q) || d.famousPlaces.some(p => p.name.toLowerCase().includes(q));
-                      })
-                      .map(dest => (
-                        <li key={dest.slug} className={styles.destItem}>
-                          <Link href={`/destinations/${dest.slug}`} className={styles.destStateLink}>
-                            {dest.name}
-                          </Link>
-                          <span className={styles.destCitiesPreview}>
-                            {dest.famousPlaces.slice(0, 4).map(p => p.name).join(', ')}
-                            {dest.famousPlaces.length > 4 && '...'}
-                          </span>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* 3. West & Central India */}
-              {(selectedRegion === 'all' || selectedRegion === 'West & Central') && (
-                <div className={styles.directoryCol}>
-                  <h4 className={styles.directoryGroupTitle}>
-                    <span className={styles.groupIcon}>🏰</span>
-                    <span>West & Central India</span>
-                  </h4>
-                  <ul className={styles.destList}>
-                    {LEISURE_DESTINATIONS
-                      .filter(d => d.regionGroup === 'West & Central')
-                      .filter(d => {
-                        if (!directorySearch.trim()) return true;
-                        const q = directorySearch.toLowerCase();
-                        return d.name.toLowerCase().includes(q) || d.famousPlaces.some(p => p.name.toLowerCase().includes(q));
-                      })
-                      .map(dest => (
-                        <li key={dest.slug} className={styles.destItem}>
-                          <Link href={`/destinations/${dest.slug}`} className={styles.destStateLink}>
-                            {dest.name}
-                          </Link>
-                          <span className={styles.destCitiesPreview}>
-                            {dest.famousPlaces.slice(0, 4).map(p => p.name).join(', ')}
-                            {dest.famousPlaces.length > 4 && '...'}
-                          </span>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* 4. East & Islands */}
-              {(selectedRegion === 'all' || selectedRegion === 'East & Islands') && (
-                <div className={styles.directoryCol}>
-                  <h4 className={styles.directoryGroupTitle}>
-                    <span className={styles.groupIcon}>🏝️</span>
-                    <span>East & Island Escapes</span>
-                  </h4>
-                  <ul className={styles.destList}>
-                    {LEISURE_DESTINATIONS
-                      .filter(d => d.regionGroup === 'East & Islands')
-                      .filter(d => {
-                        if (!directorySearch.trim()) return true;
-                        const q = directorySearch.toLowerCase();
-                        return d.name.toLowerCase().includes(q) || d.famousPlaces.some(p => p.name.toLowerCase().includes(q));
-                      })
-                      .map(dest => (
-                        <li key={dest.slug} className={styles.destItem}>
-                          <Link href={`/destinations/${dest.slug}`} className={styles.destStateLink}>
-                            {dest.name}
-                          </Link>
-                          <span className={styles.destCitiesPreview}>
-                            {dest.famousPlaces.slice(0, 4).map(p => p.name).join(', ')}
-                            {dest.famousPlaces.length > 4 && '...'}
-                          </span>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* 5. International Luxury */}
-              {(selectedRegion === 'all' || selectedRegion === 'International') && (
-                <div className={styles.directoryCol}>
-                  <h4 className={styles.directoryGroupTitle}>
-                    <span className={styles.groupIcon}>✈️</span>
-                    <span>International Luxury</span>
-                  </h4>
-                  <ul className={styles.destList}>
-                    {LEISURE_DESTINATIONS
-                      .filter(d => d.regionGroup === 'International')
-                      .filter(d => {
-                        if (!directorySearch.trim()) return true;
-                        const q = directorySearch.toLowerCase();
-                        return d.name.toLowerCase().includes(q) || d.famousPlaces.some(p => p.name.toLowerCase().includes(q));
-                      })
-                      .map(dest => (
-                        <li key={dest.slug} className={styles.destItem}>
-                          <Link href={`/destinations/${dest.slug}`} className={styles.destStateLink}>
-                            {dest.name}
-                          </Link>
-                          <span className={styles.destCitiesPreview}>
-                            {dest.famousPlaces.slice(0, 4).map(p => p.name).join(', ')}
-                            {dest.famousPlaces.length > 4 && '...'}
-                          </span>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
         
         <div className={styles.bottom}>
           <p>&copy; {new Date().getFullYear()} {footer.aboutTitle || company.brandName || "SOBHAVI TRAVELS"}. {footer.copyrightText || "Travel made memorable. All rights reserved."}</p>

@@ -3,17 +3,31 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
-import { LEISURE_DESTINATIONS, LeisureDestination } from '@/lib/destinationsData';
+import { LEISURE_DESTINATIONS } from '@/lib/destinationsData';
 import styles from './page.module.css';
+
+const REGIONS = [
+  { id: 'North & Himalayas', label: 'North & Himalayas', icon: '🏔️' },
+  { id: 'South India', label: 'South India', icon: '🌴' },
+  { id: 'West & Central', label: 'West & Central', icon: '🏰' },
+  { id: 'East & Islands', label: 'East & Islands', icon: '🏝️' },
+  { id: 'International', label: 'International', icon: '✈️' },
+];
 
 export default function DestinationsHub() {
   const [activeCategory, setActiveCategory] = useState<'all' | 'domestic' | 'international'>('all');
+  const [activeRegion, setActiveRegion] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredDestinations = useMemo(() => {
     return LEISURE_DESTINATIONS.filter(dest => {
-      // Category filter
+      // Category filter (domestic vs international)
       if (activeCategory !== 'all' && dest.category !== activeCategory) {
+        return false;
+      }
+
+      // Region filter
+      if (activeRegion !== 'all' && dest.regionGroup !== activeRegion) {
         return false;
       }
 
@@ -33,7 +47,7 @@ export default function DestinationsHub() {
 
       return true;
     });
-  }, [activeCategory, searchQuery]);
+  }, [activeCategory, activeRegion, searchQuery]);
 
   const domesticCount = LEISURE_DESTINATIONS.filter(d => d.category === 'domestic').length;
   const internationalCount = LEISURE_DESTINATIONS.filter(d => d.category === 'international').length;
@@ -52,9 +66,9 @@ export default function DestinationsHub() {
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
             <span className={styles.heroEyebrow}>SOBHAVI BESPOKE DIRECTORY</span>
-            <h1 className={styles.heroTitle}>Global & Domestic Escapes</h1>
+            <h1 className={styles.heroTitle}>Popular Destinations & Getaways</h1>
             <p className={styles.heroSubtitle}>
-              Explore 22 celebrated Indian states & union territories and 7 international luxury gateways, complete with curated city guides, local perspectives, and bespoke travel arrangements.
+              Explore all 22 celebrated Indian states & union territories and 7 premier international luxury gateways. Click on any destination to view its dedicated travel guide, iconic spots, 5-star handpicked stays, and tailored itineraries.
             </p>
           </div>
         </section>
@@ -67,21 +81,21 @@ export default function DestinationsHub() {
               <div className={styles.filterTabs}>
                 <button
                   type="button"
-                  onClick={() => setActiveCategory('all')}
-                  className={`${styles.filterTab} ${activeCategory === 'all' ? styles.activeTab : ''}`}
+                  onClick={() => { setActiveCategory('all'); setActiveRegion('all'); }}
+                  className={`${styles.filterTab} ${activeCategory === 'all' && activeRegion === 'all' ? styles.activeTab : ''}`}
                 >
                   All Escapes ({LEISURE_DESTINATIONS.length})
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveCategory('domestic')}
-                  className={`${styles.filterTab} ${activeCategory === 'domestic' ? styles.activeTab : ''}`}
+                  onClick={() => { setActiveCategory('domestic'); setActiveRegion('all'); }}
+                  className={`${styles.filterTab} ${activeCategory === 'domestic' && activeRegion === 'all' ? styles.activeTab : ''}`}
                 >
                   🇮🇳 Domestic India ({domesticCount})
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveCategory('international')}
+                  onClick={() => { setActiveCategory('international'); setActiveRegion('all'); }}
                   className={`${styles.filterTab} ${activeCategory === 'international' ? styles.activeTab : ''}`}
                 >
                   ✈️ International ({internationalCount})
@@ -96,7 +110,7 @@ export default function DestinationsHub() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Search destination or city (e.g. Ooty, Manali, Paris)..."
+                  placeholder="Search destination or city (e.g. Dubai, Ooty, Manali, Jaipur, Paris)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className={styles.searchInput}
@@ -114,12 +128,51 @@ export default function DestinationsHub() {
               </div>
             </div>
 
+            {/* Region Filter Chips */}
+            <div className={styles.regionFilterRow}>
+              <span className={styles.regionFilterLabel}>Filter by Region:</span>
+              <div className={styles.regionChips}>
+                <button
+                  type="button"
+                  onClick={() => setActiveRegion('all')}
+                  className={`${styles.regionChip} ${activeRegion === 'all' ? styles.activeRegionChip : ''}`}
+                >
+                  All Regions
+                </button>
+                {REGIONS.map(reg => {
+                  const count = LEISURE_DESTINATIONS.filter(d => d.regionGroup === reg.id).length;
+                  return (
+                    <button
+                      key={reg.id}
+                      type="button"
+                      onClick={() => {
+                        setActiveRegion(reg.id);
+                        if (reg.id === 'International') {
+                          setActiveCategory('international');
+                        } else {
+                          setActiveCategory('all');
+                        }
+                      }}
+                      className={`${styles.regionChip} ${activeRegion === reg.id ? styles.activeRegionChip : ''}`}
+                    >
+                      <span>{reg.icon}</span> {reg.label} ({count})
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Results count info */}
             <div className={styles.resultsMeta}>
-              <span>Showing {filteredDestinations.length} destination guides</span>
+              <span>Showing <strong>{filteredDestinations.length}</strong> destination guides</span>
               {searchQuery && (
                 <span className={styles.activeQueryBadge}>
                   Filtered by: &ldquo;{searchQuery}&rdquo;
+                </span>
+              )}
+              {activeRegion !== 'all' && (
+                <span className={styles.activeQueryBadge}>
+                  Region: {activeRegion}
                 </span>
               )}
             </div>
@@ -135,7 +188,7 @@ export default function DestinationsHub() {
                 <p>Try searching for a different state, country, or leisure city name.</p>
                 <button
                   type="button"
-                  onClick={() => { setActiveCategory('all'); setSearchQuery(''); }}
+                  onClick={() => { setActiveCategory('all'); setActiveRegion('all'); setSearchQuery(''); }}
                   className={styles.resetBtn}
                 >
                   Reset All Filters
@@ -145,8 +198,6 @@ export default function DestinationsHub() {
               <div className={styles.destinationsGrid}>
                 {filteredDestinations.map(dest => {
                   const placeCount = dest.famousPlaces.length;
-                  const samplePlaces = dest.famousPlaces.slice(0, 4).map(p => p.name).join(' · ');
-                  const remainingCount = placeCount > 4 ? placeCount - 4 : 0;
 
                   return (
                     <article key={dest.slug} className={styles.destCard}>
@@ -176,19 +227,27 @@ export default function DestinationsHub() {
 
                         <p className={styles.destTagline}>{dest.tagline}</p>
 
-                        <div className={styles.destSampleCities}>
-                          <span className={styles.sampleCitiesLabel}>Popular Spots:</span>
-                          <p className={styles.sampleCitiesText}>
-                            {samplePlaces}
-                            {remainingCount > 0 && (
-                              <span className={styles.moreCitiesCount}> +{remainingCount} more</span>
-                            )}
-                          </p>
+                        <div className={styles.destCitiesSection}>
+                          <span className={styles.sampleCitiesLabel}>
+                            Featured Spots ({placeCount}):
+                          </span>
+                          <div className={styles.cityChipsList}>
+                            {dest.famousPlaces.map((place, idx) => (
+                              <Link
+                                key={idx}
+                                href={`/destinations/${dest.slug}`}
+                                className={styles.cityChip}
+                                title={`Explore ${place.name} in ${dest.name}`}
+                              >
+                                {place.name}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
 
                         <div className={styles.destFooter}>
                           <Link href={`/destinations/${dest.slug}`} className={styles.destCardLink}>
-                            <span>Explore Guide & Places</span>
+                            <span>Explore Guide & Packages</span>
                             <span className={styles.linkArrow}>&rarr;</span>
                           </Link>
                         </div>
@@ -198,6 +257,45 @@ export default function DestinationsHub() {
                 })}
               </div>
             )}
+          </div>
+        </section>
+
+        {/* Full Comprehensive Master Regional Directory Index */}
+        <section className={styles.masterIndexSection}>
+          <div className="container">
+            <div className={styles.masterIndexHeader}>
+              <span className={styles.heroEyebrow}>FAST DIRECTORY INDEX</span>
+              <h2 className={styles.masterIndexTitle}>Complete Leisure Network Index</h2>
+              <p className={styles.masterIndexSubtitle}>
+                A complete directory of all 22 Indian states and 7 international luxury gateways with every featured leisure city. Click any destination to access its complete itinerary, sightseeing guide, and hotels.
+              </p>
+            </div>
+
+            <div className={styles.masterIndexGrid}>
+              {REGIONS.map(reg => (
+                <div key={reg.id} className={styles.masterIndexCol}>
+                  <h3 className={styles.regionColHeading}>
+                    <span className={styles.colIcon}>{reg.icon}</span>
+                    <span>{reg.label}</span>
+                  </h3>
+                  <div className={styles.stateCardsList}>
+                    {LEISURE_DESTINATIONS
+                      .filter(d => d.regionGroup === reg.id)
+                      .map(dest => (
+                        <div key={dest.slug} className={styles.stateIndexCard}>
+                          <Link href={`/destinations/${dest.slug}`} className={styles.stateIndexLink}>
+                            <span>{dest.name}</span>
+                            <span className={styles.arrowIcon}>&rarr;</span>
+                          </Link>
+                          <p className={styles.cityNamesList}>
+                            {dest.famousPlaces.map(p => p.name).join(' · ')}
+                          </p>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </main>
