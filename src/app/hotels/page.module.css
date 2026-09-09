@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   padding: 8rem 0 4rem;
-  background: linear-gradient(180deg, rgba(11, 15, 25, 0.88) 0%, rgba(11, 15, 25, 0.96) 100%),
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.96) 100%),
               url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
   color: #ffffff;
 }
@@ -96,8 +96,8 @@
 
 /* HOTEL BOOKING CARD */
 .hotelCard {
-  background: #ffffff;
-  color: #0b0f19;
+  background: #111111;
+  color: #0a0a0a;
   border-radius: 16px;
   padding: 2rem 2.2rem;
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
@@ -127,7 +127,7 @@
   font-size: 1.3rem;
   font-weight: 700;
   margin: 0;
-  color: #0b0f19;
+  color: #0a0a0a;
 }
 
 .hotelForm {
@@ -153,7 +153,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #475569;
+  color: rgba(255,255,255,0.72);
 }
 
 .formInput,
@@ -163,8 +163,8 @@
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   font-size: 0.88rem;
-  color: #0f172a;
-  background: #f8fafc;
+  color: #ffffff;
+  background: #0e0e0e;
   transition: all 0.2s ease;
 }
 
@@ -172,15 +172,15 @@
 .formSelect:focus {
   outline: none;
   border-color: #d4af37;
-  background: #ffffff;
+  background: #111111;
   box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
 }
 
 .inclusionsChecklist {
-  background: #f8fafc;
+  background: #0e0e0e;
   padding: 0.8rem 1rem;
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(212,175,55,0.18);
 }
 
 .checklistLabel {
@@ -188,7 +188,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #334155;
+  color: rgba(255,255,255,0.82);
   margin-bottom: 0.4rem;
 }
 
@@ -197,7 +197,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.4rem;
   font-size: 0.78rem;
-  color: #475569;
+  color: rgba(255,255,255,0.72);
 }
 
 .checkItem {
@@ -243,13 +243,13 @@
   justify-content: center;
   gap: 0.4rem;
   font-size: 0.8rem;
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
 }
 
 /* CITY-WISE HOTEL DIRECTORY */
 .directorySection {
   padding: 4rem 0;
-  background: #f8fafc;
+  background: #0e0e0e;
 }
 
 .sectionHeader {
@@ -275,12 +275,12 @@
   margin: 0 0 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #0b0f19;
+  color: #0a0a0a;
 }
 
 .sectionDesc {
   font-size: 1rem;
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
   line-height: 1.6;
 }
 
@@ -291,7 +291,7 @@
 }
 
 .cityCard {
-  background: #ffffff;
+  background: #111111;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
@@ -317,7 +317,7 @@
   position: absolute;
   top: 1.25rem;
   left: 1.25rem;
-  background: rgba(11, 15, 25, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   color: #ffffff;
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
@@ -339,7 +339,7 @@
   font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 700;
-  color: #0b0f19;
+  color: #0a0a0a;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 0.3rem;
@@ -361,7 +361,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #475569;
+  color: rgba(255,255,255,0.72);
   margin-bottom: 0.5rem;
 }
 
@@ -372,13 +372,13 @@
 }
 
 .hotelPill {
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  background: #0e0e0e;
+  border: 1px solid rgba(212,175,55,0.18);
   padding: 0.35rem 0.75rem;
   border-radius: 6px;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #1e293b;
+  color: rgba(255,255,255,0.92);
 }
 
 .stayFoodCarBox {
@@ -415,7 +415,7 @@
   flex: 1;
   text-align: center;
   padding: 0.85rem;
-  background: #0b0f19;
+  background: #0a0a0a;
   color: #ffffff;
   border-radius: 8px;
   font-size: 0.82rem;

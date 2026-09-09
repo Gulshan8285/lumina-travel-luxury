@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   padding: 8rem 0 3.5rem;
-  background: linear-gradient(180deg, rgba(11, 15, 25, 0.88) 0%, rgba(11, 15, 25, 0.98) 100%),
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.98) 100%),
               url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=72&w=720&auto=format&fit=crop') center/cover no-repeat;
   color: #ffffff;
   text-align: center;
@@ -63,7 +63,7 @@
 
 .contentSection {
   padding: 5rem 0 7rem;
-  background: #ffffff;
+  background: #111111;
 }
 
 .contentContainer {
@@ -72,14 +72,14 @@
 }
 
 .introBox {
-  background: #f8fafc;
+  background: #0e0e0e;
   border-left: 4px solid #d4af37;
   padding: 1.75rem 2rem;
   border-radius: 0 12px 12px 0;
   margin-bottom: 3.5rem;
   font-size: 1.05rem;
   line-height: 1.7;
-  color: #334155;
+  color: rgba(255,255,255,0.82);
 }
 
 .sectionBlock {
@@ -92,7 +92,7 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #0b0f19;
+  color: #0a0a0a;
   margin: 0 0 1.2rem;
   display: flex;
   align-items: center;
@@ -107,7 +107,7 @@
 .text {
   font-size: 1rem;
   line-height: 1.8;
-  color: #475569;
+  color: rgba(255,255,255,0.72);
   margin: 0 0 1rem;
 }
 
@@ -126,7 +126,7 @@
   gap: 0.75rem;
   font-size: 0.98rem;
   line-height: 1.65;
-  color: #334155;
+  color: rgba(255,255,255,0.82);
 }
 
 .bulletIcon {
@@ -137,7 +137,7 @@
 }
 
 .contactCard {
-  background: #0b0f19;
+  background: #0a0a0a;
   color: #ffffff;
   padding: 2.5rem;
   border-radius: 16px;

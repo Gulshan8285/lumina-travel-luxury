@@ -1,5 +1,5 @@
 .announcementBar {
-  background: linear-gradient(90deg, #070a14, #141d33, #070a14);
+  background: linear-gradient(90deg, #0a0a0a, #141d33, #0a0a0a);
   color: #f3cf65;
   font-size: 0.74rem;
   font-weight: 600;
@@ -23,7 +23,7 @@
 }
 
 .scrolled {
-  background-color: rgba(5, 8, 17, 0.92);
+  background-color: rgba(8, 8, 8, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   color: #ffffff;
@@ -186,7 +186,7 @@
 /* Mobile Drawer */
 .mobileDrawer {
   overflow: hidden;
-  background: #0b0f19;
+  background: #0a0a0a;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 

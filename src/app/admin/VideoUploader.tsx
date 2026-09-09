@@ -79,7 +79,7 @@ export default function VideoUploader({
             muted
             style={{ width: '100%', maxHeight: '220px', objectFit: 'cover', display: 'block' }}
           />
-          <div style={{ padding: '0.4rem 0.8rem', background: 'rgba(11, 15, 25, 0.85)', fontSize: '0.72rem', color: '#94a3b8', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ padding: '0.4rem 0.8rem', background: 'rgba(10, 10, 10, 0.85)', fontSize: '0.72rem', color: '#94a3b8', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span>Active Video Source: {value.length > 50 ? `${value.substring(0, 48)}...` : value}</span>
             <button
               type="button"

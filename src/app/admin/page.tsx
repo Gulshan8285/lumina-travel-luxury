@@ -25,7 +25,7 @@ export default async function AdminPage() {
   }));
 
   return (
-    <main style={{ minHeight: '100vh', backgroundColor: '#0b0f19', color: '#ffffff', paddingTop: '0px' }}>
+    <main style={{ minHeight: '100vh', backgroundColor: '#0a0a0a', color: '#ffffff', paddingTop: '0px' }}>
       <AdminClientDashboard 
         initialEnquiries={serializedEnquiries} 
         initialBlogs={blogs}

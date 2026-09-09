@@ -16,8 +16,8 @@
 
 /* LEFT COLUMN: FORM CARD */
 .formCard {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: #111111;
+  border: 1px solid rgba(212,175,55,0.18);
   border-radius: 16px;
   padding: 2.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
@@ -27,7 +27,7 @@
   font-family: var(--font-heading, "Playfair Display", Georgia, serif);
   font-size: clamp(1.85rem, 2.5vw, 2.3rem);
   font-weight: 700;
-  color: #0b1329;
+  color: #ffffff;
   margin: 0 0 2rem 0;
   letter-spacing: -0.01em;
 }
@@ -48,7 +48,7 @@
   font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   font-size: 0.88rem;
   font-weight: 600;
-  color: #1e293b;
+  color: rgba(255,255,255,0.92);
 }
 
 .input,
@@ -56,27 +56,27 @@
 .textarea {
   font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   width: 100%;
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background-color: #0e0e0e;
+  border: 1px solid rgba(212,175,55,0.18);
   border-radius: 8px;
   padding: 0.8rem 1rem;
   font-size: 0.95rem;
-  color: #0f172a;
+  color: #ffffff;
   transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
   box-sizing: border-box;
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: #94a3b8;
+  color: rgba(255,255,255,0.4);
 }
 
 .input:focus,
 .select:focus,
 .textarea:focus {
   outline: none;
-  background-color: #ffffff;
-  border-color: #0b1329;
+  background-color: #111111;
+  border-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(11, 19, 41, 0.08);
 }
 
@@ -103,7 +103,7 @@
 .submitBtn {
   font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   width: 100%;
-  background-color: #0b1329;
+  background-color: #ffffff;
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -117,7 +117,7 @@
 }
 
 .submitBtn:hover {
-  background-color: #1e293b;
+  background-color: rgba(255,255,255,0.92);
   transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(11, 19, 41, 0.25);
 }
@@ -126,7 +126,7 @@
   text-align: center;
   font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   font-size: 0.82rem;
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
   margin-top: -0.25rem;
 }
 
@@ -153,12 +153,12 @@
 .successTitle {
   font-family: var(--font-heading, "Playfair Display", Georgia, serif);
   font-size: 1.65rem;
-  color: #0b1329;
+  color: #ffffff;
   margin: 0 0 0.75rem 0;
 }
 
 .successDesc {
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
   font-size: 0.95rem;
   line-height: 1.6;
   max-width: 420px;
@@ -181,8 +181,8 @@
 }
 
 .resetBtn:hover {
-  background: #f8fafc;
-  border-color: #94a3b8;
+  background: #0e0e0e;
+  border-color: rgba(255,255,255,0.4);
 }
 
 /* RIGHT COLUMN: OTHER WAYS TO REACH US */
@@ -195,14 +195,14 @@
   font-family: var(--font-heading, "Playfair Display", Georgia, serif);
   font-size: clamp(1.85rem, 2.5vw, 2.3rem);
   font-weight: 700;
-  color: #0b1329;
+  color: #ffffff;
   margin: 0 0 2rem 0;
   letter-spacing: -0.01em;
 }
 
 .contactCard {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: #111111;
+  border: 1px solid rgba(212,175,55,0.18);
   border-radius: 12px;
   padding: 1.15rem 1.4rem;
   margin-bottom: 1rem;
@@ -221,7 +221,7 @@
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  background: #f8fafc;
+  background: #0e0e0e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,7 +237,7 @@
   font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   font-size: 0.95rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
@@ -259,17 +259,17 @@
 }
 
 .mutedText {
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
 }
 
 .addressBlock {
   font-size: 0.86rem;
-  color: #475569;
+  color: rgba(255,255,255,0.72);
   line-height: 1.55;
 }
 
 .addressBlock strong {
-  color: #1e293b;
+  color: rgba(255,255,255,0.92);
 }
 
 .socialLinks {
@@ -293,7 +293,7 @@
 }
 
 .dotSeparator {
-  color: #94a3b8;
+  color: rgba(255,255,255,0.4);
 }
 
 /* RESPONSIVE BREAKPOINTS */

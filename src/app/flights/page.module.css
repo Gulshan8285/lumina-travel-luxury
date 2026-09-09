@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   padding: 7.5rem 0 3rem;
-  background: linear-gradient(180deg, rgba(11, 15, 25, 0.88) 0%, rgba(11, 15, 25, 0.96) 100%),
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.96) 100%),
               url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop') center/cover no-repeat;
   color: #ffffff;
 }
@@ -93,8 +93,8 @@
 
 /* FLIGHT BOOKING FORM */
 .flightCard {
-  background: #ffffff;
-  color: #0b0f19;
+  background: #111111;
+  color: #0a0a0a;
   border-radius: 16px;
   padding: 2rem 2.2rem;
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
@@ -118,16 +118,16 @@
   font-size: 0.75rem;
   font-weight: 600;
   border: 1px solid #cbd5e1;
-  background: #f8fafc;
-  color: #475569;
+  background: #0e0e0e;
+  color: rgba(255,255,255,0.72);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .tabActive {
-  background: #0b0f19;
+  background: #0a0a0a;
   color: #ffffff;
-  border-color: #0b0f19;
+  border-color: #0a0a0a;
 }
 
 .flightCardTitle {
@@ -135,7 +135,7 @@
   font-size: 1.3rem;
   font-weight: 700;
   margin: 0;
-  color: #0b0f19;
+  color: #0a0a0a;
 }
 
 .flightForm {
@@ -161,7 +161,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #475569;
+  color: rgba(255,255,255,0.72);
 }
 
 .formInput,
@@ -171,8 +171,8 @@
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   font-size: 0.88rem;
-  color: #0f172a;
-  background: #f8fafc;
+  color: #ffffff;
+  background: #0e0e0e;
   transition: all 0.2s ease;
 }
 
@@ -180,7 +180,7 @@
 .formSelect:focus {
   outline: none;
   border-color: #d4af37;
-  background: #ffffff;
+  background: #111111;
   box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
 }
 
@@ -216,13 +216,13 @@
   justify-content: center;
   gap: 0.4rem;
   font-size: 0.8rem;
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
 }
 
 /* EDITORIAL ARTICLE SECTION */
 .articleSection {
   padding: 3.5rem 0 4rem;
-  background-color: #ffffff;
+  background-color: #111111;
 }
 
 .articleContainer {
@@ -251,14 +251,14 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #0b0f19;
+  color: #0a0a0a;
   margin: 0 0 1rem;
 }
 
 .articleLead {
   font-size: 1.1rem;
   line-height: 1.7;
-  color: #475569;
+  color: rgba(255,255,255,0.72);
 }
 
 .imageGrid {
@@ -282,14 +282,14 @@
   gap: 2.5rem;
   font-size: 1.02rem;
   line-height: 1.8;
-  color: #334155;
+  color: rgba(255,255,255,0.82);
 }
 
 .sectionBlock h3 {
   font-family: var(--font-heading);
   font-size: 1.4rem;
   font-weight: 700;
-  color: #0b0f19;
+  color: #0a0a0a;
   margin: 0 0 0.75rem;
   letter-spacing: 0.02em;
 }
@@ -306,10 +306,10 @@
 }
 
 .benefitCard {
-  background: #f8fafc;
+  background: #0e0e0e;
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(212,175,55,0.18);
 }
 
 .benefitIcon {
@@ -321,19 +321,19 @@
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
-  color: #0b0f19;
+  color: #0a0a0a;
   margin: 0 0 0.4rem;
 }
 
 .benefitDesc {
   font-size: 0.88rem;
   line-height: 1.55;
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
   margin: 0;
 }
 
 .articleCtaBox {
-  background: #0b0f19;
+  background: #0a0a0a;
   color: #ffffff;
   border-radius: 16px;
   padding: 3rem;

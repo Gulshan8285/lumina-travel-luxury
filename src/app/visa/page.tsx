@@ -206,7 +206,7 @@ export default function VisaPage() {
 
                     <div className={styles.supportStrip}>
                       <span>Direct Visa Desk:</span>
-                      <a href="tel:+917406994752" style={{ color: '#0b0f19', fontWeight: 700 }}>+91 74069 94752</a>
+                      <a href="tel:+917406994752" style={{ color: '#0a0a0a', fontWeight: 700 }}>+91 74069 94752</a>
                     </div>
                   </form>
                 )}

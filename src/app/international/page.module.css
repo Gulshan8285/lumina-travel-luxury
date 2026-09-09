@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   padding: 7.5rem 0 3.5rem;
-  background: linear-gradient(180deg, rgba(11, 15, 25, 0.82) 0%, rgba(11, 15, 25, 0.95) 100%),
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.95) 100%),
               url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
   color: #ffffff;
   text-align: center;
@@ -97,7 +97,7 @@
    ========================================================================== */
 .destinationsSection {
   padding: 4rem 0 5rem;
-  background: #ffffff;
+  background: #111111;
 }
 
 .sectionHeader {
@@ -123,12 +123,12 @@
   margin: 0 0 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #0b0f19;
+  color: #0a0a0a;
 }
 
 .sectionDesc {
   font-size: 1rem;
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
   line-height: 1.6;
 }
 
@@ -139,7 +139,7 @@
 }
 
 .destCard {
-  background: #ffffff;
+  background: #111111;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
@@ -172,7 +172,7 @@
   position: absolute;
   top: 1.25rem;
   left: 1.25rem;
-  background: rgba(11, 15, 25, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   color: #ffffff;
   backdrop-filter: blur(8px);
   padding: 0.35rem 0.85rem;
@@ -198,7 +198,7 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 0.35rem;
-  color: #0b0f19;
+  color: #0a0a0a;
 }
 
 .destTagline {
@@ -211,13 +211,13 @@
 .destOverview {
   font-size: 0.95rem;
   line-height: 1.65;
-  color: #475569;
+  color: rgba(255,255,255,0.72);
   margin: 0 0 1.25rem;
   flex: 1;
 }
 
 .inclusionsBox {
-  background: #f8fafc;
+  background: #0e0e0e;
   border-radius: 10px;
   padding: 1rem 1.2rem;
   margin-bottom: 1.5rem;
@@ -229,7 +229,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #334155;
+  color: rgba(255,255,255,0.82);
   margin-bottom: 0.5rem;
 }
 
@@ -238,7 +238,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.4rem;
   font-size: 0.82rem;
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
 }
 
 .inclusionItem {
@@ -264,7 +264,7 @@
   flex: 1;
   text-align: center;
   padding: 0.85rem 1.2rem;
-  background: #0b0f19;
+  background: #0a0a0a;
   color: #ffffff;
   border-radius: 8px;
   font-size: 0.82rem;
@@ -363,7 +363,7 @@
    ========================================================================== */
 .destPriceBadge {
   display: inline-block;
-  background: #0b0f19;
+  background: #0a0a0a;
   color: #ffffff;
   font-weight: 600;
   font-size: 0.82rem;
@@ -380,8 +380,8 @@
   gap: 0.35rem;
   margin-bottom: 1.25rem;
   font-size: 0.85rem;
-  color: #334155;
-  background: #f8fafc;
+  color: rgba(255,255,255,0.82);
+  background: #0e0e0e;
   padding: 0.85rem 1rem;
   border-radius: 8px;
 }
@@ -403,8 +403,8 @@
    ========================================================================== */
 .faqSection {
   padding: 3.5rem 0 4.5rem;
-  background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
+  background: #0e0e0e;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .faqHeader {
@@ -422,10 +422,10 @@
 }
 
 .faqCard {
-  background: #ffffff;
+  background: #111111;
   border-radius: 12px;
   padding: 1.75rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(212,175,55,0.18);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
@@ -433,7 +433,7 @@
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 600;
-  color: #0f172a;
+  color: #ffffff;
   margin-bottom: 0.75rem;
   letter-spacing: 0.04em;
 }
@@ -441,6 +441,6 @@
 .faqAnswer {
   font-size: 0.92rem;
   line-height: 1.7;
-  color: #475569;
+  color: rgba(255,255,255,0.72);
 }
 

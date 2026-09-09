@@ -11,7 +11,7 @@ export default function NotFound() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(180deg, #0b0f19 0%, #111827 100%)',
+        background: 'linear-gradient(180deg, #0a0a0a 0%, #111827 100%)',
         color: '#ffffff',
         padding: '8rem 1.5rem 5rem',
         textAlign: 'center'

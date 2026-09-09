@@ -1,10 +1,10 @@
 /* =========================================================
    ULTRA-LUXURY BESPOKE FOOTER - SOBHAVI TRAVELS
-   Theme: Midnight Obsidian (#04070e) & Royal Gold (#d4af37)
+   Theme: Midnight Obsidian (#080808) & Royal Gold (#d4af37)
 ========================================================= */
 
 .footer {
-  background-color: #04070e !important;
+  background-color: #080808 !important;
   color: #ffffff !important;
   border-top: 1px solid rgba(212, 175, 55, 0.25);
   position: relative;
@@ -20,7 +20,7 @@
   transform: translateX(-50%);
   width: 80%;
   height: 250px;
-  background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.06) 0%, rgba(4, 7, 14, 0) 70%);
+  background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.06) 0%, rgba(8, 8, 8, 0) 70%);
   pointer-events: none;
 }
 
@@ -37,7 +37,7 @@
 ========================================================= */
 .vipStripWrapper {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(180deg, rgba(212, 175, 55, 0.04) 0%, rgba(4, 7, 14, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.04) 0%, rgba(8, 8, 8, 0.6) 100%);
   padding: 2.75rem 0;
 }
 
@@ -91,7 +91,7 @@
   align-items: center;
   gap: 0.6rem;
   background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
-  color: #050811;
+  color: #080808;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -323,7 +323,7 @@
 
 .socialRing:hover {
   background: #d4af37;
-  color: #050811;
+  color: #080808;
   border-color: #d4af37;
   transform: translateY(-3px);
   box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
@@ -420,7 +420,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   background: rgba(225, 29, 72, 0.2);
-  color: #fda4af;
+  color: #f3cf65;
   border: 1px solid rgba(225, 29, 72, 0.45);
   padding: 0.15rem 0.45rem;
   border-radius: 4px;

@@ -190,7 +190,7 @@
 
 .editorCardDesc {
   font-size: 0.92rem;
-  color: #94a3b8;
+  color: rgba(255,255,255,0.4);
   line-height: 1.5;
   margin: 0;
 }
@@ -258,7 +258,7 @@
 
 .fieldHelper {
   font-size: 0.78rem;
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
   margin-top: 0.2rem;
 }
 
@@ -384,7 +384,7 @@
 
 .uploadHint {
   font-size: 0.78rem;
-  color: #94a3b8;
+  color: rgba(255,255,255,0.4);
 }
 
 .uploadSuccessBadge {
@@ -402,7 +402,7 @@
   display: flex;
   align-items: center;
   text-align: center;
-  color: #64748b;
+  color: rgba(255,255,255,0.55);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -481,7 +481,7 @@
 .presetPickerTitle {
   font-size: 0.78rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: rgba(255,255,255,0.4);
   margin: 0.5rem 0 0.35rem;
   text-transform: uppercase;
 }
@@ -530,7 +530,7 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #94a3b8;
+  color: rgba(255,255,255,0.4);
   margin: 0 0 0.5rem;
 }
 
@@ -559,7 +559,7 @@
 .table th {
   padding: 1.1rem 1.25rem;
   background: #0b0f19;
-  color: #94a3b8;
+  color: rgba(255,255,255,0.4);
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -686,7 +686,7 @@
 
 .loginSubtitle {
   font-size: 0.92rem;
-  color: #94a3b8;
+  color: rgba(255,255,255,0.4);
   line-height: 1.6;
   margin: 0 0 2rem;
 }
@@ -723,7 +723,7 @@
   border-radius: 8px;
   padding: 0.85rem;
   font-size: 0.82rem;
-  color: #94a3b8;
+  color: rgba(255,255,255,0.4);
   text-align: center;
   margin-top: 1rem;
 }
