@@ -15,21 +15,20 @@
 .pillBtn {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.65rem 1.15rem;
-  border-radius: 50px;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
   text-decoration: none;
   font-family: var(--font-sans);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  overflow: visible;
 }
 
 .pillBtn:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-3px) scale(1.08);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
 }
 
@@ -80,7 +79,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 50px;
+  border-radius: 50%;
   border: 2px solid rgba(37, 211, 102, 0.8);
   animation: pulseEffect 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
   pointer-events: none;

@@ -13,10 +13,12 @@ export default function EnquirePage() {
       <main className={styles.main}>
         <div className={styles.hero}>
           <div className={`container ${styles.heroContent}`}>
-            <h1 className={styles.title}>Design Your Journey</h1>
+            <span className={styles.badge} style={{ color: '#d4af37', fontSize: '0.78rem', letterSpacing: '0.15em', fontWeight: 700, textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem' }}>
+              ENQUIRE NOW
+            </span>
+            <h1 className={styles.title}>Let’s plan your next escape.</h1>
             <p className={styles.subtitle}>
-              Share your travel aspirations with us, and our experts will craft a 
-              bespoke itinerary tailored exclusively to your preferences.
+              Send us your destination, dates and rough budget. In most cases we return a comprehensive quote within 60–120 minutes on working days.
             </p>
           </div>
         </div>

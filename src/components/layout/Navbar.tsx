@@ -75,11 +75,12 @@ export default function Navbar() {
   const waUrl = `https://wa.me/${cleanWa.startsWith('91') ? cleanWa : '91' + cleanWa}?text=${encodeURIComponent('Hello ' + brandName + '! I want to plan a luxury trip.')}`;
 
   const navLinks = [
+    { label: "Home", href: "/" },
     { label: "Domestic", href: "/domestic" },
     { label: "International", href: "/international" },
-    { label: "Experiences", href: "/journeys" },
-    { label: "Destinations", href: "/destinations" },
-    { label: "Journal", href: "/blog" },
+    { label: "Travel Buddy", href: "/travel-buddy" },
+    { label: "Rann Utsav", href: "/rann-utsav" },
+    { label: "Blogs", href: "/blog" },
   ];
 
   return (

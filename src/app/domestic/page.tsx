@@ -137,7 +137,11 @@ export default function DomesticPage() {
 
             <div className={styles.grid}>
               {destinations.map((dest) => (
-                <div key={dest.name} className={styles.destCard}>
+                <div 
+                  key={dest.name} 
+                  id={dest.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')} 
+                  className={styles.destCard}
+                >
                   <div 
                     className={styles.imageWrapper}
                     style={{ backgroundImage: `url(${dest.image})` }}
