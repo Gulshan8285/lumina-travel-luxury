@@ -22,9 +22,9 @@ const SERVICES = [
   "Other"
 ];
 
-const TARGET_WHATSAPP = "919028939352";
-const DISPLAY_PHONE = "+91 90289 39352";
-const DISPLAY_EMAIL = "qtholidays@gmail.com";
+const TARGET_WHATSAPP = "917406994752";
+const DISPLAY_PHONE = "+91 74069 94752";
+const DISPLAY_EMAIL = "hello@sobhavitravel.com";
 
 export default function SinglePageForm({ initialDestination = "", initialService = "" }: SinglePageFormProps) {
   const [formData, setFormData] = useState({
@@ -71,9 +71,9 @@ export default function SinglePageForm({ initialDestination = "", initialService
       return;
     }
 
-    // Build structured WhatsApp message
+    // Build structured WhatsApp message for Sobhavi Travels
     const messageLines = [
-      "*New Travel Enquiry*",
+      "*New Travel Enquiry - SOBHAVI TRAVELS*",
       "",
       `*Your name:* ${formData.name}`,
       `*Mobile / WhatsApp:* ${formData.phone}`,
@@ -89,7 +89,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
     const waText = messageLines.join("\n");
     const waUrl = `https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(waText)}`;
 
-    // Optional background log to API
+    // Background log to API
     try {
       fetch('/api/enquiries', {
         method: 'POST',
@@ -110,7 +110,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
       // Ignore API save errors, priority is direct WhatsApp connect
     }
 
-    // Open WhatsApp
+    // Open WhatsApp directly
     window.open(waUrl, '_blank');
     setSubmitted(true);
   };
@@ -157,7 +157,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Murtaza Anis"
+                  placeholder="e.g. Ramesh Sharma"
                   required
                   className={styles.input}
                 />
@@ -171,7 +171,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+91 9881219352"
+                  placeholder="+91 74069 94752"
                   required
                   className={styles.input}
                 />
@@ -185,7 +185,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="qtholidays@gmail.com"
+                  placeholder="hello@sobhavitravel.com"
                   className={styles.input}
                 />
               </div>
@@ -217,7 +217,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
                   name="destination"
                   value={formData.destination}
                   onChange={handleChange}
-                  placeholder="e.g. Dubai + Abu Dhabi, or Kashmir"
+                  placeholder="e.g. Dubai, Rajasthan, or Bali"
                   className={styles.input}
                 />
               </div>
@@ -302,7 +302,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
               <div className={styles.cardTitle}>WhatsApp (fastest)</div>
               <div className={styles.cardText}>
                 <a 
-                  href={`https://wa.me/${TARGET_WHATSAPP}?text=Hello%20Qutbi%20Tours,%20I%20would%20like%20a%20travel%20quote.`}
+                  href={`https://wa.me/${TARGET_WHATSAPP}?text=Hello%20Sobhavi%20Travels,%20I%20would%20like%20a%20travel%20quote.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.amberLink}
@@ -327,7 +327,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
                 <a href={`tel:${TARGET_WHATSAPP}`} className={styles.amberLink}>
                   {DISPLAY_PHONE}
                 </a>
-                <span className={styles.mutedText}> · Mon–Sat 10 AM–8 PM IST</span>
+                <span className={styles.mutedText}> · Mon–Sat 9:30 AM–7:30 PM IST</span>
               </div>
             </div>
           </div>
@@ -350,7 +350,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
             </div>
           </div>
 
-          {/* Card 4: Nashik office */}
+          {/* Card 4: Bengaluru Office */}
           <div className={styles.contactCard}>
             <div className={styles.cardIconBox}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#dc2626">
@@ -358,12 +358,12 @@ export default function SinglePageForm({ initialDestination = "", initialService
               </svg>
             </div>
             <div className={styles.cardDetails}>
-              <div className={styles.cardTitle}>Nashik office</div>
+              <div className={styles.cardTitle}>Bengaluru Office</div>
               <div className={styles.addressBlock}>
-                <div><strong>Qutbi Tours & Holidays</strong></div>
-                <div>Shop no-2, Greens Apparment Housing Society,</div>
-                <div>Mumbai Naka, Bhagwant Nagar, Dr.Homi Bhabha Nagar</div>
-                <div>Nashik, Maharashtra 422001, India</div>
+                <div><strong>SOBHAVI TRAVELS</strong></div>
+                <div>Ground Floor, No. 19, 2nd Cross, NR Layout,</div>
+                <div>Kalyanagar, Babusapalya,</div>
+                <div>Bengaluru 560043, Karnataka, India</div>
               </div>
             </div>
           </div>
@@ -378,8 +378,8 @@ export default function SinglePageForm({ initialDestination = "", initialService
             <div className={styles.cardDetails}>
               <div className={styles.cardTitle}>Office hours</div>
               <div className={styles.addressBlock}>
-                <div>Monday–Saturday, 10:00 AM – 8:00 PM IST</div>
-                <div>Sunday by appointment</div>
+                <div>Monday–Saturday: 9:30 AM – 7:30 PM IST</div>
+                <div>24/7 Concierge Support via Phone & WhatsApp</div>
               </div>
             </div>
           </div>
@@ -396,7 +396,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
             <div className={styles.cardDetails}>
               <div className={styles.cardTitle}>Social</div>
               <div className={styles.socialLinks}>
-                <a href="https://www.instagram.com/qutbi_tours_holidays/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
                 <span className={styles.dotSeparator}>·</span>
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
                 <span className={styles.dotSeparator}>·</span>
@@ -405,14 +405,6 @@ export default function SinglePageForm({ initialDestination = "", initialService
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>
             </div>
-          </div>
-
-          {/* UAE / GCC CLIENTS Highlight Box */}
-          <div className={styles.uaeBox}>
-            <div className={styles.uaeEyebrow}>UAE / GCC CLIENTS</div>
-            <p className={styles.uaeText}>
-              We serve travellers based in the UAE, Saudi Arabia, Oman, Qatar, Bahrain and Kuwait remotely via WhatsApp and video call. Payments in AED and USD accepted via wire transfer.
-            </p>
           </div>
 
         </div>
