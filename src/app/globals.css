@@ -295,3 +295,112 @@ a, button {
 .image-reveal:hover img {
   transform: scale(1.05);
 }
+
+/* ============================================================
+   LUXURY DEPTH SYSTEM — Ambient warmth layers
+   ============================================================ */
+
+/* Gold gradient section title */
+.gold-title {
+  background: linear-gradient(135deg, #ffffff 20%, #f3cf65 65%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Floating ambient gold orbs — visible behind all content */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(120px);
+  opacity: 0;
+  animation: floatOrb1 18s ease-in-out infinite;
+}
+
+body::before {
+  width: 560px;
+  height: 560px;
+  top: -80px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.055) 0%, transparent 70%);
+  animation-name: floatOrb1;
+  animation-duration: 22s;
+  opacity: 1;
+}
+
+body::after {
+  width: 480px;
+  height: 480px;
+  bottom: 5%;
+  right: -80px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+  animation-name: floatOrb2;
+  animation-duration: 28s;
+  opacity: 1;
+}
+
+@keyframes floatOrb1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(80px, 60px) scale(1.15); }
+  66%  { transform: translate(-40px, 120px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes floatOrb2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(-80px, -50px) scale(1.1); }
+  66%  { transform: translate(50px, -100px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Section ambient glow utility — add to any section for depth */
+.section-glow {
+  position: relative;
+}
+.section-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 400px;
+  background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Gold pulse dot animation */
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 6px 2px rgba(212, 175, 55, 0.5); }
+  50% { box-shadow: 0 0 14px 6px rgba(212, 175, 55, 0.9); }
+}
+
+.gold-pulse {
+  animation: goldPulse 2s ease-in-out infinite;
+}
+
+/* Shimmer effect on gold elements */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.btn-gold-shimmer {
+  background: linear-gradient(90deg, #b8972e 0%, #d4af37 30%, #f3cf65 50%, #d4af37 70%, #b8972e 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Luxury divider line */
+.divider-gold {
+  width: 48px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  margin: 1.5rem auto;
+}
+
