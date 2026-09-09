@@ -2,6 +2,10 @@ import Navbar from '@/components/layout/Navbar';
 import SinglePageForm from '@/components/ui/SinglePageForm';
 import styles from './page.module.css';
 
+// Force dynamic rendering so mobile browsers and CDN always serve fresh changes
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function ContactPage() {
   return (
     <>

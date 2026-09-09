@@ -5,6 +5,10 @@ import styles from './page.module.css';
 // Client component wrapper to handle search params safely
 import FormWrapper from './FormWrapper';
 
+// Force dynamic rendering so mobile browsers and CDN always serve fresh changes
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function EnquirePage() {
   return (
     <>
