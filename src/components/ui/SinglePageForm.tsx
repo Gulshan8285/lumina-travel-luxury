@@ -136,7 +136,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
                 className={styles.submitBtn}
                 style={{ marginTop: '1.25rem' }}
               >
-                Re-open WhatsApp
+                Send Enquiry
               </button>
               <button 
                 type="button" 
@@ -276,12 +276,8 @@ export default function SinglePageForm({ initialDestination = "", initialService
 
               {/* Submit Button */}
               <button type="submit" className={styles.submitBtn}>
-                Send enquiry on WhatsApp
+                Send Enquiry
               </button>
-
-              <div className={styles.buttonSubtext}>
-                Your details open in WhatsApp for you to review and send.
-              </div>
             </form>
           )}
         </div>
@@ -345,7 +341,6 @@ export default function SinglePageForm({ initialDestination = "", initialService
                 <a href={`mailto:${DISPLAY_EMAIL}`} className={styles.amberLink}>
                   {DISPLAY_EMAIL}
                 </a>
-                <span className={styles.mutedText}> · reply within 4 working hours</span>
               </div>
             </div>
           </div>
@@ -399,8 +394,6 @@ export default function SinglePageForm({ initialDestination = "", initialService
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
                 <span className={styles.dotSeparator}>·</span>
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <span className={styles.dotSeparator}>·</span>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
                 <span className={styles.dotSeparator}>·</span>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>
