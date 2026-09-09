@@ -5,56 +5,41 @@ import styles from './SinglePageForm.module.css';
 
 interface SinglePageFormProps {
   initialDestination?: string;
+  initialService?: string;
 }
 
-const COUNTRIES = [
-  "Rajasthan",
-  "Shimla & Manali",
-  "Kerala",
-  "Andaman",
-  "Dubai",
-  "Singapore",
-  "Bali",
-  "Maldives",
-  "Chardham Yatra",
-  "Kashmir",
-  "Goa",
-  "Ladakh",
-  "Japan",
-  "Switzerland",
-  "France",
-  "Italy",
-  "Thailand",
-  "Vietnam",
-  "United Kingdom",
-  "USA"
+const SERVICES = [
+  "Visa Services",
+  "International Holiday",
+  "Domestic Holiday",
+  "Flight Booking",
+  "Hotel Booking",
+  "Honeymoon Package",
+  "Group Tour",
+  "Corporate Travel",
+  "Cruise",
+  "Customized Tour",
+  "Other"
 ];
 
-const BUDGETS_INR = [
-  "₹50,000 – ₹1,00,000 per person",
-  "₹1,00,000 – ₹3,00,000 per person",
-  "₹3,00,000 – ₹5,00,000 per person",
-  "₹5,00,000 – ₹10,00,000 per person",
-  "₹10,00,000+ per person"
-];
+const TARGET_WHATSAPP = "919028939352";
+const DISPLAY_PHONE = "+91 90289 39352";
+const DISPLAY_EMAIL = "qtholidays@gmail.com";
 
-const PHONE_NUMBER = "7406994752";
-const FULL_PHONE = "+917406994752";
-
-export default function SinglePageForm({ initialDestination = "" }: SinglePageFormProps) {
+export default function SinglePageForm({ initialDestination = "", initialService = "" }: SinglePageFormProps) {
   const [formData, setFormData] = useState({
-    destination: initialDestination,
-    date: '',
-    duration: '',
-    travelers: '2',
-    budget: '₹3,00,000 – ₹5,00,000 per person',
-    comments: '',
-    firstName: '',
-    lastName: '',
-    email: '',
+    name: '',
     phone: '',
-    newsletter: true
+    email: '',
+    service: initialService || '',
+    destination: initialDestination || '',
+    travelDates: '',
+    travellers: '',
+    budget: '',
+    notes: ''
   });
+
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (initialDestination) {
@@ -62,301 +47,376 @@ export default function SinglePageForm({ initialDestination = "" }: SinglePageFo
     }
   }, [initialDestination]);
 
+  useEffect(() => {
+    if (initialService) {
+      setFormData(prev => ({ ...prev, service: initialService }));
+    }
+  }, [initialService]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
-    const checked = (e.target as HTMLInputElement).checked;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Construct WhatsApp message
-    const message = `*New Travel Enquiry - SOBHAVI TRAVELS*%0A%0A` +
-      `*Destination:* ${formData.destination || 'Not specified'}%0A` +
-      `*Travel Date:* ${formData.date || 'Flexible'}%0A` +
-      `*Duration:* ${formData.duration || 'Not specified'}%0A` +
-      `*Travelers:* ${formData.travelers}%0A` +
-      `*Budget (INR):* ${formData.budget}%0A%0A` +
-      `*Special Requests:* ${formData.comments || 'None'}%0A%0A` +
-      `*Client Details*%0A` +
-      `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
-      `*Email:* ${formData.email}%0A` +
-      `*Phone:* ${formData.phone}`;
 
-    // Target WhatsApp: 917406994752
-    const waUrl = `https://wa.me/917406994752?text=${message}`;
+    if (!formData.name.trim() || !formData.phone.trim()) {
+      alert("Please provide your name and mobile / WhatsApp number.");
+      return;
+    }
+
+    if (!formData.service) {
+      alert("Please select a service you are interested in.");
+      return;
+    }
+
+    // Build structured WhatsApp message
+    const messageLines = [
+      "*New Travel Enquiry*",
+      "",
+      `*Your name:* ${formData.name}`,
+      `*Mobile / WhatsApp:* ${formData.phone}`,
+      `*Email:* ${formData.email || 'Not specified'}`,
+      `*Interested in:* ${formData.service}`,
+      `*Destination(s):* ${formData.destination || 'Not specified'}`,
+      `*Approx. travel dates:* ${formData.travelDates || 'Flexible'}`,
+      `*Number of travellers:* ${formData.travellers || 'Not specified'}`,
+      `*Approximate budget (per person):* ${formData.budget || 'Not specified'}`,
+      `*Anything else we should know?:* ${formData.notes || 'None'}`
+    ];
+
+    const waText = messageLines.join("\n");
+    const waUrl = `https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(waText)}`;
+
+    // Optional background log to API
+    try {
+      fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service,
+          destination: formData.destination,
+          travelDates: formData.travelDates,
+          travellers: formData.travellers,
+          budget: formData.budget,
+          notes: formData.notes
+        })
+      }).catch(() => {});
+    } catch (err) {
+      // Ignore API save errors, priority is direct WhatsApp connect
+    }
+
+    // Open WhatsApp
     window.open(waUrl, '_blank');
+    setSubmitted(true);
   };
 
   return (
-    <div className={styles.highlightedWrapper}>
-      {/* Top Banner / Fast Connect Bar */}
-      <div className={styles.quickContactBar}>
-        <div className={styles.quickContactText}>
-          <span className={styles.goldBadge}>✦ DIRECT CONCIERGE</span>
-          <span className={styles.quickContactTitle}>Speak Directly with our Luxury Travel Specialists</span>
-        </div>
-        <div className={styles.quickButtons}>
-          <a href={`tel:${FULL_PHONE}`} className={styles.callBadgeBtn}>
-            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-              <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.27 22 2 13.73 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
-            </svg>
-            <span>Call: {PHONE_NUMBER}</span>
-          </a>
-          <a 
-            href={`https://wa.me/917406994752?text=${encodeURIComponent("Hello! I want to enquire about a luxury holiday.")}`} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className={styles.waBadgeBtn}
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          <span>WhatsApp {PHONE_NUMBER}</span>
-        </a>
-      </div>
-    </div>
+    <div className={styles.enquirySectionWrapper}>
+      <div className={styles.enquiryGrid}>
+        
+        {/* LEFT COLUMN: FORM CARD */}
+        <div className={styles.formCard}>
+          <h2 className={styles.formTitle}>Send us an enquiry</h2>
 
-    <div className={styles.luxuryBox}>
-      {/* Intro Header */}
-      <div className={styles.introHeader}>
-        <span className={styles.boxEyebrow}>BESPOKE TRIP PLANNING</span>
-        <h2 className={styles.boxTitle}>Design Your Extraordinary Journey</h2>
-        <p className={styles.boxDesc}>
-          Fill in your preferred travel details below. A dedicated Sobhavi Travel Specialist will craft a bespoke itinerary suited to your exacting desires.
-        </p>
-      </div>
-
-        <div className={styles.formLayout}>
-          {/* Main Form Area */}
-          <form onSubmit={handleSubmit} className={styles.formContent}>
-            
-            {/* TRIP SPECIFICATIONS */}
-            <div className={styles.formSection}>
-              <h3 className={styles.sectionHeader}>01 \u00B7 TRIP SPECIFICATIONS</h3>
+          {submitted ? (
+            <div className={styles.successMessage}>
+              <div className={styles.successIcon}>✓</div>
+              <h3 className={styles.successTitle}>Enquiry Prepared!</h3>
+              <p className={styles.successDesc}>
+                Your details have been opened in WhatsApp. If it didn&apos;t open automatically, click the button below to send:
+              </p>
+              <button 
+                type="button" 
+                onClick={handleSubmit} 
+                className={styles.submitBtn}
+                style={{ marginTop: '1.25rem' }}
+              >
+                Re-open WhatsApp
+              </button>
+              <button 
+                type="button" 
+                onClick={() => setSubmitted(false)} 
+                className={styles.resetBtn}
+              >
+                Send Another Enquiry
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className={styles.form}>
               
+              {/* Your name* */}
               <div className={styles.formGroup}>
-                <label className={styles.label}>Where would you like to go?*</label>
-                <select 
-                  name="destination" 
-                  value={formData.destination} 
-                  onChange={handleChange} 
-                  required 
-                  className={styles.select}
-                >
-                  <option value="" disabled>Select your desired destination</option>
-                  {formData.destination && !COUNTRIES.includes(formData.destination) && (
-                    <option value={formData.destination}>{formData.destination}</option>
-                  )}
-                  {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
-                </select>
+                <label className={styles.label}>Your name*</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Murtaza Anis"
+                  required
+                  className={styles.input}
+                />
               </div>
 
-              <div className={styles.formRow}>
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Approximate Month / Date*</label>
-                  <input 
-                    type="month" 
-                    name="date" 
-                    value={formData.date} 
-                    onChange={handleChange} 
-                    required 
-                    className={styles.input} 
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Duration*</label>
-                  <input 
-                    type="text" 
-                    name="duration" 
-                    placeholder="e.g. 10 Nights / 11 Days" 
-                    value={formData.duration} 
-                    onChange={handleChange} 
-                    required 
-                    className={styles.input} 
-                  />
-                </div>
+              {/* Mobile / WhatsApp* */}
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Mobile / WhatsApp*</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="+91 9881219352"
+                  required
+                  className={styles.input}
+                />
               </div>
 
-              <div className={styles.formRow}>
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Number of Travellers*</label>
-                  <input 
-                    type="number" 
-                    name="travelers" 
-                    min="1" 
-                    max="50" 
-                    placeholder="2" 
-                    value={formData.travelers} 
-                    onChange={handleChange} 
-                    required 
-                    className={styles.input} 
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Per Person Spending Power (INR)*</label>
-                  <select 
-                    name="budget" 
-                    value={formData.budget} 
-                    onChange={handleChange} 
-                    required 
+              {/* Email */}
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="qtholidays@gmail.com"
+                  className={styles.input}
+                />
+              </div>
+
+              {/* Interested in* */}
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Interested in*</label>
+                <div className={styles.selectWrapper}>
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    required
                     className={styles.select}
                   >
-                    <option value="" disabled>Select spending range</option>
-                    {BUDGETS_INR.map(b => <option key={b} value={b}>{b}</option>)}
+                    <option value="" disabled>Select a service</option>
+                    {SERVICES.map(svc => (
+                      <option key={svc} value={svc}>{svc}</option>
+                    ))}
                   </select>
                 </div>
               </div>
 
+              {/* Destination(s) */}
               <div className={styles.formGroup}>
-                <label className={styles.label}>Special Interests, Occasion or Desired Experiences</label>
-                <textarea 
-                  name="comments" 
-                  placeholder="Tell us about your celebration, preferred hotel brands, must-do activities or any bespoke requests..." 
-                  value={formData.comments} 
-                  onChange={handleChange} 
-                  rows={4} 
+                <label className={styles.label}>Destination(s)</label>
+                <input
+                  type="text"
+                  name="destination"
+                  value={formData.destination}
+                  onChange={handleChange}
+                  placeholder="e.g. Dubai + Abu Dhabi, or Kashmir"
+                  className={styles.input}
+                />
+              </div>
+
+              {/* Approx. travel dates */}
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Approx. travel dates</label>
+                <input
+                  type="text"
+                  name="travelDates"
+                  value={formData.travelDates}
+                  onChange={handleChange}
+                  placeholder="e.g. 15-22 December 2026"
+                  className={styles.input}
+                />
+              </div>
+
+              {/* Number of travellers */}
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Number of travellers</label>
+                <input
+                  type="text"
+                  name="travellers"
+                  value={formData.travellers}
+                  onChange={handleChange}
+                  placeholder="e.g. 2 adults + 1 child"
+                  className={styles.input}
+                />
+              </div>
+
+              {/* Approximate budget (per person) */}
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Approximate budget (per person)</label>
+                <input
+                  type="text"
+                  name="budget"
+                  value={formData.budget}
+                  onChange={handleChange}
+                  placeholder="e.g. ₹50,000–₹80,000"
+                  className={styles.input}
+                />
+              </div>
+
+              {/* Anything else we should know? */}
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Anything else we should know?</label>
+                <textarea
+                  name="notes"
+                  value={formData.notes}
+                  onChange={handleChange}
+                  placeholder="Dietary preferences, mobility needs, honeymoon-specific requests, prior visa rejections, etc."
+                  rows={4}
                   className={styles.textarea}
                 />
               </div>
-            </div>
 
-            {/* YOUR CONTACT DETAILS */}
-            <div className={styles.formSection}>
-              <h3 className={styles.sectionHeader}>02 \u00B7 YOUR CONTACT DETAILS</h3>
-              
-              <div className={styles.formRow}>
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>First Name*</label>
-                  <input 
-                    type="text" 
-                    name="firstName" 
-                    placeholder="First Name" 
-                    value={formData.firstName} 
-                    onChange={handleChange} 
-                    required 
-                    className={styles.input} 
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Last Name*</label>
-                  <input 
-                    type="text" 
-                    name="lastName" 
-                    placeholder="Last Name" 
-                    value={formData.lastName} 
-                    onChange={handleChange} 
-                    required 
-                    className={styles.input} 
-                  />
-                </div>
-              </div>
-
-              <div className={styles.formRow}>
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Email Address*</label>
-                  <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="you@domain.com" 
-                    value={formData.email} 
-                    onChange={handleChange} 
-                    required 
-                    className={styles.input} 
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Telephone / WhatsApp Number*</label>
-                  <input 
-                    type="tel" 
-                    name="phone" 
-                    placeholder="+91 98765 43210" 
-                    value={formData.phone} 
-                    onChange={handleChange} 
-                    required 
-                    className={styles.input} 
-                  />
-                </div>
-              </div>
-
-              <div className={styles.checkboxGroup}>
-                <input 
-                  type="checkbox" 
-                  id="newsletter" 
-                  name="newsletter" 
-                  checked={formData.newsletter} 
-                  onChange={handleChange} 
-                  className={styles.checkbox}
-                />
-                <label htmlFor="newsletter" className={styles.checkboxLabel}>
-                  Receive private invitations, seasonal inspirations, and bespoke travel journals.
-                </label>
-              </div>
-            </div>
-
-            <div className={styles.submitContainer}>
+              {/* Submit Button */}
               <button type="submit" className={styles.submitBtn}>
-                <span>SUBMIT ENQUIRY & CONNECT VIA WHATSAPP</span>
-                <span className={styles.btnArrow}>→</span>
+                Send enquiry on WhatsApp
               </button>
-              <p className={styles.submitDisclaimer}>
-                Your inquiry goes directly to our Senior Specialist at +91 {PHONE_NUMBER}. We respect your absolute privacy.
-              </p>
-            </div>
-          </form>
 
-          {/* Sidebar Info Card */}
-          <aside className={styles.sidebar}>
-            {/* Direct Specialist Card */}
-            <div className={styles.specialistCard}>
-              <span className={styles.specialistBadge}>DIRECT LINE</span>
-              <h4 className={styles.specialistTitle}>Dedicated Travel Desk</h4>
-              <p className={styles.specialistDesc}>
-                Connect directly with our senior travel curators for instant quotes and bespoke advice.
-              </p>
-              <div className={styles.sidebarActions}>
-                <a 
-                  href={`https://wa.me/917406994752?text=${encodeURIComponent("Hello Lumina! I would like to speak to a travel specialist.")}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className={styles.sidebarWaBtn}
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                  </svg>
-                  <span>Chat on WhatsApp</span>
-                </a>
-                <a href={`tel:${FULL_PHONE}`} className={styles.sidebarCallBtn}>
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                    <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.27 22 2 13.73 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
-                  </svg>
-                  <span>Call {PHONE_NUMBER}</span>
-                </a>
+              <div className={styles.buttonSubtext}>
+                Your details open in WhatsApp for you to review and send.
               </div>
-            </div>
-
-            {/* Office Hours */}
-            <div className={styles.officeHours}>
-              <div className={styles.clockHeader}>
-                <span className={styles.clockIcon}>⏱</span>
-                <h4>CONCIERGE HOURS</h4>
-              </div>
-              <ul className={styles.hoursList}>
-                <li><span>Monday – Friday:</span> <strong>9:00 AM – 11:00 PM IST</strong></li>
-                <li><span>Saturday:</span> <strong>10:00 AM – 8:00 PM IST</strong></li>
-                <li><span>Sunday:</span> <strong>VIP Emergency On-Call</strong></li>
-              </ul>
-              <div className={styles.directContactInfo}>
-                <p>Phone: <a href={`tel:${FULL_PHONE}`}>+91 {PHONE_NUMBER}</a></p>
-                <p>WhatsApp: <a href={`https://wa.me/917406994752`} target="_blank" rel="noopener noreferrer">+91 {PHONE_NUMBER}</a></p>
-              </div>
-            </div>
-          </aside>
+            </form>
+          )}
         </div>
+
+        {/* RIGHT COLUMN: OTHER WAYS TO REACH US */}
+        <div className={styles.infoColumn}>
+          <h2 className={styles.infoHeading}>Other ways to reach us</h2>
+
+          {/* Card 1: WhatsApp (fastest) */}
+          <div className={styles.contactCard}>
+            <div className={styles.cardIconBox}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#10b981">
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.34C8.52 21.52 10.22 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm-1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5L2.1 21.9l5.034-1.22A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm4.646 13.884c-.235.659-1.169 1.258-1.91 1.338-.508.054-1.171.08-3.376-.832-2.813-1.163-4.63-4.01-4.77-4.197-.14-.187-1.144-1.523-1.144-2.905 0-1.382.724-2.062.98-2.343.256-.281.56-.351.748-.351.187 0 .374.002.538.01.173.008.406-.065.635.485.235.565.801 1.956.871 2.097.07.14.117.305.023.492-.093.187-.14.304-.28.468-.14.164-.296.366-.422.492-.14.14-.286.293-.123.573.163.28 1.118 1.846 2.404 2.99 1.652 1.472 3.042 1.927 3.473 2.138.43.21.683.176.936-.117.253-.293 1.077-1.253 1.364-1.682.287-.43.573-.358.96-.215.387.143 2.457 1.158 2.879 1.369.422.211.703.316.806.492.103.176.103 1.019-.132 1.678z"/>
+              </svg>
+            </div>
+            <div className={styles.cardDetails}>
+              <div className={styles.cardTitle}>WhatsApp (fastest)</div>
+              <div className={styles.cardText}>
+                <a 
+                  href={`https://wa.me/${TARGET_WHATSAPP}?text=Hello%20Qutbi%20Tours,%20I%20would%20like%20a%20travel%20quote.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.amberLink}
+                >
+                  {DISPLAY_PHONE}
+                </a>
+                <span className={styles.mutedText}> · WhatsApp us for a travel quote</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Phone */}
+          <div className={styles.contactCard}>
+            <div className={styles.cardIconBox}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#334155">
+                <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.27 22 2 13.73 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
+              </svg>
+            </div>
+            <div className={styles.cardDetails}>
+              <div className={styles.cardTitle}>Phone</div>
+              <div className={styles.cardText}>
+                <a href={`tel:${TARGET_WHATSAPP}`} className={styles.amberLink}>
+                  {DISPLAY_PHONE}
+                </a>
+                <span className={styles.mutedText}> · Mon–Sat 10 AM–8 PM IST</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: Email */}
+          <div className={styles.contactCard}>
+            <div className={styles.cardIconBox}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#334155">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+            </div>
+            <div className={styles.cardDetails}>
+              <div className={styles.cardTitle}>Email</div>
+              <div className={styles.cardText}>
+                <a href={`mailto:${DISPLAY_EMAIL}`} className={styles.amberLink}>
+                  {DISPLAY_EMAIL}
+                </a>
+                <span className={styles.mutedText}> · reply within 4 working hours</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 4: Nashik office */}
+          <div className={styles.contactCard}>
+            <div className={styles.cardIconBox}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#dc2626">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+            </div>
+            <div className={styles.cardDetails}>
+              <div className={styles.cardTitle}>Nashik office</div>
+              <div className={styles.addressBlock}>
+                <div><strong>Qutbi Tours & Holidays</strong></div>
+                <div>Shop no-2, Greens Apparment Housing Society,</div>
+                <div>Mumbai Naka, Bhagwant Nagar, Dr.Homi Bhabha Nagar</div>
+                <div>Nashik, Maharashtra 422001, India</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 5: Office hours */}
+          <div className={styles.contactCard}>
+            <div className={styles.cardIconBox}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#334155">
+                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+              </svg>
+            </div>
+            <div className={styles.cardDetails}>
+              <div className={styles.cardTitle}>Office hours</div>
+              <div className={styles.addressBlock}>
+                <div>Monday–Saturday, 10:00 AM – 8:00 PM IST</div>
+                <div>Sunday by appointment</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 6: Social */}
+          <div className={styles.contactCard}>
+            <div className={styles.cardIconBox}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#0284c7">
+                <circle cx="12" cy="12" r="10" stroke="#0284c7" strokeWidth="1.5" fill="none"/>
+                <line x1="2" y1="12" x2="22" y2="12" stroke="#0284c7" strokeWidth="1.5"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#0284c7" strokeWidth="1.5" fill="none"/>
+              </svg>
+            </div>
+            <div className={styles.cardDetails}>
+              <div className={styles.cardTitle}>Social</div>
+              <div className={styles.socialLinks}>
+                <a href="https://www.instagram.com/qutbi_tours_holidays/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <span className={styles.dotSeparator}>·</span>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <span className={styles.dotSeparator}>·</span>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <span className={styles.dotSeparator}>·</span>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+
+          {/* UAE / GCC CLIENTS Highlight Box */}
+          <div className={styles.uaeBox}>
+            <div className={styles.uaeEyebrow}>UAE / GCC CLIENTS</div>
+            <p className={styles.uaeText}>
+              We serve travellers based in the UAE, Saudi Arabia, Oman, Qatar, Bahrain and Kuwait remotely via WhatsApp and video call. Payments in AED and USD accepted via wire transfer.
+            </p>
+          </div>
+
+        </div>
+
       </div>
     </div>
   );
