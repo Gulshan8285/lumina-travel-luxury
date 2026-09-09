@@ -198,12 +198,61 @@
   color: var(--accent);
 }
 
+/* Expandable Trigger Button Under Travel Journal / Blog */
+.directoryTriggerBtn {
+  margin-top: 0.85rem;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #d4af37;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.65rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  transition: all 0.25s ease;
+  width: fit-content;
+}
+
+.directoryTriggerBtn:hover {
+  background: #d4af37;
+  color: #111111;
+  border-color: #d4af37;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.triggerBtnText {
+  letter-spacing: 0.03em;
+}
+
+.triggerBtnArrow {
+  font-size: 0.72rem;
+  transition: transform 0.2s ease;
+}
+
 /* Popular Leisure Destinations Directory */
 .directorySection {
-  margin-top: 4.5rem;
-  margin-bottom: 4rem;
-  padding-top: 3.5rem;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+  padding-top: 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+  animation: slideDownFade 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .directoryHeader {
@@ -211,8 +260,122 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 2rem;
-  margin-bottom: 2.75rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
+}
+
+.drawerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.closeDirectoryBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.58rem 1.15rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.closeDirectoryBtn:hover {
+  background: rgba(225, 29, 72, 0.2);
+  border-color: #e11d48;
+  color: #ffffff;
+}
+
+/* Drawer Controls */
+.drawerControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+  flex-wrap: wrap;
+  padding: 1.15rem 1.35rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.drawerSearchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 260px;
+  flex: 1;
+  max-width: 380px;
+}
+
+.drawerSearchIcon {
+  position: absolute;
+  left: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+.drawerSearchInput {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  padding: 0.55rem 2rem 0.55rem 2.3rem;
+  border-radius: 20px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.drawerSearchInput:focus {
+  border-color: #d4af37;
+}
+
+.clearDrawerSearch {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.drawerFilterPills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.drawerPill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.drawerPill:hover {
+  color: #ffffff;
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.drawerPill.activePill {
+  background: #d4af37;
+  color: #111111;
+  border-color: #d4af37;
+  font-weight: 700;
 }
 
 .directoryTitleBox {
