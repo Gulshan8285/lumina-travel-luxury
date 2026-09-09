@@ -47,16 +47,16 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
     heroImage: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=2000&auto=format&fit=crop",
     galleryImages: [
       "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1572979241487-79cf02ab99d5?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "Jaipur", tagline: "The Pink City & Amber Fort", image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=800&auto=format&fit=crop", highlights: ["Amber Fort private tour", "Hawa Mahal photo stop", "City Palace royal quarters"] },
-      { name: "Udaipur", tagline: "City of Lakes & Floating Palaces", image: "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=800&auto=format&fit=crop", highlights: ["Lake Pichola sunset boat cruise", "Jag Mandir Island dinner", "City Palace museum"] },
+      { name: "Udaipur", tagline: "City of Lakes & Floating Palaces", image: "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=800&auto=format&fit=crop", highlights: ["Lake Pichola sunset boat cruise", "Jag Mandir Island dinner", "City Palace museum"] },
       { name: "Jodhpur", tagline: "The Sun City & Blue Alleys", image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=800&auto=format&fit=crop", highlights: ["Mehrangarh Fort zip-lining", "Umaid Bhawan Palace", "Old Blue City walking tour"] },
-      { name: "Jaisalmer", tagline: "The Golden City & Thar Glamping", image: "https://images.unsplash.com/photo-1572979241487-79cf02ab99d5?q=80&w=800&auto=format&fit=crop", highlights: ["Sam Sand Dunes luxury tents", "Sunset camel safari", "Jaisalmer living fort"] },
+      { name: "Jaisalmer", tagline: "The Golden City & Thar Glamping", image: "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?q=80&w=800&auto=format&fit=crop", highlights: ["Sam Sand Dunes luxury tents", "Sunset camel safari", "Jaisalmer living fort"] },
       { name: "Pushkar", tagline: "Sacred Lake & Desert Culture", image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop", highlights: ["Brahma Temple darshan", "Pushkar Lake 52 ghats", "Rose garden tours"] },
       { name: "Mount Abu", tagline: "Only Hill Station in the Aravallis", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Dilwara marble Jain temples", "Nakki Lake boat ride", "Sunset Point panoramic views"] },
       { name: "Ranthambore", tagline: "Royal Bengal Tiger Safaris", image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?q=80&w=800&auto=format&fit=crop", highlights: ["Private Zone 1-5 Jeep safaris", "Ancient Ranthambore Fort", "Luxury jungle camp stays"] },
@@ -165,8 +165,8 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
       "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "North Goa", tagline: "Vibrant Beach Clubs & Sunset Parties", image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop", highlights: ["Trendy beachside dining", "Chapora Fort sunset views", "Night markets and live music"] },
@@ -223,17 +223,17 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "Manali", tagline: "Solang Snow Adventures & Old Manali Cafes", image: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=800&auto=format&fit=crop", highlights: ["Atal Tunnel & Sissu snow drive", "Solang Valley skiing and paragliding", "Hadimba Temple cedar forest"] },
-      { name: "Shimla", tagline: "Queen of Hills & Colonial Heritage", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["The Ridge & Mall Road heritage stroll", "Viceregal Lodge architectural tour", "Kalka-Shimla UNESCO toy train ride"] },
+      { name: "Shimla", tagline: "Queen of Hills & Colonial Heritage", image: "https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?q=80&w=800&auto=format&fit=crop", highlights: ["The Ridge & Mall Road heritage stroll", "Viceregal Lodge architectural tour", "Kalka-Shimla UNESCO toy train ride"] },
       { name: "Dharamshala", tagline: "Spiritual Home of the Dalai Lama", image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop", highlights: ["Tsuglagkhang Temple Complex", "HPCA International Cricket Stadium", "Norbulingka Tibetan institute"] },
       { name: "Dalhousie", tagline: "Pine-Covered Slopes & Khajjiar Meadows", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Khajjiar (Mini Switzerland of India)", "Panchpula waterfall walks", "Dainkund Peak panoramic trail"] },
-      { name: "Kasol", tagline: "Parvati Valley Hippie Trail", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Parvati riverbank hikes", "Manikaran Sahib hot springs", "Artisanal Israeli cafes and bakeries"] },
+      { name: "Kasol", tagline: "Parvati Valley Hippie Trail", image: "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=800&auto=format&fit=crop", highlights: ["Parvati riverbank hikes", "Manikaran Sahib hot springs", "Artisanal Israeli cafes and bakeries"] },
       { name: "Kullu", tagline: "Valley of the Gods & River Rafting", image: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=800&auto=format&fit=crop", highlights: ["Beas River white water rafting", "Kullu Pashmina shawl weaving centers", "Bijli Mahadev mountain trek"] },
       { name: "Kasauli", tagline: "Quiet Pine Forests & British Cantonment", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Gilbert Nature Trail walk", "Christ Church Victorian architecture", "Sunset Point serenity"] },
-      { name: "Spiti Valley", tagline: "High-Altitude Cold Desert Monasteries", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["1000-year-old Key Monastery", "Highest post office in Hikkim", "Chandratal Lake stargazing"] },
+      { name: "Spiti Valley", tagline: "High-Altitude Cold Desert Monasteries", image: "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=800&auto=format&fit=crop", highlights: ["1000-year-old Key Monastery", "Highest post office in Hikkim", "Chandratal Lake stargazing"] },
       { name: "McLeod Ganj", tagline: "Little Lhasa & Mountain Cafes", image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=800&auto=format&fit=crop", highlights: ["Bhagsunath Waterfall and Shiva Cafe", "Triund trek day hike", "Tibetan handicraft markets"] },
       { name: "Chail", tagline: "World's Highest Cricket Ground", image: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=800&auto=format&fit=crop", highlights: ["Chail Palace heritage tour", "Chail Wildlife Sanctuary", "Quiet deodar forest retreats"] },
       { name: "Tirthan Valley", tagline: "Trout Fishing & Great Himalayan Park", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Brown trout angling", "UNESCO Great Himalayan National Park", "Jalori Pass & Serolsar Lake"] }
@@ -275,27 +275,27 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
     regionGroup: "North & Himalayas",
     tagline: "Spiritual Ganges, Tiger Sanctuaries & High Himalayan Glaciers",
     description: "The sacred Devbhoomi, where the holy Ganges begins, Royal Bengal tigers roam the grasslands of Corbett, and alpine meadows look out upon Nanda Devi.",
-    heroImage: "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=2000&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=2000&auto=format&fit=crop",
     galleryImages: [
-      "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
-      { name: "Mussoorie", tagline: "Queen of Hills & Kempty Falls", image: "https://images.unsplash.com/photo-1622308644420-a75d5069f9c7?q=80&w=800&auto=format&fit=crop", highlights: ["Mall Road & Gun Hill cable car", "Kempty Falls scenic cascade", "Lal Tibba highest viewpoint"] },
-      { name: "Nainital", tagline: "Emerald Naini Lake & Kumaon Hills", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Naini Lake yacht and paddle boat rides", "Naina Devi Temple darshan", "Snow View Point panoramic ropeway"] },
-      { name: "Rishikesh", tagline: "Yoga Capital of the World & Ganga Aarti", image: "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=800&auto=format&fit=crop", highlights: ["Triveni Ghat VIP evening Ganga Aarti", "Private luxury yoga retreat sessions", "White water river rafting on the Ganges"] },
-      { name: "Haridwar", tagline: "Gateway to the Gods & Har Ki Pauri", image: "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=800&auto=format&fit=crop", highlights: ["Har Ki Pauri sacred evening Aarti", "Mansa Devi & Chandi Devi ropeway", "Spiritual walking tours"] },
+      { name: "Mussoorie", tagline: "Queen of Hills & Kempty Falls", image: "https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?q=80&w=800&auto=format&fit=crop", highlights: ["Mall Road & Gun Hill cable car", "Kempty Falls scenic cascade", "Lal Tibba highest viewpoint"] },
+      { name: "Nainital", tagline: "Emerald Naini Lake & Kumaon Hills", image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=800&auto=format&fit=crop", highlights: ["Naini Lake yacht and paddle boat rides", "Naina Devi Temple darshan", "Snow View Point panoramic ropeway"] },
+      { name: "Rishikesh", tagline: "Yoga Capital of the World & Ganga Aarti", image: "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=800&auto=format&fit=crop", highlights: ["Triveni Ghat VIP evening Ganga Aarti", "Private luxury yoga retreat sessions", "White water river rafting on the Ganges"] },
+      { name: "Haridwar", tagline: "Gateway to the Gods & Har Ki Pauri", image: "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=800&auto=format&fit=crop", highlights: ["Har Ki Pauri sacred evening Aarti", "Mansa Devi & Chandi Devi ropeway", "Spiritual walking tours"] },
       { name: "Jim Corbett", tagline: "India's Oldest National Park & Tigers", image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?q=80&w=800&auto=format&fit=crop", highlights: ["Dhikala & Bijrani premium Jeep safaris", "Kosi River riverside luxury lodges", "Elephant herd tracking with naturalists"] },
       { name: "Auli", tagline: "Premier Himalayan Ski Resort & Ropeway", image: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=800&auto=format&fit=crop", highlights: ["Joshimath to Auli scenic cable car", "Skiing and snowboarding slopes", "360-degree view of Nanda Devi peak"] },
       { name: "Ranikhet", tagline: "Queen's Meadow & High Golf Course", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Ranikhet 9-hole golf course", "Chaubatia apple orchards", "Jhula Devi Bell Temple"] },
       { name: "Almora", tagline: "Cultural Heart of Kumaon & Sun Temple", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Katarmal Sun Temple architecture", "Zero Point Binsar Wildlife Sanctuary", "Traditional Kumaoni brass craftsmanship"] },
       { name: "Chopta", tagline: "Mini Switzerland & Tungnath Trek", image: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=800&auto=format&fit=crop", highlights: ["Tungnath (highest Shiva temple in the world)", "Chandrashila peak summit sunrise", "Lush alpine meadows (bugyals)"] },
       { name: "Lansdowne", tagline: "Untouched Pine Cantonment Town", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Bhulla Tal peaceful lake", "Tip-in-Top mountain overlook", "St. John's Church colonial architecture"] },
-      { name: "Kedarnath", tagline: "Sacred Jyotirlinga in Himalayan Glaciers", image: "https://images.unsplash.com/photo-1626714485509-32a2f8c5b961?q=80&w=800&auto=format&fit=crop", highlights: ["Helicopter shuttle to Kedarnath temple", "VIP Special Darshan tickets", "Mandakini River glacial backdrop"] },
-      { name: "Badrinath", tagline: "Sacred Char Dham & Neelkanth Peak", image: "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=800&auto=format&fit=crop", highlights: ["Badrinath Temple golden canopy", "Tapt Kund natural thermal springs", "Mana village (last Indian village before Tibet)"] }
+      { name: "Kedarnath", tagline: "Sacred Jyotirlinga in Himalayan Glaciers", image: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=800&auto=format&fit=crop", highlights: ["Helicopter shuttle to Kedarnath temple", "VIP Special Darshan tickets", "Mandakini River glacial backdrop"] },
+      { name: "Badrinath", tagline: "Sacred Char Dham & Neelkanth Peak", image: "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=800&auto=format&fit=crop", highlights: ["Badrinath Temple golden canopy", "Tapt Kund natural thermal springs", "Mana village (last Indian village before Tibet)"] }
     ],
     signatureExperiences: [
       "Charter private helicopter shuttles directly from Dehradun to Kedarnath and Badrinath with priority VIP darshan passes",
@@ -339,8 +339,8 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
       "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "Srinagar", tagline: "Dal Lake, Floating Gardens & Mughal Architecture", image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=800&auto=format&fit=crop", highlights: ["Sunset Shikara ride on Dal Lake", "Mughal Gardens (Shalimar & Nishat Bagh)", "Pashmina & walnut woodcraft private shopping"] },
@@ -388,11 +388,11 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
     regionGroup: "North & Himalayas",
     tagline: "Roof of the World, Pangong Cobalt Waters & Moonscapes",
     description: "A surreal high-altitude kingdom where dramatic Tibetan Buddhist monasteries crown rugged peaks, double-humped camels roam Nubra dunes, and starry night skies dazzle in Hanle.",
-    heroImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=2000&auto=format&fit=crop",
     galleryImages: [
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=1200&auto=format&fit=crop"
     ],
@@ -499,20 +499,20 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
     regionGroup: "South India",
     tagline: "Hampi Ruins, Coorg Coffee Estates & Kabini Safaris",
     description: "One State, Many Worlds — where Vijayanagara stone temples rise from boulder landscapes, coffee aromas drift through Coorg, and leopards stalk Kabini forests.",
-    heroImage: "https://images.unsplash.com/photo-1600100397608-f010f443b747?q=80&w=2000&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=2000&auto=format&fit=crop",
     galleryImages: [
-      "https://images.unsplash.com/photo-1600100397608-f010f443b747?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "Bengaluru", tagline: "Garden City, Craft Breweries & Tech Capital", image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop", highlights: ["Bangalore Palace royal tour", "Lalbagh Botanical Garden glasshouse", "Vibrant craft brewery and gastronomy scene"] },
-      { name: "Mysore", tagline: "City of Palaces, Sandalwood & Silk", image: "https://images.unsplash.com/photo-1600100397608-f010f443b747?q=80&w=800&auto=format&fit=crop", highlights: ["Mysore Palace illuminated with 100,000 bulbs", "Chamundi Hill panoramic overlook", "Devaraja heritage spice and flower market"] },
+      { name: "Mysore", tagline: "City of Palaces, Sandalwood & Silk", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Mysore Palace illuminated with 100,000 bulbs", "Chamundi Hill panoramic overlook", "Devaraja heritage spice and flower market"] },
       { name: "Coorg (Kodagu)", tagline: "Scotland of India & Coffee Plantations", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Private coffee estate walks and bean tastings", "Abbey and Iruppu waterfalls", "Namdroling Golden Temple Tibetan monastery"] },
       { name: "Chikmagalur", tagline: "Birthplace of Indian Coffee & Mullayanagiri", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Mullayanagiri peak (highest in Karnataka)", "Baba Budangiri coffee trail", "Hebbe and Jhari waterfalls"] },
-      { name: "Hampi", tagline: "UNESCO Vijayanagara Empire Citadel", image: "https://images.unsplash.com/photo-1600100397608-f010f443b747?q=80&w=800&auto=format&fit=crop", highlights: ["Vittala Temple stone chariot & musical pillars", "Virupaksha Temple living worship", "Tungabhadra coracle boat ride"] },
+      { name: "Hampi", tagline: "UNESCO Vijayanagara Empire Citadel", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Vittala Temple stone chariot & musical pillars", "Virupaksha Temple living worship", "Tungabhadra coracle boat ride"] },
       { name: "Gokarna", tagline: "Sacred Coastlines & Om Beach", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop", highlights: ["Mahabaleshwar Temple ancient Atmalinga", "Om Beach and Kudle Beach cliff hikes", "Relaxed coastal yoga cafes"] },
       { name: "Kabini", tagline: "Asia's Premier Black Panther & Tiger Sanctuary", image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?q=80&w=800&auto=format&fit=crop", highlights: ["Boat safaris on Kabini River with elephant herds", "Zone A & B jeep safaris tracking black panthers", "Luxury tented riverfront lodges"] },
       { name: "Sakleshpur", tagline: "Green Hills, Forts & Railway Bridge Treks", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Star-shaped Manjarabad Fort", "Bisle Ghat panoramic Western Ghats view", "Private cardamom plantation stays"] },
@@ -560,9 +560,9 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
     heroImage: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=2000&auto=format&fit=crop",
     galleryImages: [
       "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
@@ -670,9 +670,9 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
     regionGroup: "West & Central",
     tagline: "White Salt Desert, Asiatic Lions & Sacred Coastal Shrines",
     description: "The vibrant land of legends, where the White Rann sparkles under full moon skies, Asiatic lions roam the dry forests of Gir, and Dwarka and Somnath preserve sacred maritime heritage.",
-    heroImage: "https://images.unsplash.com/photo-1578922746465-3a80a228f229?q=80&w=2000&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=2000&auto=format&fit=crop",
     galleryImages: [
-      "https://images.unsplash.com/photo-1578922746465-3a80a228f229?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
@@ -791,7 +791,7 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
     ],
     famousPlaces: [
       { name: "Indore", tagline: "Cleanest City & Sarafa Night Food Bazaar", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Rajwada 7-storey Holkar palace", "Sarafa Bazaar midnight culinary street", "Lal Bagh Palace European interiors"] },
-      { name: "Ujjain", tagline: "Mahakaleshwar Jyotirlinga & Sacred Kshipra", image: "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=800&auto=format&fit=crop", highlights: ["Mahakaleshwar Bhasma Aarti VIP darshan", "Mahakal Lok corridor statues and murals", "Ram Ghat Kshipra river Aarti"] },
+      { name: "Ujjain", tagline: "Mahakaleshwar Jyotirlinga & Sacred Kshipra", image: "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=800&auto=format&fit=crop", highlights: ["Mahakaleshwar Bhasma Aarti VIP darshan", "Mahakal Lok corridor statues and murals", "Ram Ghat Kshipra river Aarti"] },
       { name: "Bhopal", tagline: "City of Lakes & Sanchi Stupa", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["UNESCO Sanchi Stupa Buddhist monument", "Upper Lake boat club serenity", "Bhimbetka prehistoric rock cave art"] },
       { name: "Khajuraho", tagline: "UNESCO Temples & Intricate Stone Erotica", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Kandariya Mahadeva sandstone temple", "Western Group of Temples illuminated night show", "Intricate Chandela dynasty sculptural reliefs"] },
       { name: "Pachmarhi", tagline: "Queen of the Satpura Mountain Range", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Bee Falls silver cascade", "Dhoopgarh highest point sunset view", "Jata Shankar natural cave shrine"] },
@@ -845,12 +845,12 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "Visakhapatnam (Vizag)", tagline: "The City of Destiny, Beaches & Submarine Museum", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop", highlights: ["Rishikonda Blue Flag beach water sports", "Kailasagiri hilltop panoramic view", "INS Kursura real submarine museum"] },
       { name: "Tirupati", tagline: "Spiritual Abode of Lord Venkateswara at Tirumala", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Tirumala Venkateswara Temple VIP darshan", "Sri Padmavathi Ammavari Temple", "Sacred Silathoranam natural stone arch"] },
-      { name: "Vijayawada", tagline: "Kanaka Durga Temple & Krishna River", image: "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=800&auto=format&fit=crop", highlights: ["Kanaka Durga Temple atop Indrakeeladri hill", "Undavalli 7th-century monolithic rock-cut caves", "Prakasam Barrage & Bhavani Island boat ride"] },
+      { name: "Vijayawada", tagline: "Kanaka Durga Temple & Krishna River", image: "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=800&auto=format&fit=crop", highlights: ["Kanaka Durga Temple atop Indrakeeladri hill", "Undavalli 7th-century monolithic rock-cut caves", "Prakasam Barrage & Bhavani Island boat ride"] },
       { name: "Araku Valley", tagline: "Eastern Ghats Mist, Tribal Coffee & Borra Caves", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Million-year-old Borra Caves stalactites", "Organic tribal coffee plantations and museum", "Vistadome glass-roof train ride from Vizag"] },
       { name: "Amaravati", tagline: "Ancient Buddhist Heartland on the Krishna", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Amaravati Maha Stupa ancient Buddhist relics", "125-foot Dhyana Buddha statue", "Amareswara Shiva Temple on Krishna banks"] },
       { name: "Srisailam", tagline: "Sacred Mallikarjuna Jyotirlinga in Nallamala Forests", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Mallikarjuna Swamy Jyotirlinga and Shakti Peetha", "Srisailam Dam on the Krishna River", "Patala Ganga ropeway and boat ride"] },
@@ -893,20 +893,20 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
     regionGroup: "South India",
     tagline: "Nizami Splendor, Biryani Heritage & UNESCO Monolithic Temples",
     description: "The land of the Nizams, where the world's most opulent palace hotels meet futuristic IT campuses, Kakatiya stone engineering, and aromatic Hyderabadi culinary traditions.",
-    heroImage: "https://images.unsplash.com/photo-1600100397608-f010f443b747?q=80&w=2000&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=2000&auto=format&fit=crop",
     galleryImages: [
-      "https://images.unsplash.com/photo-1600100397608-f010f443b747?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
-      { name: "Hyderabad", tagline: "City of Pearls, Charminar & Falaknuma Palace", image: "https://images.unsplash.com/photo-1600100397608-f010f443b747?q=80&w=800&auto=format&fit=crop", highlights: ["Golconda Fort acoustic light and sound show", "Charminar & Laad Bazaar pearl shopping", "Dining at the 101-seat table at Taj Falaknuma Palace"] },
+      { name: "Hyderabad", tagline: "City of Pearls, Charminar & Falaknuma Palace", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Golconda Fort acoustic light and sound show", "Charminar & Laad Bazaar pearl shopping", "Dining at the 101-seat table at Taj Falaknuma Palace"] },
       { name: "Warangal", tagline: "Kakatiya Dynasty Forts & Thousand Pillar Temple", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Warangal Fort stone gateway arches (Keerthi Thoranas)", "Thousand Pillar Temple star-shaped architecture", "Bhadrakali Temple lake walks"] },
       { name: "Ramappa", tagline: "UNESCO World Heritage Floating Brick Temple", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["13th-century Ramappa Temple built with floating bricks", "Exquisite sculpted dancing bracket figures", "Scenic Ramappa Lake boat rides"] },
       { name: "Nagarjuna Sagar", tagline: "World's Largest Masonry Dam & Island Museum", image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800&auto=format&fit=crop", highlights: ["Massive 26-crest gate masonry dam", "Speedboat to Nagarjunakonda island Buddhist museum", "Ethipothala 70-foot waterfall cascade"] },
-      { name: "Bhadrachalam", tagline: "Sacred Sree Seetha Ramachandra Swamy on Godavari", image: "https://images.unsplash.com/photo-1600100397608-f010f443b71a?q=80&w=800&auto=format&fit=crop", highlights: ["Historic 17th-century Rama Temple darshan", "Godavari River boat rides and holy bathing", "Parnasala sacred Ramayana landmark"] }
+      { name: "Bhadrachalam", tagline: "Sacred Sree Seetha Ramachandra Swamy on Godavari", image: "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=800&auto=format&fit=crop", highlights: ["Historic 17th-century Rama Temple darshan", "Godavari River boat rides and holy bathing", "Parnasala sacred Ramayana landmark"] }
     ],
     signatureExperiences: [
       "Arrive by horse-drawn royal carriage to Taj Falaknuma Palace, enjoying high tea on the jade terrace overlooking Hyderabad",
@@ -951,7 +951,7 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "Bhubaneswar", tagline: "Temple City of India & Lingaraj Shrine", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["11th-century Lingaraj Temple Kalinga spire", "Udayagiri & Khandagiri 1st-century Jain caves", "Dhauli Shanti Stupa peace pagoda overlooking Daya River"] },
@@ -1003,7 +1003,7 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "Amritsar", tagline: "Sri Harmandir Sahib & Historic Heart", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Sri Harmandir Sahib (Golden Temple) night illumination", "World's largest free community kitchen (Langar)", "Jallianwala Bagh national memorial & Partition Museum"] },
@@ -1048,13 +1048,13 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
     regionGroup: "East & Islands",
     tagline: "High Mountain Passes, Sacred Glacial Lakes & Organic Valleys",
     description: "India's pristine 100% organic Himalayan state, where snow-draped Kanchenjunga watches over ancient Tibetan monasteries, valley of flowers, and high-altitude alpine passes.",
-    heroImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=2000&auto=format&fit=crop",
     galleryImages: [
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "Gangtok", tagline: "Clean Mountain Capital & MG Marg", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", highlights: ["Pedestrian-only MG Marg promenade", "Rumtek Monastery Dharma Chakra Center", "Tashi Viewpoint Kanchenjunga sunrise"] },
@@ -1213,7 +1213,7 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "Puducherry (White Town)", tagline: "French Heritage Quarter & Cobblestone Streets", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop", highlights: ["Mustard-yellow French colonial villas with arched gates", "Sri Aurobindo Ashram peaceful meditation halls", "Artisan cafes serving buttery croissants and cafe au lait"] },
@@ -1316,12 +1316,12 @@ export const LEISURE_DESTINATIONS: LeisureDestination[] = [
       "https://images.unsplash.com/photo-1506351421178-63b52a2d2562?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1565967511849-76a60a516170?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1565073624479-7a0c868032bb?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?q=80&w=1200&auto=format&fit=crop"
     ],
     famousPlaces: [
       { name: "Marina Bay Sands & SkyPark", tagline: "Iconic Rooftop Infinity Pool & Bay Panorama", image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=800&auto=format&fit=crop", highlights: ["57th-floor infinity pool overlooking the skyline", "Observation deck views", "Spectra nightly light and water fountain show"] },
       { name: "Gardens by the Bay", tagline: "Futuristic Supertree Grove & Cloud Forest", image: "https://images.unsplash.com/photo-1506351421178-63b52a2d2562?q=80&w=800&auto=format&fit=crop", highlights: ["115-foot indoor waterfall inside Cloud Forest dome", "Supertree Observatory and OCBC Skyway walk", "Flower Dome world's largest glass greenhouse"] },
-      { name: "Sentosa Island", tagline: "Island Playground & Universal Studios", image: "https://images.unsplash.com/photo-1565073624479-7a0c868032bb?q=80&w=800&auto=format&fit=crop", highlights: ["Universal Studios Singapore VIP tour", "S.E.A. Aquarium 100,000 marine animals", "Tanjong and Palawan white sand beach clubs"] },
+      { name: "Sentosa Island", tagline: "Island Playground & Universal Studios", image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?q=80&w=800&auto=format&fit=crop", highlights: ["Universal Studios Singapore VIP tour", "S.E.A. Aquarium 100,000 marine animals", "Tanjong and Palawan white sand beach clubs"] },
       { name: "Orchard Road", tagline: "Asia's Premier Luxury Shopping Avenue", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop", highlights: ["ION Orchard and Paragon flagship fashion boutiques", "Chic afternoon tea lounges", "Tax-free shopping concierge"] },
       { name: "Chinatown & Little India", tagline: "Vibrant Heritage, Temples & Street Gastronomy", image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?q=80&w=800&auto=format&fit=crop", highlights: ["Buddha Tooth Relic Temple architecture", "Sri Mariamman oldest Hindu shrine in Singapore", "Michelin-starred street food stalls at Maxwell"] }
     ],
