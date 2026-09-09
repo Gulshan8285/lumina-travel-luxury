@@ -66,8 +66,8 @@ export default function NavigationProgress() {
         style={{
           height: "100%",
           width: `${progress}%`,
-          background: "linear-gradient(90deg, #e11d48 0%, #f43f5e 50%, #fb7185 100%)",
-          boxShadow: "0 0 10px rgba(225, 29, 72, 0.8), 0 0 5px rgba(225, 29, 72, 0.5)",
+          background: "linear-gradient(90deg, #d4af37 0%, #f3cf65 50%, #d4af37 100%)",
+          boxShadow: "0 0 12px rgba(212, 175, 55, 0.9), 0 0 6px rgba(243, 207, 101, 0.7)",
           transition: progress === 100 ? "width 0.2s ease-out, opacity 0.25s ease-out" : "width 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
           opacity: progress === 100 ? 0 : 1,
         }}

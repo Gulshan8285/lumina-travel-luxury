@@ -23,7 +23,7 @@ export default function NotFound() {
             fontWeight: 700,
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#e11d48',
+            color: '#d4af37',
             marginBottom: '1rem'
           }}>
             ERROR 404 &bull; PAGE NOT FOUND

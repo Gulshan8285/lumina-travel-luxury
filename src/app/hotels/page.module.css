@@ -38,7 +38,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #e11d48;
+  color: #d4af37;
 }
 
 .heroTitle {
@@ -112,7 +112,7 @@
 .cardBadge {
   display: inline-block;
   background: rgba(225, 29, 72, 0.1);
-  color: #e11d48;
+  color: #d4af37;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -171,7 +171,7 @@
 .formInput:focus,
 .formSelect:focus {
   outline: none;
-  border-color: #e11d48;
+  border-color: #d4af37;
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
 }
@@ -207,7 +207,7 @@
 }
 
 .checkGreen {
-  color: #e11d48;
+  color: #d4af37;
   font-weight: bold;
 }
 
@@ -215,7 +215,7 @@
   margin-top: 0.4rem;
   width: 100%;
   padding: 0.95rem;
-  background: #e11d48;
+  background: #d4af37;
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -263,7 +263,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #e11d48;
+  color: #d4af37;
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -347,7 +347,7 @@
 
 .cityTagline {
   font-size: 0.88rem;
-  color: #e11d48;
+  color: #d4af37;
   font-weight: 600;
   margin: 0 0 1rem;
 }
@@ -386,7 +386,7 @@
   border-radius: 10px;
   padding: 1rem 1.2rem;
   margin-bottom: 1.5rem;
-  border-left: 3px solid #e11d48;
+  border-left: 3px solid #d4af37;
 }
 
 .stayFoodCarTitle {
@@ -427,7 +427,7 @@
 }
 
 .bookCityBtn:hover {
-  background: #e11d48;
+  background: #d4af37;
 }
 
 .whatsappCityBtn {

@@ -543,7 +543,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                style={{ accentColor: '#e11d48', width: '16px', height: '16px', cursor: 'pointer' }}
+                style={{ accentColor: '#d4af37', width: '16px', height: '16px', cursor: 'pointer' }}
               />
               <label htmlFor="rememberMeCheck" style={{ cursor: 'pointer' }}>Keep me logged in on this browser</label>
             </div>
@@ -775,7 +775,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                   id="showAnnouncementCheckbox"
                   checked={Boolean(headerData.showAnnouncement)}
                   onChange={(e) => handleHeaderChange('showAnnouncement', e.target.checked)}
-                  style={{ width: '18px', height: '18px', accentColor: '#e11d48', cursor: 'pointer' }}
+                  style={{ width: '18px', height: '18px', accentColor: '#d4af37', cursor: 'pointer' }}
                 />
                 <label htmlFor="showAnnouncementCheckbox" style={{ fontSize: '0.92rem', color: '#fff', fontWeight: 600, cursor: 'pointer' }}>
                   Show Golden Announcement Banner at the very top of the page
@@ -1243,7 +1243,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
             <div key={slide.id || index} className={styles.editorCard}>
               <div className={styles.cardHeaderBar}>
                 <div className={styles.itemNumberBadge}>
-                  <span style={{ color: '#e11d48' }}>#{index + 1}</span>
+                  <span style={{ color: '#d4af37' }}>#{index + 1}</span>
                   <span>{slide.name || 'Untitled Destination'}</span>
                   <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.1)', padding: '0.2rem 0.6rem', borderRadius: '999px', marginLeft: '0.5rem' }}>
                     {slide.category}
@@ -1356,7 +1356,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
             <div key={cat.slug || index} className={styles.editorCard}>
               <div className={styles.cardHeaderBar}>
                 <div className={styles.itemNumberBadge}>
-                  <span style={{ color: '#e11d48' }}>#{index + 1}</span>
+                  <span style={{ color: '#d4af37' }}>#{index + 1}</span>
                   <span>{cat.name}</span>
                   <span style={{ fontSize: '0.72rem', color: '#94a3b8', marginLeft: '0.5rem' }}>
                     (/categories/{cat.slug})
@@ -1468,7 +1468,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
             <div key={dest.id || index} className={styles.editorCard}>
               <div className={styles.cardHeaderBar}>
                 <div className={styles.itemNumberBadge}>
-                  <span style={{ color: '#e11d48' }}>#{index + 1}</span>
+                  <span style={{ color: '#d4af37' }}>#{index + 1}</span>
                   <span>{dest.name}</span>
                   <span style={{ fontSize: '0.72rem', color: '#94a3b8', marginLeft: '0.5rem' }}>
                     (/destinations/{dest.id})
@@ -1608,7 +1608,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
             <div key={dest.id || index} className={styles.editorCard}>
               <div className={styles.cardHeaderBar}>
                 <div className={styles.itemNumberBadge}>
-                  <span style={{ color: '#e11d48' }}>#{index + 1}</span>
+                  <span style={{ color: '#d4af37' }}>#{index + 1}</span>
                   <span>{dest.name}</span>
                   <span style={{ fontSize: '0.72rem', color: '#94a3b8', marginLeft: '0.5rem' }}>
                     (/destinations/{dest.id})
@@ -1937,7 +1937,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                       <strong style={{ fontSize: '1.05rem', color: '#fff' }}>{enq.name}</strong>
-                      <span style={{ fontSize: '0.72rem', background: '#e11d48', color: '#fff', padding: '0.2rem 0.6rem', borderRadius: '999px', fontWeight: 600 }}>
+                      <span style={{ fontSize: '0.72rem', background: '#d4af37', color: '#fff', padding: '0.2rem 0.6rem', borderRadius: '999px', fontWeight: 600 }}>
                         {enq.status || 'New'}
                       </span>
                     </div>

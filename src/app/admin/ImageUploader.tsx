@@ -98,7 +98,7 @@ export default function ImageUploader({
   return (
     <div className={styles.imageUploaderRoot}>
       <label className={styles.formLabel}>
-        {label} {required && <span style={{ color: '#e11d48' }}>*</span>}{' '}
+        {label} {required && <span style={{ color: '#d4af37' }}>*</span>}{' '}
         <span style={{ opacity: 0.6, textTransform: 'none', fontWeight: 400, fontSize: '0.8rem' }}>
           ({recommendedAspect})
         </span>

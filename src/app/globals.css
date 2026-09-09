@@ -16,7 +16,7 @@ body {
   --accent-champagne: #f3cf65;
   --accent-bronze: #b8972e;
   --accent-terracotta: #c25e36;
-  --accent-pink: #e11d48; /* Luxury Crimson for VIP highlights */
+  --accent-pink: #d4af37; /* Unified royal gold */
   --accent-emerald: #10b981; /* Live concierge */
   
   /* Surfaces & Glassmorphism */
@@ -51,10 +51,15 @@ body {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 html, body {
   max-width: 100%;
   overflow-x: hidden;
-  background-color: #0b0f19;
+  background-color: #050811;
   color: #ffffff;
   font-family: var(--font-sans);
   font-weight: 400;
@@ -64,8 +69,33 @@ html, body {
   -webkit-text-size-adjust: 100%;
 }
 
+::selection {
+  background: #d4af37;
+  color: #050811;
+}
+
+/* Custom Sleek Luxury 24K Gold Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050811;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d4af37 0%, #8c7322 100%);
+  border-radius: 999px;
+  border: 2px solid #050811;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f3cf65 0%, #d4af37 100%);
+}
+
 .dark-mode-forced {
-  background-color: #0b0f19 !important;
+  background-color: #050811 !important;
   color: #ffffff !important;
 }
 
@@ -229,17 +259,24 @@ a, button {
 }
 
 .btn-pink {
-  background-color: var(--accent);
-  color: #ffffff;
-  border: 1px solid var(--accent);
-  border-radius: 2px;
-  padding: 0.8rem 1.5rem;
-  font-size: 0.75rem;
+  background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
+  color: #050811 !important;
+  border: 1px solid #d4af37;
+  border-radius: 999px;
+  padding: 0.85rem 1.8rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-pink:hover {
-  background-color: #d11560;
-  border-color: #d11560;
+  background: linear-gradient(135deg, #f3cf65 0%, #d4af37 100%);
+  border-color: #f3cf65;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(212, 175, 55, 0.45);
 }
 
 .image-reveal {

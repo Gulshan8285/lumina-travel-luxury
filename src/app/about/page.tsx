@@ -55,7 +55,7 @@ export default function AboutPage() {
         <section className={styles.valuesSection}>
           <div className="container">
             <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto' }}>
-              <span style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.18em', color: '#e11d48', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.18em', color: '#d4af37', textTransform: 'uppercase' }}>
                 OUR PHILOSOPHY
               </span>
               <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '2.4rem', textTransform: 'uppercase', margin: '0.5rem 0' }}>

@@ -37,7 +37,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #e11d48;
+  color: #d4af37;
 }
 
 .heroTitle {
@@ -88,7 +88,7 @@
 }
 
 .perkIcon {
-  color: #e11d48;
+  color: #d4af37;
   font-weight: bold;
 }
 
@@ -111,7 +111,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #e11d48;
+  color: #d4af37;
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -203,7 +203,7 @@
 
 .destTagline {
   font-size: 0.9rem;
-  color: #e11d48;
+  color: #d4af37;
   font-weight: 600;
   margin: 0 0 1rem;
 }
@@ -221,7 +221,7 @@
   border-radius: 10px;
   padding: 1rem 1.2rem;
   margin-bottom: 1.5rem;
-  border-left: 3px solid #e11d48;
+  border-left: 3px solid #d4af37;
 }
 
 .inclusionsTitle {
@@ -276,7 +276,7 @@
 }
 
 .bookBtn:hover {
-  background: #e11d48;
+  background: #d4af37;
 }
 
 .whatsappBtn {
@@ -394,7 +394,7 @@
 
 .dayNumber {
   font-weight: 700;
-  color: #e11d48;
+  color: #d4af37;
   white-space: nowrap;
 }
 

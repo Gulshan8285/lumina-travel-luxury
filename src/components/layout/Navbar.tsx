@@ -122,14 +122,14 @@ export default function Navbar() {
             <a href={`tel:${cleanPhone}`} className={styles.phone}>
               {directPhone}
             </a>
-            <Link href={header.enquireButtonLink || "/enquire"} className="btn-pink">
+            <Link href={header.enquireButtonLink || "/enquire"} className="btn-gold">
               {header.enquireButtonText || "Enquire Now"}
             </Link>
           </div>
 
           {/* Mobile controls */}
           <div className={styles.mobileRight}>
-            <Link href={header.enquireButtonLink || "/enquire"} className={`btn-pink ${styles.mobileEnquire}`}>
+            <Link href={header.enquireButtonLink || "/enquire"} className={`btn-gold ${styles.mobileEnquire}`}>
               {header.enquireButtonText || "Enquire"}
             </Link>
             <button 

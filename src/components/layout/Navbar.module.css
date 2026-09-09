@@ -1,14 +1,14 @@
 .announcementBar {
-  background: linear-gradient(90deg, #9f1239, #881337, #9f1239);
-  color: #ffffff;
+  background: linear-gradient(90deg, #070a14, #141d33, #070a14);
+  color: #f3cf65;
   font-size: 0.74rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-align: center;
-  padding: 0.4rem 1rem;
+  padding: 0.45rem 1rem;
   width: 100%;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
 }
 
 .navbar {
@@ -23,12 +23,13 @@
 }
 
 .scrolled {
-  background-color: rgba(11, 15, 25, 0.95);
-  backdrop-filter: blur(16px);
+  background-color: rgba(5, 8, 17, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   color: #ffffff;
   padding: 0.85rem 0;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18);
 }
 
 .navContainer {
@@ -92,8 +93,8 @@
   left: 0;
   width: 0;
   height: 1.5px;
-  background: #e11d48;
-  transition: width 0.35s ease;
+  background: #d4af37;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navLink:hover {
@@ -208,7 +209,7 @@
 
 .mobileNavLink:hover,
 .mobileActive {
-  color: #e11d48;
+  color: #d4af37;
 }
 
 .mobileDivider {

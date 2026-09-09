@@ -125,51 +125,55 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.95rem 2.2rem;
-  border: 1.5px solid #ffffff;
-  background: transparent;
+  padding: 0.95rem 2.4rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  background: rgba(14, 20, 34, 0.55);
   color: #ffffff;
   font-family: var(--font-sans, sans-serif);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-radius: 2px;
+  border-radius: 999px;
   text-decoration: none;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(4px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .heroBtnOutline:hover {
   background: #ffffff;
-  color: #0b0f19;
+  color: #050811;
   border-color: #ffffff;
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.25);
 }
 
 .heroBtnSolid {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.95rem 2.4rem;
-  border: 1.5px solid #000000;
-  background: #000000;
-  color: #ffffff;
+  padding: 0.95rem 2.5rem;
+  border: 1px solid #d4af37;
+  background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
+  color: #050811;
   font-family: var(--font-sans, sans-serif);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-radius: 2px;
+  border-radius: 999px;
   text-decoration: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.35);
 }
 
 .heroBtnSolid:hover {
-  background: #1e293b;
-  border-color: #1e293b;
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #f3cf65 0%, #d4af37 100%);
+  border-color: #f3cf65;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 32px rgba(212, 175, 55, 0.5);
 }
 
 .heroScrollIndicator {
@@ -276,70 +280,93 @@
    2. INTRODUCTION — DIRECTLY BELOW HERO (Black Tomato Editorial Style)
    -------------------------------------------------------------------------- */
 .introSection {
-  padding: 5.5rem 1.5rem 4.5rem;
-  background-color: #ffffff;
-  color: #1e293b;
+  padding: 6.5rem 1.5rem 5.5rem;
+  background-color: #070a14;
+  color: #f1f5f9;
   position: relative;
   text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.introSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  height: 380px;
+  background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.08) 0%, rgba(7, 10, 20, 0) 70%);
+  pointer-events: none;
 }
 
 .introContainer {
-  max-width: 840px;
+  max-width: 860px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .introHeadline {
   font-family: var(--font-heading, sans-serif);
-  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 600;
-  line-height: 1.25;
-  color: #0f172a;
-  margin-bottom: 2rem;
-  letter-spacing: 0.1em;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #ffffff 40%, #f3cf65 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2.2rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .introTextWrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.35rem;
+  gap: 1.4rem;
   align-items: center;
 }
 
 .introParagraph {
   font-size: 1.12rem;
-  line-height: 1.85;
-  color: #334155;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.88);
   font-weight: 400;
   margin: 0;
   max-width: 820px;
 }
 
 .introParagraph strong {
-  color: #0f172a;
+  color: #d4af37;
 }
 
 .introMuted {
-  font-size: 1.12rem;
-  line-height: 1.85;
-  color: #475569;
+  font-size: 1.08rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.72);
   font-style: normal;
   margin: 0;
   max-width: 820px;
 }
 
+.introMuted strong {
+  color: #f3cf65;
+}
+
 .introQuestion {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #0f172a;
+  color: #ffffff;
   margin: 0.5rem 0 0;
 }
 
 .introHighlight {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #0f172a;
+  color: #ffffff;
   margin: 0.5rem 0;
+  letter-spacing: 0.02em;
 }
 
 .introCtaBtn {
@@ -348,23 +375,24 @@
   justify-content: center;
   margin-top: 1.5rem;
   padding: 1rem 2.8rem;
-  background: #000000;
-  color: #ffffff;
-  border: 1px solid #000000;
-  border-radius: 2px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
+  color: #050811;
+  border: 1px solid #d4af37;
+  border-radius: 999px;
   font-family: var(--font-sans, sans-serif);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  transition: all 0.25s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.3);
 }
 
 .introCtaBtn:hover {
-  background: #27272a;
+  background: linear-gradient(135deg, #f3cf65 0%, #d4af37 100%);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 28px rgba(212, 175, 55, 0.45);
 }
 
 /* --------------------------------------------------------------------------
@@ -407,32 +435,33 @@
    3. DESTINATIONS (Dual Tabs: Domestic & International)
    -------------------------------------------------------------------------- */
 .destinationsSection {
-  padding: 4.5rem 0 5.5rem;
-  background-color: #0b0f19;
+  padding: 5.5rem 0 6.5rem;
+  background-color: #050811;
+  position: relative;
 }
-
 
 .tabsContainer {
   display: inline-flex;
   gap: 0.5rem;
   margin-top: 2.2rem;
   padding: 0.35rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
 }
 
 .tabBtn {
   background: transparent;
   border: none;
-  padding: 0.65rem 2rem;
-  border-radius: 30px;
-  color: rgba(255, 255, 255, 0.7);
+  padding: 0.75rem 2.2rem;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tabBtn:hover {
@@ -440,9 +469,10 @@
 }
 
 .tabActive {
-  background: #d4af37;
-  color: #0b0f19;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
+  color: #050811;
+  font-weight: 700;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
 }
 
 .destinationsGrid {
@@ -457,21 +487,22 @@
 
 .destCard {
   position: relative;
-  height: 440px;
-  border-radius: 12px;
+  height: 460px;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .destCard:hover {
-  transform: translateY(-6px);
-  border-color: rgba(212, 175, 55, 0.4);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.18);
 }
 
 .destCardImage {
@@ -479,30 +510,32 @@
   inset: 0;
   background-size: cover;
   background-position: center;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
 }
 
 .destCard:hover .destCardImage {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  filter: brightness(1.05);
 }
 
 .destCardOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 15, 25, 0.1) 0%, rgba(11, 15, 25, 0.85) 70%, #0b0f19 100%);
+  background: linear-gradient(180deg, rgba(5, 8, 17, 0.08) 0%, rgba(5, 8, 17, 0.75) 65%, #050811 100%);
   z-index: 1;
 }
 
 .destCardContent {
   position: relative;
   z-index: 2;
-  padding: 1.75rem;
+  padding: 2rem 1.75rem;
 }
 
 .destCardStar {
   color: #d4af37;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
 }
 
 .destCardName {
@@ -537,24 +570,25 @@
    4 & 5. CONCIERGE SERVICES & EXPERIENCES (Bi-Directional Luxury Marquee)
    -------------------------------------------------------------------------- */
 .conciergeSection {
-  padding: 3.5rem 0 4rem;
-  background: #0b0f19;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4rem 0 4.5rem;
+  background: #070a14;
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
   overflow: hidden;
+  position: relative;
 }
 
 .conciergeHeader {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto 2.2rem;
+  margin: 0 auto 2.5rem;
   padding: 0 1.5rem;
 }
 
 .marqueeWrapper {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.1rem;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -564,7 +598,7 @@
 
 .marqueeTrack {
   display: flex;
-  gap: 0.9rem;
+  gap: 1rem;
   width: max-content;
   will-change: transform;
 }
@@ -595,22 +629,24 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.85rem 1.6rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.85rem 1.75rem;
+  background: rgba(14, 20, 34, 0.65);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 999px;
   white-space: nowrap;
-  backdrop-filter: blur(8px);
-  transition: all 0.25s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .marqueeCard:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(22, 32, 54, 0.9);
   border-color: #d4af37;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
 }
 
 .marqueeStar {
@@ -902,52 +938,60 @@
    7. FINAL CTA
    -------------------------------------------------------------------------- */
 .finalCtaSection {
-  padding: 7rem 0 8rem;
-  background: #0b0f19;
+  padding: 6.5rem 0 7.5rem;
+  background: #050811;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .finalCtaBox {
-  max-width: 860px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  background: linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, rgba(11, 15, 25, 0.4) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  border-radius: 16px;
-  padding: 4.5rem 2rem;
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(14, 20, 34, 0.85) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 20px;
+  padding: 4.5rem 2.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(212, 175, 55, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .finalCtaHeading {
   font-family: var(--font-heading, sans-serif);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
   font-weight: 600;
   color: #ffffff;
   margin: 0 0 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .finalCtaSubtitle {
   font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   margin: 0 0 2.5rem;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .finalCtaButton {
   display: inline-block;
-  background: #d4af37;
-  color: #0b0f19;
-  padding: 0.95rem 2.8rem;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
+  color: #050811;
+  padding: 1rem 3rem;
+  border-radius: 999px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.25s ease;
+  font-size: 0.88rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.35);
 }
 
 .finalCtaButton:hover {
-  background: #fceda2;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
+  background: linear-gradient(135deg, #f3cf65 0%, #d4af37 100%);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 32px rgba(212, 175, 55, 0.5);
 }
 
 /* --------------------------------------------------------------------------
@@ -990,65 +1034,86 @@
 }
 
 /* ==========================================================================
-   HOMEPAGE SEO FAQ SECTION
+   HOMEPAGE SEO FAQ SECTION — LUXURY OBSIDIAN VELVET THEME
    ========================================================================== */
 .homeFaqSection {
-  padding: 5.5rem 0 6.5rem;
-  background-color: #ffffff;
-  color: #1e293b;
-  border-top: 1px solid #e2e8f0;
+  padding: 6.5rem 0 7.5rem;
+  background-color: #070a14;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.homeFaqSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 320px;
+  background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.06) 0%, rgba(7, 10, 20, 0) 70%);
+  pointer-events: none;
 }
 
 .homeFaqHeader {
   text-align: center;
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto 3.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .homeFaqHeader .sectionTitle {
-  color: #0f172a;
+  color: #ffffff;
 }
 
 .homeFaqHeader .sectionSubtitle {
-  color: #64748b;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .homeFaqGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 1.5rem;
-  max-width: 1160px;
+  gap: 1.75rem;
+  max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .homeFaqCard {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 2rem;
-  transition: all 0.25s ease;
+  background: rgba(14, 20, 34, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 2.2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .homeFaqCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-  border-color: #cbd5e1;
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.12);
 }
 
 .homeFaqQuestion {
   font-family: var(--font-heading, sans-serif);
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: #0f172a;
-  margin-bottom: 0.75rem;
+  color: #ffffff;
+  margin-bottom: 0.85rem;
   text-transform: uppercase;
 }
 
 .homeFaqAnswer {
   font-size: 0.95rem;
-  line-height: 1.75;
-  color: #475569;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.78);
   margin: 0;
 }
 

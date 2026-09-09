@@ -34,7 +34,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #e11d48;
+  color: #d4af37;
 }
 
 .heroTitle {
@@ -73,7 +73,7 @@
 
 .introBox {
   background: #f8fafc;
-  border-left: 4px solid #e11d48;
+  border-left: 4px solid #d4af37;
   padding: 1.75rem 2rem;
   border-radius: 0 12px 12px 0;
   margin-bottom: 3.5rem;
@@ -100,7 +100,7 @@
 }
 
 .sectionNumber {
-  color: #e11d48;
+  color: #d4af37;
   font-size: 1.1rem;
 }
 
@@ -130,7 +130,7 @@
 }
 
 .bulletIcon {
-  color: #e11d48;
+  color: #d4af37;
   font-weight: bold;
   font-size: 1.1rem;
   line-height: 1.4;
@@ -175,7 +175,7 @@
 }
 
 .contactLink {
-  color: #e11d48;
+  color: #d4af37;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;

@@ -32,7 +32,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #e11d48;
+  color: #d4af37;
 }
 
 .heroTitle {
@@ -100,7 +100,7 @@
   gap: 0.5rem;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #e11d48;
+  color: #d4af37;
   text-decoration: none;
 }
 
@@ -181,7 +181,7 @@
 .formInput:focus,
 .formTextarea:focus {
   outline: none;
-  border-color: #e11d48;
+  border-color: #d4af37;
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
 }
@@ -195,7 +195,7 @@
   margin-top: 0.5rem;
   width: 100%;
   padding: 0.95rem;
-  background: #e11d48;
+  background: #d4af37;
   color: #ffffff;
   border: none;
   border-radius: 8px;

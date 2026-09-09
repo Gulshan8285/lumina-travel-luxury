@@ -65,7 +65,7 @@ export default function VideoUploader({
   return (
     <div className={styles.imageUploaderRoot}>
       <label className={styles.formLabel}>
-        {label} {required && <span style={{ color: '#e11d48' }}>*</span>}
+        {label} {required && <span style={{ color: '#d4af37' }}>*</span>}
       </label>
 
       {/* Live Video Preview Box */}
@@ -156,8 +156,8 @@ export default function VideoUploader({
                 alignItems: 'center',
                 gap: '0.5rem',
                 padding: '0.45rem 0.65rem',
-                background: value === preset.url ? 'rgba(225, 29, 72, 0.2)' : 'rgba(255, 255, 255, 0.04)',
-                border: value === preset.url ? '1px solid #e11d48' : '1px solid rgba(255, 255, 255, 0.08)',
+                background: value === preset.url ? 'rgba(212, 175, 55, 0.2)' : 'rgba(255, 255, 255, 0.04)',
+                border: value === preset.url ? '1px solid #d4af37' : '1px solid rgba(255, 255, 255, 0.08)',
                 borderRadius: '6px',
                 color: value === preset.url ? '#fff' : '#cbd5e1',
                 fontSize: '0.72rem',
@@ -166,7 +166,7 @@ export default function VideoUploader({
                 transition: 'all 0.2s ease'
               }}
             >
-              <span style={{ color: value === preset.url ? '#e11d48' : '#94a3b8' }}>▶</span>
+              <span style={{ color: value === preset.url ? '#d4af37' : '#94a3b8' }}>▶</span>
               <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{preset.label}</span>
             </button>
           ))}
