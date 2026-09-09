@@ -18,11 +18,11 @@ export default function EnquirePage() {
         <div className={styles.hero}>
           <div className={`container ${styles.heroContent}`}>
             <span className={styles.badge} style={{ color: '#d4af37', fontSize: '0.78rem', letterSpacing: '0.15em', fontWeight: 700, textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem' }}>
-              ENQUIRE NOW
+              TAILOR-MADE CONCIERGE
             </span>
             <h1 className={styles.title}>Let’s plan your next escape.</h1>
             <p className={styles.subtitle}>
-              Send us your destination, dates and rough budget. In most cases we return a comprehensive quote within 60–120 minutes on working days.
+              Share your destination, dates and travel preferences with us. Our private travel concierge will craft a fully bespoke itinerary with 5-star stays, private chauffeur transfers, and memorable experiences.
             </p>
           </div>
         </div>

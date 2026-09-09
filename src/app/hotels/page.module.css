@@ -207,7 +207,7 @@
 }
 
 .checkGreen {
-  color: #10b981;
+  color: #e11d48;
   font-weight: bold;
 }
 
@@ -248,7 +248,7 @@
 
 /* CITY-WISE HOTEL DIRECTORY */
 .directorySection {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #f8fafc;
 }
 

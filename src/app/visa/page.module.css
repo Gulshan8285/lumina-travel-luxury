@@ -9,7 +9,7 @@
   min-height: 80vh;
   display: flex;
   align-items: center;
-  padding: 8rem 0 4rem;
+  padding: 7.5rem 0 3rem;
   background: linear-gradient(180deg, rgba(11, 15, 25, 0.88) 0%, rgba(11, 15, 25, 0.96) 100%),
               url('https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
   color: #ffffff;
@@ -205,7 +205,7 @@
 
 /* COUNTRIES GRID */
 .countriesSection {
-  padding: 6rem 0;
+  padding: 3.5rem 0 4rem;
   background: #ffffff;
 }
 

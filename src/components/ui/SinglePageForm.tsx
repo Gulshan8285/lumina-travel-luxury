@@ -323,7 +323,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
                 <a href={`tel:${TARGET_WHATSAPP}`} className={styles.amberLink}>
                   {DISPLAY_PHONE}
                 </a>
-                <span className={styles.mutedText}> · Mon–Sat 9:30 AM–7:30 PM IST</span>
+                <span className={styles.mutedText}> · Mon–Sat 12:00 PM – 9:00 PM (IST)</span>
               </div>
             </div>
           </div>
@@ -348,7 +348,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
           {/* Card 4: Bengaluru Office */}
           <div className={styles.contactCard}>
             <div className={styles.cardIconBox}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#dc2626">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#334155">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
               </svg>
             </div>
@@ -373,8 +373,8 @@ export default function SinglePageForm({ initialDestination = "", initialService
             <div className={styles.cardDetails}>
               <div className={styles.cardTitle}>Office hours</div>
               <div className={styles.addressBlock}>
-                <div>Monday–Saturday: 9:30 AM – 7:30 PM IST</div>
-                <div>24/7 Concierge Support via Phone & WhatsApp</div>
+                <div>Monday–Saturday: 12:00 PM – 9:00 PM (IST)</div>
+                <div>Sunday: Closed | WhatsApp Concierge Available</div>
               </div>
             </div>
           </div>
@@ -382,10 +382,10 @@ export default function SinglePageForm({ initialDestination = "", initialService
           {/* Card 6: Social */}
           <div className={styles.contactCard}>
             <div className={styles.cardIconBox}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#0284c7">
-                <circle cx="12" cy="12" r="10" stroke="#0284c7" strokeWidth="1.5" fill="none"/>
-                <line x1="2" y1="12" x2="22" y2="12" stroke="#0284c7" strokeWidth="1.5"/>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#0284c7" strokeWidth="1.5" fill="none"/>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#334155">
+                <circle cx="12" cy="12" r="10" stroke="#334155" strokeWidth="1.5" fill="none"/>
+                <line x1="2" y1="12" x2="22" y2="12" stroke="#334155" strokeWidth="1.5"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="#334155" strokeWidth="1.5" fill="none"/>
               </svg>
             </div>
             <div className={styles.cardDetails}>

@@ -558,47 +558,34 @@ export default function Home() {
         </section>
 
         {/* =================================================================
-            4. SERVICES (Typography Only — No Images)
+            4. CONCIERGE SERVICES & EXPERIENCES (Interactive Bi-Directional Marquee)
             ================================================================= */}
-        <section className={styles.typographicSection}>
-          <div className="container">
-            <div className={styles.sectionHeader}>
-              <span className={styles.eyebrow}>END-TO-END ARRANGEMENTS</span>
-              <h2 className={styles.sectionTitle}>SERVICES</h2>
-              <p className={styles.sectionSubtitle}>
-                From tickets to local transfers, everything handled under one roof.
-              </p>
-            </div>
+        <section className={styles.conciergeSection}>
+          <div className={styles.conciergeHeader}>
+            <span className={styles.eyebrow}>END-TO-END CONCIERGE</span>
+            <h2 className={styles.sectionTitle}>SERVICES &amp; EXPERIENCES</h2>
+            <p className={styles.sectionSubtitle}>
+              From first-class flights and 5-star villas to bespoke safari expeditions — every detail arranged seamlessly.
+            </p>
+          </div>
 
-            <div className={styles.typoGrid}>
-              {servicesList.map((service, idx) => (
-                <div key={idx} className={styles.typoItem}>
-                  <span className={styles.typoStar}>✦</span>
-                  <span className={styles.typoLabel}>{service}</span>
+          <div className={styles.marqueeWrapper}>
+            {/* Row 1: Services (Scrolling Right to Left) */}
+            <div className={`${styles.marqueeTrack} ${styles.trackScrollLeft}`}>
+              {[...servicesList, ...servicesList].map((service, idx) => (
+                <div key={`srv-${idx}`} className={styles.marqueeCard}>
+                  <span className={styles.marqueeStar}>✦</span>
+                  <span className={styles.marqueeLabel}>{service}</span>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* =================================================================
-            5. EXPERIENCES (Typography Only — No Images)
-            ================================================================= */}
-        <section className={styles.typographicSectionAlt}>
-          <div className="container">
-            <div className={styles.sectionHeader}>
-              <span className={styles.eyebrow}>HOW WOULD YOU LIKE TO TRAVEL?</span>
-              <h2 className={styles.sectionTitle}>EXPERIENCES</h2>
-              <p className={styles.sectionSubtitle}>
-                Bespoke themes crafted around your personal travel rhythm.
-              </p>
-            </div>
-
-            <div className={styles.typoGrid}>
-              {experiencesList.map((exp, idx) => (
-                <div key={idx} className={styles.typoItem}>
-                  <span className={styles.typoStar}>✦</span>
-                  <span className={styles.typoLabel}>{exp}</span>
+            {/* Row 2: Experiences (Scrolling Left to Right) */}
+            <div className={`${styles.marqueeTrack} ${styles.trackScrollRight}`}>
+              {[...experiencesList, ...experiencesList].map((exp, idx) => (
+                <div key={`exp-${idx}`} className={styles.marqueeCard}>
+                  <span className={styles.marqueeStar}>✦</span>
+                  <span className={styles.marqueeLabel}>{exp}</span>
                 </div>
               ))}
             </div>

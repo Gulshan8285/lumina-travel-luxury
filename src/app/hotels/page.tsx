@@ -79,7 +79,7 @@ const CITY_HOTEL_DATA: CityHotelCategory[] = [
     featuredHotels: ["Burj Al Arab Jumeirah", "Atlantis The Royal", "Armani Hotel Burj Khalifa", "One&Only Royal Mirage", "Bab Al Shams Desert Resort"],
     inclusions: [
       "Palm View / Skyline Suite with Private Balcony",
-      "Private Butler Service 24/7",
+      "Dedicated Private Butler Service",
       "Complimentary Aquaventure Waterpark Access",
       "VIP Fast-Track Airport Immigrations Support"
     ],

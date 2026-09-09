@@ -109,7 +109,7 @@ export const travelCategories: TravelCategory[] = [
       body: [
         "We plan group expeditions of all sizes: college reunions in Goa, corporate retreats in Dubai, family pilgrimages, and friends exploring Thailand and Bali.",
         "Our dedicated group desk coordinates flight blocks, hotel wings, private coach transfers, and curated group dinners.",
-        "Every group booking comes with dedicated 24/7 coordinator assistance."
+        "Every group booking comes with dedicated concierge coordinator assistance."
       ],
       quote: "Our reunion trip was flawless from pickup to drop-off. Outstanding planning.",
       quoteAuthor: "— Rohit & Friends, Pune"

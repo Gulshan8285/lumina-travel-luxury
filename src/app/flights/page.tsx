@@ -64,7 +64,7 @@ export default function FlightsPage() {
                 </span>
                 <h1 className={styles.heroTitle}>Effortless Flight Bookings.</h1>
                 <p className={styles.heroDesc}>
-                  Experience seamless domestic and international flight reservations with negotiated corporate fares, instant seat assignments, and dedicated 24/7 rescheduling assistance on WhatsApp.
+                  Experience seamless domestic and international flight reservations with negotiated corporate fares, instant seat assignments, and dedicated rescheduling assistance on WhatsApp.
                 </p>
 
                 <div className={styles.airlineStrip}>
@@ -234,7 +234,7 @@ export default function FlightsPage() {
                     </button>
 
                     <div className={styles.flightSupportStrip}>
-                      <span>24/7 Flight Support:</span>
+                      <span>Flight Desk (12 PM – 9 PM):</span>
                       <a href="tel:+917406994752" style={{ color: '#0b0f19', fontWeight: 700 }}>+91 74069 94752</a>
                     </div>
                   </form>

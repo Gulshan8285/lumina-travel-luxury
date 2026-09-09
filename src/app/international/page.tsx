@@ -7,7 +7,7 @@ export const revalidate = 0; // Fresh content
 
 export const metadata = {
   title: "International Luxury Tour Packages | Sobhavi Travels",
-  description: "Curated international holidays across Dubai, Singapore, Bali, Maldives, and Vietnam. 5-star luxury resorts, private transfers, visa assistance, and 24/7 concierge support."
+  description: "Curated international holidays across Dubai, Singapore, Bali, Maldives, and Vietnam. 5-star luxury resorts, private transfers, visa assistance, and dedicated concierge support."
 };
 
 interface DayPlan {
@@ -222,7 +222,7 @@ export default function InternationalPage() {
                 </div>
                 <div className={styles.perkItem}>
                   <span className={styles.perkIcon}>✓</span>
-                  <span>24/7 Global Concierge: {phone}</span>
+                  <span>Global Concierge Desk: {phone}</span>
                 </div>
               </div>
             </div>

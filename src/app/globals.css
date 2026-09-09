@@ -7,7 +7,7 @@
   
   --primary: #000000;
   --secondary: #f4f4f4;
-  --accent: #eb2174; /* Black Tomato Pink */
+  --accent: #e11d48; /* Unified Luxury Crimson */
   
   --surface: #ffffff;
   --surface-alt: #f9f9f9;
@@ -74,7 +74,7 @@ a, button {
 }
 
 .section {
-  padding: 8vw 0;
+  padding: clamp(3rem, 5vw, 4.5rem) 0;
 }
 
 @media (max-width: 768px) {
@@ -82,7 +82,7 @@ a, button {
     padding: 0 1.25rem;
   }
   .section {
-    padding: 3.25rem 0;
+    padding: 2.5rem 0;
   }
 }
 

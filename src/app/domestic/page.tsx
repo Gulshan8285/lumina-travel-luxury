@@ -129,7 +129,7 @@ const FALLBACK_DOMESTIC: DomesticDest[] = [
 const DOMESTIC_FAQS = [
   {
     q: "What is included in Sobhavi Travels domestic holiday packages?",
-    a: "Our domestic packages include verified 4-Star or 5-Star accommodations, daily gourmet breakfast and chef dinners, a private sanitized vehicle with an experienced chauffeur for all airport and sightseeing transfers, monument entry permits, and 24/7 on-trip concierge assistance via WhatsApp."
+    a: "Our domestic packages include verified 4-Star or 5-Star accommodations, daily gourmet breakfast and chef dinners, a private sanitized vehicle with an experienced chauffeur for all airport and sightseeing transfers, monument entry permits, and dedicated on-trip concierge assistance via WhatsApp."
   },
   {
     q: "Can we customize our itinerary and choose our own hotels?",
@@ -220,7 +220,7 @@ export default function DomesticPage() {
                 </div>
                 <div className={styles.perkItem}>
                   <span className={styles.perkIcon}>✓</span>
-                  <span>24/7 Concierge: {phone}</span>
+                  <span>Concierge Support (12 PM – 9 PM): {phone}</span>
                 </div>
               </div>
             </div>

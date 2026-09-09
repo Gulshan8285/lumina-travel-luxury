@@ -126,7 +126,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     rel="noopener noreferrer"
                     className={styles.waSpecialistBtn}
                   >
-                    WhatsApp Us 24/7
+                    WhatsApp Concierge Desk
                   </a>
                 </div>
               </aside>

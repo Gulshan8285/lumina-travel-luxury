@@ -19,7 +19,7 @@ export default function ContactPage() {
               <span className={styles.eyebrow}>GET IN TOUCH</span>
               <h1 className={styles.heroTitle}>Talk to a travel consultant.</h1>
               <p className={styles.heroDesc}>
-                Send us your destination, dates and rough budget. In most cases we return a full quote within 60–120 minutes on working days.
+                Share your destination, dates and travel preferences. Our private travel specialists will design a custom itinerary with 5-star stays, private transfers, and curated excursions.
               </p>
             </div>
           </div>

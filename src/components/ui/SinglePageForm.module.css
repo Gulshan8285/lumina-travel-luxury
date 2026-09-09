@@ -247,14 +247,14 @@
 }
 
 .amberLink {
-  color: #b45309;
+  color: #e11d48;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .amberLink:hover {
-  color: #d97706;
+  color: #be123c;
   text-decoration: underline;
 }
 
@@ -281,14 +281,14 @@
 }
 
 .socialLinks a {
-  color: #b45309;
+  color: #e11d48;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .socialLinks a:hover {
-  color: #d97706;
+  color: #be123c;
   text-decoration: underline;
 }
 

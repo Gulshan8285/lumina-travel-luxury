@@ -97,7 +97,7 @@ export default function TravelBuddyPage() {
             <div className={styles.ctaBox}>
               <h2 className={styles.ctaHeading}>Let’s plan your next escape.</h2>
               <p className={styles.ctaText}>
-                Send us your destination, tentative dates and rough budget. In most cases we return a comprehensive quote within 60–120 minutes on working days.
+                Share your destination and dates with us. Our dedicated travel buddy handles every booking, transfer, and itinerary detail so you can travel without stress.
               </p>
               <Link href="/enquire" className={styles.ctaBtn}>
                 Plan My Trip &rarr;

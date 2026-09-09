@@ -76,7 +76,7 @@ export default function AboutPage() {
                 <div className={styles.valueIcon}>🤝</div>
                 <h3 className={styles.valueTitle}>Direct Human Touch</h3>
                 <p className={styles.valueDesc}>
-                  Real human specialists available 24/7 on WhatsApp and phone. When plans evolve on the road, changes are made within minutes.
+                  Real human specialists available daily on WhatsApp and phone (12:00 PM – 9:00 PM). When plans evolve on the road, changes are made within minutes.
                 </p>
               </div>
 

@@ -198,7 +198,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
     whatsapp: config.company?.whatsapp || "7406994752",
     email: config.company?.email || "hello@sobhavitravel.com",
     address: config.company?.address || "Ground Floor, No. 19, 2nd Cross, NR Layout, Kalyanagar, Babusapalya, Bengaluru 560043",
-    workingHours: "Mon – Sat: 9:30 AM – 7:30 PM (IST)",
+    workingHours: "Mon – Sat: 12:00 PM – 9:00 PM (IST)",
     socialHeading: "Connect With Us",
     copyrightText: "All rights reserved. Travel made memorable.",
     creditText: "codeorbit.cloud",
@@ -839,7 +839,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                   className={styles.formInput}
                   value={footerData.workingHours || ''}
                   onChange={(e) => handleFooterChange('workingHours', e.target.value)}
-                  placeholder="Mon – Sat: 9:30 AM – 7:30 PM (IST)"
+                  placeholder="Mon – Sat: 12:00 PM – 9:00 PM (IST)"
                 />
               </div>
             </div>
