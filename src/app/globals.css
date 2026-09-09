@@ -45,18 +45,19 @@ html, body {
   -webkit-text-size-adjust: 100%;
 }
 
-/* Typography matching screenshot */
+/* Typography matching Black Tomato luxury aesthetic */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  line-height: 1.1;
-  letter-spacing: 0.05em;
+  line-height: 1.12;
+  letter-spacing: 0.08em;
 }
 
-h1 { font-size: clamp(2rem, 7vw, 6.5rem); }
-h2 { font-size: clamp(1.65rem, 5vw, 4rem); }
-h3 { font-size: clamp(1.25rem, 3vw, 2.5rem); }
+h1 { font-size: clamp(2.2rem, 7vw, 6.5rem); }
+h2 { font-size: clamp(1.8rem, 5vw, 4rem); }
+h3 { font-size: clamp(1.3rem, 3vw, 2.5rem); }
+
 
 a, button {
   color: inherit;

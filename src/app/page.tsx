@@ -289,14 +289,72 @@ export default function Home() {
     "Honeymoon Escapes"
   ];
 
-  // Filter the top 3 blogs for the homepage
+  // Homepage SEO FAQs
+  const homeFaqs = [
+    {
+      q: "Why choose Sobhavi Travels over automated booking portals?",
+      a: "Unlike impersonal booking aggregators, Sobhavi Travels designs 100% tailor-made luxury itineraries backed by dedicated human concierges. You get negotiated corporate tariffs on luxury 5-star hotels, verified private chauffeur transfers, custom pacing, and real-time WhatsApp coordination (+91 74069 94752) for seamless travel."
+    },
+    {
+      q: "Which destinations do you specialize in?",
+      a: "We curate signature domestic journeys across Rajasthan, Kerala, Shimla & Manali, Andaman Islands, and Kashmir, as well as luxury international expeditions to Dubai, Singapore, Bali, Maldives, Thailand, and Vietnam."
+    },
+    {
+      q: "Do you arrange both flights, hotels, and visas together?",
+      a: "Yes. Sobhavi Travels is a full-service travel concierge. We handle domestic and international flight ticketing, 5-star hotel and private villa reservations, fast-track visa processing, local chauffeur transfers, and unique private experiences under a single, transparent itinerary."
+    },
+    {
+      q: "How can I get a personalized travel quote?",
+      a: "Click 'Plan My Trip' or reach out directly on WhatsApp (+91 74069 94752). Share your destination preference, tentative travel dates, and budget, and our destination specialists will craft a customized itinerary within hours."
+    }
+  ];
+
+  const homeJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TravelAgency",
+        "name": "Sobhavi Travels",
+        "url": "https://lumina-travel-luxury.vercel.app",
+        "telephone": "+91 74069 94752",
+        "email": "hello@sobhavitravel.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Sobhavi Travels, Indira Nagar",
+          "addressLocality": "Bengaluru",
+          "addressRegion": "Karnataka",
+          "postalCode": "560038",
+          "addressCountry": "IN"
+        },
+        "description": "Tailor-made luxury travel agency specializing in bespoke domestic holidays and global international expeditions."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": homeFaqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.a
+          }
+        }))
+      }
+    ]
+  };
+
+  // Filter top 3 blogs for homepage
   const featuredBlogs = blogs.slice(0, 3);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
+      />
       <Navbar />
 
       <main className={styles.mainWrapper}>
+
         {/* =================================================================
             1. HERO SECTION (Extremely Minimal)
             ================================================================= */}
@@ -347,12 +405,29 @@ export default function Home() {
             <div className={styles.heroOverlay} />
           </div>
 
-          {/* Minimal, Understated Hero Title */}
+          {/* Black Tomato Style Hero: Title, Subtitle, Dual CTAs & Scroll Indicator */}
           <div className={styles.heroContent}>
-            <div className={styles.minimalHeroWrapper}>
-              <h1 className={styles.minimalHeroTitle}>ESCAPE THE ROUTINE.</h1>
+            <div className={styles.heroTextContainer}>
+              <h1 className={styles.heroTitleLarge}>THE LUXURY TRAVEL EXPERTS</h1>
+              <p className={styles.heroSubtitle}>
+                TAILOR-MADE TRIPS, AWARD-WINNING ESCAPES. EST. 2015.
+              </p>
+              <div className={styles.heroActionsRow}>
+                <a href="#destinations" className={styles.heroBtnOutline}>
+                  EXPLORE DESTINATIONS
+                </a>
+                <Link href="/enquire" className={styles.heroBtnSolid}>
+                  PLAN MY TRIP
+                </Link>
+              </div>
             </div>
           </div>
+
+          {/* Central Scroll Indicator */}
+          <a href="#intro" className={styles.heroScrollIndicator} aria-label="Scroll to introduction">
+            <span>SCROLL</span>
+            <div className={styles.scrollLine} />
+          </a>
 
           {/* Subtle Location & Controls Indicator */}
           <div className={styles.heroLocationIndicator}>
@@ -362,55 +437,54 @@ export default function Home() {
                 <strong>{activeSlide.name}</strong> ({activeSlide.category}) &mdash; {activeSlide.tagline}
               </span>
             </div>
-            <div className={styles.heroLocationRight}>
-              <button
-                type="button"
-                className={styles.heroNavBtn}
-                onClick={() => goToSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)}
-                aria-label="Previous destination video"
-              >
-                &#8592;
-              </button>
-              <button
-                type="button"
-                className={styles.heroNavBtn}
-                onClick={() => goToSlide((currentSlide + 1) % heroSlides.length)}
-                aria-label="Next destination video"
-              >
-                &#8594;
-              </button>
-            </div>
+          </div>
+          <div className={styles.heroLocationRight}>
+            <button
+              type="button"
+              className={styles.heroNavBtn}
+              onClick={() => goToSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)}
+              aria-label="Previous destination video"
+            >
+              &#8592;
+            </button>
+            <button
+              type="button"
+              className={styles.heroNavBtn}
+              onClick={() => goToSlide((currentSlide + 1) % heroSlides.length)}
+              aria-label="Next destination video"
+            >
+              &#8594;
+            </button>
           </div>
         </section>
 
         {/* =================================================================
-            2. INTRODUCTION — DIRECTLY BELOW HERO (Human-Crafted Copy)
+            2. INTRODUCTION — DIRECTLY BELOW HERO (Black Tomato Editorial Style)
             ================================================================= */}
-        <section className={styles.introSection}>
+        <section id="intro" className={styles.introSection}>
           <div className="container">
             <div className={styles.introContainer}>
               <h2 className={styles.introHeadline}>
-                Planning a trip sounds exciting. Planning the trip itself? Not always.
+                EVERY JOURNEY STARTS WITH A FEELING
               </h2>
               <div className={styles.introTextWrapper}>
                 <p className={styles.introParagraph}>
-                  Whether you're planning a weekend getaway or a two-week trip across countries, it takes time, energy and a surprising amount of mental space. Comparing prices across different sites, finding the right hotels and flights, figuring out transfers, visas and everything in between — all while juggling your professional and personal life.
+                  The world is vast, full of wonders. But information engulfs us. See this, do that, don't miss this. It seems the more choice there is, the more overwhelmed we feel. What's more, you're never asked <em>how you want to feel</em>.
                 </p>
                 <p className={styles.introMuted}>
-                  The trip can start feeling exhausting before it even begins.
-                </p>
-                <p className={styles.introQuestion}>
-                  So why not let us handle it?
+                  That's not us. <strong>Sobhavi Travels</strong> is a tailor-made luxury travel company that designs fully personalised itineraries &mdash; not templates, not off-the-shelf tours. Whether you're a couple seeking adventure, a multi-generational family exploring together, or a solo traveller chasing something extraordinary, we craft every detail around you.
                 </p>
                 <p className={styles.introParagraph}>
-                  At Sobhavi, we take care of the planning and coordination so you can focus on the part that actually matters, enjoying your holiday.
-                </p>
-                <p className={styles.introParagraph}>
-                  We're more than just holiday packages. We can assist you with flights, hotels, visa services, cabs, transfers, sightseeing and other arrangements on the ground, helping bring everything together in one place.
+                  Recognised for bespoke travel excellence &mdash; trusted to deliver tailor-made journeys across India and over 100 global destinations.
                 </p>
                 <p className={styles.introHighlight}>
-                  You tell us where you want to go. We'll take care of the rest.
+                  So let's begin. Let's do something remarkable.
                 </p>
+                <div>
+                  <Link href="/enquire" className={styles.introCtaBtn}>
+                    GET IN TOUCH
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -574,7 +648,31 @@ export default function Home() {
         </section>
 
         {/* =================================================================
-            7. FINAL CTA
+            7. SEO FREQUENTLY ASKED QUESTIONS
+            ================================================================= */}
+        <section className={styles.homeFaqSection}>
+          <div className="container">
+            <div className={styles.homeFaqHeader}>
+              <span className={styles.eyebrow}>COMMON QUESTIONS</span>
+              <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
+              <p className={styles.sectionSubtitle}>
+                Everything you need to know about planning your next bespoke journey with Sobhavi Travels.
+              </p>
+            </div>
+
+            <div className={styles.homeFaqGrid}>
+              {homeFaqs.map((faq, idx) => (
+                <div key={idx} className={styles.homeFaqCard}>
+                  <h3 className={styles.homeFaqQuestion}>{faq.q}</h3>
+                  <p className={styles.homeFaqAnswer}>{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* =================================================================
+            8. FINAL CTA
             ================================================================= */}
         <section className={styles.finalCtaSection}>
           <div className="container">

@@ -73,6 +73,8 @@ export interface DestinationPackage {
   bestTime: string;
   overview: string;
   inclusions: string[];
+  startingPrice?: string;
+  dayPlan?: { day: string; title: string }[];
 }
 
 export interface SiteConfig {

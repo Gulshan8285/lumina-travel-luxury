@@ -5,6 +5,16 @@ import styles from './page.module.css';
 
 export const revalidate = 0; // Fresh content
 
+export const metadata = {
+  title: "International Luxury Tour Packages | Sobhavi Travels",
+  description: "Curated international holidays across Dubai, Singapore, Bali, Maldives, and Vietnam. 5-star luxury resorts, private transfers, visa assistance, and 24/7 concierge support."
+};
+
+interface DayPlan {
+  day: string;
+  title: string;
+}
+
 interface IntlDest {
   name: string;
   tagline: string;
@@ -12,50 +22,126 @@ interface IntlDest {
   videoUrl?: string;
   duration: string;
   bestTime: string;
+  startingPrice: string;
   overview: string;
+  dayPlan: DayPlan[];
   inclusions: string[];
 }
 
 const FALLBACK_INTERNATIONAL: IntlDest[] = [
   {
-    name: "Dubai",
+    name: "Dubai & Abu Dhabi",
     tagline: "Futuristic Skylines, Luxury Desert Safari & Royal Marina",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=72&w=720&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=900&auto=format&fit=crop",
     videoUrl: "/videos/destinations/dubai.mp4",
     duration: "5 Nights / 6 Days",
     bestTime: "October – April",
-    overview: "Ascend Burj Khalifa's 148th floor At The Top Sky, race across golden red dunes in private 4x4 desert safaris, cruise Dubai Marina on a luxury yacht, and indulge in world-class shopping.",
-    inclusions: ["5-Star Downtown / Marina Hotel", "Daily Buffet Breakfast & Gourmet Dinners", "Private AC Luxury Vehicle for All Transfers", "Burj Khalifa & Marina Yacht Charter Tickets"]
+    startingPrice: "Starting ₹39,500 / person",
+    overview: "Ascend Burj Khalifa's 124th & 125th floor At The Top, race across golden red dunes in private 4x4 desert safaris with starlit BBQ dinner, cruise Dubai Marina on a private luxury yacht, and explore Abu Dhabi's Sheikh Zayed Grand Mosque.",
+    dayPlan: [
+      { day: "Day 1", title: "Arrive in Dubai — Private Chauffeur Airport Pickup & Marina Sunset Dhow Cruise" },
+      { day: "Day 2", title: "Dubai Frame, Museum of the Future & Burj Khalifa 124th Floor at Sunset" },
+      { day: "Day 3", title: "Red Dunes 4x4 Desert Safari — Dune Bashing, Camel Ride, Belly Dance & Royal BBQ" },
+      { day: "Day 4", title: "Abu Dhabi Full Day Tour — Sheikh Zayed Grand Mosque, Ferrari World & Louvre" },
+      { day: "Day 5", title: "Dubai Miracle Garden, Atlantis Aquaventure & Luxury Yacht Marina Charter" },
+      { day: "Day 6", title: "Gold & Spice Souks Shopping & Airport Drop" }
+    ],
+    inclusions: ["5-Star Downtown / Marina Hotel Stay", "Daily International Buffet Breakfast", "Private AC Luxury Vehicle for All Airport & City Tours", "Burj Khalifa Entry & Desert Safari with VIP Dinner", "Dubai Tourist eVisa Assistance"]
   },
   {
-    name: "Singapore",
+    name: "Singapore & Sentosa",
     tagline: "Gardens by the Bay, Marina Bay Sands & Sentosa Island",
-    image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=72&w=720&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=900&auto=format&fit=crop",
     videoUrl: "/videos/destinations/singapore.mp4",
     duration: "4 Nights / 5 Days",
     bestTime: "Year-Round",
-    overview: "Marvel at Avatar-like Supertree structures, walk through the Cloud Forest dome, take a cable car across to Sentosa Island, and enjoy nightlife along Clarke Quay.",
-    inclusions: ["5-Star Marina Bay / Orchard Road Hotel", "Daily Breakfast Included", "Private Airport & Sightseeing Transfers", "Universal Studios & Gardens by the Bay Passes"]
+    startingPrice: "Starting ₹44,500 / person",
+    overview: "Marvel at Avatar-like Supertree structures, walk through the cooled Cloud Forest and Flower Dome, take a scenic cable car across to Sentosa Island, enjoy Universal Studios thrills, and dine along vibrant Clarke Quay.",
+    dayPlan: [
+      { day: "Day 1", title: "Arrive at Changi Jewel Airport — Check-in & Night Safari Tram Experience" },
+      { day: "Day 2", title: "City Tour & Gardens by the Bay — Cloud Forest, Flower Dome & Light Show" },
+      { day: "Day 3", title: "Sentosa Island Day Tour — Cable Car, SEA Aquarium & Wings of Time Show" },
+      { day: "Day 4", title: "Universal Studios Singapore VIP Passes & Evening Marina Bay Observation Deck" },
+      { day: "Day 5", title: "Orchard Road Shopping & Changi Airport Jewel Rain Vortex Departure" }
+    ],
+    inclusions: ["5-Star Hotel near Marina Bay / Orchard Road", "Daily Buffet Breakfast Included", "Private AC Airport & Sightseeing Transfers", "Universal Studios & Gardens by the Bay Combo Passes", "Singapore Tourist eVisa Processing"]
   },
   {
-    name: "Bali",
+    name: "Bali: The Island of Gods",
     tagline: "Private Pool Villas, Sacred Temples & Nusa Penida Cliffs",
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=72&w=720&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop",
     videoUrl: "/videos/destinations/bali.mp4",
     duration: "6 Nights / 7 Days",
     bestTime: "April – October",
-    overview: "Wake up in a private jungle pool villa in Ubud, visit the dramatic sea temple at Uluwatu, swing over emerald Tegallalang rice terraces, and speed boat to the white sands of Nusa Penida.",
-    inclusions: ["Luxury Private Pool Villa (Ubud & Seminyak)", "Daily Floating Breakfast & Gourmet Dinners", "Private Dedicated AC Chauffeur & Guide", "Nusa Penida Island Speedboat Day Tour"]
+    startingPrice: "Starting ₹48,000 / person",
+    overview: "Wake up in a private jungle pool villa in Ubud, visit the dramatic sea temple at Tanah Lot and Uluwatu with Kecak fire dance, swing over emerald Tegallalang rice terraces, and speedboat to the white sands of Nusa Penida.",
+    dayPlan: [
+      { day: "Day 1", title: "Arrive in Denpasar — Transfer to Luxury Ubud Jungle Resort with Flower Bath" },
+      { day: "Day 2", title: "Ubud Culture & Nature — Sacred Monkey Forest, Tegallalang Rice Terraces & Jungle Swing" },
+      { day: "Day 3", title: "Kintamani Volcano View, Tirta Empul Holy Water Temple & Coffee Plantation Tour" },
+      { day: "Day 4", title: "Transfer to Seminyak Beachfront Villa — Tanah Lot Sunset Temple" },
+      { day: "Day 5", title: "Nusa Penida Island Excursion — Kelingking T-Rex Beach, Broken Beach & Angel's Billabong" },
+      { day: "Day 6", title: "Uluwatu Clifftop Temple & Spectacular Sunset Kecak Fire Dance & Jimbaran Seafood Dinner" },
+      { day: "Day 7", title: "Balinese Spa Session & Airport Farewell" }
+    ],
+    inclusions: ["Private Luxury Pool Villa (Ubud & Seminyak)", "Daily Floating Breakfast & Candlelight Dinners", "Private Dedicated AC Chauffeur & English Guide", "Nusa Penida Island Speedboat Day Cruise", "Indonesian Visa on Arrival Guidance"]
   },
   {
-    name: "Maldives",
+    name: "Maldives: Barefoot Luxury",
     tagline: "Overwater Coral Villas & All-Inclusive Island Indulgence",
-    image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=72&w=720&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=900&auto=format&fit=crop",
     videoUrl: "/videos/destinations/maldives.mp4",
     duration: "4 Nights / 5 Days",
     bestTime: "November – April",
-    overview: "Pure tropical barefoot luxury. Sleep directly above vibrant turquoise lagoons in private overwater villas, snorkel with sea turtles and manta rays, and enjoy curated sandbank dining.",
-    inclusions: ["Luxury Overwater Pool Villa", "All-Inclusive Plan: Breakfast, Lunch, Dinner & Drinks", "Return Scenic Seaplane / Speedboat Transfers", "Complimentary Snorkeling Equipment & Dolphin Cruise"]
+    startingPrice: "Starting ₹68,000 / person",
+    overview: "Pure tropical barefoot luxury. Sleep directly above vibrant turquoise lagoons in private overwater pool villas, snorkel with sea turtles and manta rays, and enjoy curated private sandbank dining.",
+    dayPlan: [
+      { day: "Day 1", title: "Arrive in Malé — Scenic Speedboat/Seaplane Transfer to Luxury Island Resort" },
+      { day: "Day 2", title: "Overwater Villa Relaxation, Coral Reef Snorkeling & Sunset Cocktail Cruise" },
+      { day: "Day 3", title: "Water Sports Adventure — Jet Ski, Kayaking & Complimentary Dolphin Watching Safari" },
+      { day: "Day 4", title: "Rejuvenating Overwater Spa Treatment & Private Candlelight Sandbank Dinner" },
+      { day: "Day 5", title: "Seaplane Transfer back to Malé International Airport" }
+    ],
+    inclusions: ["Private Luxury Overwater Pool Villa", "All-Inclusive Plan: Breakfast, Lunch, Gourmet Dinner & Drinks", "Return Scenic Seaplane / Speedboat Transfers Included", "Complimentary Snorkeling Equipment & Dolphin Cruise", "Free 30-Day Visa on Arrival for Indian Nationals"]
+  },
+  {
+    name: "Thailand & Vietnam Explorer",
+    tagline: "Bangkok Temples, Phuket Beaches & Ha Long Bay Cruise",
+    image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=900&auto=format&fit=crop",
+    duration: "7 Nights / 8 Days",
+    bestTime: "November – April",
+    startingPrice: "Starting ₹38,500 / person",
+    overview: "Combine the dazzling golden temples and street food wonders of Bangkok with the limestone karst waters of Ha Long Bay and the world-famous beaches of Phuket and Phi Phi Island.",
+    dayPlan: [
+      { day: "Day 1", title: "Arrive in Bangkok — Chaophraya River Luxury Dinner Cruise" },
+      { day: "Day 2", title: "Grand Palace, Wat Pho Reclining Buddha & Bangkok Sky Dining" },
+      { day: "Day 3", title: "Flight to Phuket — Patong Beach Sunset & Simon Cabaret Show" },
+      { day: "Day 4", title: "Speedboat Day Tour to Phi Phi Islands & Maya Bay Lagoon Snorkeling" },
+      { day: "Day 5", title: "Fly to Hanoi, Vietnam — French Quarter Walk & Water Puppet Theater" },
+      { day: "Day 6", title: "Ha Long Bay Overnight Luxury Cruise — Kayaking through Limestone Caves" },
+      { day: "Day 7", title: "Ha Long Bay Sunrise Tai Chi & Return to Hanoi" },
+      { day: "Day 8", title: "Departure Flight to India" }
+    ],
+    inclusions: ["5-Star Beach Resorts & 5-Star Luxury Ha Long Cruise", "Daily Buffet Breakfast & All Meals on Cruise", "Private Airport & Sightseeing Transfers", "Phi Phi Island Speedboat & Cave Kayaking Fees", "Fast-Track Visa Assistance"]
+  }
+];
+
+const INTERNATIONAL_FAQS = [
+  {
+    q: "Do you handle visa processing for international holidays?",
+    a: "Yes. Our international visa concierge manages end-to-end visa applications, including Dubai 30/60 days e-visas, Singapore e-visas, Thailand Visa-on-Arrival assistance, and Schengen/US tourist visa appointments and document verification."
+  },
+  {
+    q: "Can we include international flights in our holiday package?",
+    a: "Absolutely. We book international flights from Delhi, Mumbai, Bengaluru, Chennai, and other Indian hubs directly with partner airlines like Emirates, Singapore Airlines, Qatar Airways, and Air India at competitive corporate tariffs."
+  },
+  {
+    q: "Are the airport transfers and city tours private or shared?",
+    a: "At Sobhavi Travels, we prioritize luxury, comfort, and privacy. All airport pickups, drops, and sightseeing excursions are conducted in dedicated private, air-conditioned vehicles with professional chauffeurs."
+  },
+  {
+    q: "How can I customize an international package?",
+    a: "Simply tap 'Book This Package' or message our WhatsApp concierge at +91 74069 94752. We adjust trip lengths, select your preferred 5-star resorts, and add special experiences like helicopter charters, yacht rentals, or private romantic dining."
   }
 ];
 
@@ -68,8 +154,25 @@ export default function InternationalPage() {
   const phone = config.company?.phone || "+91 74069 94752";
   const cleanWa = (config.company?.whatsapp || "7406994752").replace(/[^0-9]/g, '');
 
+  const jsonLdData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": INTERNATIONAL_FAQS.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
+      />
       <Navbar />
 
       <main className={styles.main}>
@@ -87,7 +190,7 @@ export default function InternationalPage() {
               </span>
               <h1 className={styles.heroTitle}>Explore Beyond Borders.</h1>
               <p className={styles.heroDesc}>
-                Bespoke international journeys across Dubai, Singapore, Bali, and Maldives — complete with 5-star resort stays, private luxury transfers, gourmet dining, and complete visa support.
+                Bespoke international journeys across Dubai, Singapore, Bali, Maldives, and Vietnam — complete with 5-star resort stays, private luxury transfers, gourmet dining, and complete visa support.
               </p>
 
               <div className={styles.heroActions}>
@@ -107,33 +210,33 @@ export default function InternationalPage() {
               <div className={styles.perksRow}>
                 <div className={styles.perkItem}>
                   <span className={styles.perkIcon}>✓</span>
-                  <span>5-Star Luxury Resorts</span>
+                  <span>5-Star World Resorts</span>
                 </div>
                 <div className={styles.perkItem}>
                   <span className={styles.perkIcon}>✓</span>
-                  <span>End-to-End Visa Assistance</span>
+                  <span>Private Chauffeur Transfers</span>
                 </div>
                 <div className={styles.perkItem}>
                   <span className={styles.perkIcon}>✓</span>
-                  <span>Private Sightseeing & Transfers</span>
+                  <span>Complete Visa Support</span>
                 </div>
                 <div className={styles.perkItem}>
                   <span className={styles.perkIcon}>✓</span>
-                  <span>24/7 Concierge: {phone}</span>
+                  <span>24/7 Global Concierge: {phone}</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 4 INTERNATIONAL DESTINATIONS */}
+        {/* INTERNATIONAL DESTINATIONS LIST */}
         <section className={styles.destinationsSection}>
           <div className="container">
             <div className={styles.sectionHeader}>
-              <span className={styles.sectionEyebrow}>GLOBAL HORIZONS</span>
-              <h2 className={styles.sectionTitle}>Curated International Destinations</h2>
+              <span className={styles.sectionEyebrow}>WHERE WE SERVE</span>
+              <h2 className={styles.sectionTitle}>Featured International Itineraries</h2>
               <p className={styles.sectionDesc}>
-                Handpicked global journeys designed with premier 5-star accommodations, private guided tours, exquisite dining, and seamless logistics.
+                From dazzling futuristic skylines to secluded turquoise overwater villas, every itinerary is handcrafted for discerning global travelers.
               </p>
             </div>
 
@@ -155,7 +258,26 @@ export default function InternationalPage() {
                   <div className={styles.cardContent}>
                     <h3 className={styles.destName}>{dest.name}</h3>
                     <div className={styles.destTagline}>{dest.tagline}</div>
+                    
+                    {dest.startingPrice && (
+                      <span className={styles.destPriceBadge}>{dest.startingPrice}</span>
+                    )}
+
                     <p className={styles.destOverview}>{dest.overview}</p>
+
+                    {dest.dayPlan && dest.dayPlan.length > 0 && (
+                      <div className={styles.dayPlanList}>
+                        <strong style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#1e293b' }}>
+                          Itinerary Highlights:
+                        </strong>
+                        {dest.dayPlan.slice(0, 4).map((d: DayPlan, i: number) => (
+                          <div key={i} className={styles.dayPlanItem}>
+                            <span className={styles.dayNumber}>{d.day}:</span>
+                            <span>{d.title}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
                     <div className={styles.inclusionsBox}>
                       <div className={styles.inclusionsTitle}>Package Inclusions:</div>
@@ -190,6 +312,26 @@ export default function InternationalPage() {
                       </a>
                     </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SEO FAQ SECTION */}
+        <section className={styles.faqSection}>
+          <div className="container">
+            <div className={styles.faqHeader}>
+              <span className={styles.sectionEyebrow}>COMMON QUESTIONS</span>
+              <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
+              <p className={styles.sectionDesc}>Everything you need to know about booking international holidays with Sobhavi Travels.</p>
+            </div>
+
+            <div className={styles.faqGrid}>
+              {INTERNATIONAL_FAQS.map((faq, idx) => (
+                <div key={idx} className={styles.faqCard}>
+                  <h3 className={styles.faqQuestion}>{faq.q}</h3>
+                  <p className={styles.faqAnswer}>{faq.a}</p>
                 </div>
               ))}
             </div>
