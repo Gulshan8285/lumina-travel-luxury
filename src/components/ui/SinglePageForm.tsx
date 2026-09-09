@@ -256,7 +256,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  placeholder="e.g. ₹50,000–₹80,000"
+                  placeholder="e.g. ₹20,000–₹25,000"
                   className={styles.input}
                 />
               </div>
