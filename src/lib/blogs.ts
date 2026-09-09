@@ -70,20 +70,36 @@ export function getAllBlogs(): BlogPost[] {
   const custom = cachedCustomBlogs || [];
   const base = initialBlogsData as BlogPost[];
   
-  // Merge custom posts at the top, avoiding duplicate IDs/slugs
+  // Merge custom posts at the top, avoiding duplicate IDs/slugs or duplicate cover images
   const seenSlugs = new Set<string>();
+  const seenImages = new Set<string>();
   const merged: BlogPost[] = [];
 
   for (const post of custom) {
     if (post && post.slug && !seenSlugs.has(post.slug.toLowerCase())) {
-      seenSlugs.add(post.slug.toLowerCase());
-      merged.push(post);
+      const normalized = { ...post };
+      // If this is the custom Haveli post that previously shared Amber Fort's photo, give it an authentic Haveli image
+      if (normalized.title.toLowerCase().includes('haveli') || normalized.slug.includes('haveli')) {
+        normalized.coverImage = 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop';
+        normalized.category = 'Culture & Heritage';
+      }
+      
+      const imgKey = normalized.coverImage.match(/photo-[a-zA-Z0-9_-]+/)?.[0] || normalized.coverImage;
+      seenSlugs.add(normalized.slug.toLowerCase());
+      seenImages.add(imgKey);
+      merged.push(normalized);
     }
   }
 
   for (const post of base) {
     if (post && post.slug && !seenSlugs.has(post.slug.toLowerCase())) {
+      const imgKey = post.coverImage.match(/photo-[a-zA-Z0-9_-]+/)?.[0] || post.coverImage;
+      // If a post with the exact same cover image was already added, skip duplicate
+      if (seenImages.has(imgKey)) {
+        continue;
+      }
       seenSlugs.add(post.slug.toLowerCase());
+      seenImages.add(imgKey);
       merged.push(post);
     }
   }

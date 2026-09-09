@@ -19,21 +19,32 @@ export default function BlogClientHub({ initialBlogs }: BlogClientHubProps) {
         const localCustom = JSON.parse(localStorage.getItem('sobhavi_custom_blogs') || '[]');
         if (Array.isArray(localCustom) && localCustom.length > 0) {
           const seen = new Set<string>();
+          const seenImages = new Set<string>();
           const combined: BlogPost[] = [];
           
-          for (const p of localCustom) {
-            if (p?.slug && !seen.has(p.slug.toLowerCase())) {
+          for (const raw of localCustom) {
+            const p = { ...raw };
+            if (p?.title?.toLowerCase()?.includes('haveli') || p?.slug?.includes('haveli')) {
+              p.coverImage = 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop';
+            }
+            const imgKey = p?.coverImage?.match(/photo-[a-zA-Z0-9_-]+/)?.[0] || p?.coverImage;
+            if (p?.slug && !seen.has(p.slug.toLowerCase()) && !seenImages.has(imgKey)) {
               seen.add(p.slug.toLowerCase());
+              seenImages.add(imgKey);
               combined.push(p);
             }
           }
           for (const p of initialBlogs) {
-            if (p?.slug && !seen.has(p.slug.toLowerCase())) {
+            const imgKey = p?.coverImage?.match(/photo-[a-zA-Z0-9_-]+/)?.[0] || p?.coverImage;
+            if (p?.slug && !seen.has(p.slug.toLowerCase()) && !seenImages.has(imgKey)) {
               seen.add(p.slug.toLowerCase());
+              seenImages.add(imgKey);
               combined.push(p);
             }
           }
           setBlogs(combined);
+        } else {
+          setBlogs(initialBlogs);
         }
       } catch (e) {
         console.error('Error reading local blogs:', e);
@@ -46,27 +57,17 @@ export default function BlogClientHub({ initialBlogs }: BlogClientHubProps) {
       .then(r => r.json())
       .then(d => {
         if (d.success && Array.isArray(d.blogs) && d.blogs.length > 0) {
-          try {
-            const localCustom = JSON.parse(localStorage.getItem('sobhavi_custom_blogs') || '[]');
-            const seen = new Set<string>();
-            const combined: BlogPost[] = [];
-            
-            for (const p of (localCustom || [])) {
-              if (p?.slug && !seen.has(p.slug.toLowerCase())) {
-                seen.add(p.slug.toLowerCase());
-                combined.push(p);
-              }
-            }
-            for (const p of d.blogs) {
-              if (p?.slug && !seen.has(p.slug.toLowerCase())) {
-                seen.add(p.slug.toLowerCase());
-                combined.push(p);
-              }
-            }
-            setBlogs(combined);
-          } catch (err) {
-            setBlogs(d.blogs);
-          }
+          const seenImages = new Set<string>();
+          const seenSlugs = new Set<string>();
+          const sanitized = d.blogs.filter((b: BlogPost) => {
+            const imgKey = b.coverImage?.match(/photo-[a-zA-Z0-9_-]+/)?.[0] || b.coverImage;
+            const slugKey = (b.slug || '').toLowerCase();
+            if (seenImages.has(imgKey) || seenSlugs.has(slugKey)) return false;
+            seenImages.add(imgKey);
+            seenSlugs.add(slugKey);
+            return true;
+          });
+          setBlogs(sanitized);
         }
       })
       .catch(console.error);

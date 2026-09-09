@@ -46,20 +46,31 @@ export default function Home() {
         if (Array.isArray(localCustom) && localCustom.length > 0) {
           const initial = getAllBlogs();
           const seen = new Set<string>();
+          const seenImages = new Set<string>();
           const combined: BlogPost[] = [];
-          for (const p of localCustom) {
-            if (p?.slug && !seen.has(p.slug.toLowerCase())) {
+          for (const raw of localCustom) {
+            const p = { ...raw };
+            if (p?.title?.toLowerCase()?.includes('haveli') || p?.slug?.includes('haveli')) {
+              p.coverImage = 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop';
+            }
+            const imgKey = p?.coverImage?.match(/photo-[a-zA-Z0-9_-]+/)?.[0] || p?.coverImage;
+            if (p?.slug && !seen.has(p.slug.toLowerCase()) && !seenImages.has(imgKey)) {
               seen.add(p.slug.toLowerCase());
+              seenImages.add(imgKey);
               combined.push(p);
             }
           }
           for (const p of initial) {
-            if (p?.slug && !seen.has(p.slug.toLowerCase())) {
+            const imgKey = p?.coverImage?.match(/photo-[a-zA-Z0-9_-]+/)?.[0] || p?.coverImage;
+            if (p?.slug && !seen.has(p.slug.toLowerCase()) && !seenImages.has(imgKey)) {
               seen.add(p.slug.toLowerCase());
+              seenImages.add(imgKey);
               combined.push(p);
             }
           }
           setBlogs(combined);
+        } else {
+          setBlogs(getAllBlogs());
         }
       } catch (e) {
         console.error(e);
@@ -71,7 +82,17 @@ export default function Home() {
       .then(r => r.json())
       .then(d => {
         if (d.success && Array.isArray(d.blogs) && d.blogs.length > 0) {
-          setBlogs(d.blogs);
+          const seenImages = new Set<string>();
+          const seenSlugs = new Set<string>();
+          const sanitized = d.blogs.filter((b: BlogPost) => {
+            const imgKey = b.coverImage?.match(/photo-[a-zA-Z0-9_-]+/)?.[0] || b.coverImage;
+            const slugKey = (b.slug || '').toLowerCase();
+            if (seenImages.has(imgKey) || seenSlugs.has(slugKey)) return false;
+            seenImages.add(imgKey);
+            seenSlugs.add(slugKey);
+            return true;
+          });
+          setBlogs(sanitized);
         }
       })
       .catch(console.error);
@@ -342,8 +363,47 @@ export default function Home() {
     ]
   };
 
-  // Filter top 3 blogs for homepage
-  const featuredBlogs = blogs.slice(0, 3);
+  // Select top 3 diverse destination stories for homepage (strictly avoid duplicate regions or photos)
+  const featuredBlogs = (() => {
+    const seenCategories = new Set<string>();
+    const seenImages = new Set<string>();
+    const result: BlogPost[] = [];
+
+    for (const post of blogs) {
+      const imgMatch = post.coverImage.match(/photo-[a-zA-Z0-9_-]+/);
+      const imgKey = imgMatch ? imgMatch[0] : post.coverImage;
+      const catKey = (post.category || '').toLowerCase().trim();
+
+      // Avoid showing two posts from the same state/region or with identical photo
+      const isDuplicateRegion =
+        (catKey.includes('rajasthan') && Array.from(seenCategories).some(c => c.includes('rajasthan') || c.includes('culture'))) ||
+        (catKey.includes('culture') && Array.from(seenCategories).some(c => c.includes('rajasthan') || c.includes('culture'))) ||
+        seenCategories.has(catKey) ||
+        seenImages.has(imgKey);
+
+      if (!isDuplicateRegion) {
+        seenCategories.add(catKey);
+        seenImages.add(imgKey);
+        result.push(post);
+      }
+      if (result.length >= 3) break;
+    }
+
+    // Backfill with other non-duplicate image posts if needed
+    if (result.length < 3) {
+      for (const post of blogs) {
+        const imgMatch = post.coverImage.match(/photo-[a-zA-Z0-9_-]+/);
+        const imgKey = imgMatch ? imgMatch[0] : post.coverImage;
+        if (!result.some(r => r.slug === post.slug) && !seenImages.has(imgKey)) {
+          seenImages.add(imgKey);
+          result.push(post);
+        }
+        if (result.length >= 3) break;
+      }
+    }
+
+    return result.slice(0, 3);
+  })();
 
   return (
     <>
@@ -593,44 +653,80 @@ export default function Home() {
         </section>
 
         {/* =================================================================
-            6. BLOGS (Formerly The Journal)
+            6. BLOGS & EDITORIAL CHRONICLES
             ================================================================= */}
         <section className={styles.blogsSection}>
           <div className="container">
-            <div className={styles.sectionHeader}>
-              <span className={styles.eyebrow}>NOTES FROM THE ROAD</span>
-              <h2 className={styles.sectionTitle}>BLOGs</h2>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className={styles.sectionHeader}
+            >
+              <span className={styles.eyebrow}>CURATED CHRONICLES &amp; STORIES</span>
+              <h2 className={styles.sectionTitle}>THE TRAVEL JOURNAL</h2>
               <p className={styles.sectionSubtitle}>
-                Stories, festival guides and perspectives to inspire your next journey.
+                Stories, festival guides, and insider perspectives to inspire your next bespoke voyage.
               </p>
-            </div>
+            </motion.div>
 
             <div className={styles.blogsGrid}>
-              {featuredBlogs.map((post) => (
-                <Link
+              {featuredBlogs.map((post, idx) => (
+                <motion.div
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className={styles.blogCard}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.7, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  className={styles.blogCardWrapper}
                 >
-                  <div
-                    className={styles.blogImage}
-                    style={{ backgroundImage: `url(${post.coverImage})` }}
-                  />
-                  <div className={styles.blogContent}>
-                    <span className={styles.blogCategory}>{post.category}</span>
-                    <h3 className={styles.blogTitle}>{post.title}</h3>
-                    <p className={styles.blogExcerpt}>{post.excerpt}</p>
-                    <span className={styles.blogReadMore}>Read Story &rarr;</span>
-                  </div>
-                </Link>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className={styles.blogCard}
+                  >
+                    <div className={styles.blogImageWrapper}>
+                      <div
+                        className={styles.blogImage}
+                        style={{ backgroundImage: `url(${post.coverImage})` }}
+                      />
+                      <div className={styles.blogImageOverlay} />
+                      <div className={styles.blogImageBadges}>
+                        <span className={styles.blogCategoryBadge}>✦ {post.category}</span>
+                        {post.readTime && <span className={styles.blogReadTimeBadge}>{post.readTime}</span>}
+                      </div>
+                    </div>
+                    <div className={styles.blogContent}>
+                      <div className={styles.blogMetaRow}>
+                        <span className={styles.blogAuthorTag}>{post.authorRole || post.author || "Editorial Curator"}</span>
+                        {post.publishedAt && <span className={styles.blogDateTag}>{post.publishedAt}</span>}
+                      </div>
+                      <h3 className={styles.blogTitle}>{post.title}</h3>
+                      <p className={styles.blogExcerpt}>{post.excerpt}</p>
+                      <div className={styles.blogFooter}>
+                        <span className={styles.blogReadMore}>
+                          <span>Read Full Story</span>
+                          <span className={styles.blogReadMoreArrow}>&rarr;</span>
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
               ))}
             </div>
 
-            <div className={styles.blogsCtaRow}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className={styles.blogsCtaRow}
+            >
               <Link href="/blog" className={styles.blogsAllBtn}>
-                Explore All Stories &rarr;
+                <span>Explore All Journal Stories</span>
+                <span className={styles.btnArrow}>&rarr;</span>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </section>
 
