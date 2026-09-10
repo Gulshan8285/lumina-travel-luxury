@@ -456,7 +456,7 @@ export default function Home() {
             <div className={styles.introContainer}>
               <span className={styles.introEyebrow}>✦ EFFORTLESS TRAVEL PLANNING</span>
               <h2 className={styles.introHeadline}>
-                Planning a trip sounds exciting.<br />
+                <span className={styles.introHeadlineWhite}>Planning a trip sounds exciting.</span>
                 <span className={styles.introHeadlineGold}>Planning the trip itself? Not always.</span>
               </h2>
 
