@@ -414,20 +414,6 @@ export default function Home() {
             <div className={styles.scrollLine} />
           </a>
 
-          {/* Subtle Slide Indicators */}
-          <div className={styles.heroIndicators}>
-            {heroSlides.map((slide, idx) => (
-              <button
-                key={slide.id}
-                type="button"
-                onClick={() => goToSlide(idx)}
-                className={`${styles.indicatorDot} ${idx === currentSlide ? styles.indicatorActive : ''}`}
-                aria-label={`Show ${slide.name} video`}
-              >
-                <span className={styles.indicatorName}>{slide.name}</span>
-              </button>
-            ))}
-          </div>
 
         </section>
 
