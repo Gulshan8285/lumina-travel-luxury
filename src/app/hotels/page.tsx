@@ -332,7 +332,7 @@ export default function HotelsPage() {
 
                     <div className={styles.supportStrip}>
                       <span>Direct Hospitality Desk:</span>
-                      <a href="tel:+917406994752" style={{ color: '#0a0a0a', fontWeight: 700 }}>+91 74069 94752</a>
+                      <a href="tel:+917406994752" style={{ color: '#0a0a0a', fontWeight: 700 }}>+91 7406994752</a>
                     </div>
                   </form>
                 )}

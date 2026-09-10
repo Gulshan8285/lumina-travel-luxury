@@ -65,7 +65,7 @@ export default function Navbar() {
   const header = config.header || {
     brandName: config.company?.brandName || "SOBHAVI TRAVELS",
     logoSubtitle: "LUXURY BESPOKE JOURNEYS",
-    phone: config.company?.phone || "+91 74069 94752",
+    phone: config.company?.phone || "+91 7406994752",
     whatsapp: config.company?.whatsapp || "7406994752",
     enquireButtonText: "Enquire Now",
     enquireButtonLink: "/enquire",
@@ -75,7 +75,7 @@ export default function Navbar() {
 
   const brandName = header.brandName || config.company?.brandName || "SOBHAVI TRAVELS";
 
-  const directPhone = header.phone || config.company?.phone || "+91 74069 94752";
+  const directPhone = header.phone || config.company?.phone || "+91 7406994752";
   const cleanPhone = directPhone.replace(/[^0-9+]/g, '');
 
   const cleanWa = (header.whatsapp || config.company?.whatsapp || '7406994752').replace(/[^0-9]/g, '');

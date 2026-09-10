@@ -23,7 +23,7 @@ const SERVICES = [
 ];
 
 const TARGET_WHATSAPP = "917406994752";
-const DISPLAY_PHONE = "+91 74069 94752";
+const DISPLAY_PHONE = "+91 7406994752";
 const DISPLAY_EMAIL = "hello@sobhavitravel.com";
 
 export default function SinglePageForm({ initialDestination = "", initialService = "" }: SinglePageFormProps) {
@@ -171,7 +171,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+91 74069 94752"
+                  placeholder="+91 7406994752"
                   required
                   className={styles.input}
                 />

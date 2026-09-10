@@ -310,26 +310,6 @@ export default function Home() {
     "Honeymoon Escapes"
   ];
 
-  // Homepage SEO FAQs
-  const homeFaqs = [
-    {
-      q: "Why choose Sobhavi Travels over automated booking portals?",
-      a: "Unlike impersonal booking aggregators, Sobhavi Travels designs 100% tailor-made luxury itineraries backed by dedicated human concierges. You get negotiated corporate tariffs on luxury 5-star hotels, verified private chauffeur transfers, custom pacing, and real-time WhatsApp coordination (+91 74069 94752) for seamless travel."
-    },
-    {
-      q: "Which destinations do you specialize in?",
-      a: "We curate signature domestic journeys across Rajasthan, Kerala, Shimla & Manali, Andaman Islands, and Kashmir, as well as luxury international expeditions to Dubai, Singapore, Bali, Maldives, Thailand, and Vietnam."
-    },
-    {
-      q: "Do you arrange both flights, hotels, and visas together?",
-      a: "Yes. Sobhavi Travels is a full-service travel concierge. We handle domestic and international flight ticketing, 5-star hotel and private villa reservations, fast-track visa processing, local chauffeur transfers, and unique private experiences under a single, transparent itinerary."
-    },
-    {
-      q: "How can I get a personalized travel quote?",
-      a: "Click 'Plan My Trip' or reach out directly on WhatsApp (+91 74069 94752). Share your destination preference, tentative travel dates, and budget, and our destination specialists will craft a customized itinerary within hours."
-    }
-  ];
-
   const homeJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -337,7 +317,7 @@ export default function Home() {
         "@type": "TravelAgency",
         "name": "Sobhavi Travels",
         "url": "https://lumina-travel-luxury.vercel.app",
-        "telephone": "+91 74069 94752",
+        "telephone": "+91 7406994752",
         "email": "hello@sobhavitravel.com",
         "address": {
           "@type": "PostalAddress",
@@ -348,17 +328,6 @@ export default function Home() {
           "addressCountry": "IN"
         },
         "description": "Tailor-made luxury travel agency specializing in bespoke domestic holidays and global international expeditions."
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": homeFaqs.map(faq => ({
-          "@type": "Question",
-          "name": faq.q,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": faq.a
-          }
-        }))
       }
     ]
   };
@@ -730,29 +699,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =================================================================
-            7. SEO FREQUENTLY ASKED QUESTIONS
-            ================================================================= */}
-        <section className={styles.homeFaqSection}>
-          <div className="container">
-            <div className={styles.homeFaqHeader}>
-              <span className={styles.eyebrow}>COMMON QUESTIONS</span>
-              <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
-              <p className={styles.sectionSubtitle}>
-                Everything you need to know about planning your next bespoke journey with Sobhavi Travels.
-              </p>
-            </div>
 
-            <div className={styles.homeFaqGrid}>
-              {homeFaqs.map((faq, idx) => (
-                <div key={idx} className={styles.homeFaqCard}>
-                  <h3 className={styles.homeFaqQuestion}>{faq.q}</h3>
-                  <p className={styles.homeFaqAnswer}>{faq.a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* =================================================================
             8. FINAL CTA

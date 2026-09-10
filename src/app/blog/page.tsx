@@ -42,7 +42,7 @@ export default async function BlogHub() {
                 Plan Your Tailor-Made Escape
               </Link>
               <a href="tel:+917406994752" className="btn-outline">
-                Speak to a Specialist: +91 74069 94752
+                Speak to a Specialist: +91 7406994752
               </a>
             </div>
           </div>

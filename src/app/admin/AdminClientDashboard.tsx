@@ -183,7 +183,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
   const headerData: HeaderConfig = config.header || {
     brandName: config.company?.brandName || "SOBHAVI TRAVELS",
     logoSubtitle: "LUXURY BESPOKE JOURNEYS",
-    phone: config.company?.phone || "+91 74069 94752",
+    phone: config.company?.phone || "+91 7406994752",
     whatsapp: config.company?.whatsapp || "7406994752",
     enquireButtonText: "Enquire Now",
     enquireButtonLink: "/enquire",
@@ -194,7 +194,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
   const footerData: FooterConfig = config.footer || {
     aboutTitle: config.company?.brandName || "SOBHAVI TRAVELS",
     aboutText: config.company?.tagline || "Your journey. Our expertise. From quick getaways to international holidays, family vacations to special occasions — travel made memorable.",
-    phone: config.company?.phone || "+91 74069 94752",
+    phone: config.company?.phone || "+91 7406994752",
     whatsapp: config.company?.whatsapp || "7406994752",
     email: config.company?.email || "hello@sobhavitravel.com",
     address: config.company?.address || "Ground Floor, No. 19, 2nd Cross, NR Layout, Kalyanagar, Babusapalya, Bengaluru 560043",
@@ -726,7 +726,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                   className={styles.formInput}
                   value={headerData.phone || ''}
                   onChange={(e) => handleHeaderChange('phone', e.target.value)}
-                  placeholder="+91 74069 94752"
+                  placeholder="+91 7406994752"
                 />
                 <span style={{ fontSize: '0.74rem', color: '#94a3b8', marginTop: '4px' }}>
                   Shown in top-right corner next to the Enquire button.
@@ -866,7 +866,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                   className={styles.formInput}
                   value={footerData.phone || ''}
                   onChange={(e) => handleFooterChange('phone', e.target.value)}
-                  placeholder="+91 74069 94752"
+                  placeholder="+91 7406994752"
                 />
               </div>
               <div className={styles.formGroup}>
@@ -1105,7 +1105,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                   ...config,
                   company: { ...config.company, phone: e.target.value }
                 })}
-                placeholder="+91 74069 94752"
+                placeholder="+91 7406994752"
               />
             </div>
             <div className={styles.formGroup}>

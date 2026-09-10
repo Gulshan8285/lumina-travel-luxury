@@ -79,7 +79,7 @@ const FAQS = [
   },
   {
     q: "How do I communicate with my Travel Buddy during the trip?",
-    a: "You receive direct access to our destination desk via dedicated WhatsApp and mobile number (+91 74069 94752). Whether you need to delay morning pickup by an hour or request a restaurant recommendation, your Buddy responds immediately."
+    a: "You receive direct access to our destination desk via dedicated WhatsApp and mobile number (+91 7406994752). Whether you need to delay morning pickup by an hour or request a restaurant recommendation, your Buddy responds immediately."
   }
 ];
 

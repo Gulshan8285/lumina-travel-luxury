@@ -141,7 +141,7 @@ const INTERNATIONAL_FAQS = [
   },
   {
     q: "How can I customize an international package?",
-    a: "Simply tap 'Book This Package' or message our WhatsApp concierge at +91 74069 94752. We adjust trip lengths, select your preferred 5-star resorts, and add special experiences like helicopter charters, yacht rentals, or private romantic dining."
+    a: "Simply tap 'Book This Package' or message our WhatsApp concierge at +91 7406994752. We adjust trip lengths, select your preferred 5-star resorts, and add special experiences like helicopter charters, yacht rentals, or private romantic dining."
   }
 ];
 
@@ -151,7 +151,7 @@ export default function InternationalPage() {
     ? config.internationalDestinations
     : FALLBACK_INTERNATIONAL;
 
-  const phone = config.company?.phone || "+91 74069 94752";
+  const phone = config.company?.phone || "+91 7406994752";
   const cleanWa = (config.company?.whatsapp || "7406994752").replace(/[^0-9]/g, '');
 
   const jsonLdData = {

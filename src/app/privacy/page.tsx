@@ -174,7 +174,7 @@ export default function PrivacyPolicyPage() {
                   </div>
                   <div className={styles.contactRow}>
                     <span>📞 Phone:</span>
-                    <a href="tel:+917406994752" className={styles.contactLink}>+91 74069 94752</a>
+                    <a href="tel:+917406994752" className={styles.contactLink}>+91 7406994752</a>
                   </div>
                   <div className={styles.contactRow}>
                     <span>📍 Address:</span>

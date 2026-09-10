@@ -235,7 +235,7 @@ export default function FlightsPage() {
 
                     <div className={styles.flightSupportStrip}>
                       <span>Flight Desk (12 PM – 9 PM):</span>
-                      <a href="tel:+917406994752" style={{ color: '#0a0a0a', fontWeight: 700 }}>+91 74069 94752</a>
+                      <a href="tel:+917406994752" style={{ color: '#0a0a0a', fontWeight: 700 }}>+91 7406994752</a>
                     </div>
                   </form>
                 )}
@@ -274,7 +274,7 @@ export default function FlightsPage() {
               <div className={styles.sectionBlock}>
                 <h3>1. Human Concierge Over Automated Chatbots</h3>
                 <p>
-                  When flight schedules change unexpectedly or weather causes connections to tighten, generic web portals leave passengers stranded with automated voice menus. At Sobhavi Travels, every passenger is assigned a dedicated ticketing specialist. With a single direct message to our WhatsApp desk (+91 74069 94752), rescheduling, boarding pass retrieval, and meal preferences are resolved in real time.
+                  When flight schedules change unexpectedly or weather causes connections to tighten, generic web portals leave passengers stranded with automated voice menus. At Sobhavi Travels, every passenger is assigned a dedicated ticketing specialist. With a single direct message to our WhatsApp desk (+91 7406994752), rescheduling, boarding pass retrieval, and meal preferences are resolved in real time.
                 </p>
               </div>
 
@@ -320,7 +320,7 @@ export default function FlightsPage() {
                 </p>
                 <div className={styles.articleCtaButtons}>
                   <a href="tel:+917406994752" className="btn-pink">
-                    Call Flight Desk: +91 74069 94752
+                    Call Flight Desk: +91 7406994752
                   </a>
                   <a 
                     href="https://wa.me/917406994752?text=Hello%20Sobhavi%20Travels,%20I%20need%20flight%20booking%20assistance." 
