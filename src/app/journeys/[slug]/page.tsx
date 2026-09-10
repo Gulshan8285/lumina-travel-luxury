@@ -211,7 +211,7 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                       WhatsApp: 7406994752
                     </a>
                     <a href="tel:+917406994752" className={styles.sidebarCallBtn}>
-                      Call +91 7406994752
+                      Call +917406994752
                     </a>
                   </div>
                 </div>

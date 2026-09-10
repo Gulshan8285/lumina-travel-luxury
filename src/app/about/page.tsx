@@ -39,7 +39,7 @@ export default function AboutPage() {
                   Whether securing private helicopter charters for Kedarnath VIP darshan, reserving coveted overwater villas in the Maldives, or synchronizing private chauffeur arrivals across Rajasthan's historic palaces — our specialists handle flights, 5-star accommodations, gourmet dining, and private transfers as a singular, harmonious experience.
                 </p>
                 <p>
-                  With direct WhatsApp concierge access to dedicated destination managers (+91 7406994752), you travel with total confidence that a personal travel advocate is always just a message away.
+                  With direct WhatsApp concierge access to dedicated destination managers (+917406994752), you travel with total confidence that a personal travel advocate is always just a message away.
                 </p>
                 <div style={{ marginTop: '2rem' }}>
                   <Link href="/enquire" className="btn-pink">

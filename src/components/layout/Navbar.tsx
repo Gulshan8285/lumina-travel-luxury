@@ -42,7 +42,12 @@ export default function Navbar() {
       try {
         const saved = localStorage.getItem('sobhavi_site_config');
         if (saved) {
-          setConfig(JSON.parse(saved));
+          const parsed = JSON.parse(saved);
+          if (parsed.company?.phone) parsed.company.phone = parsed.company.phone.replace(/\s+/g, '');
+          if (parsed.header?.phone) parsed.header.phone = parsed.header.phone.replace(/\s+/g, '');
+          if (parsed.footer?.phone) parsed.footer.phone = parsed.footer.phone.replace(/\s+/g, '');
+          localStorage.setItem('sobhavi_site_config', JSON.stringify(parsed));
+          setConfig(parsed);
         }
       } catch (e) {
         console.error(e);
@@ -65,7 +70,7 @@ export default function Navbar() {
   const header = config.header || {
     brandName: config.company?.brandName || "SOBHAVI TRAVELS",
     logoSubtitle: "LUXURY BESPOKE JOURNEYS",
-    phone: config.company?.phone || "+91 7406994752",
+    phone: config.company?.phone || "+917406994752",
     whatsapp: config.company?.whatsapp || "7406994752",
     enquireButtonText: "Enquire Now",
     enquireButtonLink: "/enquire",
@@ -75,7 +80,8 @@ export default function Navbar() {
 
   const brandName = header.brandName || config.company?.brandName || "SOBHAVI TRAVELS";
 
-  const directPhone = header.phone || config.company?.phone || "+91 7406994752";
+  const rawPhone = header.phone || config.company?.phone || "+917406994752";
+  const directPhone = rawPhone.replace(/\s+/g, '');
   const cleanPhone = directPhone.replace(/[^0-9+]/g, '');
 
   const cleanWa = (header.whatsapp || config.company?.whatsapp || '7406994752').replace(/[^0-9]/g, '');

@@ -141,7 +141,7 @@ const DOMESTIC_FAQS = [
   },
   {
     q: "How does the booking process work with Sobhavi Travels?",
-    a: "Simply click 'Book This Package' or reach out directly on WhatsApp (+91 7406994752). Your dedicated travel specialist will craft a detailed itinerary, confirm hotel availability, and finalize your booking with zero hidden charges."
+    a: "Simply click 'Book This Package' or reach out directly on WhatsApp (+917406994752). Your dedicated travel specialist will craft a detailed itinerary, confirm hotel availability, and finalize your booking with zero hidden charges."
   }
 ];
 
@@ -151,7 +151,7 @@ export default function DomesticPage() {
     ? config.domesticDestinations
     : FALLBACK_DOMESTIC;
 
-  const phone = config.company?.phone || "+91 7406994752";
+  const phone = config.company?.phone || "+917406994752";
   const cleanWa = (config.company?.whatsapp || "7406994752").replace(/[^0-9]/g, '');
 
   const jsonLdData = {

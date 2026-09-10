@@ -35,7 +35,7 @@ export default function Footer() {
   const company = config.company || {
     brandName: "SOBHAVI TRAVELS",
     tagline: "Bespoke luxury travel curated with precision, elegance, and uncompromised comfort. From private Indian escapes to iconic international holidays.",
-    phone: "+91 7406994752",
+    phone: "+917406994752",
     whatsapp: "7406994752",
     email: "hello@sobhavitravel.com",
     address: "Ground Floor, No. 19, 2nd Cross, NR Layout, Kalyanagar, Babusapalya, Bengaluru 560043"
@@ -44,7 +44,7 @@ export default function Footer() {
   const footer = config.footer || {
     aboutTitle: company.brandName || "SOBHAVI TRAVELS",
     aboutText: company.tagline || "Bespoke luxury travel curated with precision, elegance, and uncompromised comfort. From private Indian escapes to iconic international holidays.",
-    phone: company.phone || "+91 7406994752",
+    phone: company.phone || "+917406994752",
     whatsapp: company.whatsapp || "7406994752",
     email: company.email || "hello@sobhavitravel.com",
     address: company.address || "Ground Floor, No. 19, 2nd Cross, NR Layout, Kalyanagar, Babusapalya, Bengaluru 560043",
@@ -55,7 +55,7 @@ export default function Footer() {
     creditLink: "https://www.codeorbit.cloud"
   };
 
-  const cleanPhone = (footer.phone || company.phone || "+91 7406994752").replace(/[^0-9+]/g, '');
+  const cleanPhone = (footer.phone || company.phone || "+917406994752").replace(/[^0-9+]/g, '');
   const cleanWa = (footer.whatsapp || company.whatsapp || '7406994752').replace(/[^0-9]/g, '');
   const waUrl = `https://wa.me/${cleanWa.startsWith('91') ? cleanWa : '91' + cleanWa}`;
 

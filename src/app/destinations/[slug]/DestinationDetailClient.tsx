@@ -93,7 +93,7 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
                 Plan Your {destination.name} Escape
               </button>
               <a href="tel:+917406994752" className={styles.secondaryHeroBtn}>
-                Call Concierge: +91 7406994752
+                Call Concierge: +917406994752
               </a>
             </div>
           </div>
@@ -252,10 +252,10 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
                       rel="noopener noreferrer"
                       className={styles.sidebarWaBtn}
                     >
-                      WhatsApp: +91 7406994752
+                      WhatsApp: +917406994752
                     </a>
                     <a href="tel:+917406994752" className={styles.sidebarCallBtn}>
-                      Call +91 7406994752
+                      Call +917406994752
                     </a>
                   </div>
                 </div>

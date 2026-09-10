@@ -317,7 +317,7 @@ export default function Home() {
         "@type": "TravelAgency",
         "name": "Sobhavi Travels",
         "url": "https://lumina-travel-luxury.vercel.app",
-        "telephone": "+91 7406994752",
+        "telephone": "+917406994752",
         "email": "hello@sobhavitravel.com",
         "address": {
           "@type": "PostalAddress",
