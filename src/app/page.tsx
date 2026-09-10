@@ -126,6 +126,14 @@ export default function Home() {
       posterUrl: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200&auto=format&fit=crop"
     },
     {
+      id: "maldives",
+      category: "International",
+      name: "Maldives",
+      tagline: "Overwater Villas & Pristine Coral Atolls",
+      videoUrl: "/videos/destinations/maldives.mp4",
+      posterUrl: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
       id: "dubai",
       category: "International",
       name: "Dubai",
@@ -164,14 +172,6 @@ export default function Home() {
       tagline: "Turquoise Lagoons & Coral Island Shorelines",
       videoUrl: "/videos/destinations/andaman.mp4",
       posterUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"
-    },
-    {
-      id: "maldives",
-      category: "International",
-      name: "Maldives",
-      tagline: "Overwater Villas & Pristine Coral Atolls",
-      videoUrl: "/videos/destinations/maldives.mp4",
-      posterUrl: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1200&auto=format&fit=crop"
     }
   ];
 
@@ -194,10 +194,11 @@ export default function Home() {
 
     setCurrentSlide(targetIndex);
 
-    // Natural 1.0x playback rate
+    // Slow down camel video (rajasthan) to 0.55x, standard 1.0x for other slides
     if (incomingRef.current) {
       try {
-        incomingRef.current.playbackRate = 1.0;
+        const isCamel = heroSlides[targetIndex]?.id === 'rajasthan';
+        incomingRef.current.playbackRate = isCamel ? 0.55 : 1.0;
         const p = incomingRef.current.play();
         if (p !== undefined) p.catch(() => {});
       } catch (err) {
@@ -224,7 +225,8 @@ export default function Home() {
   useEffect(() => {
     if (videoRef0.current) {
       try {
-        videoRef0.current.playbackRate = 1.0;
+        const isCamel = heroSlides[channel0Index]?.id === 'rajasthan';
+        videoRef0.current.playbackRate = isCamel ? 0.55 : 1.0;
         const p = videoRef0.current.play();
         if (p !== undefined) p.catch(() => {});
       } catch (e) {}
@@ -386,6 +388,12 @@ export default function Home() {
                   playsInline
                   preload="auto"
                   poster={slide0.posterUrl}
+                  onLoadedMetadata={(e) => {
+                    e.currentTarget.playbackRate = slide0.id === 'rajasthan' ? 0.55 : 1.0;
+                  }}
+                  onPlay={(e) => {
+                    e.currentTarget.playbackRate = slide0.id === 'rajasthan' ? 0.55 : 1.0;
+                  }}
                 />
               </div>
 
@@ -406,6 +414,12 @@ export default function Home() {
                   playsInline
                   preload="none"
                   poster={slide1.posterUrl}
+                  onLoadedMetadata={(e) => {
+                    e.currentTarget.playbackRate = slide1.id === 'rajasthan' ? 0.55 : 1.0;
+                  }}
+                  onPlay={(e) => {
+                    e.currentTarget.playbackRate = slide1.id === 'rajasthan' ? 0.55 : 1.0;
+                  }}
                 />
               </div>
             </div>
