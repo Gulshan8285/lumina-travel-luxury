@@ -286,28 +286,7 @@ export default function Home() {
     }
   ];
 
-  // Pure Typographic Services (No Images)
-  const servicesList = [
-    "Flight Bookings",
-    "Hotel Bookings",
-    "Visa Assistance",
-    "Cab & Transfers",
-    "Sightseeing & Activities",
-    "Travel Insurance",
-    "Airport Transfers",
-    "Complete Trip Planning"
-  ];
 
-  // Pure Typographic Experiences (No Images)
-  const experiencesList = [
-    "Beach Escapes",
-    "Mountain Getaways",
-    "Wildlife & Nature",
-    "Romantic Getaways",
-    "Family Holidays",
-    "Weekend Getaways",
-    "Honeymoon Escapes"
-  ];
 
   const homeJsonLd = {
     "@context": "https://schema.org",
@@ -569,40 +548,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =================================================================
-            4. CONCIERGE SERVICES & EXPERIENCES (Interactive Bi-Directional Marquee)
-            ================================================================= */}
-        <section className={styles.conciergeSection}>
-          <div className={styles.conciergeHeader}>
-            <span className={styles.eyebrow}>END-TO-END CONCIERGE</span>
-            <h2 className={styles.sectionTitle}>SERVICES &amp; EXPERIENCES</h2>
-            <p className={styles.sectionSubtitle}>
-              From first-class flights and 5-star villas to bespoke safari expeditions — every detail arranged seamlessly.
-            </p>
-          </div>
 
-          <div className={styles.marqueeWrapper}>
-            {/* Row 1: Services (Scrolling Right to Left) */}
-            <div className={`${styles.marqueeTrack} ${styles.trackScrollLeft}`}>
-              {[...servicesList, ...servicesList].map((service, idx) => (
-                <div key={`srv-${idx}`} className={styles.marqueeCard}>
-                  <span className={styles.marqueeStar}>✦</span>
-                  <span className={styles.marqueeLabel}>{service}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Row 2: Experiences (Scrolling Left to Right) */}
-            <div className={`${styles.marqueeTrack} ${styles.trackScrollRight}`}>
-              {[...experiencesList, ...experiencesList].map((exp, idx) => (
-                <div key={`exp-${idx}`} className={styles.marqueeCard}>
-                  <span className={styles.marqueeStar}>✦</span>
-                  <span className={styles.marqueeLabel}>{exp}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* =================================================================
             6. BLOGS & EDITORIAL CHRONICLES
