@@ -1188,7 +1188,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                     ...config,
                     hero: { ...config.hero, headline: e.target.value }
                   })}
-                  placeholder="THE LUXURY TRAVEL EXPERTS"
+                  placeholder="ESCAPE THE ROUTINE"
                 />
               </div>
               <div className={styles.formGroup}>

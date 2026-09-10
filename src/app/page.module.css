@@ -105,25 +105,18 @@
 
 .heroTitleLarge {
   font-family: var(--font-heading, sans-serif);
-  font-size: clamp(1.6rem, 3.4vw, 2.9rem);
+  font-size: clamp(1.8rem, 3.8vw, 3.2rem);
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  margin: 0 auto 0.9rem;
-  line-height: 1.12;
+  margin: 0 auto;
+  line-height: 1.15;
   text-align: center;
-}
-
-.heroTitleLight {
-  display: block;
-  color: #f7f3ea;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
-}
-
-.heroTitleGold {
-  display: block;
-  color: #e5ba55;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(160deg, #ffffff 0%, #fff8e7 40%, #f3cf65 75%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.85));
 }
 
 .heroSubtitle {

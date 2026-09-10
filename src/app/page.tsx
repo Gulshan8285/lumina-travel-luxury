@@ -434,24 +434,10 @@ export default function Home() {
             <div className={styles.heroOverlay} />
           </div>
 
-          {/* Black Tomato Style Hero: Title, Subtitle, Dual CTAs & Scroll Indicator */}
+          {/* Hero: Only ESCAPE THE ROUTINE */}
           <div className={styles.heroContent}>
             <div className={styles.heroTextContainer}>
-              <h1 className={styles.heroTitleLarge}>
-                <span className={styles.heroTitleLight}>THE LUXURY</span>
-                <span className={styles.heroTitleGold}>TRAVEL EXPERTS</span>
-              </h1>
-              <p className={styles.heroSubtitle}>
-                TAILOR-MADE TRIPS, AWARD-WINNING ESCAPES. EST. 2015.
-              </p>
-              <div className={styles.heroActionsRow}>
-                <a href="#destinations" className={styles.heroBtnOutline}>
-                  EXPLORE DESTINATIONS
-                </a>
-                <Link href="/enquire" className={styles.heroBtnSolid}>
-                  PLAN MY TRIP
-                </Link>
-              </div>
+              <h1 className={styles.heroTitleLarge}>ESCAPE THE ROUTINE</h1>
             </div>
           </div>
 
