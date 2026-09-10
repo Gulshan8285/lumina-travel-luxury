@@ -1,56 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
-
 export default function FilmGrain() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animFrameRef = useRef<number>(0);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let w = window.innerWidth;
-    let h = window.innerHeight;
-
-    const resize = () => {
-      w = window.innerWidth;
-      h = window.innerHeight;
-      canvas.width = w;
-      canvas.height = h;
-    };
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    const drawGrain = () => {
-      const imageData = ctx.createImageData(w, h);
-      const data = imageData.data;
-      for (let i = 0; i < data.length; i += 4) {
-        const n = (Math.random() * 18) | 0; // very subtle grain intensity
-        data[i]     = n;
-        data[i + 1] = n;
-        data[i + 2] = n;
-        data[i + 3] = 22; // very low opacity = barely visible
-      }
-      ctx.putImageData(imageData, 0, 0);
-      animFrameRef.current = requestAnimationFrame(drawGrain);
-    };
-
-    drawGrain();
-
-    return () => {
-      cancelAnimationFrame(animFrameRef.current);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
-
   return (
-    <canvas
-      ref={canvasRef}
+    <div
       style={{
         position: 'fixed',
         top: 0,
@@ -60,9 +12,14 @@ export default function FilmGrain() {
         pointerEvents: 'none',
         zIndex: 9998,
         mixBlendMode: 'screen',
-        opacity: 0.35,
+        opacity: 0.28,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")`,
+        backgroundRepeat: 'repeat',
+        transform: 'translateZ(0)',
+        willChange: 'opacity',
       }}
       aria-hidden="true"
     />
   );
 }
+

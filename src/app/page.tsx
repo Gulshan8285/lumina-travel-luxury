@@ -457,7 +457,7 @@ export default function Home() {
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="none"
                   poster={slide1.posterUrl}
                 />
               </div>

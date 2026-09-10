@@ -17,10 +17,17 @@ export default function Navbar() {
   const [config, setConfig] = useState<SiteConfig>(() => getSiteConfig());
 
   useEffect(() => {
+    let lastScrolled = window.scrollY > 50;
+    setScrolled(lastScrolled);
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const isOver = window.scrollY > 50;
+      if (isOver !== lastScrolled) {
+        lastScrolled = isOver;
+        setScrolled(isOver);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

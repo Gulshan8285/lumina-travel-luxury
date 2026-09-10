@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
+import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
 import FilmGrain from "@/components/ui/FilmGrain";
 import FloatingContact from "@/components/ui/FloatingContact";
@@ -7,6 +8,18 @@ import NavigationProgress from "@/components/ui/NavigationProgress";
 import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
 import Footer from "@/components/layout/Footer";
 import ConditionalFooter from "@/components/layout/ConditionalFooter";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -39,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
       <body className="dark-mode-forced">
         <Suspense fallback={null}>
           <NavigationProgress />
