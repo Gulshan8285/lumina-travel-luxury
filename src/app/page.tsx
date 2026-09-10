@@ -437,7 +437,10 @@ export default function Home() {
           {/* Black Tomato Style Hero: Title, Subtitle, Dual CTAs & Scroll Indicator */}
           <div className={styles.heroContent}>
             <div className={styles.heroTextContainer}>
-              <h1 className={styles.heroTitleLarge}>THE LUXURY TRAVEL EXPERTS</h1>
+              <h1 className={styles.heroTitleLarge}>
+                <span className={styles.heroTitleLight}>THE LUXURY</span>
+                <span className={styles.heroTitleGold}>TRAVEL EXPERTS</span>
+              </h1>
               <p className={styles.heroSubtitle}>
                 TAILOR-MADE TRIPS, AWARD-WINNING ESCAPES. EST. 2015.
               </p>
