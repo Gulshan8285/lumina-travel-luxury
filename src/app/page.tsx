@@ -107,7 +107,7 @@ export default function Home() {
     };
   }, []);
 
-  // 8 Curated destination video slides
+  // 6 Curated premier destination video slides
   const heroSlides = [
     {
       id: "rajasthan",
@@ -129,7 +129,7 @@ export default function Home() {
       id: "maldives",
       category: "International",
       name: "Maldives",
-      tagline: "Overwater Villas & Pristine Coral Atolls",
+      tagline: "Overwater Villas & Pristine Turquoise Atolls",
       videoUrl: "/videos/destinations/maldives.mp4",
       posterUrl: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1200&auto=format&fit=crop"
     },
@@ -137,25 +137,9 @@ export default function Home() {
       id: "dubai",
       category: "International",
       name: "Dubai",
-      tagline: "Futuristic Skylines & Arabian Sands",
+      tagline: "Burj Khalifa & Futuristic Skyline Wonders",
       videoUrl: "/videos/destinations/dubai.mp4",
       posterUrl: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop"
-    },
-    {
-      id: "shimla-manali",
-      category: "Domestic",
-      name: "Shimla & Manali",
-      tagline: "Snow Peaks & Himalayan Pine Valleys",
-      videoUrl: "/videos/destinations/shimla-manali.mp4",
-      posterUrl: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=1200&auto=format&fit=crop"
-    },
-    {
-      id: "singapore",
-      category: "International",
-      name: "Singapore",
-      tagline: "Gardens by the Bay & Modern Wonder",
-      videoUrl: "/videos/destinations/singapore.mp4",
-      posterUrl: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1200&auto=format&fit=crop"
     },
     {
       id: "bali",
@@ -166,12 +150,12 @@ export default function Home() {
       posterUrl: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1200&auto=format&fit=crop"
     },
     {
-      id: "andaman",
+      id: "shimla-manali",
       category: "Domestic",
-      name: "Andaman & Nicobar",
-      tagline: "Turquoise Lagoons & Coral Island Shorelines",
-      videoUrl: "/videos/destinations/andaman.mp4",
-      posterUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"
+      name: "Shimla & Manali",
+      tagline: "Snow Peaks & Himalayan Pine Valleys",
+      videoUrl: "/videos/destinations/shimla-manali.mp4",
+      posterUrl: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=1200&auto=format&fit=crop"
     }
   ];
 
@@ -212,13 +196,13 @@ export default function Home() {
       if (outgoingRef.current) {
         outgoingRef.current.pause();
       }
-    }, 900);
+    }, 1200);
   };
 
   useEffect(() => {
     const timer = setInterval(() => {
       goToSlide((currentSlide + 1) % heroSlides.length);
-    }, 5500);
+    }, 6000);
     return () => clearInterval(timer);
   }, [currentSlide, activeChannel, heroSlides.length]);
 
@@ -438,6 +422,21 @@ export default function Home() {
             <span>SCROLL</span>
             <div className={styles.scrollLine} />
           </a>
+
+          {/* Subtle Slide Indicators */}
+          <div className={styles.heroIndicators}>
+            {heroSlides.map((slide, idx) => (
+              <button
+                key={slide.id}
+                type="button"
+                onClick={() => goToSlide(idx)}
+                className={`${styles.indicatorDot} ${idx === currentSlide ? styles.indicatorActive : ''}`}
+                aria-label={`Show ${slide.name} video`}
+              >
+                <span className={styles.indicatorName}>{slide.name}</span>
+              </button>
+            ))}
+          </div>
 
         </section>
 
