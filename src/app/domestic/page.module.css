@@ -123,12 +123,12 @@
   margin: 0 0 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #0a0a0a;
+  color: #ffffff;
 }
 
 .sectionDesc {
   font-size: 1rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.7);
   line-height: 1.6;
 }
 
@@ -142,8 +142,8 @@
   background: #111111;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.18);
   transition: all 0.35s ease;
   display: flex;
   flex-direction: column;
@@ -151,8 +151,8 @@
 
 .destCard:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-  border-color: rgba(225, 29, 72, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  border-color: rgba(212, 175, 55, 0.45);
 }
 
 .imageWrapper {
@@ -198,7 +198,7 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 0.35rem;
-  color: #0a0a0a;
+  color: #ffffff;
 }
 
 .destTagline {
@@ -238,7 +238,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.4rem;
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.75);
 }
 
 .inclusionItem {
@@ -256,39 +256,42 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid #f1f5f9;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .bookBtn {
   flex: 1;
   text-align: center;
   padding: 0.85rem 1.2rem;
-  background: #0a0a0a;
-  color: #ffffff;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
+  color: #080808;
+  border-radius: 999px;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
 }
 
 .bookBtn:hover {
-  background: #d4af37;
+  background: linear-gradient(135deg, #f3cf65 0%, #d4af37 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
 .whatsappBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.85rem 1.1rem;
+  padding: 0.85rem 1.2rem;
   background: #25d366;
   color: #ffffff;
-  border-radius: 8px;
+  border-radius: 999px;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   gap: 0.4rem;
   transition: all 0.25s ease;
@@ -363,15 +366,15 @@
    ========================================================================== */
 .destPriceBadge {
   display: inline-block;
-  background: #0a0a0a;
-  color: #ffffff;
-  font-weight: 600;
+  background: rgba(212, 175, 55, 0.12);
+  color: #f3cf65;
+  font-weight: 700;
   font-size: 0.82rem;
-  padding: 0.35rem 0.85rem;
+  padding: 0.4rem 0.95rem;
   border-radius: 999px;
-  margin-bottom: 0.8rem;
-  letter-spacing: 0.04em;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 0.85rem;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(212, 175, 55, 0.35);
 }
 
 .dayPlanList {

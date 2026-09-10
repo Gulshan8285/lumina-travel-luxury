@@ -267,7 +267,7 @@ export default function InternationalPage() {
 
                     {dest.dayPlan && dest.dayPlan.length > 0 && (
                       <div className={styles.dayPlanList}>
-                        <strong style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#1e293b' }}>
+                        <strong style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#d4af37' }}>
                           Itinerary Highlights:
                         </strong>
                         {dest.dayPlan.slice(0, 4).map((d: DayPlan, i: number) => (
