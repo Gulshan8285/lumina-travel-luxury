@@ -358,10 +358,6 @@ export default function Home() {
               <div
                 className={`${styles.heroVideoChannel} ${activeChannel === 0 ? styles.channelActive : styles.channelInactive}`}
               >
-                <div
-                  className={styles.channelPoster}
-                  style={{ backgroundImage: `url(${slide0.posterUrl})` }}
-                />
                 <video
                   ref={videoRef0}
                   src={slide0.videoUrl}
@@ -371,7 +367,6 @@ export default function Home() {
                   loop
                   playsInline
                   preload="auto"
-                  poster={slide0.posterUrl}
                   onLoadedMetadata={(e) => {
                     e.currentTarget.playbackRate = slide0.id === 'rajasthan' ? 0.55 : 1.0;
                   }}
@@ -385,19 +380,15 @@ export default function Home() {
               <div
                 className={`${styles.heroVideoChannel} ${activeChannel === 1 ? styles.channelActive : styles.channelInactive}`}
               >
-                <div
-                  className={styles.channelPoster}
-                  style={{ backgroundImage: `url(${slide1.posterUrl})` }}
-                />
                 <video
                   ref={videoRef1}
                   src={slide1.videoUrl}
                   className={styles.heroVideo}
+                  autoPlay
                   muted
                   loop
                   playsInline
-                  preload="none"
-                  poster={slide1.posterUrl}
+                  preload="auto"
                   onLoadedMetadata={(e) => {
                     e.currentTarget.playbackRate = slide1.id === 'rajasthan' ? 0.55 : 1.0;
                   }}
