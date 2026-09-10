@@ -477,30 +477,52 @@ export default function Home() {
         </section>
 
         {/* =================================================================
-            2. INTRODUCTION — DIRECTLY BELOW HERO (Black Tomato Editorial Style)
+            2. INTRODUCTION — DIRECTLY BELOW HERO (Editorial Concierge Story)
             ================================================================= */}
         <section id="intro" className={styles.introSection}>
           <div className="container">
             <div className={styles.introContainer}>
+              <span className={styles.introEyebrow}>✦ EFFORTLESS TRAVEL PLANNING</span>
               <h2 className={styles.introHeadline}>
-                EVERY JOURNEY STARTS WITH A FEELING
+                Planning a trip sounds exciting.<br />
+                <span className={styles.introHeadlineGold}>Planning the trip itself? Not always.</span>
               </h2>
+
               <div className={styles.introTextWrapper}>
                 <p className={styles.introParagraph}>
-                  The world is vast, full of wonders. But information engulfs us. See this, do that, don't miss this. It seems the more choice there is, the more overwhelmed we feel. What's more, you're never asked <em>how you want to feel</em>.
+                  Whether you're planning a weekend getaway or a two-week trip across countries, it takes time, energy and a surprising amount of mental space. Comparing prices across different sites, finding the right hotels and flights, figuring out transfers, visas and everything in between &mdash; all while juggling your professional and personal life.
                 </p>
-                <p className={styles.introMuted}>
-                  That's not us. <strong>Sobhavi Travels</strong> is a tailor-made luxury travel company that designs fully personalised itineraries &mdash; not templates, not off-the-shelf tours. Whether you're a couple seeking adventure, a multi-generational family exploring together, or a solo traveller chasing something extraordinary, we craft every detail around you.
-                </p>
+
+                <div className={styles.introCalloutBox}>
+                  <p className={styles.introCalloutQuote}>
+                    The trip can start feeling exhausting before it even begins.
+                  </p>
+                  <span className={styles.introCalloutPivot}>So why not let us handle it?</span>
+                </div>
+
                 <p className={styles.introParagraph}>
-                  Recognised for bespoke travel excellence &mdash; trusted to deliver tailor-made journeys across India and over 100 global destinations.
+                  At <strong>Sobhavi</strong>, we take care of the planning and coordination so you can focus on the part that actually matters &mdash; <em>enjoying your holiday</em>.
                 </p>
-                <p className={styles.introHighlight}>
-                  So let's begin. Let's do something remarkable.
+
+                <p className={styles.introServicesText}>
+                  We're more than just holiday packages. We can assist you with flights, hotels, visa services, cabs, transfers, sightseeing and other arrangements on the ground, helping bring everything together in one place.
                 </p>
-                <div>
+
+                <div className={styles.introServicesPills}>
+                  <span>✈ Flights</span>
+                  <span>🏨 5-Star Hotels</span>
+                  <span>🛂 Visa Services</span>
+                  <span>🚘 Cabs & Transfers</span>
+                  <span>🗺 Sightseeing & Concierge</span>
+                </div>
+
+                <div className={styles.introClosingBox}>
+                  <p className={styles.introClosingStatement}>
+                    You tell us where you want to go. We'll take care of the rest.
+                  </p>
                   <Link href="/enquire" className={styles.introCtaBtn}>
-                    GET IN TOUCH
+                    <span>PLAN YOUR TRIP</span>
+                    <span className={styles.ctaArrow}>&rarr;</span>
                   </Link>
                 </div>
               </div>
