@@ -459,13 +459,6 @@ export default function Home() {
                   We're more than just holiday packages. We can assist you with flights, hotels, visa services, cabs, transfers, sightseeing and other arrangements on the ground, helping bring everything together in one place.
                 </p>
 
-                <div className={styles.introServicesPills}>
-                  <span>✈ Flights</span>
-                  <span>🏨 5-Star Hotels</span>
-                  <span>🛂 Visa Services</span>
-                  <span>🚘 Cabs & Transfers</span>
-                  <span>🗺 Sightseeing & Concierge</span>
-                </div>
 
                 <div className={styles.introClosingBox}>
                   <p className={styles.introClosingStatement}>
