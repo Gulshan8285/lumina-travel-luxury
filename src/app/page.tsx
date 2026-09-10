@@ -177,7 +177,6 @@ export default function Home() {
 
   const slide0 = heroSlides[channel0Index] || heroSlides[0];
   const slide1 = heroSlides[channel1Index] || heroSlides[1];
-  const activeSlide = heroSlides[currentSlide] || heroSlides[0];
 
   const goToSlide = (targetIndex: number) => {
     if (targetIndex === currentSlide) return;
@@ -447,33 +446,6 @@ export default function Home() {
             <div className={styles.scrollLine} />
           </a>
 
-          {/* Subtle Location & Controls Indicator */}
-          <div className={styles.heroLocationIndicator}>
-            <div className={styles.heroLocationLeft}>
-              <span className={styles.heroLocationDot}></span>
-              <span>
-                <strong>{activeSlide.name}</strong> ({activeSlide.category}) &mdash; {activeSlide.tagline}
-              </span>
-            </div>
-          </div>
-          <div className={styles.heroLocationRight}>
-            <button
-              type="button"
-              className={styles.heroNavBtn}
-              onClick={() => goToSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)}
-              aria-label="Previous destination video"
-            >
-              &#8592;
-            </button>
-            <button
-              type="button"
-              className={styles.heroNavBtn}
-              onClick={() => goToSlide((currentSlide + 1) % heroSlides.length)}
-              aria-label="Next destination video"
-            >
-              &#8594;
-            </button>
-          </div>
         </section>
 
         {/* =================================================================
