@@ -537,6 +537,14 @@ export default function Home() {
                 </motion.div>
               </AnimatePresence>
             </div>
+
+            {/* Explore All Destinations Button */}
+            <div className={styles.exploreAllWrapper}>
+              <Link href="/destinations" className={styles.exploreAllBtn}>
+                <span>EXPLORE ALL DESTINATIONS</span>
+                <span className={styles.exploreArrow}>&rarr;</span>
+              </Link>
+            </div>
           </div>
         </section>
 
