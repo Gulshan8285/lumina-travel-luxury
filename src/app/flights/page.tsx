@@ -319,16 +319,16 @@ export default function FlightsPage() {
                   Connect directly with our flight desk for personalized fare quotes, business class upgrades, and group bookings.
                 </p>
                 <div className={styles.articleCtaButtons}>
-                  <a href="tel:+917406994752" className="btn-pink">
-                    Call Flight Desk: +917406994752
-                  </a>
+                  <Link href="/enquire" className="btn-gold">
+                    Enquire for Private Fares
+                  </Link>
                   <a 
                     href="https://wa.me/917406994752?text=Hello%20Sobhavi%20Travels,%20I%20need%20flight%20booking%20assistance." 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="btn-outline"
                   >
-                    WhatsApp Concierge
+                    WhatsApp Flight Desk
                   </a>
                 </div>
               </div>

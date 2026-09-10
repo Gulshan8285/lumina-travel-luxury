@@ -117,9 +117,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <a href="#enquiry-box" className={styles.planTripBtn}>
                     Inquire for Custom Dates
                   </a>
-                  <a href="tel:+917406994752" className={styles.callSpecialistBtn}>
-                    Call Specialist: 7406994752
-                  </a>
                   <a 
                     href={`https://wa.me/917406994752?text=${encodeURIComponent(`Hello! I read your journal article: "${post.title}" and would like to plan a similar journey.`)}`}
                     target="_blank"

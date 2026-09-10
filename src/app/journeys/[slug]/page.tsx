@@ -207,10 +207,7 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                       rel="noopener noreferrer" 
                       className={styles.sidebarWaBtn}
                     >
-                      WhatsApp: 7406994752
-                    </a>
-                    <a href="tel:+917406994752" className={styles.sidebarCallBtn}>
-                      Call +917406994752
+                      WhatsApp Concierge
                     </a>
                   </div>
                 </div>

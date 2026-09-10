@@ -41,8 +41,13 @@ export default async function BlogHub() {
               <Link href="/enquire" className="btn-gold">
                 Plan Your Tailor-Made Escape
               </Link>
-              <a href="tel:+917406994752" className="btn-outline">
-                Speak to a Specialist: +917406994752
+              <a 
+                href="https://wa.me/917406994752?text=Hello%20Sobhavi%20Travels,%20I%20would%20like%20to%20speak%20with%20a%20travel%20curator."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline"
+              >
+                WhatsApp Concierge
               </a>
             </div>
           </div>

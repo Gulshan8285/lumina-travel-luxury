@@ -288,10 +288,10 @@ export default function SinglePageForm({ initialDestination = "", initialService
 
           {/* Card 1: WhatsApp (fastest) */}
           <div className={styles.contactCard}>
-            <div className={styles.cardIconBox}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#10b981">
-                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.34C8.52 21.52 10.22 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm-1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
-                <path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5L2.1 21.9l5.034-1.22A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm4.646 13.884c-.235.659-1.169 1.258-1.91 1.338-.508.054-1.171.08-3.376-.832-2.813-1.163-4.63-4.01-4.77-4.197-.14-.187-1.144-1.523-1.144-2.905 0-1.382.724-2.062.98-2.343.256-.281.56-.351.748-.351.187 0 .374.002.538.01.173.008.406-.065.635.485.235.565.801 1.956.871 2.097.07.14.117.305.023.492-.093.187-.14.304-.28.468-.14.164-.296.366-.422.492-.14.14-.286.293-.123.573.163.28 1.118 1.846 2.404 2.99 1.652 1.472 3.042 1.927 3.473 2.138.43.21.683.176.936-.117.253-.293 1.077-1.253 1.364-1.682.287-.43.573-.358.96-.215.387.143 2.457 1.158 2.879 1.369.422.211.703.316.806.492.103.176.103 1.019-.132 1.678z"/>
+            <div className={styles.cardIconBox} style={{ background: 'transparent', border: 'none' }}>
+              <svg width="36" height="36" viewBox="0 0 32 32" fill="none" style={{ display: 'block' }}>
+                <path fillRule="evenodd" clipRule="evenodd" d="M16 2C8.268 2 2 8.268 2 16c0 2.68.75 5.19 2.05 7.33L2.27 30.13l7.03-1.74A13.92 13.92 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="#25D366"/>
+                <path fillRule="evenodd" clipRule="evenodd" d="M22.58 19.34c-.36-.18-2.12-1.05-2.45-1.17-.33-.12-.57-.18-.81.18-.24.36-.93 1.17-1.14 1.41-.21.24-.42.27-.78.09-.36-.18-1.52-.56-2.89-1.78-1.07-.95-1.79-2.13-2-2.49-.21-.36-.02-.55.16-.73.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.67-.29-.7-.59-.6-.81-.61l-.69-.01c-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3 0 1.77 1.29 3.48 1.47 3.72.18.24 2.54 3.88 6.15 5.44.86.37 1.53.59 2.05.76.86.27 1.65.23 2.27.14.69-.1 2.12-.87 2.42-1.71.3-.84.3-1.56.21-1.71-.09-.15-.33-.24-.69-.42z" fill="#FFFFFF"/>
               </svg>
             </div>
             <div className={styles.cardDetails}>
@@ -306,24 +306,6 @@ export default function SinglePageForm({ initialDestination = "", initialService
                   {DISPLAY_PHONE}
                 </a>
                 <span className={styles.mutedText}> · WhatsApp us for a travel quote</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Phone */}
-          <div className={styles.contactCard}>
-            <div className={styles.cardIconBox}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#334155">
-                <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.27 22 2 13.73 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
-              </svg>
-            </div>
-            <div className={styles.cardDetails}>
-              <div className={styles.cardTitle}>Phone</div>
-              <div className={styles.cardText}>
-                <a href={`tel:${TARGET_WHATSAPP}`} className={styles.amberLink}>
-                  {DISPLAY_PHONE}
-                </a>
-                <span className={styles.mutedText}> · Mon–Sat 12:00 PM – 9:00 PM (IST)</span>
               </div>
             </div>
           </div>

@@ -92,8 +92,13 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
               <button onClick={scrollToEnquiry} className={styles.primaryHeroBtn}>
                 Plan Your {destination.name} Escape
               </button>
-              <a href="tel:+917406994752" className={styles.secondaryHeroBtn}>
-                Call Concierge: +917406994752
+              <a 
+                href={`https://wa.me/917406994752?text=Hello!%20I%20am%20interested%20in%20planning%20a%20luxury%20holiday%20to%20${encodeURIComponent(destination.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.secondaryHeroBtn}
+              >
+                WhatsApp Concierge
               </a>
             </div>
           </div>
@@ -251,9 +256,6 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
                       className={styles.sidebarWaBtn}
                     >
                       WhatsApp: +917406994752
-                    </a>
-                    <a href="tel:+917406994752" className={styles.sidebarCallBtn}>
-                      Call +917406994752
                     </a>
                   </div>
                 </div>
