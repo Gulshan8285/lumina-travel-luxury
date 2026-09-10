@@ -191,7 +191,6 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                     <ul className={styles.highlightsList}>
                       {journey.highlights.map((item, idx) => (
                         <li key={idx} className={styles.highlightItem}>
-                          <span className={styles.goldDot}>✦</span>
                           <span>{item}</span>
                         </li>
                       ))}

@@ -148,7 +148,6 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
                           <ul className={styles.highlightsList}>
                             {place.highlights.map((hl, hIdx) => (
                               <li key={hIdx} className={styles.highlightItem}>
-                                <span className={styles.goldDot}>✦</span>
                                 <span>{hl}</span>
                               </li>
                             ))}
@@ -237,7 +236,6 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
                     <ul className={styles.hotelList}>
                       {destination.hotels.map((hotel, idx) => (
                         <li key={idx} className={styles.hotelItem}>
-                          <span className={styles.goldStar}>✦</span>
                           <span>{hotel}</span>
                         </li>
                       ))}

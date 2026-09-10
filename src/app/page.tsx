@@ -433,7 +433,7 @@ export default function Home() {
         <section id="intro" className={styles.introSection}>
           <div className="container">
             <div className={styles.introContainer}>
-              <span className={styles.introEyebrow}>✦ EFFORTLESS TRAVEL PLANNING</span>
+              <span className={styles.introEyebrow}>EFFORTLESS TRAVEL PLANNING</span>
               <h2 className={styles.introHeadline}>
                 <span className={styles.introHeadlineWhite}>Planning a trip sounds exciting.</span>
                 <span className={styles.introHeadlineGold}>Planning the trip itself? Not always.</span>
@@ -528,7 +528,6 @@ export default function Home() {
                       />
                       <div className={styles.destCardOverlay} />
                       <div className={styles.destCardContent}>
-                        <div className={styles.destCardStar}>✦</div>
                         <h3 className={styles.destCardName}>{dest.name}</h3>
                         <p className={styles.destCardTagline}>{dest.tagline}</p>
                         <span className={styles.destCardLinkText}>View Destination &rarr;</span>
@@ -583,7 +582,7 @@ export default function Home() {
                       />
                       <div className={styles.blogImageOverlay} />
                       <div className={styles.blogImageBadges}>
-                        <span className={styles.blogCategoryBadge}>✦ {post.category}</span>
+                        <span className={styles.blogCategoryBadge}>{post.category}</span>
                         {post.readTime && <span className={styles.blogReadTimeBadge}>{post.readTime}</span>}
                       </div>
                     </div>
