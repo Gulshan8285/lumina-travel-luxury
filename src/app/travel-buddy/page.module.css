@@ -169,6 +169,156 @@
   margin: 0;
 }
 
+/* Core Services Showcase (5 Requested Pillars) */
+.coreServicesSection {
+  background: #080c14;
+  padding: 6rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.coreServicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.coreServiceCard {
+  background: #101624;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.coreServiceCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.coreServiceCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
+  background: #141c2e;
+}
+
+.coreServiceCard:hover::before {
+  opacity: 1;
+}
+
+.coreCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.coreCardIcon {
+  font-size: 2.4rem;
+  display: inline-block;
+}
+
+.coreCardBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f7d570;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+
+.coreCardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0 0 0.85rem;
+  line-height: 1.25;
+}
+
+.coreCardDesc {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+}
+
+.coreCardPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.corePill {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+}
+
+.coreCardFooter {
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.coreCardLink {
+  color: #f7d570;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.coreServiceCard:hover .coreCardLink {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.coreCardArrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f7d570;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.coreServiceCard:hover .coreCardArrow {
+  background: #d4af37;
+  color: #080c14;
+  transform: scale(1.1);
+}
+
 /* How It Works Steps */
 .howItWorksSection {
   background-color: #0b0f19;
@@ -327,6 +477,10 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
+  .coreServicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .stepsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -348,6 +502,10 @@
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+  }
+
+  .coreServicesGrid {
+    grid-template-columns: 1fr;
   }
 
   .stepsGrid {

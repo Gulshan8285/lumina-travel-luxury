@@ -31,6 +31,49 @@ const STEPS = [
   }
 ];
 
+const CORE_SERVICES = [
+  {
+    icon: "🛂",
+    title: "Visa Services",
+    badge: "99.4% APPROVAL RATE",
+    desc: "Fast-track eVisas and comprehensive paperwork curation for Dubai, Schengen, UK, USA, Singapore & Thailand with early appointment scheduling.",
+    pills: ["Express 48h eVisas", "VFS Appointment Booking", "Error-Free Document Audit"],
+    href: "/visa"
+  },
+  {
+    icon: "✈️",
+    title: "Flight Booking",
+    badge: "VIP AIRLINE TICKETING",
+    desc: "Domestic & international flight ticketing with premier global carriers. Institutional corporate tariffs, flexible rebooking, and real-time WhatsApp alert support.",
+    pills: ["Emirates & Singapore Airlines", "Complimentary Web Check-in", "Zero Hidden Markup"],
+    href: "/flights"
+  },
+  {
+    icon: "🏨",
+    title: "Hotel Booking",
+    badge: "5-STAR & HERITAGE STAYS",
+    desc: "Curated palace suites, overwater villas, and luxury resorts with guaranteed breakfast, dinner, and private dedicated sanitized chauffeur car included throughout.",
+    pills: ["Taj, Oberoi & Marriott", "Daily Gourmet Meals", "Dedicated Private AC Chauffeur"],
+    href: "/hotels"
+  },
+  {
+    icon: "💍",
+    title: "Honeymoon Packages",
+    badge: "BESPOKE ROMANTIC ESCAPES",
+    desc: "Intimate romantic getaways designed with love. Candlelit beach dining in Maldives, private pool villas in Bali, scenic Alps chalets, and sunset yacht charters.",
+    pills: ["Private Overwater Villas", "Candlelight Beach Dinners", "VIP Honeymoon Amenities"],
+    href: "/honeymoon"
+  },
+  {
+    icon: "👥",
+    title: "Group Tours",
+    badge: "CORPORATE & GROUPS",
+    desc: "Flawless group travel management for corporate conferences, team offsites, extended family reunions, and friend adventures with blocked flight seats.",
+    pills: ["Blocked Airline PNRs", "Dedicated On-Ground Director", "GST Compliant Invoicing"],
+    href: "/group-tours"
+  }
+];
+
 const SERVICES = [
   {
     icon: "✈️",
@@ -137,6 +180,48 @@ export default function TravelBuddyPage() {
                 <span className={styles.statNumber}>100%</span>
                 <span className={styles.statLabel}>Transparent Pricing</span>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Core Services Showcase (5 Requested Service Hubs) */}
+        <section className={styles.coreServicesSection}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <span className={styles.eyebrow}>SPECIALIZED TRAVEL PILLARS</span>
+              <h2 className={styles.sectionTitle}>Our Core Travel Services</h2>
+              <p className={styles.sectionSubtitle}>
+                Select a service to explore in-depth guides, verified checklists, insider pricing, and bespoke planning advice.
+              </p>
+            </div>
+
+            <div className={styles.coreServicesGrid}>
+              {CORE_SERVICES.map((srv, idx) => (
+                <Link key={idx} href={srv.href} className={styles.coreServiceCard}>
+                  <div>
+                    <div className={styles.coreCardHeader}>
+                      <span className={styles.coreCardIcon}>{srv.icon}</span>
+                      <span className={styles.coreCardBadge}>{srv.badge}</span>
+                    </div>
+
+                    <h3 className={styles.coreCardTitle}>{srv.title}</h3>
+                    <p className={styles.coreCardDesc}>{srv.desc}</p>
+
+                    <div className={styles.coreCardPills}>
+                      {srv.pills.map((pill, pIdx) => (
+                        <span key={pIdx} className={styles.corePill}>✓ {pill}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className={styles.coreCardFooter}>
+                    <span className={styles.coreCardLink}>
+                      Explore Service &amp; Guide
+                    </span>
+                    <span className={styles.coreCardArrow}>&rarr;</span>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>

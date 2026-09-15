@@ -319,8 +319,8 @@ export default function FlightsPage() {
                   Connect directly with our flight desk for personalized fare quotes, business class upgrades, and group bookings.
                 </p>
                 <div className={styles.articleCtaButtons}>
-                  <Link href="/enquire" className="btn-gold">
-                    Enquire for Private Fares
+                  <Link href="/enquire?service=Flight%20Booking" className="btn-gold">
+                    Enquire Now for Flights &rarr;
                   </Link>
                   <a 
                     href="https://wa.me/917406994752?text=Hello%20Sobhavi%20Travels,%20I%20need%20flight%20booking%20assistance." 

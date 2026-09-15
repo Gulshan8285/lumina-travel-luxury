@@ -185,6 +185,18 @@ export default function Navbar() {
                 <Link href="/visa" className={styles.mobileNavLink}>
                   Visa Services
                 </Link>
+                <Link href="/flights" className={styles.mobileNavLink}>
+                  Flight Booking
+                </Link>
+                <Link href="/hotels" className={styles.mobileNavLink}>
+                  Hotel Booking
+                </Link>
+                <Link href="/honeymoon" className={styles.mobileNavLink}>
+                  Honeymoon
+                </Link>
+                <Link href="/group-tours" className={styles.mobileNavLink}>
+                  Group Tours
+                </Link>
                 <Link href="/contact" className={styles.mobileNavLink}>
                   Contact Us
                 </Link>

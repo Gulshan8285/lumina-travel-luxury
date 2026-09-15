@@ -411,6 +411,110 @@ export default function HotelsPage() {
             </div>
           </div>
         </section>
+
+        {/* IN-DEPTH SEO EDITORIAL GUIDE (HIGH RANKING CONTENT) */}
+        <section className={styles.articleSection}>
+          <div className={`container ${styles.articleContainer}`}>
+            <div className={styles.articleHeader}>
+              <span className={styles.sectionEyebrow}>HOSPITALITY INSIDER</span>
+              <h2 className={styles.articleTitle}>
+                Luxury Hotels & Heritage Stays: The Insider Guide to Booking 5-Star Accommodations
+              </h2>
+              <p className={styles.articleLead}>
+                Booking a luxury hotel through generic discount portals often results in base inventory rooms overlooking parking lots, non-refundable booking catches, and expensive a-la-carte dining bills. Discover how bespoke hospitality concierge elevates your stay.
+              </p>
+            </div>
+
+            <div className={styles.articleBody}>
+              <div className={styles.sectionBlock}>
+                <h3>1. Beyond the Standard Room: How Direct Preferred Contracts Unlock VIP Privileges</h3>
+                <p>
+                  At Sobhavi Travels, we do not simply act as an online booking intermediary. We maintain direct corporate and bespoke leisure partnerships with premier luxury hospitality brands — including Taj Palaces & Resorts, The Oberoi Group, Marriott Luxury Collection, The Leela, Soneva, and Jumeirah.
+                </p>
+                <p>
+                  These direct connections enable our guests to receive preferred room placement (high floors, garden/lake vistas), priority early check-in, late check-out privileges, and complimentary suite upgrades based on availability upon arrival.
+                </p>
+              </div>
+
+              <div className={styles.sectionBlock}>
+                <h3>2. The Triple Synergy: Harmonizing Stay + Gourmet Meals + Private Chauffeur Fleet</h3>
+                <p>
+                  A truly luxurious vacation is ruined if you have to hail random street cabs or negotiate taxi rates every time you step outside the resort lobby.
+                </p>
+                <p>
+                  Every luxury hotel reservation coordinated by Sobhavi Travels is bundled with our private sanitized chauffeur service. From your arrival at the airport or railway station to scenic sightseeing transfers between cities, a dedicated uniformed chauffeur is exclusively at your service throughout the entire stay.
+                </p>
+              </div>
+
+              <div className={styles.sectionBlock}>
+                <h3>3. Transparency on Surcharges & Resort Levies</h3>
+                <p>
+                  Online booking portals frequently conceal mandatory local taxes, service charges, and island seaplane transfer fees until the final payment checkout screen.
+                </p>
+                <p>
+                  Sobhavi Travels provides 100% all-inclusive quotes encompassing daily buffet breakfasts, multi-course dinners, luxury resort fees, local taxes, and private transfers. What you see is exactly what you pay.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQS SECTION */}
+        <section className={styles.faqSection}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <span className={styles.sectionEyebrow}>STAYS & RESERVATION FAQS</span>
+              <h2 className={styles.sectionTitle} style={{ color: '#ffffff' }}>Frequently Asked Questions</h2>
+            </div>
+
+            <div className={styles.faqGrid}>
+              <div className={styles.faqCard}>
+                <h3 className={styles.faqQuestion}>Can I request early check-in or late check-out at 5-star hotels?</h3>
+                <p className={styles.faqAnswer}>Yes. Because of our direct hotel partnerships, we communicate your flight arrival timings directly with hotel guest relations, prioritizing your room preparation for early arrival.</p>
+              </div>
+              <div className={styles.faqCard}>
+                <h3 className={styles.faqQuestion}>Are meals included in your hotel packages?</h3>
+                <p className={styles.faqAnswer}>We offer customized meal plans: CPAI (Daily Buffet Breakfast), MAPAI (Breakfast + Dinner), or All-Inclusive with unlimited dining and curated beverages depending on your destination.</p>
+              </div>
+              <div className={styles.faqCard}>
+                <h3 className={styles.faqQuestion}>How does the private car service work during our hotel stay?</h3>
+                <p className={styles.faqAnswer}>Your private sanitized AC car (Sedan or SUV) with dedicated chauffeur is reserved exclusively for your party from arrival to departure, including local monument visits and dinner drop-offs.</p>
+              </div>
+              <div className={styles.faqCard}>
+                <h3 className={styles.faqQuestion}>Do you handle special requests like anniversaries or birthdays?</h3>
+                <p className={styles.faqAnswer}>Absolutely. We arrange complimentary celebration cakes, floral room decor, and private candlelight dinner setups across our partner resorts.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* BOTTOM PROMINENT ENQUIRY CALLOUT BANNER */}
+        <section className={styles.enquiryBannerSection}>
+          <div className="container">
+            <div className={styles.enquiryBannerCard}>
+              <span className={styles.bannerBadge}>DIRECT 5-STAR PARTNER RATES</span>
+              <h2 className={styles.bannerTitle}>Ready to Reserve a 5-Star Luxury Stay?</h2>
+              <p className={styles.bannerDesc}>
+                Whether you need a royal palace suite in Rajasthan, an overwater villa in the Maldives, or a secluded chalet in the Himalayas — our hotel concierge secures the best corporate rates.
+              </p>
+
+              <div className={styles.bannerButtons}>
+                <Link href="/enquire?service=Hotel%20Booking" className={styles.bannerEnquireBtn}>
+                  <span>Enquire Now for Hotels</span>
+                  <span>&rarr;</span>
+                </Link>
+                <a
+                  href="https://wa.me/917406994752?text=Hello%20Sobhavi%20Travels,%20I%20want%20to%20book%20a%20luxury%20hotel."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.bannerWhatsAppBtn}
+                >
+                  <span>WhatsApp Hotel Concierge (+917406994752)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );

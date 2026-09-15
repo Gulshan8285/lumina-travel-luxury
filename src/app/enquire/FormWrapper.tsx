@@ -8,8 +8,22 @@ export default function FormWrapper() {
   const searchParams = useSearchParams();
   const journeySlug = searchParams.get('journey');
   const destinationSlug = searchParams.get('destination');
+  const serviceParam = searchParams.get('service');
   
   let initialDestination = '';
+  let initialService = '';
+
+  if (serviceParam) {
+    const lower = serviceParam.toLowerCase();
+    if (lower.includes('visa')) initialService = "Visa Services";
+    else if (lower.includes('flight')) initialService = "Flight Booking";
+    else if (lower.includes('hotel')) initialService = "Hotel Booking";
+    else if (lower.includes('honeymoon')) initialService = "Honeymoon Package";
+    else if (lower.includes('group')) initialService = "Group Tour";
+    else if (lower.includes('corp')) initialService = "Corporate Travel";
+    else if (lower.includes('cruise')) initialService = "Cruise";
+    else initialService = serviceParam;
+  }
   
   if (journeySlug) {
     const journey = popularJourneys.find(j => j.slug === journeySlug);
@@ -50,6 +64,7 @@ export default function FormWrapper() {
   return (
     <SinglePageForm 
       initialDestination={initialDestination} 
+      initialService={initialService}
     />
   );
 }

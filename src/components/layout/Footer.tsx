@@ -222,6 +222,12 @@ export default function Footer() {
                   <Link href="/visa" className={styles.navLink}>Fast-Track Visa Assistance</Link>
                 </li>
                 <li>
+                  <Link href="/honeymoon" className={styles.navLink}>Honeymoon Packages</Link>
+                </li>
+                <li>
+                  <Link href="/group-tours" className={styles.navLink}>Group Tours & Offsites</Link>
+                </li>
+                <li>
                   <Link href="/travel-buddy" className={`${styles.navLink} ${styles.highlightLink}`}>
                     <span>Dedicated Travel Buddy</span>
                     <span className={styles.newTag}>NEW</span>
