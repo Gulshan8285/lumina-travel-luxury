@@ -160,29 +160,7 @@ export default function TravelBuddyPage() {
           </div>
         </section>
 
-        {/* Stats Counter Bar */}
-        <section className={styles.statsStrip}>
-          <div className="container">
-            <div className={styles.statsGrid}>
-              <div className={styles.statBox}>
-                <span className={styles.statNumber}>4.9 ★</span>
-                <span className={styles.statLabel}>Traveler Satisfaction</span>
-              </div>
-              <div className={styles.statBox}>
-                <span className={styles.statNumber}>2,500+</span>
-                <span className={styles.statLabel}>Bespoke Trips Planned</span>
-              </div>
-              <div className={styles.statBox}>
-                <span className={styles.statNumber}>24 / 7</span>
-                <span className={styles.statLabel}>Live WhatsApp Support</span>
-              </div>
-              <div className={styles.statBox}>
-                <span className={styles.statNumber}>100%</span>
-                <span className={styles.statLabel}>Transparent Pricing</span>
-              </div>
-            </div>
-          </div>
-        </section>
+
 
         {/* Core Services Showcase (5 Requested Service Hubs) */}
         <section className={styles.coreServicesSection}>
