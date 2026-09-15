@@ -22,7 +22,7 @@ export default function EnquirePage() {
             </span>
             <h1 className={styles.title}>Let’s plan your next escape.</h1>
             <p className={styles.subtitle}>
-              Share your destination, dates and travel preferences with us. Our private travel concierge will craft a fully bespoke itinerary with 5-star stays, private chauffeur transfers, and memorable experiences.
+              Share your destination, dates and travel preferences with us.
             </p>
           </div>
         </div>
