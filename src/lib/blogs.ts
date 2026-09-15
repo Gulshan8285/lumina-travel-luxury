@@ -78,10 +78,13 @@ export function getAllBlogs(): BlogPost[] {
   for (const post of custom) {
     if (post && post.slug && !seenSlugs.has(post.slug.toLowerCase())) {
       const normalized = { ...post };
-      // If this is the custom Haveli post that previously shared Amber Fort's photo, give it an authentic Haveli image
       if (normalized.title.toLowerCase().includes('haveli') || normalized.slug.includes('haveli')) {
-        normalized.coverImage = 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop';
+        normalized.coverImage = '/blogs/rajasthan-haveli-palace.jpg';
         normalized.category = 'Culture & Heritage';
+      }
+      if (normalized.title.toLowerCase().includes('rann') || normalized.slug.includes('rann')) {
+        normalized.coverImage = '/blogs/white-rann-kutch.jpg';
+        normalized.category = 'Rann Utsav';
       }
       
       const imgKey = normalized.coverImage.match(/photo-[a-zA-Z0-9_-]+/)?.[0] || normalized.coverImage;

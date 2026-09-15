@@ -25,7 +25,10 @@ export default function BlogClientHub({ initialBlogs }: BlogClientHubProps) {
           for (const raw of localCustom) {
             const p = { ...raw };
             if (p?.title?.toLowerCase()?.includes('haveli') || p?.slug?.includes('haveli')) {
-              p.coverImage = 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop';
+              p.coverImage = '/blogs/rajasthan-haveli-palace.jpg';
+            }
+            if (p?.title?.toLowerCase()?.includes('rann') || p?.slug?.includes('rann')) {
+              p.coverImage = '/blogs/white-rann-kutch.jpg';
             }
             const imgKey = p?.coverImage?.match(/photo-[a-zA-Z0-9_-]+/)?.[0] || p?.coverImage;
             if (p?.slug && !seen.has(p.slug.toLowerCase()) && !seenImages.has(imgKey)) {
