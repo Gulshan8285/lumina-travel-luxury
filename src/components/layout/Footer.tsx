@@ -212,9 +212,6 @@ export default function Footer() {
                   <Link href="/hotels" className={styles.navLink}>5-Star Hotels & Stays</Link>
                 </li>
                 <li>
-                  <Link href="/flights" className={styles.navLink}>Luxury Flights Concierge</Link>
-                </li>
-                <li>
                   <Link href="/visa" className={styles.navLink}>Fast-Track Visa Assistance</Link>
                 </li>
                 <li>
