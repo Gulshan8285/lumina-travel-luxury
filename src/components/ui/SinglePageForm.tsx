@@ -373,9 +373,9 @@ export default function SinglePageForm({ initialDestination = "", initialService
             <div className={styles.cardDetails}>
               <div className={styles.cardTitle}>Social</div>
               <div className={styles.socialLinks}>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.instagram.com/sobhavitravels?stkn=d3Z2Y3RtdTRqOTFj&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
                 <span className={styles.dotSeparator}>·</span>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a href="https://www.facebook.com/p/Sobhavi-Travels-61594440384684/" target="_blank" rel="noopener noreferrer">Facebook</a>
                 <span className={styles.dotSeparator}>·</span>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>

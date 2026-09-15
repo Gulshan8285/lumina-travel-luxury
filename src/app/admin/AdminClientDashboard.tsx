@@ -206,8 +206,8 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
   };
 
   const socialData: SocialConfig = config.social || {
-    instagram: "https://instagram.com",
-    facebook: "https://facebook.com",
+    instagram: "https://www.instagram.com/sobhavitravels?stkn=d3Z2Y3RtdTRqOTFj&utm_source=qr",
+    facebook: "https://www.facebook.com/p/Sobhavi-Travels-61594440384684/",
     youtube: "https://youtube.com",
     linkedin: "https://linkedin.com",
     twitter: "https://twitter.com",

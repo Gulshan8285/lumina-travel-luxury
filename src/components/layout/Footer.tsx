@@ -55,6 +55,12 @@ export default function Footer() {
     creditLink: "https://www.codeorbit.cloud"
   };
 
+  const social = config.social || {
+    instagram: "https://www.instagram.com/sobhavitravels?stkn=d3Z2Y3RtdTRqOTFj&utm_source=qr",
+    facebook: "https://www.facebook.com/p/Sobhavi-Travels-61594440384684/",
+    linkedin: "https://linkedin.com"
+  };
+
   const cleanPhone = (footer.phone || company.phone || "+917406994752").replace(/[^0-9+]/g, '');
   const cleanWa = (footer.whatsapp || company.whatsapp || '7406994752').replace(/[^0-9]/g, '');
   const waUrl = `https://wa.me/${cleanWa.startsWith('91') ? cleanWa : '91' + cleanWa}`;
@@ -132,7 +138,7 @@ export default function Footer() {
                 <span className={styles.socialHeading}>Connect With Us</span>
                 <div className={styles.socialRow}>
                   <a
-                    href="https://instagram.com"
+                    href={social.instagram || "https://www.instagram.com/sobhavitravels?stkn=d3Z2Y3RtdTRqOTFj&utm_source=qr"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialRing}
@@ -143,7 +149,7 @@ export default function Footer() {
                     </svg>
                   </a>
                   <a
-                    href="https://facebook.com"
+                    href={social.facebook || "https://www.facebook.com/p/Sobhavi-Travels-61594440384684/"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialRing}
