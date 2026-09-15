@@ -31,6 +31,9 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "SOBHAVI TRAVELS | Your journey. Our expertise.",
   description: "From quick getaways to international holidays, family vacations to special occasions - we help you plan the trip, while taking care of the details.",
+  verification: {
+    google: "lr5HQ7i2Jfk-J7rcrNZVUanwyiFCueWDsVwS3pF3ylo",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
