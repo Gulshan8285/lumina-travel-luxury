@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/layout/Navbar';
+import ReviewStrip from '@/components/ui/ReviewStrip';
 import { getSiteConfig, SiteConfig } from '@/lib/siteConfig';
 import { getAllBlogs, BlogPost } from '@/lib/blogs';
 import styles from './page.module.css';
@@ -222,24 +223,36 @@ export default function Home() {
     {
       name: "Rajasthan",
       tagline: "Palaces, Forts & Thar Desert Glamping",
+      duration: "6N / 7D",
+      price: "From ₹38,500 / person",
+      inclusions: "Chauffeured Sedan · 4★ Heritage Havelis · Desert Safari",
       image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=900&auto=format&fit=crop",
       href: "/domestic#rajasthan"
     },
     {
       name: "Shimla & Manali",
       tagline: "Snow Peaks & Himalayan Pine Valleys",
+      duration: "5N / 6D",
+      price: "From ₹26,900 / person",
+      inclusions: "Private SUV · Valley View Resorts · Solang Excursion",
       image: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=900&auto=format&fit=crop",
       href: "/domestic#shimla-manali"
     },
     {
       name: "Kerala",
       tagline: "Tranquil Backwaters & Lush Tea Plantations",
+      duration: "5N / 6D",
+      price: "From ₹31,200 / person",
+      inclusions: "Private AC Houseboat · Munnar Tea Estates · Airport Cabs",
       image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=900&auto=format&fit=crop",
       href: "/domestic#kerala"
     },
     {
       name: "Andaman & Nicobar Islands",
       tagline: "Emerald Lagoons, Coral Reefs & Radhanagar Beach",
+      duration: "5N / 6D",
+      price: "From ₹44,500 / person",
+      inclusions: "Makruzz Cruise Transfers · Beachfront Resorts · Scuba Session",
       image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop",
       href: "/domestic#andaman"
     }
@@ -249,26 +262,104 @@ export default function Home() {
     {
       name: "Dubai",
       tagline: "Futuristic Skylines, Burj Khalifa & Luxury Marina",
+      duration: "4N / 5D",
+      price: "From ₹52,900 / person",
+      inclusions: "UAE Express Visa · Desert BBQ Safari · Marina Dhow Cruise",
       image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=900&auto=format&fit=crop",
       href: "/international#dubai"
     },
     {
       name: "Singapore",
       tagline: "Gardens by the Bay & Marina Bay Sands",
+      duration: "4N / 5D",
+      price: "From ₹68,500 / person",
+      inclusions: "Singapore Visa · Sentosa Fun Pass · Universal Studios Tickets",
       image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=900&auto=format&fit=crop",
       href: "/international#singapore"
     },
     {
       name: "Bali",
       tagline: "Sacred Temples, Rice Terraces & Private Pool Villas",
+      duration: "6N / 7D",
+      price: "From ₹48,000 / person",
+      inclusions: "Private Pool Villa in Ubud & Seminyak · Nusa Penida Day Tour",
       image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop",
       href: "/international#bali"
     },
     {
       name: "Maldives",
       tagline: "Overwater Pool Villas & Turquoise Coral Lagoons",
+      duration: "3N / 4D",
+      price: "From ₹95,000 / person",
+      inclusions: "All-Inclusive Overwater Villa · Speedboat / Seaplane Transfers",
       image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=900&auto=format&fit=crop",
       href: "/international#maldives"
+    }
+  ];
+
+  const trustPillars = [
+    {
+      icon: "👤",
+      title: "Real Travel Designers, Not AI",
+      desc: "Every route, stay, and private chauffeur is personally vetted by human specialists — not an automated algorithm."
+    },
+    {
+      icon: "⚡",
+      title: "Direct 15-Min WhatsApp Support",
+      desc: "Zero robotic ticket queues or IVR menus. Chat directly with your dedicated trip coordinator 24/7."
+    },
+    {
+      icon: "🛡️",
+      title: "Transparent Itemized Pricing",
+      desc: "Complete breakdowns for flights, hotels, taxes, and transfers. Zero hidden agency markups or on-trip surprises."
+    },
+    {
+      icon: "🤝",
+      title: "Door-to-Door Ground Care",
+      desc: "Airport chauffeurs greeting you with name-boards, express visa updates, and 24/7 dedicated on-call assistance."
+    }
+  ];
+
+  const coreTravelServices = [
+    {
+      title: "Express Visa Services",
+      tag: "99.4% Approval Rate",
+      desc: "Fast-track tourist & business visas for Dubai, Singapore, Schengen, UK & Bali. Complete document screening with zero hassle.",
+      icon: "🛂",
+      pills: ["Schengen & Dubai Visa", "Hassle-Free Verification", "1-on-1 Document Review"],
+      href: "/visa"
+    },
+    {
+      title: "Flight Booking & Upgrades",
+      tag: "Corporate & Group Fares",
+      desc: "Direct flight reservations, group seating, meal preferences, excess baggage coordination and instant cancellation support.",
+      icon: "✈️",
+      pills: ["Special Agent Fares", "Instant Rescheduling", "Web Check-In Assistance"],
+      href: "/flights"
+    },
+    {
+      title: "Handpicked Luxury Hotels",
+      tag: "Vetted 4★ & 5★ Stays",
+      desc: "Authentic heritage havelis, luxury pool villas, and top-rated international resorts personally inspected for comfort and hygiene.",
+      icon: "🏨",
+      pills: ["Early Check-In Priority", "Complimentary Breakfasts", "Authentic Heritage Stays"],
+      href: "/hotels"
+    },
+    {
+      title: "Bespoke Honeymoon Packages",
+      tag: "Romance & Privacy",
+      desc: "Private pool villas, candlelit beach dinners, flower bed decorations, and secluded scenic excursions tailored for couples.",
+      icon: "💍",
+      pills: ["Overwater Villas", "Couples Spa & Dinners", "Private Transfers Only"],
+      href: "/honeymoon"
+    },
+    {
+      title: "Corporate & Group Tours",
+      tag: "Seamless Coordination",
+      desc: "Custom group itineraries, private luxury coaches, conference venue bookings, and dedicated on-ground tour managers.",
+      icon: "👥",
+      pills: ["Custom Group Itineraries", "Private Luxury Coaches", "Dedicated Tour Manager"],
+      href: "/group-tours"
     }
   ];
 
@@ -401,10 +492,57 @@ export default function Home() {
             <div className={styles.heroOverlay} />
           </div>
 
-          {/* Hero: Only ESCAPE THE ROUTINE */}
+          {/* Hero Content */}
           <div className={styles.heroContent}>
             <div className={styles.heroTextContainer}>
+              <span className={styles.heroEyebrow}>
+                <span>✨</span> Bespoke Luxury Holidays &amp; Expeditions
+              </span>
               <h1 className={styles.heroTitleLarge}>ESCAPE THE ROUTINE</h1>
+              <p className={styles.heroSubtitle}>
+                Handcrafted journeys curated by <strong>real travel designers</strong>. From <strong>seamless visas &amp; private transfers</strong> to <strong>vetted 5★ boutique stays</strong> &mdash; planned personally for you with zero guesswork.
+              </p>
+
+              {/* Trust stats bar */}
+              <div className={styles.heroTrustBar}>
+                <span className={styles.heroTrustItem}>
+                  <span className={styles.heroTrustStar}>★</span> <strong>4.9/5</strong> (420+ Google Reviews)
+                </span>
+                <span className={styles.heroTrustItem}>
+                  ⚡ <strong>15-Min Response</strong> on WhatsApp
+                </span>
+                <span className={styles.heroTrustItem}>
+                  🛡️ <strong>100% Verified</strong> Stays &amp; Drivers
+                </span>
+                <span className={styles.heroTrustItem}>
+                  ₹ <strong>No Hidden Fees</strong>
+                </span>
+              </div>
+
+              {/* Dual Hero CTA Buttons */}
+              <div className={styles.heroActionsRow}>
+                <Link href="/enquire" className={styles.heroBtnSolid}>
+                  Plan Your Bespoke Trip &rarr;
+                </Link>
+                <a
+                  href="https://wa.me/917406994752?text=Hi%20Sobhavi%20Travels,%20I'd%20like%20to%20plan%20a%20trip"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.heroBtnOutline}
+                >
+                  💬 Chat on WhatsApp (+91 74069 94752)
+                </a>
+              </div>
+
+              {/* Trending destination pills */}
+              <div className={styles.heroPillsRow}>
+                <span className={styles.heroPillsLabel}>Popular Now:</span>
+                <Link href="/domestic#rajasthan" className={styles.heroPill}>Rajasthan</Link>
+                <Link href="/domestic#kerala" className={styles.heroPill}>Kerala</Link>
+                <Link href="/international#dubai" className={styles.heroPill}>Dubai</Link>
+                <Link href="/international#bali" className={styles.heroPill}>Bali</Link>
+                <Link href="/international#maldives" className={styles.heroPill}>Maldives</Link>
+              </div>
             </div>
           </div>
 
@@ -465,6 +603,72 @@ export default function Home() {
         </section>
 
         {/* =================================================================
+            2B. WHY REAL TRAVELLERS CHOOSE SOBHAVI (Authentic Human Difference)
+            ================================================================= */}
+        <section className={styles.trustSection}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <span className={styles.eyebrow}>THE HUMAN DIFFERENCE</span>
+              <h2 className={styles.sectionTitle}>WHY REAL TRAVELLERS CHOOSE US</h2>
+              <p className={styles.sectionSubtitle}>
+                No auto-generated robotic packages. Every journey is hand-crafted with <strong>direct human accountability</strong>.
+              </p>
+            </div>
+
+            <div className={styles.trustGrid}>
+              {trustPillars.map((pillar, idx) => (
+                <div key={idx} className={styles.trustCard}>
+                  <span className={styles.trustIcon}>{pillar.icon}</span>
+                  <h3 className={styles.trustCardTitle}>{pillar.title}</h3>
+                  <p className={styles.trustCardDesc}>{pillar.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* =================================================================
+            2C. 5 CORE BESPOKE SERVICES SHOWCASE
+            ================================================================= */}
+        <section className={styles.homeCoreSection}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <span className={styles.eyebrow}>END-TO-END CONCIERGE</span>
+              <h2 className={styles.sectionTitle}>COMPLETE TRAVEL SERVICES</h2>
+              <p className={styles.sectionSubtitle}>
+                From express visas to private luxury stays &mdash; explore our core offerings.
+              </p>
+            </div>
+
+            <div className={styles.homeCoreGrid}>
+              {coreTravelServices.map((service, idx) => (
+                <Link key={idx} href={service.href} className={styles.homeCoreCard}>
+                  <div>
+                    <div className={styles.homeCoreHeader}>
+                      <span className={styles.homeCoreIcon}>{service.icon}</span>
+                      <span className={styles.homeCoreBadge}>{service.tag}</span>
+                    </div>
+                    <h3 className={styles.homeCoreTitle}>{service.title}</h3>
+                    <p className={styles.homeCoreDesc}>{service.desc}</p>
+                    <div className={styles.homeCorePills}>
+                      {service.pills.map((pill, pIdx) => (
+                        <span key={pIdx} className={styles.homeCorePill}>{pill}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className={styles.homeCoreFooter}>
+                    <span className={styles.homeCoreLink}>
+                      <span>Explore In-Depth Guide</span>
+                      <span>&rarr;</span>
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* =================================================================
             3. DESTINATIONS (Dual Tabs: Domestic & International)
             ================================================================= */}
         <section id="destinations" className={styles.destinationsSection}>
@@ -518,9 +722,14 @@ export default function Home() {
                       />
                       <div className={styles.destCardOverlay} />
                       <div className={styles.destCardContent}>
+                        <div className={styles.destCardBadgeRow}>
+                          <span className={styles.destDurationBadge}>{dest.duration}</span>
+                          <span className={styles.destPriceBadge}>{dest.price}</span>
+                        </div>
                         <h3 className={styles.destCardName}>{dest.name}</h3>
                         <p className={styles.destCardTagline}>{dest.tagline}</p>
-                        <span className={styles.destCardLinkText}>View Destination &rarr;</span>
+                        <p className={styles.destInclusions}>{dest.inclusions}</p>
+                        <span className={styles.destCardLinkText}>View Itinerary Details &rarr;</span>
                       </div>
                     </Link>
                   ))}
@@ -537,6 +746,11 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* =================================================================
+            5. VERIFIED GOOGLE & REAL HUMAN REVIEWS
+            ================================================================= */}
+        <ReviewStrip />
 
 
 
