@@ -3,14 +3,15 @@
    ========================================================================== */
 
 .mainWrapper {
-  background: #080808;
+  background: #121826;
   color: var(--foreground, #ffffff);
   overflow-x: hidden;
   position: relative;
-  /* Warm amber canvas — very subtle */
+  /* Luminous golden & ambient lighting */
   background-image:
-    radial-gradient(ellipse 80% 40% at 20% 0%, rgba(212, 175, 55, 0.04) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 80% 100%, rgba(184, 151, 46, 0.035) 0%, transparent 55%);
+    radial-gradient(ellipse 90% 50% at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 50% at 85% 60%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 15% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
 }
 
 /* --------------------------------------------------------------------------
@@ -308,8 +309,8 @@
 .introSection {
   padding: 6.5rem 1.5rem 5.5rem;
   background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 65%),
-    linear-gradient(180deg, #0c0c0c 0%, #080808 100%);
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 65%),
+    linear-gradient(180deg, #182438 0%, #121826 100%);
   color: #f1f5f9;
   position: relative;
   text-align: center;
@@ -408,13 +409,13 @@
 }
 
 .introCalloutBox {
-  background: linear-gradient(135deg, rgba(22, 22, 22, 0.75) 0%, rgba(12, 12, 12, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(26, 35, 54, 0.85) 0%, rgba(18, 24, 38, 0.95) 100%);
   border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 14px;
   padding: 1.6rem 2.2rem;
   max-width: 780px;
   width: 100%;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 24px rgba(212, 175, 55, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25), 0 0 24px rgba(212, 175, 55, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
@@ -591,8 +592,8 @@
 .destinationsSection {
   padding: 5.5rem 0 6.5rem;
   background:
-    radial-gradient(ellipse 90% 40% at 50% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
-    linear-gradient(180deg, #0a0a0a 0%, #080808 100%);
+    radial-gradient(ellipse 90% 40% at 50% 0%, rgba(212, 175, 55, 0.1) 0%, transparent 60%),
+    linear-gradient(180deg, #182438 0%, #121826 100%);
   position: relative;
 }
 
@@ -677,7 +678,7 @@
 .destCardOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 8, 8, 0.08) 0%, rgba(8, 8, 8, 0.75) 65%, #080808 100%);
+  background: linear-gradient(180deg, rgba(18, 24, 38, 0.05) 0%, rgba(18, 24, 38, 0.72) 65%, #121826 100%);
   z-index: 1;
 }
 
@@ -774,9 +775,9 @@
 .blogsSection {
   padding: 7rem 0 8rem;
   background:
-    radial-gradient(ellipse 70% 35% at 50% 5%, rgba(212, 175, 55, 0.06) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 25% at 20% 90%, rgba(184, 151, 46, 0.04) 0%, transparent 60%),
-    linear-gradient(180deg, #080808 0%, #0b0b0b 100%);
+    radial-gradient(ellipse 70% 35% at 50% 5%, rgba(212, 175, 55, 0.1) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 25% at 20% 90%, rgba(56, 189, 248, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #121826 0%, #182438 100%);
   position: relative;
   overflow: hidden;
 }
@@ -793,8 +794,8 @@
 }
 
 .blogCard {
-  background: linear-gradient(180deg, rgba(20, 28, 48, 0.45) 0%, rgba(10, 10, 10, 0.85) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(30, 42, 68, 0.75) 0%, rgba(20, 28, 44, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
   overflow: hidden;
   text-decoration: none;
@@ -802,14 +803,14 @@
   flex-direction: column;
   width: 100%;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(12px);
 }
 
 .blogCard:hover {
   transform: translateY(-8px);
-  border-color: rgba(212, 175, 55, 0.5);
-  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.75), 0 0 30px rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.2);
 }
 
 .blogImageWrapper {
@@ -817,7 +818,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  background-color: #080808;
+  background-color: #121826;
 }
 
 .blogImage {
@@ -1047,20 +1048,20 @@
 .finalCtaSection {
   padding: 6.5rem 0 7.5rem;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(212, 175, 55, 0.07) 0%, transparent 65%),
-    linear-gradient(180deg, #080808 0%, #0c0c0c 100%);
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(212, 175, 55, 0.12) 0%, transparent 65%),
+    linear-gradient(180deg, #121826 0%, #182438 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .finalCtaBox {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(12, 12, 12, 0.85) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.15) 0%, rgba(26, 35, 54, 0.95) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 20px;
   padding: 4.5rem 2.5rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(212, 175, 55, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 35px rgba(212, 175, 55, 0.15);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -1246,10 +1247,10 @@
 .homeFaqSection {
   padding: 6.5rem 0 7.5rem;
   background:
-    radial-gradient(ellipse 80% 45% at 50% 0%, rgba(212, 175, 55, 0.06) 0%, transparent 65%),
-    linear-gradient(180deg, #0c0c0c 0%, #080808 100%);
+    radial-gradient(ellipse 80% 45% at 50% 0%, rgba(212, 175, 55, 0.1) 0%, transparent 65%),
+    linear-gradient(180deg, #182438 0%, #121826 100%);
   color: #ffffff;
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
   position: relative;
   overflow: hidden;
 }

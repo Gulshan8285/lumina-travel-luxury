@@ -63,7 +63,7 @@
 
 .contentSection {
   padding: 5rem 0 7rem;
-  background: #111111;
+  background: #121826;
 }
 
 .contentContainer {
@@ -72,14 +72,16 @@
 }
 
 .introBox {
-  background: #0e0e0e;
+  background: #1a2336;
   border-left: 4px solid #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-left-width: 4px;
   padding: 1.75rem 2rem;
   border-radius: 0 12px 12px 0;
   margin-bottom: 3.5rem;
   font-size: 1.05rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255,255,255,0.88);
 }
 
 .sectionBlock {
@@ -92,7 +94,7 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #0a0a0a;
+  color: #ffffff;
   margin: 0 0 1.2rem;
   display: flex;
   align-items: center;

@@ -171,7 +171,7 @@
 
 /* Core Services Showcase (5 Requested Pillars) */
 .coreServicesSection {
-  background: #080c14;
+  background: #121826;
   padding: 6rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -184,8 +184,8 @@
 }
 
 .coreServiceCard {
-  background: #101624;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: #1a2336;
+  border: 1px solid rgba(212, 175, 55, 0.25);
   border-radius: 16px;
   padding: 2.25rem 2rem;
   display: flex;
@@ -196,6 +196,7 @@
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .coreServiceCard::before {
@@ -213,8 +214,8 @@
 .coreServiceCard:hover {
   transform: translateY(-8px);
   border-color: rgba(212, 175, 55, 0.6);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
-  background: #141c2e;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
+  background: #202c44;
 }
 
 .coreServiceCard:hover::before {
@@ -332,7 +333,7 @@
 }
 
 .stepCard {
-  background: #111827;
+  background: #1a2336;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
   padding: 2.25rem 1.75rem;
@@ -343,7 +344,7 @@
 .stepCard:hover {
   transform: translateY(-6px);
   border-color: rgba(212, 175, 55, 0.5);
-  background: #162032;
+  background: #222e44;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
@@ -379,7 +380,7 @@
 
 /* What We Handle Section */
 .servicesSection {
-  background-color: #0f1624;
+  background-color: #121826;
   padding: 5.5rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -392,7 +393,7 @@
 }
 
 .serviceCard {
-  background: #162032;
+  background: #1a2336;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 2rem;
@@ -402,7 +403,7 @@
 .serviceCard:hover {
   transform: translateY(-4px);
   border-color: rgba(212, 175, 55, 0.35);
-  background: #1a273d;
+  background: #222e44;
 }
 
 
@@ -428,7 +429,7 @@
 
 /* Form Section */
 .formSection {
-  background-color: #0b0f19;
+  background-color: #121826;
   padding: 6rem 0;
 }
 
@@ -440,7 +441,7 @@
 
 /* FAQs Section */
 .faqSection {
-  background-color: #0f1624;
+  background-color: #121826;
   padding: 5.5rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -454,7 +455,7 @@
 }
 
 .faqCard {
-  background: #162032;
+  background: #1a2336;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   padding: 1.75rem;

@@ -148,7 +148,7 @@
 /* GROUP CATEGORIES SECTION */
 .categoriesSection {
   padding: 5.5rem 0;
-  background-color: #0b101c;
+  background-color: #121826;
 }
 
 .categoriesGrid {
@@ -158,19 +158,21 @@
 }
 
 .categoryCard {
-  background: #111728;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1a2336;
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 14px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: all 0.35s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .categoryCard:hover {
   transform: translateY(-6px);
-  border-color: rgba(212, 175, 55, 0.45);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  background: #202c44;
 }
 
 .categoryImage {
@@ -197,7 +199,7 @@
 
 .categoryDesc {
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
   margin: 0 0 1.25rem;
 }
@@ -212,7 +214,7 @@
 }
 
 .categoryList li {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.85);
   display: flex;
   align-items: center;
@@ -220,20 +222,21 @@
 }
 
 .categoryList li::before {
-  content: "✓";
+  content: "✦";
   color: #d4af37;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
-.categoryAction {
+.categoryAction,
+.categoryFooter {
   padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .categoryBtn {
   color: #f7d570;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-decoration: none;
   display: inline-flex;
@@ -250,7 +253,7 @@
 /* PERKS */
 .perksSection {
   padding: 5.5rem 0;
-  background-color: #080c14;
+  background-color: #121826;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -261,18 +264,19 @@
 }
 
 .perkCard {
-  background: #0f1624;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1a2336;
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 12px;
   padding: 2rem 1.5rem;
   text-align: center;
   transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .perkCard:hover {
-  border-color: rgba(212, 175, 55, 0.35);
+  border-color: rgba(212, 175, 55, 0.5);
   transform: translateY(-4px);
-  background: #131c2e;
+  background: #202c44;
 }
 
 .perkIcon {
@@ -290,7 +294,7 @@
 
 .perkDesc {
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
   margin: 0;
 }
@@ -298,7 +302,7 @@
 /* ARTICLE / EDITORIAL GUIDE */
 .articleSection {
   padding: 6rem 0;
-  background-color: #0b101c;
+  background-color: #121826;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -335,7 +339,7 @@
 }
 
 .sectionBlock {
-  background: #111728;
+  background: #1a2336;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   padding: 2.5rem;
@@ -363,7 +367,7 @@
 /* FAQS */
 .faqSection {
   padding: 5.5rem 0;
-  background-color: #080c14;
+  background-color: #121826;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -376,7 +380,7 @@
 }
 
 .faqCard {
-  background: #111728;
+  background: #1a2336;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 1.75rem;

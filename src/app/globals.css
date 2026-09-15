@@ -1,12 +1,12 @@
 :root,
 .dark-mode-forced,
 body {
-  /* Rolls-Royce / Lamborghini — Deep Black Velvet Luxury */
-  --background: #080808;
+  /* Luminous Midnight Slate & Warm Gold Luxury Theme */
+  --background: #121826;
   --foreground: #ffffff;
   
-  --primary: #080808;
-  --secondary: #111111;
+  --primary: #121826;
+  --secondary: #1a2336;
   
   /* Precious Metals & Accents */
   --accent: #d4af37; /* 24K Royal Gold */
@@ -17,23 +17,23 @@ body {
   --accent-pink: #d4af37; /* Unified royal gold */
   --accent-emerald: #10b981; /* Live concierge */
   
-  /* Surfaces & Glassmorphism */
-  --surface: #0d0d0d;
-  --surface-alt: #141414;
-  --surface-glass: rgba(12, 12, 12, 0.82);
-  --surface-card: linear-gradient(180deg, rgba(18, 18, 18, 0.82) 0%, rgba(8, 8, 8, 0.97) 100%);
+  /* Surfaces & Glassmorphism (Illuminated & Soft) */
+  --surface: #1a2336;
+  --surface-alt: #222e44;
+  --surface-glass: rgba(26, 35, 54, 0.88);
+  --surface-card: linear-gradient(180deg, rgba(30, 42, 64, 0.95) 0%, rgba(20, 28, 44, 0.98) 100%);
   
   /* Hairline Borders */
-  --border: rgba(255, 255, 255, 0.1);
-  --border-light: rgba(255, 255, 255, 0.05);
-  --border-gold: rgba(212, 175, 55, 0.22);
-  --border-gold-hover: rgba(212, 175, 55, 0.55);
+  --border: rgba(255, 255, 255, 0.15);
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-gold: rgba(212, 175, 55, 0.35);
+  --border-gold-hover: rgba(212, 175, 55, 0.75);
   
   /* High-Contrast Luxury Typography */
   --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.85);
-  --text-muted: rgba(255, 255, 255, 0.65);
-  --text-light: rgba(255, 255, 255, 0.5);
+  --text-secondary: #e2e8f0;
+  --text-muted: #cbd5e1;
+  --text-light: #94a3b8;
   
   --font-heading: var(--font-heading), 'Oswald', sans-serif;
   --font-serif: var(--font-heading);
@@ -57,7 +57,7 @@ html {
 html, body {
   max-width: 100%;
   overflow-x: hidden;
-  background-color: #080808;
+  background-color: #121826;
   color: #ffffff;
   font-family: var(--font-sans);
   font-weight: 400;
@@ -69,7 +69,7 @@ html, body {
 
 ::selection {
   background: #d4af37;
-  color: #080808;
+  color: #121826;
 }
 
 /* Custom Sleek Luxury 24K Gold Scrollbar */
@@ -79,13 +79,13 @@ html, body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #080808;
+  background: #121826;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #d4af37 0%, #8c7322 100%);
   border-radius: 999px;
-  border: 2px solid #080808;
+  border: 2px solid #121826;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -93,7 +93,7 @@ html, body {
 }
 
 .dark-mode-forced {
-  background-color: #080808 !important;
+  background-color: #121826 !important;
   color: #ffffff !important;
 }
 

@@ -96,23 +96,25 @@
 
 /* HOTEL BOOKING CARD */
 .hotelCard {
-  background: #111111;
-  color: #0a0a0a;
+  background: #1a2336;
+  color: #ffffff;
   border-radius: 16px;
   padding: 2rem 2.2rem;
+  border: 1px solid rgba(212, 175, 55, 0.25);
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
 }
 
 .hotelCardHeader {
   margin-bottom: 1.25rem;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 1rem;
 }
 
 .cardBadge {
   display: inline-block;
-  background: rgba(225, 29, 72, 0.1);
-  color: #d4af37;
+  background: rgba(212, 175, 55, 0.15);
+  color: #f7d570;
+  border: 1px solid rgba(212, 175, 55, 0.35);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -127,7 +129,7 @@
   font-size: 1.3rem;
   font-weight: 700;
   margin: 0;
-  color: #0a0a0a;
+  color: #ffffff;
 }
 
 .hotelForm {
@@ -153,18 +155,18 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.72);
+  color: rgba(255,255,255,0.85);
 }
 
 .formInput,
 .formSelect {
   width: 100%;
   padding: 0.7rem 0.9rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid rgba(212, 175, 55, 0.25);
   border-radius: 8px;
   font-size: 0.88rem;
   color: #ffffff;
-  background: #0e0e0e;
+  background: #121826;
   transition: all 0.2s ease;
 }
 
@@ -172,15 +174,15 @@
 .formSelect:focus {
   outline: none;
   border-color: #d4af37;
-  background: #111111;
-  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+  background: #182438;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
 .inclusionsChecklist {
-  background: #0e0e0e;
+  background: #121826;
   padding: 0.8rem 1rem;
   border-radius: 8px;
-  border: 1px solid rgba(212,175,55,0.18);
+  border: 1px solid rgba(212,175,55,0.25);
 }
 
 .checklistLabel {
@@ -188,7 +190,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.82);
+  color: #f7d570;
   margin-bottom: 0.4rem;
 }
 
@@ -197,7 +199,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.4rem;
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.72);
+  color: rgba(255,255,255,0.85);
 }
 
 .checkItem {
@@ -215,8 +217,8 @@
   margin-top: 0.4rem;
   width: 100%;
   padding: 0.95rem;
-  background: #d4af37;
-  color: #ffffff;
+  background: linear-gradient(135deg, #d4af37 0%, #b89727 100%);
+  color: #080c14;
   border: none;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -232,8 +234,9 @@
 }
 
 .submitBtn:hover {
-  background: #be123c;
+  background: linear-gradient(135deg, #f7d570 0%, #d4af37 100%);
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
 }
 
 .supportStrip {
@@ -249,7 +252,7 @@
 /* CITY-WISE HOTEL DIRECTORY */
 .directorySection {
   padding: 4rem 0;
-  background: #0e0e0e;
+  background: #121826;
 }
 
 .sectionHeader {
@@ -275,12 +278,12 @@
   margin: 0 0 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #0a0a0a;
+  color: #ffffff;
 }
 
 .sectionDesc {
   font-size: 1rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.75);
   line-height: 1.6;
 }
 
@@ -291,11 +294,11 @@
 }
 
 .cityCard {
-  background: #111111;
+  background: #1a2336;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
 }
@@ -317,15 +320,15 @@
   position: absolute;
   top: 1.25rem;
   left: 1.25rem;
-  background: rgba(10, 10, 10, 0.85);
-  color: #ffffff;
+  background: rgba(18, 24, 38, 0.85);
+  color: #f7d570;
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.4);
 }
 
 .cityContent {
@@ -339,7 +342,7 @@
   font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 700;
-  color: #0a0a0a;
+  color: #ffffff;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 0.3rem;
@@ -347,7 +350,7 @@
 
 .cityTagline {
   font-size: 0.88rem;
-  color: #d4af37;
+  color: #f7d570;
   font-weight: 600;
   margin: 0 0 1rem;
 }
@@ -361,7 +364,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.72);
+  color: rgba(255,255,255,0.85);
   margin-bottom: 0.5rem;
 }
 
@@ -372,8 +375,8 @@
 }
 
 .hotelPill {
-  background: #0e0e0e;
-  border: 1px solid rgba(212,175,55,0.18);
+  background: #121826;
+  border: 1px solid rgba(212,175,55,0.25);
   padding: 0.35rem 0.75rem;
   border-radius: 6px;
   font-size: 0.82rem;
@@ -382,7 +385,7 @@
 }
 
 .stayFoodCarBox {
-  background: #fff1f2;
+  background: rgba(212, 175, 55, 0.08);
   border-radius: 10px;
   padding: 1rem 1.2rem;
   margin-bottom: 1.5rem;
@@ -394,7 +397,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #9f1239;
+  color: #f7d570;
   margin-bottom: 0.4rem;
 }
 
@@ -403,7 +406,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.4rem;
   font-size: 0.82rem;
-  color: #881337;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .cityActions {
@@ -415,11 +418,11 @@
   flex: 1;
   text-align: center;
   padding: 0.85rem;
-  background: #0a0a0a;
-  color: #ffffff;
+  background: linear-gradient(135deg, #d4af37 0%, #b89727 100%);
+  color: #080c14;
   border-radius: 8px;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
@@ -427,7 +430,9 @@
 }
 
 .bookCityBtn:hover {
-  background: #d4af37;
+  background: linear-gradient(135deg, #f7d570 0%, #d4af37 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
 }
 
 .whatsappCityBtn {
@@ -451,7 +456,7 @@
 /* ARTICLE / EDITORIAL GUIDE SECTION */
 .articleSection {
   padding: 5.5rem 0;
-  background-color: #0b101c;
+  background-color: #121826;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -488,7 +493,7 @@
 }
 
 .sectionBlock {
-  background: #111728;
+  background: #1a2336;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   padding: 2.5rem;
@@ -516,7 +521,7 @@
 /* FAQS */
 .faqSection {
   padding: 5.5rem 0;
-  background-color: #080c14;
+  background-color: #121826;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -529,7 +534,7 @@
 }
 
 .faqCard {
-  background: #111728;
+  background: #1a2336;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 1.75rem;

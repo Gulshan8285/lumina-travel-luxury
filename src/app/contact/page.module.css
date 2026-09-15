@@ -71,18 +71,18 @@
 }
 
 .infoBlock {
-  background: #111111;
+  background: #1a2336;
   border-radius: 12px;
   padding: 1.8rem;
-  border: 1px solid rgba(212,175,55,0.18);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(212,175,55,0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .infoTitle {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
-  color: #0a0a0a;
+  color: #ffffff;
   margin: 0 0 0.5rem;
   text-transform: uppercase;
 }
@@ -90,7 +90,7 @@
 .infoText {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: rgba(255,255,255,0.72);
+  color: rgba(255,255,255,0.85);
   margin: 0 0 1rem;
 }
 
@@ -124,25 +124,25 @@
 
 /* FORM */
 .formBox {
-  background: #111111;
+  background: #1a2336;
   border-radius: 16px;
   padding: 2.5rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(212,175,55,0.18);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(212,175,55,0.25);
 }
 
 .formTitle {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0a0a0a;
+  color: #ffffff;
   margin: 0 0 0.4rem;
   text-transform: uppercase;
 }
 
 .formSubtitle {
   font-size: 0.88rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.75);
   margin: 0 0 1.5rem;
 }
 
@@ -163,18 +163,18 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255,255,255,0.85);
 }
 
 .formInput,
 .formTextarea {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid rgba(212, 175, 55, 0.25);
   border-radius: 8px;
   font-size: 0.9rem;
   color: #ffffff;
-  background: #0e0e0e;
+  background: #121826;
   transition: all 0.2s ease;
 }
 
@@ -182,8 +182,8 @@
 .formTextarea:focus {
   outline: none;
   border-color: #d4af37;
-  background: #111111;
-  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+  background: #182438;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
 .formTextarea {
@@ -195,8 +195,8 @@
   margin-top: 0.5rem;
   width: 100%;
   padding: 0.95rem;
-  background: #d4af37;
-  color: #ffffff;
+  background: linear-gradient(135deg, #d4af37 0%, #b89727 100%);
+  color: #080c14;
   border: none;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -208,8 +208,9 @@
 }
 
 .submitBtn:hover {
-  background: #be123c;
+  background: linear-gradient(135deg, #f7d570 0%, #d4af37 100%);
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
 }
 
 @media (max-width: 1024px) {
