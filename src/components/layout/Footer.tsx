@@ -181,9 +181,7 @@ export default function Footer() {
 
             {/* Column 2: Luxury Holidays */}
             <div className={styles.navCol}>
-              <h4 className={styles.colHeader}>
-                <span className={styles.colHeaderGold}>✦</span> Curated Holidays
-              </h4>
+              <h4 className={styles.colHeader}>Curated Holidays</h4>
               <ul className={styles.linkList}>
                 <li>
                   <Link href="/domestic" className={styles.navLink}>Domestic Escapes</Link>
@@ -206,11 +204,9 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Column 3: Bespoke Services */}
+            {/* Column 3: Services */}
             <div className={styles.navCol}>
-              <h4 className={styles.colHeader}>
-                <span className={styles.colHeaderGold}>✦</span> Bespoke Services
-              </h4>
+              <h4 className={styles.colHeader}>Services</h4>
               <ul className={styles.linkList}>
                 <li>
                   <Link href="/hotels" className={styles.navLink}>5-Star Hotels & Stays</Link>
@@ -241,9 +237,7 @@ export default function Footer() {
 
             {/* Column 4: The Atelier & Directory */}
             <div className={styles.navCol}>
-              <h4 className={styles.colHeader}>
-                <span className={styles.colHeaderGold}>✦</span> The Atelier
-              </h4>
+              <h4 className={styles.colHeader}>The Atelier</h4>
               <ul className={styles.linkList}>
                 <li>
                   <Link href="/about" className={styles.navLink}>About Sobhavi Travels</Link>
