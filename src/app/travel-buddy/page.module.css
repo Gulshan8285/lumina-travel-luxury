@@ -7,7 +7,7 @@
 /* Luxury Hero */
 .heroSection {
   position: relative;
-  padding: 10rem 0 5.5rem;
+  padding: 9rem 0 5.5rem;
   background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2000&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
@@ -18,13 +18,13 @@
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 15, 25, 0.78) 0%, rgba(11, 15, 25, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(11, 15, 25, 0.85) 0%, rgba(11, 15, 25, 0.97) 100%);
 }
 
 .heroContent {
   position: relative;
   z-index: 2;
-  max-width: 860px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -32,7 +32,7 @@
 .badge {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #d4af37;
@@ -42,20 +42,72 @@
 
 .title {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
   font-weight: 700;
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.5rem;
   letter-spacing: -0.01em;
   line-height: 1.1;
   color: #ffffff;
 }
 
-.subtitle {
+.hookTitle {
+  font-family: var(--font-heading, Georgia, serif);
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+  font-style: italic;
+  color: #d4af37;
+  margin: 0 0 2rem;
+  font-weight: 500;
+}
+
+.storyCard {
+  text-align: left;
+  background: rgba(17, 24, 39, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 2.25rem;
+  margin: 0 auto 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.storyCard p {
   font-family: var(--font-sans);
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0 0 2.5rem;
-  line-height: 1.7;
+  font-size: 1.08rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.storyHighlight {
+  font-size: 1.25rem !important;
+  font-weight: 700;
+  color: #ffffff !important;
+  border-left: 3px solid #d4af37;
+  padding-left: 1rem;
+  margin: 1.25rem 0 !important;
+}
+
+.freedomBanner {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.freedomIcon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.freedomBanner strong {
+  color: #fceda2;
 }
 
 .heroActions {
@@ -63,37 +115,44 @@
   gap: 1.25rem;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .primaryBtn {
   background: #d4af37;
   color: #0b0f19;
-  padding: 0.9rem 2.2rem;
-  border-radius: 6px;
+  padding: 0.95rem 2.4rem;
+  border-radius: 8px;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   letter-spacing: 0.03em;
   text-decoration: none;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .primaryBtn:hover {
   background: #fceda2;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 6px 22px rgba(212, 175, 55, 0.55);
 }
 
 .secondaryBtn {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  padding: 0.9rem 2rem;
-  border-radius: 6px;
+  padding: 0.95rem 2.2rem;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .secondaryBtn:hover {
@@ -103,272 +162,181 @@
   transform: translateY(-2px);
 }
 
-/* Stats Counter Bar */
-.statsStrip {
-  background: #0f1624;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 3rem 0;
-}
-
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  text-align: center;
-}
-
-.statBox {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.statNumber {
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #d4af37;
-}
-
-.statLabel {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.7);
-}
-
 /* Section Header Shared */
 .sectionHeader {
   text-align: center;
-  max-width: 780px;
+  max-width: 760px;
   margin: 0 auto 3.5rem;
 }
 
 .eyebrow {
   display: block;
-  font-size: 0.76rem;
-  letter-spacing: 0.22em;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #d4af37;
   font-weight: 700;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 .sectionTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
+  line-height: 1.2;
 }
 
 .sectionSubtitle {
-  font-size: 1rem;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+}
+
+/* Services Grid (7 items) */
+.servicesSection {
+  padding: 6rem 0;
+  background: #0f1624;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.serviceCard {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  padding: 2rem;
+  transition: all 0.25s ease;
+}
+
+.serviceCard:hover {
+  border-color: #d4af37;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.serviceIcon {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.serviceTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin: 0 0 0.75rem;
+}
+
+.serviceDesc {
+  font-size: 0.94rem;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.65;
   margin: 0;
 }
 
-/* Core Services Showcase (5 Requested Pillars) */
-.coreServicesSection {
-  background: #121826;
-  padding: 6rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+/* Philosophy Banner (AI vs Human) */
+.philosophySection {
+  padding: 5rem 0;
+  background: #0b0f19;
 }
 
-.coreServicesGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.coreServiceCard {
-  background: #1a2336;
-  border: 1px solid rgba(212, 175, 55, 0.25);
+.philosophyBox {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  background: linear-gradient(135deg, #162032 0%, #0d131f 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 16px;
-  padding: 2.25rem 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 3.5rem 2.5rem;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
 }
 
-.coreServiceCard::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #d4af37, transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.coreServiceCard:hover {
-  transform: translateY(-8px);
-  border-color: rgba(212, 175, 55, 0.6);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
-  background: #202c44;
-}
-
-.coreServiceCard:hover::before {
-  opacity: 1;
-}
-
-.coreCardHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.aiBadge {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #d4af37;
+  text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
 
-.coreCardIcon {
-  font-size: 2.4rem;
-  display: inline-block;
-}
-
-.coreCardBadge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #f7d570;
-  background: rgba(212, 175, 55, 0.12);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-}
-
-.coreCardTitle {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
+.philosophyTitle {
+  font-family: var(--font-heading, Georgia, serif);
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  font-style: italic;
   color: #ffffff;
-  margin: 0 0 0.85rem;
-  line-height: 1.25;
-}
-
-.coreCardDesc {
-  font-size: 0.92rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.65;
+  line-height: 1.45;
   margin: 0 0 1.5rem;
 }
 
-.coreCardPills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.75rem;
+.philosophyDesc {
+  font-size: 1.15rem;
+  color: #fceda2;
+  font-weight: 600;
+  margin: 0 0 2rem;
+  line-height: 1.6;
 }
 
-.corePill {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.25rem 0.65rem;
-  border-radius: 6px;
-}
-
-.coreCardFooter {
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.coreCardLink {
-  color: #f7d570;
-  font-size: 0.9rem;
-  font-weight: 700;
+.allCitiesPill {
   display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.2s ease;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
-.coreServiceCard:hover .coreCardLink {
-  color: #ffffff;
-  transform: translateX(4px);
-}
-
-.coreCardArrow {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(212, 175, 55, 0.15);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f7d570;
-  font-size: 0.85rem;
-  transition: all 0.3s ease;
-}
-
-.coreServiceCard:hover .coreCardArrow {
-  background: #d4af37;
-  color: #080c14;
-  transform: scale(1.1);
-}
-
-/* How It Works Steps */
+/* How It Works (4 Steps) */
 .howItWorksSection {
-  background-color: #0b0f19;
-  padding: 5.5rem 0;
+  padding: 6rem 0;
+  background: #0f1624;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .stepsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 1.75rem;
 }
 
 .stepCard {
-  background: #1a2336;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  padding: 2.25rem 1.75rem;
-  transition: all 0.3s ease;
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.85rem;
   position: relative;
+  transition: transform 0.25s ease;
 }
 
 .stepCard:hover {
-  transform: translateY(-6px);
-  border-color: rgba(212, 175, 55, 0.5);
-  background: #222e44;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-}
-
-.stepHeader {
-  margin-bottom: 1.25rem;
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.4);
 }
 
 .stepNumber {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #d4af37;
-  display: inline-block;
-  background: rgba(212, 175, 55, 0.12);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  padding: 0.3rem 0.85rem;
-  border-radius: 8px;
+  margin-bottom: 0.85rem;
 }
 
 .stepTitle {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: #ffffff;
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.65rem;
 }
 
 .stepDesc {
@@ -378,134 +346,78 @@
   margin: 0;
 }
 
-/* What We Handle Section */
-.servicesSection {
-  background-color: #121826;
-  padding: 5.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.servicesGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.serviceCard {
-  background: #1a2336;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-}
-
-.serviceCard:hover {
-  transform: translateY(-4px);
-  border-color: rgba(212, 175, 55, 0.35);
-  background: #222e44;
-}
-
-
-.serviceIcon {
-  font-size: 2.2rem;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.serviceTitle {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin-bottom: 0.65rem;
-}
-
-.serviceDesc {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  margin: 0;
-}
-
 /* Form Section */
 .formSection {
-  background-color: #121826;
   padding: 6rem 0;
+  background: #0b0f19;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .formIntro {
   text-align: center;
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto 3.5rem;
 }
 
-/* FAQs Section */
+/* FAQ Section */
 .faqSection {
-  background-color: #121826;
-  padding: 5.5rem 0;
+  padding: 6rem 0 7rem;
+  background: #0f1624;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .faqGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  max-width: 960px;
+  max-width: 900px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .faqCard {
-  background: #1a2336;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 1.75rem;
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+  transition: border-color 0.25s ease;
 }
 
+.faqCard:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+}
 
 .faqQuestion {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #ffffff;
-  margin-bottom: 0.65rem;
+  margin: 0 0 0.75rem;
+  font-weight: 600;
 }
 
 .faqAnswer {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.6;
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
   margin: 0;
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
-  .coreServicesGrid {
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .servicesGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .stepsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .servicesGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .heroSection {
-    padding: 7.5rem 0 4rem;
+    padding: 7rem 0 4rem;
   }
 
-  .title {
-    font-size: clamp(2rem, 7.5vw, 3rem);
-  }
-
-  .statsGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .coreServicesGrid {
+  .servicesGrid {
     grid-template-columns: 1fr;
   }
 
@@ -513,11 +425,11 @@
     grid-template-columns: 1fr;
   }
 
-  .servicesGrid {
-    grid-template-columns: 1fr;
+  .philosophyBox {
+    padding: 2.5rem 1.5rem;
   }
 
-  .faqGrid {
-    grid-template-columns: 1fr;
+  .faqCard {
+    padding: 1.5rem;
   }
 }

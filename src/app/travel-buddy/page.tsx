@@ -4,125 +4,87 @@ import SinglePageForm from '@/components/ui/SinglePageForm';
 import styles from './page.module.css';
 
 export const metadata = {
-  title: "Personal Travel Buddy & Bespoke Trip Planning | Sobhavi Travels",
-  description: "Your dedicated personal travel concierge. We handle flights, vetted 5-star hotels, visas, private transfers, and itineraries with 24/7 on-call WhatsApp trip support."
+  title: "Travel Buddy — Personal Travel Assistance for All Cities | Sobhavi Holidays",
+  description: "Not looking for a package? No problem. Get dedicated assistance for Airbnb research, hotel price comparisons, cabs, property checks, and flight bookings across all cities."
 };
+
+const ASSISTANCE_ITEMS = [
+  {
+    icon: "🏡",
+    title: "Finding a Good, Reasonably Priced Stay",
+    desc: "Handpicked stays for solo travelers, couples, families, or large groups tailored to your comfort and exact budget."
+  },
+  {
+    icon: "🔍",
+    title: "Airbnb or Homestay Research",
+    desc: "We comb through hundreds of listings, check real guest reviews, verify amenities, and filter out deceptive listings."
+  },
+  {
+    icon: "⚖️",
+    title: "Comparing Hotels & Prices Across Websites",
+    desc: "We analyze tariffs across major portals, direct hotel rates, and trade desks so you never overpay."
+  },
+  {
+    icon: "🚖",
+    title: "Finding the Right Cab for Your Trip",
+    desc: "Reliable airport transfers, intercity sanitized cabs, and experienced chauffeurs who know local terrain."
+  },
+  {
+    icon: "🛡️",
+    title: "Checking a Property Before You Book",
+    desc: "We speak directly with property owners and on-ground partners to confirm location, cleanliness, and facilities."
+  },
+  {
+    icon: "✈️",
+    title: "Flights or Hotels Only",
+    desc: "Need just a flight ticket or just a weekend resort? No bundled package required — book only what you need."
+  },
+  {
+    icon: "🧭",
+    title: "Help with All the Little Travel Research",
+    desc: "Local permits, ferry timings, best viewpoints, neighborhood safety, or dining spots you don't have time to dig up."
+  }
+];
 
 const STEPS = [
   {
     step: "01",
-    title: "Share Your Vision",
-    desc: "Tell us where you dream of going, your preferred dates, traveler count, and travel style (family leisure, romantic escape, adventure, or sacred heritage)."
+    title: "Tell Us What You Need",
+    desc: "Share where you want to go, your dates, group size, or a specific task like finding a cab or checking a stay."
   },
   {
     step: "02",
-    title: "Bespoke Itinerary in 24h",
-    desc: "Your dedicated Travel Buddy crafts a day-by-day proposal with handpicked hotels, sensible flight connections, and curated local private experiences."
+    title: "We Do the Digging",
+    desc: "We check the options, compare prices, read genuine reviews, and speak to properties directly if needed."
   },
   {
     step: "03",
-    title: "Seamless Bookings & VIP Perks",
-    desc: "We lock in your flights, luxury stays, visa approvals, and private AC transfers at transparent rates, delivering all digital vouchers directly to your WhatsApp."
+    title: "Options Worth Considering",
+    desc: "You receive a curated shortlist of handpicked recommendations that actually match your exact requirements."
   },
   {
     step: "04",
-    title: "24/7 On-Trip Concierge Care",
-    desc: "While you travel, your Travel Buddy monitors flights, coordinates chauffeurs, and is always on standby via WhatsApp for any last-minute adjustments."
-  }
-];
-
-const CORE_SERVICES = [
-  {
-    icon: "🛂",
-    title: "Visa Services",
-    badge: "99.4% APPROVAL RATE",
-    desc: "Fast-track eVisas and comprehensive paperwork curation for Dubai, Schengen, UK, USA, Singapore & Thailand with early appointment scheduling.",
-    pills: ["Express 48h eVisas", "VFS Appointment Booking", "Error-Free Document Audit"],
-    href: "/visa"
-  },
-  {
-    icon: "✈️",
-    title: "Flight Booking",
-    badge: "VIP AIRLINE TICKETING",
-    desc: "Domestic & international flight ticketing with premier global carriers. Institutional corporate tariffs, flexible rebooking, and real-time WhatsApp alert support.",
-    pills: ["Emirates & Singapore Airlines", "Complimentary Web Check-in", "Zero Hidden Markup"],
-    href: "/flights"
-  },
-  {
-    icon: "🏨",
-    title: "Hotel Booking",
-    badge: "5-STAR & HERITAGE STAYS",
-    desc: "Curated palace suites, overwater villas, and luxury resorts with guaranteed breakfast, dinner, and private dedicated sanitized chauffeur car included throughout.",
-    pills: ["Taj, Oberoi & Marriott", "Daily Gourmet Meals", "Dedicated Private AC Chauffeur"],
-    href: "/hotels"
-  },
-  {
-    icon: "💍",
-    title: "Honeymoon Packages",
-    badge: "BESPOKE ROMANTIC ESCAPES",
-    desc: "Intimate romantic getaways designed with love. Candlelit beach dining in Maldives, private pool villas in Bali, scenic Alps chalets, and sunset yacht charters.",
-    pills: ["Private Overwater Villas", "Candlelight Beach Dinners", "VIP Honeymoon Amenities"],
-    href: "/honeymoon"
-  },
-  {
-    icon: "👥",
-    title: "Group Tours",
-    badge: "CORPORATE & GROUPS",
-    desc: "Flawless group travel management for corporate conferences, team offsites, extended family reunions, and friend adventures with blocked flight seats.",
-    pills: ["Blocked Airline PNRs", "Dedicated On-Ground Director", "GST Compliant Invoicing"],
-    href: "/group-tours"
-  }
-];
-
-const SERVICES = [
-  {
-    icon: "✈️",
-    title: "Flights & Route Optimization",
-    desc: "Best connection timings, extra baggage handling, seat selections, and proactive monitoring in case of airline schedule shifts."
-  },
-  {
-    icon: "🏨",
-    title: "Vetted 5-Star & Boutique Stays",
-    desc: "Curated heritage palaces, private overwater villas, and luxury resorts with guaranteed breakfast, early check-in preference, and safety audits."
-  },
-  {
-    icon: "🚗",
-    title: "Private Chauffeured Fleet",
-    desc: "Spotless, sanitized private AC vehicles with experienced uniformed chauffeurs waiting with nameboards at airports and stations."
-  },
-  {
-    icon: "🛂",
-    title: "Fast-Track Visa Assistance",
-    desc: "End-to-end documentation preparation, appointment scheduling, and express processing for Dubai, Schengen, UK, Singapore, and Thailand."
-  },
-  {
-    icon: "🎟️",
-    title: "Curated Sightseeing & Passes",
-    desc: "Skip long monument queues with pre-arranged VIP passes, private sunset yacht charters, desert safaris, and licensed English-speaking guides."
-  },
-  {
-    icon: "🛡️",
-    title: "24/7 Emergency & Trip Support",
-    desc: "Travel with total peace of mind. A dedicated personal human concierge is available via direct phone and WhatsApp throughout your journey."
+    title: "Zero-Stress Booking & WhatsApp Support",
+    desc: "Lock in what you like with zero markup hassles and enjoy quick WhatsApp support throughout your journey."
   }
 ];
 
 const FAQS = [
   {
-    q: "What exactly is the Sobhavi Travel Buddy service?",
-    a: "Think of your Travel Buddy as your personal holiday manager. Instead of you spending hours researching hotels, comparing flight portals, and worrying about airport cabs, a dedicated destination specialist plans and coordinates every single detail of your holiday from start to finish."
+    q: "Do I have to book a complete package to use Travel Buddy?",
+    a: "Not at all. You don't have to take a complete package. You can come to us for something as simple as finding a good stay for your group, arranging a cab, or booking only your flights or hotel."
   },
   {
-    q: "Is there an extra fee for having a Travel Buddy?",
-    a: "No hidden charges. We provide complete, transparent holiday packages with flights, hotels, cabs, and sightseeing bundled together at competitive direct-contracted rates. You get dedicated concierge service without expensive planner retainers."
+    q: "How does Travel Buddy differ from search engines or AI?",
+    a: "While AI can generate generic lists, it doesn't verify current property conditions, call hotel managers to check room hygiene, negotiate offline deals, or arrange vetted drivers. We do the real ground-level research for you."
   },
   {
-    q: "Can I customize the hotels, flights, or activities?",
-    a: "100%. Every itinerary is custom-built for you. Whether you want a specific luxury resort, dietary meal preferences, wheelchair-friendly transportation, or flexible departure dates, we adapt everything to your needs."
+    q: "Which destinations and cities do you support?",
+    a: "We offer travel assistance across all cities and tourist destinations — both within India and internationally. Whether it's a weekend getaway, a remote hill station, or an overseas trip, we have you covered."
   },
   {
-    q: "How do I communicate with my Travel Buddy during the trip?",
-    a: "You receive direct access to our destination desk via dedicated WhatsApp and mobile number (+917406994752). Whether you need to delay morning pickup by an hour or request a restaurant recommendation, your Buddy responds immediately."
+    q: "How fast do you respond to assistance requests?",
+    a: "Our team typically begins research immediately upon receiving your enquiry or WhatsApp message, delivering shortlisted options and price comparisons within a few hours."
   }
 ];
 
@@ -137,90 +99,101 @@ export default function TravelBuddyPage() {
           <div className={styles.heroOverlay} />
           <div className="container">
             <div className={styles.heroContent}>
-              <span className={styles.badge}>DEDICATED PERSONAL TRAVEL CONCIERGE</span>
-              <h1 className={styles.title}>Your Personal Travel Buddy</h1>
-              <p className={styles.subtitle}>
-                Leave behind 15 open browser tabs, conflicting hotel reviews, and frantic transfer worries. Tell us your travel dream &mdash; your dedicated Sobhavi Travel Buddy handles every booking with precision, secures insider rates, and remains on-call 24/7.
-              </p>
+              <span className={styles.badge}>DEDICATED TRAVEL ASSISTANCE • ALL CITIES</span>
+              <h1 className={styles.title}>Travel Buddy</h1>
+              <p className={styles.hookTitle}>Not looking for a package? No problem.</p>
+
+              <div className={styles.storyCard}>
+                <p>
+                  Sometimes you already know where you want to go. You just don&apos;t have the time to sit and compare 100 hotels, Airbnb listings, homestays, cab options and prices across different websites.
+                </p>
+                <p className={styles.storyHighlight}>
+                  That&apos;s where we come in.
+                </p>
+                <p>
+                  Tell us what you&apos;re looking for and we&apos;ll do the digging for you. We&apos;ll check the options, compare prices, look at reviews, speak to the property if needed and shortlist the ones that actually fit your requirements.
+                </p>
+                <div className={styles.freedomBanner}>
+                  <span className={styles.freedomIcon}>✨</span>
+                  <span>
+                    You can come to us for something as simple as finding a good stay for your group or arranging a cab. You can also book only your flights or only your hotel through us. <strong>You don&apos;t have to take a complete package.</strong>
+                  </span>
+                </div>
+              </div>
 
               <div className={styles.heroActions}>
-                <a href="#buddy-enquiry" className={styles.primaryBtn}>
-                  ✦ Start Planning With a Buddy &rarr;
+                <a href="#enquire-form" className={styles.primaryBtn}>
+                  ✦ Enquire Now &rarr;
                 </a>
                 <a
-                  href="https://wa.me/917406994752?text=Hello%20Sobhavi%20Travels,%20I%20would%20like%20to%20plan%20a%20holiday%20with%20a%20dedicated%20Travel%20Buddy."
+                  href="https://wa.me/917406994752?text=Hello%20Sobhavi%20Holidays,%20I%20am%20looking%20for%20travel%20assistance%20with%20my%20upcoming%20trip."
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.secondaryBtn}
                 >
-                  💬 Connect on WhatsApp
+                  💬 WhatsApp Your Travel Buddy
                 </a>
               </div>
             </div>
           </div>
         </section>
 
-
-
-        {/* Core Services Showcase (5 Requested Service Hubs) */}
-        <section className={styles.coreServicesSection}>
+        {/* You can reach out to us for */}
+        <section className={styles.servicesSection}>
           <div className="container">
             <div className={styles.sectionHeader}>
-              <span className={styles.eyebrow}>SPECIALIZED TRAVEL PILLARS</span>
-              <h2 className={styles.sectionTitle}>Our Core Travel Services</h2>
+              <span className={styles.eyebrow}>WHAT WE CAN DO FOR YOU</span>
+              <h2 className={styles.sectionTitle}>You can reach out to us for:</h2>
               <p className={styles.sectionSubtitle}>
-                Select a service to explore in-depth guides, verified checklists, insider pricing, and bespoke planning advice.
+                Skip the endless browser tabs and let an experienced human traveler handle the research.
               </p>
             </div>
 
-            <div className={styles.coreServicesGrid}>
-              {CORE_SERVICES.map((srv, idx) => (
-                <Link key={idx} href={srv.href} className={styles.coreServiceCard}>
-                  <div>
-                    <div className={styles.coreCardHeader}>
-                      <span className={styles.coreCardIcon}>{srv.icon}</span>
-                      <span className={styles.coreCardBadge}>{srv.badge}</span>
-                    </div>
-
-                    <h3 className={styles.coreCardTitle}>{srv.title}</h3>
-                    <p className={styles.coreCardDesc}>{srv.desc}</p>
-
-                    <div className={styles.coreCardPills}>
-                      {srv.pills.map((pill, pIdx) => (
-                        <span key={pIdx} className={styles.corePill}>✓ {pill}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className={styles.coreCardFooter}>
-                    <span className={styles.coreCardLink}>
-                      Explore Service &amp; Guide
-                    </span>
-                    <span className={styles.coreCardArrow}>&rarr;</span>
-                  </div>
-                </Link>
+            <div className={styles.servicesGrid}>
+              {ASSISTANCE_ITEMS.map((item, idx) => (
+                <div key={idx} className={styles.serviceCard}>
+                  <div className={styles.serviceIcon}>{item.icon}</div>
+                  <h3 className={styles.serviceTitle}>{item.title}</h3>
+                  <p className={styles.serviceDesc}>{item.desc}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* How It Works (4-Step Workflow) */}
+        {/* AI vs Human Philosophy Banner */}
+        <section className={styles.philosophySection}>
+          <div className="container">
+            <div className={styles.philosophyBox}>
+              <span className={styles.aiBadge}>HUMAN CONCIERGE &bull; REAL EXPERIENCE</span>
+              <h3 className={styles.philosophyTitle}>
+                &ldquo;There are plenty of options out there. And while AI can give you a list, it doesn&apos;t always know what you actually need.&rdquo;
+              </h3>
+              <p className={styles.philosophyDesc}>
+                Tell us what you&apos;re looking for. We&apos;ll do the research and give you the options worth considering.
+              </p>
+              <div className={styles.allCitiesPill}>
+                <span>🌍 Travel Assistance &bull; Multiple Journeys &bull; All Cities</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
         <section className={styles.howItWorksSection}>
           <div className="container">
             <div className={styles.sectionHeader}>
-              <span className={styles.eyebrow}>EFFORTLESS CONCIERGE EXPERIENCE</span>
-              <h2 className={styles.sectionTitle}>How Your Travel Buddy Works</h2>
+              <span className={styles.eyebrow}>SIMPLE & SEAMLESS</span>
+              <h2 className={styles.sectionTitle}>How It Works</h2>
               <p className={styles.sectionSubtitle}>
-                From initial imagination to your safe return home, we take care of the heavy lifting so you can simply enjoy your vacation.
+                Get real travel research done without spending hours comparing websites.
               </p>
             </div>
 
             <div className={styles.stepsGrid}>
               {STEPS.map((s, idx) => (
                 <div key={idx} className={styles.stepCard}>
-                  <div className={styles.stepHeader}>
-                    <span className={styles.stepNumber}>{s.step}</span>
-                  </div>
+                  <div className={styles.stepNumber}>{s.step}</div>
                   <h3 className={styles.stepTitle}>{s.title}</h3>
                   <p className={styles.stepDesc}>{s.desc}</p>
                 </div>
@@ -229,42 +202,19 @@ export default function TravelBuddyPage() {
           </div>
         </section>
 
-        {/* What We Handle Grid */}
-        <section className={styles.servicesSection}>
-          <div className="container">
-            <div className={styles.sectionHeader}>
-              <span className={styles.eyebrow}>COMPREHENSIVE COORDINATION</span>
-              <h2 className={styles.sectionTitle}>Everything We Take Off Your Plate</h2>
-              <p className={styles.sectionSubtitle}>
-                No fragmented bookings across multiple websites. We harmonize every component of your journey into one smooth itinerary.
-              </p>
-            </div>
-
-            <div className={styles.servicesGrid}>
-              {SERVICES.map((srv, idx) => (
-                <div key={idx} className={styles.serviceCard}>
-                  <span className={styles.serviceIcon}>{srv.icon}</span>
-                  <h3 className={styles.serviceTitle}>{srv.title}</h3>
-                  <p className={styles.serviceDesc}>{srv.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Interactive Booking Enquiry Form */}
-        <section id="buddy-enquiry" className={styles.formSection}>
+        {/* Enquire Now Form */}
+        <section id="enquire-form" className={styles.formSection}>
           <div className="container">
             <div className={styles.formIntro}>
-              <span className={styles.eyebrow}>NO STRESS • NO HEADACHES</span>
-              <h2 className={styles.sectionTitle}>Start Planning With Your Travel Buddy</h2>
+              <span className={styles.eyebrow}>NO BUNDLE REQUIRED</span>
+              <h2 className={styles.sectionTitle}>Enquire Now</h2>
               <p className={styles.sectionSubtitle}>
-                Share your destination ideas, tentative travel window, and group size. A dedicated travel specialist will contact you with customized options and insider recommendations.
+                Tell us what you&apos;re looking for &mdash; a hotel, cab, flights, Airbnb, or research help for your upcoming trip. We&apos;ll do the digging and get back to you with the best options.
               </p>
             </div>
 
             <SinglePageForm
-              initialDestination="Custom Trip Planning with Travel Buddy"
+              initialDestination="Travel Assistance - Travel Buddy"
               initialService="Customized Tour"
             />
           </div>
