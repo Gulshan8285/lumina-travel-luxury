@@ -25,84 +25,14 @@ const POPULAR_VISAS: CountryVisa[] = [
 ];
 
 export default function VisaPage() {
-  const [formData, setFormData] = useState({
-    country: "Dubai (UAE)",
-    visaType: "Tourist Visa",
-    travelDate: "",
-    applicants: "1 Applicant",
-    name: "",
-    phone: "",
-    email: ""
-  });
-
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name.trim() || !formData.phone.trim()) {
-      alert("Please enter your name and mobile / WhatsApp number.");
-      return;
-    }
-
-    if (!formData.email.trim()) {
-      alert("Please enter your email ID. Email is mandatory.");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email.trim())) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    const message = `*Visa Assistance Enquiry - SOBHAVI TRAVELS*%0A%0A` +
-      `*Country:* ${formData.country}%0A` +
-      `*Visa Type:* ${formData.visaType}%0A` +
-      `*Tentative Travel Date:* ${formData.travelDate || 'Flexible'}%0A` +
-      `*Applicants:* ${formData.applicants}%0A%0A` +
-      `*Client Details:*%0A` +
-      `*Name:* ${formData.name.trim()}%0A` +
-      `*Phone:* ${formData.phone.trim()}%0A` +
-      `*Email:* ${formData.email.trim()}%0A%0A` +
-      `Please provide required documents checklist, visa fees & appointment schedule.`;
-
-    const payload = {
-      timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
-      name: formData.name.trim(),
-      phone: formData.phone.trim(),
-      whatsapp: formData.phone.trim(),
-      email: formData.email.trim(),
-      service: `Visa Desk - ${formData.visaType}`,
-      destination: formData.country,
-      travelDates: formData.travelDate || 'Flexible',
-      travellers: formData.applicants,
-      notes: `Visa Type: ${formData.visaType} for ${formData.country}`
-    };
-
-    setIsSubmitting(true);
-    try {
-      await fetch('/api/enquiries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch (err) {
-      console.error('Visa enquiry sync error:', err);
-    } finally {
-      setIsSubmitting(false);
-    }
-
-    window.open(`https://wa.me/917406994752?text=${message}`, '_blank');
-    setSubmitted(true);
-  };
+  const whatsappUrl = "https://wa.me/917406994752?text=Hello%20Sobhavi%20Holidays,%20I%20would%20like%20to%20enquire%20about%20visa%20assistance%20and%20document%20requirements.";
 
   return (
     <>
       <Navbar />
 
       <main className={styles.main}>
-        {/* HERO SECTION WITH TOP VISA APPLICATION FORM */}
+        {/* HERO SECTION WITH TOP VISA INQUIRY CARD */}
         <section className={styles.heroSection}>
           <div className="container">
             <div className={styles.heroGrid}>
@@ -136,138 +66,72 @@ export default function VisaPage() {
                 </div>
               </div>
 
-              {/* VISA INQUIRY FORM */}
+              {/* VISA ENQUIRY CARD */}
               <div className={styles.visaCard}>
                 <div className={styles.visaCardHeader}>
                   <span className={styles.cardBadge}>FAST-TRACK VISA DESK</span>
                   <h2 className={styles.visaCardTitle}>Apply for Travel Visa</h2>
+                  <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.92rem', lineHeight: '1.6', marginTop: '0.6rem' }}>
+                    Get step-by-step document guidance, mock interview prep, and appointment booking for Schengen, UK, USA, Dubai, Singapore, and 50+ countries.
+                  </p>
                 </div>
 
-                {submitted ? (
-                  <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
-                    <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🛂</div>
-                    <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Visa Enquiry Received!</h3>
-                    <p style={{ fontSize: '0.88rem', color: '#64748b' }}>
-                      Our senior visa consultant will send you the document checklist and fee details on WhatsApp.
-                    </p>
-                    <button 
-                      onClick={() => setSubmitted(false)}
-                      className="btn-outline-dark"
-                      style={{ marginTop: '1rem', padding: '0.6rem 1.4rem', fontSize: '0.75rem' }}
-                    >
-                      Apply for Another Country
-                    </button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', marginTop: '1.75rem' }}>
+                  <Link 
+                    href="/enquire?service=Visa+Services"
+                    className="btn-gold"
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      padding: '1rem 1.5rem', 
+                      borderRadius: '999px', 
+                      fontWeight: '700',
+                      textDecoration: 'none',
+                      background: 'linear-gradient(135deg, #d4af37 0%, #aa8528 100%)',
+                      color: '#0d121d',
+                      fontSize: '1.02rem',
+                      boxShadow: '0 8px 24px rgba(212, 175, 55, 0.35)',
+                      textAlign: 'center'
+                    }}
+                  >
+                    ✦ Enquire Now for Visa Assistance &rarr;
+                  </Link>
+
+                  <a 
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      padding: '0.95rem 1.5rem', 
+                      borderRadius: '999px', 
+                      fontWeight: '600',
+                      textDecoration: 'none',
+                      background: 'rgba(37, 211, 102, 0.12)',
+                      color: '#25d366',
+                      border: '1px solid rgba(37, 211, 102, 0.4)',
+                      fontSize: '0.95rem',
+                      textAlign: 'center'
+                    }}
+                  >
+                    💬 WhatsApp Visa Officer (+91 74069 94752)
+                  </a>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                    <span>🛡️</span> <span><strong>99.4% Success Rate:</strong> Pre-submission dossier scrutiny</span>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className={styles.visaForm}>
-                    <div className={styles.formGroup}>
-                      <label className={styles.formLabel}>Target Country</label>
-                      <select 
-                        value={formData.country}
-                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                        className={styles.formSelect}
-                      >
-                        {POPULAR_VISAS.map((v) => (
-                          <option key={v.country} value={v.country}>{v.flag} {v.country}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className={styles.formRow}>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Visa Type</label>
-                        <select 
-                          value={formData.visaType}
-                          onChange={(e) => setFormData({ ...formData, visaType: e.target.value })}
-                          className={styles.formSelect}
-                        >
-                          <option value="Tourist Visa">Tourist Visa</option>
-                          <option value="Business Visa">Business Visa</option>
-                          <option value="Express / Urgent Visa">Express / Urgent Visa</option>
-                          <option value="Transit Visa">Transit Visa</option>
-                        </select>
-                      </div>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Travel Date</label>
-                        <input 
-                          type="date"
-                          value={formData.travelDate}
-                          onChange={(e) => setFormData({ ...formData, travelDate: e.target.value })}
-                          className={styles.formInput}
-                        />
-                      </div>
-                    </div>
-
-                    <div className={styles.formRow}>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Applicants</label>
-                        <select 
-                          value={formData.applicants}
-                          onChange={(e) => setFormData({ ...formData, applicants: e.target.value })}
-                          className={styles.formSelect}
-                        >
-                          <option value="1 Applicant">1 Applicant</option>
-                          <option value="2 Applicants">2 Applicants</option>
-                          <option value="Family (3-4 Applicants)">Family (3-4 Applicants)</option>
-                          <option value="Group (5+ Applicants)">Group (5+ Applicants)</option>
-                        </select>
-                      </div>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Your Name</label>
-                        <input 
-                          type="text"
-                          placeholder="e.g. Ananya Roy"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className={styles.formInput}
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className={styles.formGroup}>
-                      <label className={styles.formLabel}>WhatsApp / Phone*</label>
-                      <input 
-                        type="tel"
-                        placeholder="e.g. 9876543210"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className={styles.formInput}
-                        required
-                      />
-                    </div>
-
-                    <div className={styles.formGroup}>
-                      <label className={styles.formLabel}>Email ID*</label>
-                      <input 
-                        type="email"
-                        placeholder="e.g. ananya.roy@gmail.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className={styles.formInput}
-                        required
-                      />
-                    </div>
-
-                    <button 
-                      type="submit" 
-                      className={styles.submitBtn}
-                      disabled={isSubmitting}
-                      style={{ opacity: isSubmitting ? 0.75 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
-                    >
-                      <span>{isSubmitting ? "Submitting..." : "Get Document Checklist & Visa Quote"}</span>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
-
-                    <div className={styles.supportStrip}>
-                      <span>Direct Visa Desk:</span>
-                      <a href="tel:+917406994752" style={{ color: '#0a0a0a', fontWeight: 700 }}>+917406994752</a>
-                    </div>
-                  </form>
-                )}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                    <span>📅</span> <span><strong>Priority VFS Appointments:</strong> Fast biometric slots</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                    <span>⚡</span> <span><strong>Free Document Checklist:</strong> Sent instantly on WhatsApp</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

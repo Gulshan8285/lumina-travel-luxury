@@ -1,88 +1,11 @@
 "use client";
 
-import { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import styles from './page.module.css';
 
 export default function FlightsPage() {
-  const [tripType, setTripType] = useState<'round' | 'oneway'>('round');
-  const [formData, setFormData] = useState({
-    from: "Delhi (DEL)",
-    to: "Dubai (DXB)",
-    departDate: "",
-    returnDate: "",
-    cabin: "Economy",
-    passengers: "2 Adults",
-    name: "",
-    phone: "",
-    email: ""
-  });
-
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name.trim() || !formData.phone.trim()) {
-      alert("Please enter your name and contact phone number.");
-      return;
-    }
-
-    if (!formData.email.trim()) {
-      alert("Please enter your email ID. Email is mandatory.");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email.trim())) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    const message = `*Flight Booking Enquiry - SOBHAVI TRAVELS*%0A%0A` +
-      `*Trip Type:* ${tripType === 'round' ? 'Round Trip' : 'One Way'}%0A` +
-      `*From:* ${formData.from}%0A` +
-      `*To:* ${formData.to}%0A` +
-      `*Departure Date:* ${formData.departDate || 'Flexible'}%0A` +
-      (tripType === 'round' ? `*Return Date:* ${formData.returnDate || 'Flexible'}%0A` : '') +
-      `*Cabin Class:* ${formData.cabin}%0A` +
-      `*Passengers:* ${formData.passengers}%0A%0A` +
-      `*Client Details:*%0A` +
-      `*Name:* ${formData.name.trim()}%0A` +
-      `*Phone:* ${formData.phone.trim()}%0A` +
-      `*Email:* ${formData.email.trim()}%0A%0A` +
-      `Please provide best flight options, airline timings & special fares.`;
-
-    const payload = {
-      timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
-      name: formData.name.trim(),
-      phone: formData.phone.trim(),
-      whatsapp: formData.phone.trim(),
-      email: formData.email.trim(),
-      service: `Flight Ticketing (${formData.cabin})`,
-      destination: `${formData.from} to ${formData.to}`,
-      travelDates: formData.departDate || 'Flexible',
-      travellers: formData.passengers,
-      notes: `Flight Route: ${formData.from} -> ${formData.to}, Class: ${formData.cabin}, Trip: ${tripType}`
-    };
-
-    setIsSubmitting(true);
-    try {
-      await fetch('/api/enquiries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch (err) {
-      console.error('Flight enquiry sync error:', err);
-    } finally {
-      setIsSubmitting(false);
-    }
-
-    window.open(`https://wa.me/917406994752?text=${message}`, '_blank');
-    setSubmitted(true);
-  };
+  const whatsappUrl = "https://wa.me/917406994752?text=Hello%20Sobhavi%20Holidays,%20I%20would%20like%20to%20enquire%20about%20flight%20ticketing%20rates%20and%20routes.";
 
   return (
     <>
@@ -90,7 +13,7 @@ export default function FlightsPage() {
 
       <main className={styles.main}>
         {/* =================================================================
-            1. HERO WITH FAST FLIGHT SEARCH & INQUIRY CARD
+            1. HERO WITH FAST FLIGHT INQUIRY CARD
             ================================================================= */}
         <section className={styles.heroSection}>
           <div className="container">
@@ -121,180 +44,72 @@ export default function FlightsPage() {
                 </div>
               </div>
 
-              {/* FLIGHT BOOKING FORM */}
+              {/* FLIGHT ENQUIRY CARD */}
               <div className={styles.flightCard}>
                 <div className={styles.flightCardHeader}>
-                  <div className={styles.tripTypeTabs}>
-                    <button 
-                      type="button"
-                      className={`${styles.tabBtn} ${tripType === 'round' ? styles.tabActive : ''}`}
-                      onClick={() => setTripType('round')}
-                    >
-                      Round Trip
-                    </button>
-                    <button 
-                      type="button"
-                      className={`${styles.tabBtn} ${tripType === 'oneway' ? styles.tabActive : ''}`}
-                      onClick={() => setTripType('oneway')}
-                    >
-                      One Way
-                    </button>
-                  </div>
+                  <span className={styles.cardBadge}>EXCLUSIVE FLIGHT DESK</span>
                   <h2 className={styles.flightCardTitle}>Request Flight Options</h2>
+                  <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.92rem', lineHeight: '1.6', marginTop: '0.6rem' }}>
+                    Tell us your travel dates and route. Our flight ticketing specialists will compare non-stop and best-timed connections with negotiated corporate fares.
+                  </p>
                 </div>
 
-                {submitted ? (
-                  <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
-                    <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>✈️</div>
-                    <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Flight Request Dispatched!</h3>
-                    <p style={{ fontSize: '0.88rem', color: '#64748b' }}>
-                      Our flight ticketing specialist is comparing non-stop and best-timed connections for you now.
-                    </p>
-                    <button 
-                      onClick={() => setSubmitted(false)}
-                      className="btn-outline-dark"
-                      style={{ marginTop: '1rem', padding: '0.6rem 1.4rem', fontSize: '0.75rem' }}
-                    >
-                      Search Another Route
-                    </button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', marginTop: '1.75rem' }}>
+                  <Link 
+                    href="/enquire?service=Flight+Booking"
+                    className="btn-gold"
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      padding: '1rem 1.5rem', 
+                      borderRadius: '999px', 
+                      fontWeight: '700',
+                      textDecoration: 'none',
+                      background: 'linear-gradient(135deg, #d4af37 0%, #aa8528 100%)',
+                      color: '#0d121d',
+                      fontSize: '1.02rem',
+                      boxShadow: '0 8px 24px rgba(212, 175, 55, 0.35)',
+                      textAlign: 'center'
+                    }}
+                  >
+                    ✦ Enquire Now for Flight Booking &rarr;
+                  </Link>
+
+                  <a 
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      padding: '0.95rem 1.5rem', 
+                      borderRadius: '999px', 
+                      fontWeight: '600',
+                      textDecoration: 'none',
+                      background: 'rgba(37, 211, 102, 0.12)',
+                      color: '#25d366',
+                      border: '1px solid rgba(37, 211, 102, 0.4)',
+                      fontSize: '0.95rem',
+                      textAlign: 'center'
+                    }}
+                  >
+                    💬 WhatsApp Flight Desk (+91 74069 94752)
+                  </a>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                    <span>⚡</span> <span><strong>15-Minute Response:</strong> Express route &amp; fare quote</span>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className={styles.flightForm}>
-                    <div className={styles.formRow}>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>From (City/Airport)</label>
-                        <input 
-                          type="text" 
-                          placeholder="e.g. Delhi, Mumbai, Bengaluru"
-                          value={formData.from}
-                          onChange={(e) => setFormData({ ...formData, from: e.target.value })}
-                          className={styles.formInput}
-                          required
-                        />
-                      </div>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>To (Destination)</label>
-                        <input 
-                          type="text" 
-                          placeholder="e.g. Dubai, London, Bali, Goa"
-                          value={formData.to}
-                          onChange={(e) => setFormData({ ...formData, to: e.target.value })}
-                          className={styles.formInput}
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className={styles.formRow}>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Departure Date</label>
-                        <input 
-                          type="date"
-                          value={formData.departDate}
-                          onChange={(e) => setFormData({ ...formData, departDate: e.target.value })}
-                          className={styles.formInput}
-                          required
-                        />
-                      </div>
-                      {tripType === 'round' && (
-                        <div className={styles.formGroup}>
-                          <label className={styles.formLabel}>Return Date</label>
-                          <input 
-                            type="date"
-                            value={formData.returnDate}
-                            onChange={(e) => setFormData({ ...formData, returnDate: e.target.value })}
-                            className={styles.formInput}
-                            required
-                          />
-                        </div>
-                      )}
-                    </div>
-
-                    <div className={styles.formRow}>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Cabin Class</label>
-                        <select 
-                          value={formData.cabin}
-                          onChange={(e) => setFormData({ ...formData, cabin: e.target.value })}
-                          className={styles.formSelect}
-                        >
-                          <option value="Economy">Economy</option>
-                          <option value="Premium Economy">Premium Economy</option>
-                          <option value="Business Class">Business Class</option>
-                          <option value="First Class">First Class</option>
-                        </select>
-                      </div>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Passengers</label>
-                        <select 
-                          value={formData.passengers}
-                          onChange={(e) => setFormData({ ...formData, passengers: e.target.value })}
-                          className={styles.formSelect}
-                        >
-                          <option value="1 Adult">1 Adult</option>
-                          <option value="2 Adults">2 Adults</option>
-                          <option value="Family (2 Adults + 1 Child)">Family (2 Adults + 1 Child)</option>
-                          <option value="Family (2 Adults + 2 Children)">Family (2 Adults + 2 Children)</option>
-                          <option value="Group (5+ Passengers)">Group (5+ Passengers)</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className={styles.formGroup}>
-                      <label className={styles.formLabel}>Your Name*</label>
-                      <input 
-                        type="text"
-                        placeholder="e.g. Amit Kapoor"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className={styles.formInput}
-                        required
-                      />
-                    </div>
-                    <div className={styles.formRow}>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>WhatsApp Phone*</label>
-                        <input 
-                          type="tel"
-                          placeholder="e.g. 9876543210"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className={styles.formInput}
-                          required
-                        />
-                      </div>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Email ID*</label>
-                        <input 
-                          type="email"
-                          placeholder="e.g. amit.kapoor@gmail.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className={styles.formInput}
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <button 
-                      type="submit" 
-                      className={styles.submitBtn}
-                      disabled={isSubmitting}
-                      style={{ opacity: isSubmitting ? 0.75 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
-                    >
-                      <span>{isSubmitting ? "Submitting..." : "Get Best Flight Quotes"}</span>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
-
-                    <div className={styles.flightSupportStrip}>
-                      <span>Flight Desk (12 PM – 9 PM):</span>
-                      <a href="tel:+917406994752" style={{ color: '#0a0a0a', fontWeight: 700 }}>+917406994752</a>
-                    </div>
-                  </form>
-                )}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                    <span>🛡️</span> <span><strong>Zero Hidden Fees:</strong> Complete transparency on airline taxes</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                    <span>💺</span> <span><strong>Complimentary Web Check-in:</strong> Boarding passes to your phone</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

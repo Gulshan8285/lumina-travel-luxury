@@ -103,84 +103,7 @@ const CITY_HOTEL_DATA: CityHotelCategory[] = [
 ];
 
 export default function HotelsPage() {
-  const [formData, setFormData] = useState({
-    city: "Rajasthan (Jaipur & Udaipur)",
-    checkIn: "",
-    checkOut: "",
-    roomType: "5-Star Luxury Suite",
-    guests: "2 Adults",
-    name: "",
-    phone: "",
-    email: ""
-  });
-
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name.trim() || !formData.phone.trim()) {
-      alert("Please enter your name and phone number.");
-      return;
-    }
-
-    if (!formData.email.trim()) {
-      alert("Please enter your email ID. Email is mandatory.");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email.trim())) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    const message = `*5-Star Hotel Booking Enquiry - SOBHAVI TRAVELS*%0A%0A` +
-      `*City / Destination:* ${formData.city}%0A` +
-      `*Check-In:* ${formData.checkIn || 'Flexible'}%0A` +
-      `*Check-Out:* ${formData.checkOut || 'Flexible'}%0A` +
-      `*Room Type:* ${formData.roomType}%0A` +
-      `*Guests:* ${formData.guests}%0A%0A` +
-      `*Package Inclusions Requested:*%0A` +
-      `✓ 5-Star Hotel Luxury Stay%0A` +
-      `✓ Daily Breakfast & Gourmet Dinners (Khana Included)%0A` +
-      `✓ Private AC Cab & Uniformed Chauffeur (Car Included)%0A` +
-      `✓ Airport / Station Transfers%0A%0A` +
-      `*Client Details:*%0A` +
-      `*Name:* ${formData.name.trim()}%0A` +
-      `*Phone:* ${formData.phone.trim()}%0A` +
-      `*Email:* ${formData.email.trim()}%0A%0A` +
-      `Please check live room availability & send quotation.`;
-
-    const payload = {
-      timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
-      name: formData.name.trim(),
-      phone: formData.phone.trim(),
-      whatsapp: formData.phone.trim(),
-      email: formData.email.trim(),
-      service: `Hotel Booking - ${formData.roomType}`,
-      destination: formData.city,
-      travelDates: `${formData.checkIn || 'Checkin'} to ${formData.checkOut || 'Checkout'}`,
-      travellers: formData.guests,
-      notes: `Hotel: ${formData.roomType}, City: ${formData.city}, Inclusions: Khana + Car`
-    };
-
-    setIsSubmitting(true);
-    try {
-      await fetch('/api/enquiries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch (err) {
-      console.error('Hotel enquiry sync error:', err);
-    } finally {
-      setIsSubmitting(false);
-    }
-
-    window.open(`https://wa.me/917406994752?text=${message}`, '_blank');
-    setSubmitted(true);
-  };
+  const whatsappUrl = "https://wa.me/917406994752?text=Hello%20Sobhavi%20Holidays,%20I%20would%20like%20to%20enquire%20about%205-star%20hotel%20and%20resort%20stays.";
 
   return (
     <>
@@ -225,173 +148,73 @@ export default function HotelsPage() {
                 </div>
               </div>
 
-              {/* HOTEL BOOKING CARD */}
+              {/* HOTEL ENQUIRY CARD */}
               <div className={styles.hotelCard}>
                 <div className={styles.hotelCardHeader}>
                   <span className={styles.cardBadge}>STAY + FOOD + CAR PACKAGE</span>
                   <h2 className={styles.hotelCardTitle}>Reserve 5-Star Hotel</h2>
+                  <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.92rem', lineHeight: '1.6', marginTop: '0.6rem' }}>
+                    Palaces, private pool villas, and mountain chalets with complimentary breakfast &amp; dinner, plus a private AC cab with chauffeur.
+                  </p>
                 </div>
 
-                {submitted ? (
-                  <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
-                    <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🏨</div>
-                    <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Hotel Request Dispatched!</h3>
-                    <p style={{ fontSize: '0.88rem', color: '#64748b' }}>
-                      Our hospitality desk is checking suite availability, special meal plans, and private chauffeur allocation.
-                    </p>
-                    <button 
-                      onClick={() => setSubmitted(false)}
-                      className="btn-outline-dark"
-                      style={{ marginTop: '1rem', padding: '0.6rem 1.4rem', fontSize: '0.75rem' }}
-                    >
-                      Book Another Hotel
-                    </button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', marginTop: '1.75rem' }}>
+                  <Link 
+                    href="/enquire?service=Hotel+Booking"
+                    className="btn-gold"
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      padding: '1rem 1.5rem', 
+                      borderRadius: '999px', 
+                      fontWeight: '700',
+                      textDecoration: 'none',
+                      background: 'linear-gradient(135deg, #d4af37 0%, #aa8528 100%)',
+                      color: '#0d121d',
+                      fontSize: '1.02rem',
+                      boxShadow: '0 8px 24px rgba(212, 175, 55, 0.35)',
+                      textAlign: 'center'
+                    }}
+                  >
+                    ✦ Enquire Now for 5-Star Stays &rarr;
+                  </Link>
+
+                  <a 
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      padding: '0.95rem 1.5rem', 
+                      borderRadius: '999px', 
+                      fontWeight: '600',
+                      textDecoration: 'none',
+                      background: 'rgba(37, 211, 102, 0.12)',
+                      color: '#25d366',
+                      border: '1px solid rgba(37, 211, 102, 0.4)',
+                      fontSize: '0.95rem',
+                      textAlign: 'center'
+                    }}
+                  >
+                    💬 WhatsApp Hospitality Concierge (+91 74069 94752)
+                  </a>
+                </div>
+
+                {/* Package Inclusions Preview */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                    <span>🍽️</span> <span><strong>Gourmet Dining:</strong> Daily lavish breakfast + multi-course dinner</span>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className={styles.hotelForm}>
-                    <div className={styles.formGroup}>
-                      <label className={styles.formLabel}>Select City / Region</label>
-                      <select 
-                        value={formData.city}
-                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className={styles.formSelect}
-                      >
-                        {CITY_HOTEL_DATA.map((c) => (
-                          <option key={c.city} value={c.city}>{c.city}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className={styles.formRow}>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Check-In Date</label>
-                        <input 
-                          type="date"
-                          value={formData.checkIn}
-                          onChange={(e) => setFormData({ ...formData, checkIn: e.target.value })}
-                          className={styles.formInput}
-                          required
-                        />
-                      </div>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Check-Out Date</label>
-                        <input 
-                          type="date"
-                          value={formData.checkOut}
-                          onChange={(e) => setFormData({ ...formData, checkOut: e.target.value })}
-                          className={styles.formInput}
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className={styles.formRow}>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Room Category</label>
-                        <select 
-                          value={formData.roomType}
-                          onChange={(e) => setFormData({ ...formData, roomType: e.target.value })}
-                          className={styles.formSelect}
-                        >
-                          <option value="5-Star Luxury Suite">5-Star Luxury Suite</option>
-                          <option value="Heritage Palace Chamber">Heritage Palace Chamber</option>
-                          <option value="Private Pool Villa">Private Pool Villa</option>
-                          <option value="Overwater Ocean Bungalow">Overwater Ocean Bungalow</option>
-                        </select>
-                      </div>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Guests</label>
-                        <select 
-                          value={formData.guests}
-                          onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-                          className={styles.formSelect}
-                        >
-                          <option value="2 Adults (1 Room)">2 Adults (1 Room)</option>
-                          <option value="Family (2 Adults + 1 Child)">Family (2 Adults + 1 Child)</option>
-                          <option value="Family (2 Adults + 2 Children)">Family (2 Adults + 2 Children)</option>
-                          <option value="Group (4+ Adults, 2 Rooms)">Group (4+ Adults, 2 Rooms)</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    {/* Automatic Package Checklist */}
-                    <div className={styles.inclusionsChecklist}>
-                      <div className={styles.checklistLabel}>Package Inclusions Included Free:</div>
-                      <div className={styles.checkGrid}>
-                        <div className={styles.checkItem}>
-                          <span className={styles.checkGreen}>✓</span>
-                          <span>Daily Breakfast + Dinner</span>
-                        </div>
-                        <div className={styles.checkItem}>
-                          <span className={styles.checkGreen}>✓</span>
-                          <span>Private AC Cab with Chauffeur</span>
-                        </div>
-                        <div className={styles.checkItem}>
-                          <span className={styles.checkGreen}>✓</span>
-                          <span>Airport VIP Pickup & Drop</span>
-                        </div>
-                        <div className={styles.checkItem}>
-                          <span className={styles.checkGreen}>✓</span>
-                          <span>Early Check-In / Room Upgrade</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className={styles.formGroup}>
-                      <label className={styles.formLabel}>Your Name*</label>
-                      <input 
-                        type="text"
-                        placeholder="e.g. Vikram Singhania"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className={styles.formInput}
-                        required
-                      />
-                    </div>
-                    <div className={styles.formRow}>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>WhatsApp Phone*</label>
-                        <input 
-                          type="tel"
-                          placeholder="e.g. 9876543210"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className={styles.formInput}
-                          required
-                        />
-                      </div>
-                      <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Email ID*</label>
-                        <input 
-                          type="email"
-                          placeholder="e.g. vikram.singhania@gmail.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className={styles.formInput}
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <button 
-                      type="submit" 
-                      className={styles.submitBtn}
-                      disabled={isSubmitting}
-                      style={{ opacity: isSubmitting ? 0.75 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
-                    >
-                      <span>{isSubmitting ? "Submitting..." : "Get Best Hotel & Cab Package Quote"}</span>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
-
-                    <div className={styles.supportStrip}>
-                      <span>Direct Hospitality Desk:</span>
-                      <a href="tel:+917406994752" style={{ color: '#0a0a0a', fontWeight: 700 }}>+917406994752</a>
-                    </div>
-                  </form>
-                )}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                    <span>🚗</span> <span><strong>Private AC Car:</strong> Dedicated chauffeur for sightseeing &amp; transfers</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                    <span>⭐</span> <span><strong>VIP Perks:</strong> Room upgrades &amp; early check-in privileges</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
