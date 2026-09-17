@@ -8,6 +8,7 @@ import NavigationProgress from "@/components/ui/NavigationProgress";
 import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
 import Footer from "@/components/layout/Footer";
 import ConditionalFooter from "@/components/layout/ConditionalFooter";
+import SecretLiveEditor from "@/components/ui/SecretLiveEditor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -59,6 +60,7 @@ export default function RootLayout({
       <body className="dark-mode-forced">
         <Suspense fallback={null}>
           <NavigationProgress />
+          <SecretLiveEditor />
         </Suspense>
         <FilmGrain />
         <FloatingContact />
