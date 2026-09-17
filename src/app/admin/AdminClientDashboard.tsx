@@ -1908,10 +1908,35 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
       {activeTab === 'enquiries' && (
         <div className={styles.editorCard}>
           <div className={styles.cardHeader}>
-            <h2 className={styles.cardTitle}>Client Enquiries &amp; Booking Leads ({enquiries.length})</h2>
-            <p className={styles.cardDesc}>
-              Direct enquiries submitted by website visitors. Connect directly via WhatsApp or phone.
-            </p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+              <div>
+                <h2 className={styles.cardTitle}>Client Enquiries &amp; Booking Leads ({enquiries.length})</h2>
+                <p className={styles.cardDesc}>
+                  Direct enquiries submitted by website visitors. Synced to your Google Sheets database.
+                </p>
+              </div>
+              <a 
+                href="https://docs.google.com/spreadsheets/d/1cSFAUvPdQUON1HeOvYKmNr-YOyEBuasCYrBdzQdAQ94/edit?gid=0#gid=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  backgroundColor: '#10b981',
+                  color: '#ffffff',
+                  padding: '0.65rem 1.15rem',
+                  borderRadius: '8px',
+                  fontWeight: 600,
+                  fontSize: '0.88rem',
+                  textDecoration: 'none',
+                  boxShadow: '0 2px 8px rgba(16, 185, 129, 0.25)',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                <span>📊</span> Open Google Sheet Leads Database ↗
+              </a>
+            </div>
           </div>
 
           {enquiries.length === 0 ? (

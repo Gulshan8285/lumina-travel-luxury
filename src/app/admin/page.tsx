@@ -15,11 +15,25 @@ export default async function AdminPage() {
     console.error('Failed to load enquiries from prisma:', error);
   }
 
+  // If Prisma returned 0 records or had an issue on serverless, load from backup
+  if (!enquiries || enquiries.length === 0) {
+    try {
+      const fs = await import('fs');
+      const path = await import('path');
+      const backupFile = path.join(process.cwd(), 'data', 'enquiries_backup.json');
+      if (fs.existsSync(backupFile)) {
+        enquiries = JSON.parse(fs.readFileSync(backupFile, 'utf-8'));
+      }
+    } catch (e) {
+      console.warn('Backup file read error in admin:', e);
+    }
+  }
+
   const blogs = getAllBlogs();
   const siteConfig = getSiteConfig();
 
   // Ensure dates are serialized strings for client component
-  const serializedEnquiries = enquiries.map(e => ({
+  const serializedEnquiries = (enquiries || []).map(e => ({
     ...e,
     createdAt: e.createdAt ? new Date(e.createdAt).toISOString() : new Date().toISOString()
   }));

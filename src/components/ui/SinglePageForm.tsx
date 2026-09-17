@@ -40,6 +40,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (initialDestination) {
@@ -58,11 +59,22 @@ export default function SinglePageForm({ initialDestination = "", initialService
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.name.trim() || !formData.phone.trim()) {
       alert("Please provide your name and mobile / WhatsApp number.");
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      alert("Please provide your email address. Email ID is mandatory.");
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(formData.email.trim())) {
+      alert("Please enter a valid email address (e.g. name@example.com).");
       return;
     }
 
@@ -77,7 +89,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
       "",
       `*Your name:* ${formData.name}`,
       `*Mobile / WhatsApp:* ${formData.phone}`,
-      `*Email:* ${formData.email || 'Not specified'}`,
+      `*Email:* ${formData.email.trim()}`,
       `*Interested in:* ${formData.service}`,
       `*Destination(s):* ${formData.destination || 'Not specified'}`,
       `*Approx. travel dates:* ${formData.travelDates || 'Flexible'}`,
@@ -89,25 +101,40 @@ export default function SinglePageForm({ initialDestination = "", initialService
     const waText = messageLines.join("\n");
     const waUrl = `https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(waText)}`;
 
-    // Background log to API
+    const payload = {
+      timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+      name: formData.name.trim(),
+      phone: formData.phone.trim(),
+      whatsapp: formData.phone.trim(),
+      email: formData.email.trim(),
+      service: formData.service,
+      destination: formData.destination.trim() || 'Not specified',
+      travelDates: formData.travelDates.trim() || 'Flexible',
+      travellers: formData.travellers.trim() || 'Not specified',
+      budget: formData.budget.trim() || 'Not specified',
+      notes: formData.notes.trim() || 'None'
+    };
+
+    // Dual-Sync: Submit to backend database (/api/enquiries) AND directly to Google Sheet Webhook
+    setIsSubmitting(true);
     try {
-      fetch('/api/enquiries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          service: formData.service,
-          destination: formData.destination,
-          travelDates: formData.travelDates,
-          travellers: formData.travellers,
-          budget: formData.budget,
-          notes: formData.notes
+      await Promise.allSettled([
+        fetch('/api/enquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }),
+        fetch('https://script.google.com/macros/s/AKfycbyIZRjBnqLVIGgasimAHKwdfS7z8CHUbqgP0Onn-HCOcLDbLiMDunpoPDH9ivDv8TSt/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(payload)
         })
-      }).catch(() => {});
+      ]);
     } catch (err) {
-      // Ignore API save errors, priority is direct WhatsApp connect
+      console.error("Enquiry submission error:", err);
+    } finally {
+      setIsSubmitting(false);
     }
 
     // Open WhatsApp directly
@@ -177,15 +204,16 @@ export default function SinglePageForm({ initialDestination = "", initialService
                 />
               </div>
 
-              {/* Email */}
+              {/* Email ID* */}
               <div className={styles.formGroup}>
-                <label className={styles.label}>Email</label>
+                <label className={styles.label}>Email ID*</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="hello@sobhavitravel.com"
+                  placeholder="e.g. rahul.sharma@gmail.com"
+                  required
                   className={styles.input}
                 />
               </div>
@@ -275,8 +303,13 @@ export default function SinglePageForm({ initialDestination = "", initialService
               </div>
 
               {/* Submit Button */}
-              <button type="submit" className={styles.submitBtn}>
-                Send Enquiry
+              <button 
+                type="submit" 
+                className={styles.submitBtn}
+                disabled={isSubmitting}
+                style={{ opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+              >
+                {isSubmitting ? "Submitting Enquiry..." : "Send Enquiry"}
               </button>
             </form>
           )}

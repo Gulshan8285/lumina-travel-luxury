@@ -31,15 +31,28 @@ export default function VisaPage() {
     travelDate: "",
     applicants: "1 Applicant",
     name: "",
-    phone: ""
+    phone: "",
+    email: ""
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) {
-      alert("Please enter your name and phone number.");
+    if (!formData.name.trim() || !formData.phone.trim()) {
+      alert("Please enter your name and mobile / WhatsApp number.");
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      alert("Please enter your email ID. Email is mandatory.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      alert("Please enter a valid email address.");
       return;
     }
 
@@ -49,9 +62,44 @@ export default function VisaPage() {
       `*Tentative Travel Date:* ${formData.travelDate || 'Flexible'}%0A` +
       `*Applicants:* ${formData.applicants}%0A%0A` +
       `*Client Details:*%0A` +
-      `*Name:* ${formData.name}%0A` +
-      `*Phone:* ${formData.phone}%0A%0A` +
+      `*Name:* ${formData.name.trim()}%0A` +
+      `*Phone:* ${formData.phone.trim()}%0A` +
+      `*Email:* ${formData.email.trim()}%0A%0A` +
       `Please provide required documents checklist, visa fees & appointment schedule.`;
+
+    const payload = {
+      timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+      name: formData.name.trim(),
+      phone: formData.phone.trim(),
+      whatsapp: formData.phone.trim(),
+      email: formData.email.trim(),
+      service: `Visa Desk - ${formData.visaType}`,
+      destination: formData.country,
+      travelDates: formData.travelDate || 'Flexible',
+      travellers: formData.applicants,
+      notes: `Visa Type: ${formData.visaType} for ${formData.country}`
+    };
+
+    setIsSubmitting(true);
+    try {
+      await Promise.allSettled([
+        fetch('/api/enquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }),
+        fetch('https://script.google.com/macros/s/AKfycbyIZRjBnqLVIGgasimAHKwdfS7z8CHUbqgP0Onn-HCOcLDbLiMDunpoPDH9ivDv8TSt/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(payload)
+        })
+      ]);
+    } catch (err) {
+      console.error('Visa enquiry sync error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
 
     window.open(`https://wa.me/917406994752?text=${message}`, '_blank');
     setSubmitted(true);
@@ -186,7 +234,7 @@ export default function VisaPage() {
                     </div>
 
                     <div className={styles.formGroup}>
-                      <label className={styles.formLabel}>WhatsApp / Phone</label>
+                      <label className={styles.formLabel}>WhatsApp / Phone*</label>
                       <input 
                         type="tel"
                         placeholder="e.g. 9876543210"
@@ -197,8 +245,25 @@ export default function VisaPage() {
                       />
                     </div>
 
-                    <button type="submit" className={styles.submitBtn}>
-                      <span>Get Document Checklist & Visa Quote</span>
+                    <div className={styles.formGroup}>
+                      <label className={styles.formLabel}>Email ID*</label>
+                      <input 
+                        type="email"
+                        placeholder="e.g. ananya.roy@gmail.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className={styles.formInput}
+                        required
+                      />
+                    </div>
+
+                    <button 
+                      type="submit" 
+                      className={styles.submitBtn}
+                      disabled={isSubmitting}
+                      style={{ opacity: isSubmitting ? 0.75 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+                    >
+                      <span>{isSubmitting ? "Submitting..." : "Get Document Checklist & Visa Quote"}</span>
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
