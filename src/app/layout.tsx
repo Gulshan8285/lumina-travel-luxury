@@ -30,6 +30,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.sobhavitravel.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: "SOBHAVI TRAVELS | Your journey. Our expertise.",
   description: "From quick getaways to international holidays, family vacations to special occasions - we help you plan the trip, while taking care of the details.",
   verification: {
