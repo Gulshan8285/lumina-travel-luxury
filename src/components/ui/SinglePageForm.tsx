@@ -22,6 +22,15 @@ const SERVICES = [
   "Other"
 ];
 
+const HEAR_ABOUT_US_OPTIONS = [
+  "Google Search",
+  "Social Media (Instagram / Facebook)",
+  "Referred by Friend or Family",
+  "YouTube / Online Video",
+  "Word of mouth / Existing Customer",
+  "Other"
+];
+
 const TARGET_WHATSAPP = "917406994752";
 const DISPLAY_PHONE = "+917406994752";
 const DISPLAY_EMAIL = "hello@sobhavitravel.com";
@@ -36,6 +45,9 @@ export default function SinglePageForm({ initialDestination = "", initialService
     travelDates: '',
     travellers: '',
     budget: '',
+    hearAboutUs: '',
+    referrerName: '',
+    referrerPhone: '',
     notes: ''
   });
 
@@ -95,8 +107,12 @@ export default function SinglePageForm({ initialDestination = "", initialService
       `*Approx. travel dates:* ${formData.travelDates || 'Flexible'}`,
       `*Number of travellers:* ${formData.travellers || 'Not specified'}`,
       `*Approximate budget (per person):* ${formData.budget || 'Not specified'}`,
+      formData.hearAboutUs ? `*Found us via:* ${formData.hearAboutUs}` : null,
+      (formData.hearAboutUs === "Referred by Friend or Family" && (formData.referrerName || formData.referrerPhone))
+        ? `*Referred by:* ${formData.referrerName || 'Not specified'} ${formData.referrerPhone ? `(${formData.referrerPhone})` : ''}`
+        : null,
       `*Anything else we should know?:* ${formData.notes || 'None'}`
-    ];
+    ].filter(Boolean) as string[];
 
     const waText = messageLines.join("\n");
     const waUrl = `https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(waText)}`;
@@ -112,6 +128,9 @@ export default function SinglePageForm({ initialDestination = "", initialService
       travelDates: formData.travelDates.trim() || 'Flexible',
       travellers: formData.travellers.trim() || 'Not specified',
       budget: formData.budget.trim() || 'Not specified',
+      referralSource: formData.hearAboutUs || 'Not specified',
+      referrerName: formData.referrerName.trim() || '',
+      referrerPhone: formData.referrerPhone.trim() || '',
       notes: formData.notes.trim() || 'None'
     };
 
@@ -280,6 +299,56 @@ export default function SinglePageForm({ initialDestination = "", initialService
                   className={styles.input}
                 />
               </div>
+
+              {/* How did you hear about us? */}
+              <div className={styles.formGroup}>
+                <label className={styles.label}>How did you hear about us?</label>
+                <div className={styles.selectWrapper}>
+                  <select
+                    name="hearAboutUs"
+                    value={formData.hearAboutUs}
+                    onChange={handleChange}
+                    className={styles.select}
+                  >
+                    <option value="">Select how you found us (Optional)</option>
+                    {HEAR_ABOUT_US_OPTIONS.map(opt => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Optional Referrer Fields (shown when friend/family selected) */}
+              {formData.hearAboutUs === "Referred by Friend or Family" && (
+                <div className={styles.referrerBox}>
+                  <div className={styles.referrerHeader}>
+                    <span className={styles.referrerTitle}>🤝 Referrer Details</span>
+                    <span className={styles.optionalTag}>Optional (Not Mandatory)</span>
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label className={styles.label}>Referrer&apos;s Name</label>
+                    <input
+                      type="text"
+                      name="referrerName"
+                      value={formData.referrerName}
+                      onChange={handleChange}
+                      placeholder="e.g. Ramesh Sharma"
+                      className={styles.input}
+                    />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label className={styles.label}>Referrer&apos;s Mobile / Phone</label>
+                    <input
+                      type="tel"
+                      name="referrerPhone"
+                      value={formData.referrerPhone}
+                      onChange={handleChange}
+                      placeholder="e.g. +91 98765 43210"
+                      className={styles.input}
+                    />
+                  </div>
+                </div>
+              )}
 
               {/* Anything else we should know? */}
               <div className={styles.formGroup}>

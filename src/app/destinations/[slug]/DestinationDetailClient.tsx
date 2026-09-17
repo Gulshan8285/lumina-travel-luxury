@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/layout/Navbar';
-import SinglePageForm from '@/components/ui/SinglePageForm';
+import EnquireCtaBanner from '@/components/ui/EnquireCtaBanner';
 import JourneyCard from '@/components/ui/JourneyCard';
 import { popularJourneys } from '@/lib/data';
 import { LeisureDestination } from '@/lib/destinationsData';
@@ -376,12 +376,8 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
           </section>
         )}
 
-        {/* === PROMINENT HIGHLIGHTED ENQUIRY FORM BOX === */}
-        <section id="enquiry-section" className={styles.formSectionWrapper}>
-          <div className="container">
-            <SinglePageForm initialDestination={destination.name} />
-          </div>
-        </section>
+        {/* === ENQUIRE CTA BANNER === */}
+        <EnquireCtaBanner destination={destination.name} />
       </main>
     </>
   );

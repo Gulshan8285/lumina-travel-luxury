@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
-import SinglePageForm from '@/components/ui/SinglePageForm';
+import EnquireCtaBanner from '@/components/ui/EnquireCtaBanner';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -202,23 +202,14 @@ export default function TravelBuddyPage() {
           </div>
         </section>
 
-        {/* Enquire Now Form */}
-        <section id="enquire-form" className={styles.formSection}>
-          <div className="container">
-            <div className={styles.formIntro}>
-              <span className={styles.eyebrow}>NO BUNDLE REQUIRED</span>
-              <h2 className={styles.sectionTitle}>Enquire Now</h2>
-              <p className={styles.sectionSubtitle}>
-                Tell us what you&apos;re looking for &mdash; a hotel, cab, flights, Airbnb, or research help for your upcoming trip. We&apos;ll do the digging and get back to you with the best options.
-              </p>
-            </div>
-
-            <SinglePageForm
-              initialDestination="Travel Assistance - Travel Buddy"
-              initialService="Customized Tour"
-            />
-          </div>
-        </section>
+        {/* CTA Banner */}
+        <EnquireCtaBanner
+          destination="Travel Buddy Assistance"
+          service="Customized Tour"
+          title="Need Personal Travel Assistance?"
+          subtitle="Tell us what you're looking for — a hotel, cab, flights, Airbnb, or research help. We'll do the digging and get back to you with the best options."
+          badge="DEDICATED TRAVEL BUDDY SUPPORT"
+        />
 
         {/* FAQs */}
         <section className={styles.faqSection}>

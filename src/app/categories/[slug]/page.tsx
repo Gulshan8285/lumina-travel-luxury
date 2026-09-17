@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import { travelCategories, TravelCategory } from '@/lib/categories';
 import { getSiteConfig } from '@/lib/siteConfig';
-import SinglePageForm from '@/components/ui/SinglePageForm';
+import EnquireCtaBanner from '@/components/ui/EnquireCtaBanner';
 import styles from './page.module.css';
 
 export default function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -185,12 +185,8 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
           </section>
         )}
 
-        {/* Highlighted Enquiry Form Section */}
-        <section className={styles.formSection}>
-          <div className="container">
-            <SinglePageForm initialDestination={category.name} />
-          </div>
-        </section>
+        {/* Enquire CTA Banner */}
+        <EnquireCtaBanner destination={category.name} title={`Plan Your ${category.name} Getaway`} />
       </main>
     </>
   );

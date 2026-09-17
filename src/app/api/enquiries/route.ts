@@ -76,7 +76,10 @@ export async function POST(request: Request) {
       budget,
       experience,
       notes,
-      specialRequirements
+      specialRequirements,
+      referralSource,
+      referrerName,
+      referrerPhone
     } = body;
 
     const contactPhone = (phone || whatsapp || '').trim();
@@ -111,6 +114,21 @@ export async function POST(request: Request) {
     const clientNotes = (notes || specialRequirements || '').trim() || null;
     const istTimestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
+    // Format referral attribution
+    const referralInfo: string[] = [];
+    if (referralSource && referralSource !== 'Not specified') {
+      referralInfo.push(`Found via: ${referralSource}`);
+    }
+    if (referrerName || referrerPhone) {
+      referralInfo.push(`Referrer: ${referrerName || 'N/A'}${referrerPhone ? ` (${referrerPhone})` : ''}`);
+    }
+    const referralStr = referralInfo.join(' | ');
+
+    let combinedNotes = clientNotes || '';
+    if (referralStr) {
+      combinedNotes = combinedNotes ? `${combinedNotes}\n[${referralStr}]` : `[${referralStr}]`;
+    }
+
     const enquiryRecord = {
       id: `enq_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
       name: clientName,
@@ -123,7 +141,7 @@ export async function POST(request: Request) {
       duration: duration?.trim() || null,
       budget: approxBudget,
       experience: serviceType,
-      specialRequirements: clientNotes,
+      specialRequirements: combinedNotes || null,
       status: 'New',
       createdAt: new Date().toISOString()
     };
@@ -143,7 +161,10 @@ export async function POST(request: Request) {
       travelDates: dates || 'Flexible',
       travellers: numTravellers || 'Not specified',
       budget: approxBudget || 'Not specified',
-      notes: clientNotes || 'None'
+      referralSource: referralSource || 'Not specified',
+      referrerName: referrerName || '',
+      referrerPhone: referrerPhone || '',
+      notes: combinedNotes || 'None'
     });
 
     // Save to Prisma SQLite DB
@@ -160,7 +181,7 @@ export async function POST(request: Request) {
           duration: duration?.trim() || null,
           budget: approxBudget,
           experience: serviceType,
-          specialRequirements: clientNotes,
+          specialRequirements: combinedNotes,
           status: 'New'
         }
       });

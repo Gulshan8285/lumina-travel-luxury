@@ -4,7 +4,7 @@ import { useState, useEffect, use } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
-import SinglePageForm from '@/components/ui/SinglePageForm';
+import EnquireCtaBanner from '@/components/ui/EnquireCtaBanner';
 import { popularJourneys } from '@/lib/data';
 import styles from './page.module.css';
 
@@ -269,12 +269,8 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
           </section>
         )}
 
-        {/* === PROMINENT HIGHLIGHTED ENQUIRY FORM BOX === */}
-        <section id="enquiry-section" className={styles.formSectionWrapper}>
-          <div className="container">
-            <SinglePageForm initialDestination={journey.destination} />
-          </div>
-        </section>
+        {/* === ENQUIRE CTA BANNER === */}
+        <EnquireCtaBanner destination={journey.destination} title={`Ready to Embark on ${journey.name}?`} />
       </main>
     </>
   );

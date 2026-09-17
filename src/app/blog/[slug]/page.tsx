@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
-import SinglePageForm from '@/components/ui/SinglePageForm';
+import EnquireCtaBanner from '@/components/ui/EnquireCtaBanner';
 import { getBlogBySlug, getAllBlogs, syncCloudBlogs } from '@/lib/blogs';
 import styles from './page.module.css';
 
@@ -152,12 +152,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </section>
         )}
 
-        {/* Embedded Highlighted SinglePageForm */}
-        <section id="enquiry-box" className={styles.formSection}>
-          <div className="container">
-            <SinglePageForm />
-          </div>
-        </section>
+        {/* Enquire CTA Banner */}
+        <EnquireCtaBanner title="Inspired by This Story? Let's Plan Your Journey" />
       </main>
     </>
   );
