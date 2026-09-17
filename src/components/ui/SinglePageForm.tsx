@@ -115,22 +115,14 @@ export default function SinglePageForm({ initialDestination = "", initialService
       notes: formData.notes.trim() || 'None'
     };
 
-    // Dual-Sync: Submit to backend database (/api/enquiries) AND directly to Google Sheet Webhook
+    // Submit once to /api/enquiries (which saves to database, logs backup, and syncs to Google Sheet)
     setIsSubmitting(true);
     try {
-      await Promise.allSettled([
-        fetch('/api/enquiries', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }),
-        fetch('https://script.google.com/macros/s/AKfycbyIZRjBnqLVIGgasimAHKwdfS7z8CHUbqgP0Onn-HCOcLDbLiMDunpoPDH9ivDv8TSt/exec', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify(payload)
-        })
-      ]);
+      await fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
     } catch (err) {
       console.error("Enquiry submission error:", err);
     } finally {

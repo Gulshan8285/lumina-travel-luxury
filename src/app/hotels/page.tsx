@@ -167,19 +167,11 @@ export default function HotelsPage() {
 
     setIsSubmitting(true);
     try {
-      await Promise.allSettled([
-        fetch('/api/enquiries', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }),
-        fetch('https://script.google.com/macros/s/AKfycbyIZRjBnqLVIGgasimAHKwdfS7z8CHUbqgP0Onn-HCOcLDbLiMDunpoPDH9ivDv8TSt/exec', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify(payload)
-        })
-      ]);
+      await fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
     } catch (err) {
       console.error('Hotel enquiry sync error:', err);
     } finally {
