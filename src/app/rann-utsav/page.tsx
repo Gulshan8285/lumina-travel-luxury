@@ -75,20 +75,6 @@ export default function RannUtsavPage() {
       <Navbar />
 
       <main className={styles.main}>
-        {/* Mobile Sticky Quick Jump Bar to eliminate excessive scrolling */}
-        <nav className={styles.stickyJumpBar} aria-label="Quick Page Navigation">
-          <div className="container">
-            <div className={styles.jumpLinksList}>
-              <a href="#city-packages" className={styles.jumpLink}>🏙️ City Hubs</a>
-              <a href="#stay-duration" className={styles.jumpLink}>⏱️ Duration</a>
-              <a href="#tents" className={styles.jumpLink}>🎪 Tents</a>
-              <a href="#experiences" className={styles.jumpLink}>✨ Sights</a>
-              <a href="#inclusions" className={styles.jumpLink}>🚌 Inclusions</a>
-              <a href="#enquire-cta" className={styles.jumpLink}>📝 Get Quote</a>
-              <a href="#faqs" className={styles.jumpLink}>❓ FAQs</a>
-            </div>
-          </div>
-        </nav>
 
         {/* Luxury Hero */}
         <section className={styles.heroSection}>

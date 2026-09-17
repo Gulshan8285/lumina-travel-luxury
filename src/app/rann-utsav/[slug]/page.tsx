@@ -82,18 +82,6 @@ export default async function CityRoutePage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Mobile Sticky Quick Jump Bar to eliminate excessive scrolling */}
-        <nav className={styles.stickyJumpBar} aria-label="Page Quick Navigation">
-          <div className="container">
-            <div className={styles.jumpLinksList}>
-              <a href="#transit-guide" className={styles.jumpLink}>✈️ Transit Guide</a>
-              <a href="#packages" className={styles.jumpLink}>⏱️ Packages</a>
-              <a href="#itinerary" className={styles.jumpLink}>🗺️ Itinerary</a>
-              <a href="#book-trip" className={styles.jumpLink}>📝 Get Quote</a>
-              <a href="#faqs" className={styles.jumpLink}>❓ FAQs</a>
-            </div>
-          </div>
-        </nav>
 
         {/* Hero Section with Distinct City Popular Image */}
         <section

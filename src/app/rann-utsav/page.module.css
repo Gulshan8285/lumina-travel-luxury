@@ -4,50 +4,6 @@
   color: #ffffff;
 }
 
-/* Sticky Quick Jump Bar on Mobile */
-.stickyJumpBar {
-  position: sticky;
-  top: 70px;
-  z-index: 40;
-  background: rgba(11, 15, 25, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
-  padding: 0.5rem 0;
-}
-
-.jumpLinksList {
-  display: flex;
-  gap: 0.6rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 0 0.5rem;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-
-.jumpLinksList::-webkit-scrollbar {
-  display: none;
-}
-
-.jumpLink {
-  white-space: nowrap;
-  background: rgba(22, 30, 49, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #e5e7eb;
-  padding: 0.35rem 0.85rem;
-  border-radius: 20px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-decoration: none;
-  scroll-snap-align: start;
-  transition: all 0.2s ease;
-}
-
-.jumpLink:hover, .jumpLink:active {
-  background: #d4af37;
-  color: #0b0f19;
-  border-color: #d4af37;
-}
 
 /* Luxury Hero */
 .heroSection {
