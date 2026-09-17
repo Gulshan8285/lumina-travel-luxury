@@ -3,6 +3,7 @@ import { LEISURE_DESTINATIONS } from '@/lib/destinationsData';
 import { featuredDestinations, popularJourneys } from '@/lib/data';
 import { travelCategories } from '@/lib/categories';
 import { getAllBlogs } from '@/lib/blogs';
+import { CITY_ROUTES } from '@/lib/rannUtsavRoutes';
 
 const BASE_URL = 'https://www.sobhavitravel.com';
 
@@ -161,11 +162,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
+  // 6. Rann Utsav City Departure Packages
+  const rannCityRoutes: MetadataRoute.Sitemap = CITY_ROUTES.map(r => ({
+    url: `${BASE_URL}/rann-utsav/${r.slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  }));
+
   return [
     ...staticRoutes,
     ...destinationRoutes,
     ...blogRoutes,
     ...categoryRoutes,
     ...journeyRoutes,
+    ...rannCityRoutes,
   ];
 }
+
