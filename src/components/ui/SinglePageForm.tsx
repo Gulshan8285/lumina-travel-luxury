@@ -6,6 +6,7 @@ import styles from './SinglePageForm.module.css';
 interface SinglePageFormProps {
   initialDestination?: string;
   initialService?: string;
+  initialDuration?: string;
 }
 
 const SERVICES = [
@@ -35,13 +36,14 @@ const TARGET_WHATSAPP = "917406994752";
 const DISPLAY_PHONE = "+917406994752";
 const DISPLAY_EMAIL = "hello@sobhavitravel.com";
 
-export default function SinglePageForm({ initialDestination = "", initialService = "" }: SinglePageFormProps) {
+export default function SinglePageForm({ initialDestination = "", initialService = "", initialDuration = "" }: SinglePageFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     service: initialService || '',
     destination: initialDestination || '',
+    duration: initialDuration || '',
     travelDates: '',
     travellers: '',
     budget: '',
@@ -65,6 +67,12 @@ export default function SinglePageForm({ initialDestination = "", initialService
       setFormData(prev => ({ ...prev, service: initialService }));
     }
   }, [initialService]);
+
+  useEffect(() => {
+    if (initialDuration) {
+      setFormData(prev => ({ ...prev, duration: initialDuration }));
+    }
+  }, [initialDuration]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -104,6 +112,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
       `*Email:* ${formData.email.trim()}`,
       `*Interested in:* ${formData.service}`,
       `*Destination(s):* ${formData.destination || 'Not specified'}`,
+      formData.duration ? `*Trip Duration / Package:* ${formData.duration}` : null,
       `*Approx. travel dates:* ${formData.travelDates || 'Flexible'}`,
       `*Number of travellers:* ${formData.travellers || 'Not specified'}`,
       `*Approximate budget (per person):* ${formData.budget || 'Not specified'}`,
@@ -125,6 +134,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
       email: formData.email.trim(),
       service: formData.service,
       destination: formData.destination.trim() || 'Not specified',
+      duration: formData.duration.trim() || 'Not specified',
       travelDates: formData.travelDates.trim() || 'Flexible',
       travellers: formData.travellers.trim() || 'Not specified',
       budget: formData.budget.trim() || 'Not specified',
@@ -257,6 +267,19 @@ export default function SinglePageForm({ initialDestination = "", initialService
                   value={formData.destination}
                   onChange={handleChange}
                   placeholder="e.g. Dubai, Rajasthan, or Bali"
+                  className={styles.input}
+                />
+              </div>
+
+              {/* Trip Duration / Package */}
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Trip Duration / Package</label>
+                <input
+                  type="text"
+                  name="duration"
+                  value={formData.duration}
+                  onChange={handleChange}
+                  placeholder="e.g. 2 Nights / 3 Days, 3N/4D, 1 Week"
                   className={styles.input}
                 />
               </div>

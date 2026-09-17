@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import RannFaqAccordion from '@/components/ui/RannFaqAccordion';
+import EnquireCtaBanner from '@/components/ui/EnquireCtaBanner';
 import { getAllCityRoutes, getCityRouteBySlug } from '@/lib/rannUtsavRoutes';
 import styles from './page.module.css';
 
@@ -152,9 +153,12 @@ export default async function CityRoutePage({ params }: PageProps) {
               </div>
 
               <div className={styles.heroActions}>
-                <a href="#book-trip" className={styles.primaryBtn}>
+                <Link
+                  href={`/enquire?destination=${encodeURIComponent('Rann Utsav (' + route.cityName + ')')}&service=Domestic+Holiday`}
+                  className={styles.primaryBtn}
+                >
                   ✦ Request Custom Package Quote &rarr;
-                </a>
+                </Link>
                 <a
                   href={whatsappUrl}
                   target="_blank"
@@ -239,6 +243,13 @@ export default async function CityRoutePage({ params }: PageProps) {
                   )}
                   <h3 className={styles.durationTitle}>{opt.duration}</h3>
                   <p className={styles.durationDesc}>{opt.desc}</p>
+                  <Link
+                    href={`/enquire?destination=${encodeURIComponent('Rann Utsav (' + route.cityName + ')')}&duration=${encodeURIComponent(opt.duration)}&service=Domestic+Holiday`}
+                    className={styles.durationSelectBtn}
+                  >
+                    <span>✦ Select &amp; Enquire {opt.duration}</span>
+                    <span>&rarr;</span>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -330,7 +341,10 @@ export default async function CityRoutePage({ params }: PageProps) {
               </p>
             </div>
 
-            <RannFaqAccordion faqs={route.faqs} enquireAnchor="#book-trip" />
+            <RannFaqAccordion 
+              faqs={route.faqs} 
+              enquireAnchor={`/enquire?destination=${encodeURIComponent('Rann Utsav (' + route.cityName + ')')}&service=Domestic+Holiday`} 
+            />
           </div>
         </section>
 
@@ -358,6 +372,14 @@ export default async function CityRoutePage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* Enquire CTA Banner */}
+        <EnquireCtaBanner
+          destination={`Rann Utsav (${route.cityName})`}
+          service="Domestic Holiday"
+          title={`Ready to Visit Rann Utsav from ${route.cityName}?`}
+          subtitle={`We coordinate seamless transfers, confirmed Tent City Dhordo booking, permits, and private sight-seeing from ${route.cityName}.`}
+        />
       </main>
     </>
   );

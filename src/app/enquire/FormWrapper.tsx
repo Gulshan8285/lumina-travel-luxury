@@ -61,10 +61,13 @@ export default function FormWrapper() {
     }
   }
 
+  const durationParam = searchParams.get('duration');
+
   return (
     <SinglePageForm 
       initialDestination={initialDestination} 
       initialService={initialService}
+      initialDuration={durationParam || ''}
     />
   );
 }

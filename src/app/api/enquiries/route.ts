@@ -125,6 +125,9 @@ export async function POST(request: Request) {
     const referralStr = referralInfo.join(' | ');
 
     let combinedNotes = clientNotes || '';
+    if (duration && duration.trim() && duration.trim() !== 'Not specified') {
+      combinedNotes = combinedNotes ? `[Duration: ${duration.trim()}]\n${combinedNotes}` : `[Duration: ${duration.trim()}]`;
+    }
     if (referralStr) {
       combinedNotes = combinedNotes ? `${combinedNotes}\n[${referralStr}]` : `[${referralStr}]`;
     }
@@ -158,6 +161,7 @@ export async function POST(request: Request) {
       email: clientEmail,
       service: serviceType,
       destination: dest || 'Not specified',
+      duration: duration?.trim() || 'Not specified',
       travelDates: dates || 'Flexible',
       travellers: numTravellers || 'Not specified',
       budget: approxBudget || 'Not specified',

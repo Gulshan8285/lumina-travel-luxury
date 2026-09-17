@@ -117,12 +117,20 @@ export default function RannCityPackages({ routes }: RannCityPackagesProps) {
                 </ul>
               </div>
 
-              <Link
-                href={`/rann-utsav/${route.slug}`}
-                className={styles.cardActionBtn}
-              >
-                View {route.cityName.split(' ')[0]} Package &rarr;
-              </Link>
+              <div className={styles.cardActionsStack}>
+                <Link
+                  href={`/enquire?destination=${encodeURIComponent('Rann Utsav (' + route.cityName + ')')}&service=Domestic+Holiday`}
+                  className={styles.cardEnquireBtn}
+                >
+                  ✦ Enquire for {route.cityName.split(' ')[0]} &rarr;
+                </Link>
+                <Link
+                  href={`/rann-utsav/${route.slug}`}
+                  className={styles.cardActionBtn}
+                >
+                  View Route Details &amp; Plan
+                </Link>
+              </div>
             </div>
           </article>
         ))}

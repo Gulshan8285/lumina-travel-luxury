@@ -241,6 +241,79 @@
   font-weight: 500;
 }
 
+.selectedCountBadge {
+  background: rgba(212, 175, 55, 0.2);
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  padding: 3px 12px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.selectionQuickNotice {
+  margin-top: 1.25rem;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.selectionQuickText {
+  font-size: 0.88rem;
+  color: var(--foreground);
+}
+
+.selectionNamesInline {
+  color: #d4af37;
+  font-weight: 600;
+  margin-left: 0.35rem;
+}
+
+.selectionQuickActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.selectionInlineCta {
+  background: #d4af37;
+  color: #111111;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.selectionInlineCta:hover {
+  background: #fceda2;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
+}
+
+.selectionInlineClear {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.selectionInlineClear:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
 /* Destinations Section */
 .destinationsSection {
   padding: 4.5rem 0 7rem 0;
@@ -399,8 +472,87 @@
   transform: translateY(-1px);
 }
 
+.cardSelected {
+  border-color: #d4af37 !important;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5), 0 16px 36px rgba(0, 0, 0, 0.4) !important;
+}
+
+.selectDestBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(11, 15, 25, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+  z-index: 3;
+}
+
+.selectDestBtn:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+  background: rgba(11, 15, 25, 0.95);
+  transform: scale(1.05);
+}
+
+.selectedDestBtnActive {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: #0b0f19;
+  font-weight: 800;
+}
+
+.selectedDestBtnActive:hover {
+  background: #eed269;
+  border-color: #eed269;
+  color: #0b0f19;
+}
+
+.selectCheckmark {
+  font-weight: 900;
+  font-size: 0.85rem;
+}
+
 .destFooter {
   margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 0.5rem;
+}
+
+.destEnquireNowBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #d4af37;
+  border: 1px solid #d4af37;
+  color: #0b0f19;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+}
+
+.destEnquireNowBtn:hover {
+  background: #fceda2;
+  border-color: #fceda2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
 }
 
 .destCardLink {
@@ -410,19 +562,19 @@
   background: var(--surface-alt);
   border: 1px solid var(--border);
   color: var(--foreground);
-  padding: 0.85rem 1.25rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  padding: 0.65rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
-.destCard:hover .destCardLink {
-  background: #d4af37;
-  color: #111111;
-  border-color: #d4af37;
+.destCardLink:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
 }
 
 .linkArrow {
@@ -532,13 +684,77 @@
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  padding-bottom: 1rem;
+  padding: 0.6rem 0.5rem;
+  border-radius: 8px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s ease;
+}
+
+.stateIndexCardSelected {
+  background: rgba(212, 175, 55, 0.08);
+  border-left: 2px solid #d4af37;
+}
+
+.stateIndexHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.stateIndexActions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.stateSelectMiniBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--foreground);
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.stateSelectMiniBtn:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
+.stateSelectMiniBtnActive {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: #0b0f19;
+}
+
+.stateEnquireMiniBtn {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: rgba(212, 175, 55, 0.08);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.stateEnquireMiniBtn:hover {
+  background: #d4af37;
+  color: #0b0f19;
 }
 
 .stateIndexCard:last-child {
   border-bottom: none;
-  padding-bottom: 0;
 }
 
 .stateIndexLink {
@@ -616,5 +832,143 @@
   .masterIndexGrid {
     grid-template-columns: 1fr;
     gap: 2.25rem;
+  }
+}
+
+/* Floating Bottom Action Bar for Multi-Selected Destinations */
+.floatingSelectionBar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 860px;
+  z-index: 1000;
+  animation: slideUpFloat 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpFloat {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.floatingSelectionInner {
+  background: rgba(11, 15, 25, 0.96);
+  border: 1.5px solid #d4af37;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 30px rgba(212, 175, 55, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.floatingSelectionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.floatingCountPill {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.92rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.goldDot {
+  color: #d4af37;
+  font-size: 0.8rem;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.floatingNamesPill {
+  font-size: 0.82rem;
+  color: #d4af37;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.floatingSelectionActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.floatingClearBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.floatingClearBtn:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.floatingEnquireBtn {
+  background: #d4af37;
+  color: #0b0f19;
+  border: 1px solid #d4af37;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
+}
+
+.floatingEnquireBtn:hover {
+  background: #fceda2;
+  border-color: #fceda2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+@media (max-width: 640px) {
+  .floatingSelectionInner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.85rem 1rem;
+    gap: 0.75rem;
+  }
+  .floatingSelectionActions {
+    justify-content: space-between;
+  }
+  .floatingEnquireBtn {
+    flex: 1;
+    text-align: center;
+    font-size: 0.85rem;
+    padding: 0.65rem 1rem;
   }
 }

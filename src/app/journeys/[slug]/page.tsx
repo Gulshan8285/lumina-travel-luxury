@@ -36,13 +36,6 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
     return () => clearInterval(timer);
   }, [galleryImages.length]);
 
-  const scrollToEnquiry = () => {
-    const el = document.getElementById('enquiry-section');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <>
       <Navbar />
@@ -62,14 +55,17 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
           </div>
 
           <div className={styles.heroContent}>
-            <span className={styles.eyebrow}>SIGNATURE JOURNEY \u00B7 {journey.destination}</span>
+            <span className={styles.eyebrow}>SIGNATURE JOURNEY &middot; {journey.destination}</span>
             <h1 className={styles.heroTitle}>{journey.name}</h1>
-            <p className={styles.heroTagline}>{journey.duration} \u00B7 Bespoke Private Itinerary</p>
+            <p className={styles.heroTagline}>{journey.duration} &middot; Bespoke Private Itinerary</p>
             
             <div className={styles.heroActions}>
-              <button onClick={scrollToEnquiry} className={styles.primaryHeroBtn}>
-                Book / Enquire Now
-              </button>
+              <Link 
+                href={`/enquire?destination=${encodeURIComponent(journey.destination)}&duration=${encodeURIComponent(journey.duration)}&service=${encodeURIComponent(journey.name)}`}
+                className={styles.primaryHeroBtn}
+              >
+                Book / Enquire Now &rarr;
+              </Link>
               <a 
                 href={`https://wa.me/917406994752?text=${encodeURIComponent(`Hello! I want to enquire about the ${journey.name} itinerary.`)}`} 
                 target="_blank" 
@@ -198,9 +194,12 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                   </div>
 
                   <div className={styles.sidebarDirectContact}>
-                    <button onClick={scrollToEnquiry} className={styles.bookNowBtn}>
-                      Enquire for Custom Dates
-                    </button>
+                    <Link 
+                      href={`/enquire?destination=${encodeURIComponent(journey.destination)}&duration=${encodeURIComponent(journey.duration)}&service=${encodeURIComponent(journey.name)}`}
+                      className={styles.bookNowBtn}
+                    >
+                      Enquire for Custom Dates &rarr;
+                    </Link>
                     <a 
                       href={`https://wa.me/917406994752?text=${encodeURIComponent(`Hello! I'm interested in the ${journey.name} trip.`)}`} 
                       target="_blank" 
@@ -270,7 +269,12 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
         )}
 
         {/* === ENQUIRE CTA BANNER === */}
-        <EnquireCtaBanner destination={journey.destination} title={`Ready to Embark on ${journey.name}?`} />
+        <EnquireCtaBanner 
+          destination={journey.destination} 
+          duration={journey.duration}
+          service={journey.name}
+          title={`Ready to Embark on ${journey.name}?`} 
+        />
       </main>
     </>
   );

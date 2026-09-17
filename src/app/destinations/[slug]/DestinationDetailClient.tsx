@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import EnquireCtaBanner from '@/components/ui/EnquireCtaBanner';
 import JourneyCard from '@/components/ui/JourneyCard';
@@ -36,13 +37,6 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
     j.destination.toLowerCase().includes(destination.name.toLowerCase()) ||
     destination.name.toLowerCase().includes(j.destination.toLowerCase())
   );
-
-  const scrollToEnquiry = () => {
-    const el = document.getElementById('enquiry-section');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <>
@@ -89,9 +83,12 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
             <p className={styles.heroTagline}>{destination.tagline || destination.description}</p>
 
             <div className={styles.heroActions}>
-              <button onClick={scrollToEnquiry} className={styles.primaryHeroBtn}>
-                Plan Your {destination.name} Escape
-              </button>
+              <Link 
+                href={`/enquire?destination=${encodeURIComponent(destination.name)}&service=${destination.category === 'international' ? 'International+Holiday' : 'Domestic+Holiday'}`} 
+                className={styles.primaryHeroBtn}
+              >
+                Plan Your {destination.name} Escape &rarr;
+              </Link>
               <a 
                 href={`https://wa.me/917406994752?text=Hello!%20I%20am%20interested%20in%20planning%20a%20luxury%20holiday%20to%20${encodeURIComponent(destination.name)}`}
                 target="_blank"
@@ -160,12 +157,12 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
                         </div>
                       )}
 
-                      <button
-                        onClick={scrollToEnquiry}
+                      <Link
+                        href={`/enquire?destination=${encodeURIComponent(place.name + ', ' + destination.name)}&service=${destination.category === 'international' ? 'International+Holiday' : 'Domestic+Holiday'}`}
                         className={styles.placeEnquireBtn}
                       >
                         Plan {place.name} Itinerary &rarr;
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 ))}
@@ -318,9 +315,12 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
                   Have more specific questions about planning your trip to {destination.name}?
                 </p>
                 <div className={styles.faqContactActions}>
-                  <button onClick={scrollToEnquiry} className={styles.faqContactBtn}>
-                    Ask Our Travel Planner
-                  </button>
+                  <Link 
+                    href={`/enquire?destination=${encodeURIComponent(destination.name)}&service=${destination.category === 'international' ? 'International+Holiday' : 'Domestic+Holiday'}`} 
+                    className={styles.faqContactBtn}
+                  >
+                    Ask Our Travel Planner &rarr;
+                  </Link>
                   <a
                     href={`https://wa.me/917406994752?text=Hello!%20I%20have%20questions%20regarding%20travel%20to%20${encodeURIComponent(destination.name)}`}
                     target="_blank"
@@ -377,7 +377,10 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
         )}
 
         {/* === ENQUIRE CTA BANNER === */}
-        <EnquireCtaBanner destination={destination.name} />
+        <EnquireCtaBanner 
+          destination={destination.name} 
+          service={destination.category === 'international' ? 'International Holiday' : 'Domestic Holiday'}
+        />
       </main>
     </>
   );

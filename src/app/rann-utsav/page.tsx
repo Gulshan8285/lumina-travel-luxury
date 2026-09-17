@@ -104,8 +104,18 @@ export default function RannUtsavPage() {
               </div>
 
               <div className={styles.heroActions}>
-                <a href="#city-packages" className={styles.primaryBtn}>
-                  ✦ Explore Packages by City &rarr;
+                <Link
+                  href="/enquire?destination=Rann+Utsav+-+Great+Rann+of+Kutch&service=Domestic+Holiday"
+                  className={styles.primaryBtn}
+                >
+                  ✦ Plan Your Rann Utsav Trip &rarr;
+                </Link>
+                <a
+                  href="#city-packages"
+                  className={styles.secondaryBtn}
+                  style={{ background: 'rgba(255,255,255,0.08)' }}
+                >
+                  Explore Packages by City ↓
                 </a>
                 <a
                   href={whatsappUrl}
@@ -159,6 +169,13 @@ export default function RannUtsavPage() {
                 <p>
                   Ideal for weekend travelers. Witness the White Rann sunset, enjoy live evening Kutchi performances, and visit Kala Dungar (Black Hill).
                 </p>
+                <Link
+                  href="/enquire?destination=Rann+Utsav+-+Great+Rann+of+Kutch&duration=2+Nights+%2F+3+Days&service=Domestic+Holiday"
+                  className={styles.durationCardBtn}
+                >
+                  <span>✦ Select &amp; Enquire 2N/3D</span>
+                  <span>&rarr;</span>
+                </Link>
               </div>
 
               <div className={`${styles.durationCard} ${styles.durationCardFeatured}`}>
@@ -167,6 +184,13 @@ export default function RannUtsavPage() {
                 <p>
                   The most popular choice. Unrushed White Rann visits, Kala Dungar, Gandhi Nu Gaam craft village, plus a full coastal day at Mandvi Beach &amp; Vijay Vilas Palace.
                 </p>
+                <Link
+                  href="/enquire?destination=Rann+Utsav+-+Great+Rann+of+Kutch&duration=3+Nights+%2F+4+Days&service=Domestic+Holiday"
+                  className={styles.durationCardBtn}
+                >
+                  <span>✦ Select &amp; Enquire 3N/4D</span>
+                  <span>&rarr;</span>
+                </Link>
               </div>
 
               <div className={styles.durationCard}>
@@ -175,6 +199,13 @@ export default function RannUtsavPage() {
                 <p>
                   The comprehensive expedition. Includes all classic sights plus the UNESCO Harappan city of Dholavira and the legendary drive along the &ldquo;Road to Heaven&rdquo;.
                 </p>
+                <Link
+                  href="/enquire?destination=Rann+Utsav+-+Great+Rann+of+Kutch&duration=4+Nights+%2F+5+Days&service=Domestic+Holiday"
+                  className={styles.durationCardBtn}
+                >
+                  <span>✦ Select &amp; Enquire 4N/5D</span>
+                  <span>&rarr;</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -369,7 +400,10 @@ export default function RannUtsavPage() {
               </p>
             </div>
 
-            <RannFaqAccordion faqs={FAQS} enquireAnchor="#enquire-cta" />
+            <RannFaqAccordion 
+              faqs={FAQS} 
+              enquireAnchor="/enquire?destination=Rann+Utsav+-+Great+Rann+of+Kutch&service=Domestic+Holiday" 
+            />
           </div>
         </section>
       </main>

@@ -4,6 +4,7 @@ import styles from './EnquireCtaBanner.module.css';
 
 interface EnquireCtaBannerProps {
   destination?: string;
+  duration?: string;
   service?: string;
   title?: string;
   subtitle?: string;
@@ -12,14 +13,16 @@ interface EnquireCtaBannerProps {
 
 export default function EnquireCtaBanner({
   destination,
+  duration,
   service,
   title,
   subtitle,
   badge = "TAILOR-MADE ITINERARY PLANNING"
 }: EnquireCtaBannerProps) {
   const destQuery = destination ? `destination=${encodeURIComponent(destination)}` : '';
+  const durQuery = duration ? `duration=${encodeURIComponent(duration)}` : '';
   const servQuery = service ? `service=${encodeURIComponent(service)}` : '';
-  const queryParams = [destQuery, servQuery].filter(Boolean).join('&');
+  const queryParams = [destQuery, durQuery, servQuery].filter(Boolean).join('&');
   const enquireUrl = queryParams ? `/enquire?${queryParams}` : '/enquire';
 
   const defaultTitle = destination 

@@ -18,6 +18,15 @@ export default function DestinationsHub() {
   const [activeCategory, setActiveCategory] = useState<'all' | 'domestic' | 'international'>('all');
   const [activeRegion, setActiveRegion] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedDests, setSelectedDests] = useState<string[]>([]);
+
+  const toggleDestinationSelect = (name: string) => {
+    setSelectedDests(prev =>
+      prev.includes(name)
+        ? prev.filter(d => d !== name)
+        : [...prev, name]
+    );
+  };
 
   const filteredDestinations = useMemo(() => {
     return LEISURE_DESTINATIONS.filter(dest => {
@@ -66,9 +75,9 @@ export default function DestinationsHub() {
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
             <span className={styles.heroEyebrow}>SOBHAVI BESPOKE DIRECTORY</span>
-            <h1 className={styles.heroTitle}>Popular Destinations & Getaways</h1>
+            <h1 className={styles.heroTitle}>Popular Destinations &amp; Getaways</h1>
             <p className={styles.heroSubtitle}>
-              Explore all 22 celebrated Indian states & union territories and 7 premier international luxury gateways. Click on any destination to view its dedicated travel guide, iconic spots, 5-star handpicked stays, and tailored itineraries.
+              Explore all 22 celebrated Indian states &amp; union territories and 7 premier international luxury gateways. Select any destination to enquire directly or explore dedicated guides and handpicked stays.
             </p>
           </div>
         </section>
@@ -162,7 +171,7 @@ export default function DestinationsHub() {
               </div>
             </div>
 
-            {/* Results count info */}
+            {/* Results count info & Selected count */}
             <div className={styles.resultsMeta}>
               <span>Showing <strong>{filteredDestinations.length}</strong> destination guides</span>
               {searchQuery && (
@@ -175,7 +184,37 @@ export default function DestinationsHub() {
                   Region: {activeRegion}
                 </span>
               )}
+              {selectedDests.length > 0 && (
+                <span className={styles.selectedCountBadge}>
+                  ✓ {selectedDests.length} selected for enquiry
+                </span>
+              )}
             </div>
+
+            {/* Inline banner when destinations are selected */}
+            {selectedDests.length > 0 && (
+              <div className={styles.selectionQuickNotice}>
+                <div className={styles.selectionQuickText}>
+                  <span>🎯 <strong>{selectedDests.length}</strong> {selectedDests.length === 1 ? 'destination' : 'destinations'} selected: </span>
+                  <span className={styles.selectionNamesInline}>{selectedDests.join(', ')}</span>
+                </div>
+                <div className={styles.selectionQuickActions}>
+                  <Link
+                    href={`/enquire?destination=${encodeURIComponent(selectedDests.join(', '))}&service=Custom+Holiday+Package`}
+                    className={styles.selectionInlineCta}
+                  >
+                    ✦ Enquire for Selected ({selectedDests.length}) &rarr;
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedDests([])}
+                    className={styles.selectionInlineClear}
+                  >
+                    Clear
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -198,9 +237,13 @@ export default function DestinationsHub() {
               <div className={styles.destinationsGrid}>
                 {filteredDestinations.map(dest => {
                   const placeCount = dest.famousPlaces.length;
+                  const isSelected = selectedDests.includes(dest.name);
 
                   return (
-                    <article key={dest.slug} className={styles.destCard}>
+                    <article 
+                      key={dest.slug} 
+                      className={`${styles.destCard} ${isSelected ? styles.cardSelected : ''}`}
+                    >
                       <div className={styles.destCardMedia}>
                         <img
                           src={dest.heroImage}
@@ -215,6 +258,22 @@ export default function DestinationsHub() {
                         <span className={styles.destPlacesCountBadge}>
                           {placeCount} {placeCount === 1 ? 'Destination' : 'Leisure Hubs'}
                         </span>
+
+                        {/* Multi-Select Check Button */}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toggleDestinationSelect(dest.name);
+                          }}
+                          className={`${styles.selectDestBtn} ${isSelected ? styles.selectedDestBtnActive : ''}`}
+                          title={isSelected ? `Remove ${dest.name} from selection` : `Select ${dest.name} to enquire`}
+                          aria-pressed={isSelected}
+                        >
+                          <span className={styles.selectCheckmark}>{isSelected ? '✓' : '+'}</span>
+                          <span>{isSelected ? 'Selected' : 'Select'}</span>
+                        </button>
                       </div>
 
                       <div className={styles.destCardBody}>
@@ -246,8 +305,18 @@ export default function DestinationsHub() {
                         </div>
 
                         <div className={styles.destFooter}>
+                          {/* Direct Enquire CTA Button */}
+                          <Link 
+                            href={`/enquire?destination=${encodeURIComponent(dest.name)}&service=${dest.category === 'international' ? 'International+Holiday' : 'Domestic+Holiday'}`} 
+                            className={styles.destEnquireNowBtn}
+                          >
+                            <span>✦ Enquire Now</span>
+                            <span>&rarr;</span>
+                          </Link>
+
+                          {/* Secondary Guide Link */}
                           <Link href={`/destinations/${dest.slug}`} className={styles.destCardLink}>
-                            <span>Explore Guide & Packages</span>
+                            <span>Explore Guide</span>
                             <span className={styles.linkArrow}>&rarr;</span>
                           </Link>
                         </div>
@@ -267,7 +336,7 @@ export default function DestinationsHub() {
               <span className={styles.heroEyebrow}>FAST DIRECTORY INDEX</span>
               <h2 className={styles.masterIndexTitle}>Complete Leisure Network Index</h2>
               <p className={styles.masterIndexSubtitle}>
-                A complete directory of all 22 Indian states and 7 international luxury gateways with every featured leisure city. Click any destination to access its complete itinerary, sightseeing guide, and hotels.
+                A complete directory of all 22 Indian states and 7 international luxury gateways with every featured leisure city. Click any destination to enquire or view its complete itinerary and sightseeing guide.
               </p>
             </div>
 
@@ -281,23 +350,78 @@ export default function DestinationsHub() {
                   <div className={styles.stateCardsList}>
                     {LEISURE_DESTINATIONS
                       .filter(d => d.regionGroup === reg.id)
-                      .map(dest => (
-                        <div key={dest.slug} className={styles.stateIndexCard}>
-                          <Link href={`/destinations/${dest.slug}`} className={styles.stateIndexLink}>
-                            <span>{dest.name}</span>
-                            <span className={styles.arrowIcon}>&rarr;</span>
-                          </Link>
-                          <p className={styles.cityNamesList}>
-                            {dest.famousPlaces.map(p => p.name).join(' · ')}
-                          </p>
-                        </div>
-                      ))}
+                      .map(dest => {
+                        const isSelected = selectedDests.includes(dest.name);
+                        return (
+                          <div key={dest.slug} className={`${styles.stateIndexCard} ${isSelected ? styles.stateIndexCardSelected : ''}`}>
+                            <div className={styles.stateIndexHeader}>
+                              <Link href={`/destinations/${dest.slug}`} className={styles.stateIndexLink}>
+                                <span>{dest.name}</span>
+                                <span className={styles.arrowIcon}>&rarr;</span>
+                              </Link>
+
+                              <div className={styles.stateIndexActions}>
+                                <button
+                                  type="button"
+                                  onClick={() => toggleDestinationSelect(dest.name)}
+                                  className={`${styles.stateSelectMiniBtn} ${isSelected ? styles.stateSelectMiniBtnActive : ''}`}
+                                  title={isSelected ? `Remove ${dest.name}` : `Select ${dest.name}`}
+                                >
+                                  {isSelected ? '✓' : '+'}
+                                </button>
+                                <Link
+                                  href={`/enquire?destination=${encodeURIComponent(dest.name)}&service=${dest.category === 'international' ? 'International+Holiday' : 'Domestic+Holiday'}`}
+                                  className={styles.stateEnquireMiniBtn}
+                                >
+                                  Enquire &rarr;
+                                </Link>
+                              </div>
+                            </div>
+                            <p className={styles.cityNamesList}>
+                              {dest.famousPlaces.map(p => p.name).join(' · ')}
+                            </p>
+                          </div>
+                        );
+                      })}
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Floating Bottom Action Bar for Multi-Selected Destinations */}
+        {selectedDests.length > 0 && (
+          <aside className={styles.floatingSelectionBar} aria-label="Selected destinations enquiry bar">
+            <div className={styles.floatingSelectionInner}>
+              <div className={styles.floatingSelectionInfo}>
+                <div className={styles.floatingCountPill}>
+                  <span className={styles.goldDot}>●</span>
+                  <strong>{selectedDests.length}</strong> {selectedDests.length === 1 ? 'Destination' : 'Destinations'} Selected
+                </div>
+                <div className={styles.floatingNamesPill} title={selectedDests.join(', ')}>
+                  {selectedDests.join(' • ')}
+                </div>
+              </div>
+
+              <div className={styles.floatingSelectionActions}>
+                <button
+                  type="button"
+                  onClick={() => setSelectedDests([])}
+                  className={styles.floatingClearBtn}
+                >
+                  Clear
+                </button>
+                <Link
+                  href={`/enquire?destination=${encodeURIComponent(selectedDests.join(', '))}&service=Custom+Holiday+Package`}
+                  className={styles.floatingEnquireBtn}
+                >
+                  ✦ Enquire for Selected ({selectedDests.length}) &rarr;
+                </Link>
+              </div>
+            </div>
+          </aside>
+        )}
       </main>
     </>
   );

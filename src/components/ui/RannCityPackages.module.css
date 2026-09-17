@@ -255,7 +255,14 @@
   font-size: 0.85rem;
 }
 
-.cardActionBtn {
+.cardActionsStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.cardEnquireBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -272,10 +279,33 @@
   width: 100%;
 }
 
-.cardActionBtn:hover {
+.cardEnquireBtn:hover {
   background: #fceda2;
   border-color: #fceda2;
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.cardActionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 0.65rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.cardActionBtn:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: #d4af37;
+  color: #d4af37;
 }
 
 /* Tablet & Mobile Responsiveness with Horizontal Carousel */
