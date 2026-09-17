@@ -4,6 +4,7 @@ export interface CityRoute {
   state: string;
   category: 'South India' | 'West India';
   cityCode: string;
+  image: string;
   heroTagline: string;
   metaTitle: string;
   metaDescription: string;
@@ -35,6 +36,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Karnataka',
     category: 'South India',
     cityCode: 'BLR',
+    image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'Fly BLR to Ahmedabad or Bhuj + Luxury Tent City Dhordo Package',
     metaTitle: 'Bangalore to Rann Utsav Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Book all-inclusive Bangalore to Rann Utsav Kutch tour packages. Flights from BLR, Bhuj transfers, Tent City Dhordo stays, White Desert full moon tours & Kutchi culture.',
@@ -73,6 +75,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Telangana',
     category: 'South India',
     cityCode: 'HYD',
+    image: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'Seamless Flights from HYD to Gujarat + White Rann Luxury Tent Stay',
     metaTitle: 'Hyderabad to Rann Utsav Tour Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Plan your trip from Hyderabad to Rann Utsav Kutch. Flights from Rajiv Gandhi International Airport, Bhuj transfers, Tent City Dhordo luxury stay & cultural tours.',
@@ -110,6 +113,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Tamil Nadu',
     category: 'South India',
     cityCode: 'MAA',
+    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'Curated Flights from Chennai to Gujarat + Royal Kutch Desert Expedition',
     metaTitle: 'Chennai to Rann Utsav Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Bespoke Chennai to Rann Utsav Kutch holiday packages. Flights from MAA, luxury Tent City Dhordo accommodation, Bhuj pickups, full moon desert walks & artisan tours.',
@@ -145,6 +149,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Kerala',
     category: 'South India',
     cityCode: 'COK',
+    image: 'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'From Coastal Kerala to the White Desert of Kutch',
     metaTitle: 'Kochi to Rann Utsav Tour Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Book Kochi to Rann Utsav holiday packages. Convenient flights from COK, Bhuj transfers, Tent City luxury stays, and Kutchi desert culture.',
@@ -180,6 +185,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Tamil Nadu',
     category: 'South India',
     cityCode: 'CJB',
+    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'Flight Connections from Coimbatore to Ahmedabad + Luxury Kutch Tour',
     metaTitle: 'Coimbatore to Rann Utsav Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Plan your holiday from Coimbatore to Rann Utsav. Flights from CJB, luxury AC tents at Dhordo, Bhuj station pickups, and curated Kutch sightseeing.',
@@ -213,6 +219,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Karnataka',
     category: 'South India',
     cityCode: 'MYQ',
+    image: 'https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'From the City of Palaces to the White Salt Desert of Kutch',
     metaTitle: 'Mysore to Rann Utsav Tour Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Mysore to Rann Utsav tour packages. Fly via BLR to Ahmedabad/Bhuj, luxury Tent City Dhordo stay, meals, and cultural sightseeing.',
@@ -245,6 +252,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Maharashtra',
     category: 'West India',
     cityCode: 'PNQ',
+    image: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'Convenient Flights & Trains from Pune to Bhuj + Tent City Dhordo Package',
     metaTitle: 'Pune to Rann Utsav Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Book Pune to Rann Utsav tour packages. Direct trains & flights from Pune, luxury Dhordo Tent City stays, White Desert full moon tours & Bhuj transfers.',
@@ -281,6 +289,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Maharashtra',
     category: 'West India',
     cityCode: 'BOM',
+    image: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'Quickest Transit from Mumbai to Bhuj + Premium Dhordo Tent Experience',
     metaTitle: 'Mumbai to Rann Utsav Tour Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Exclusive Mumbai to Rann Utsav Kutch packages. Direct flights & overnight trains from Mumbai to Bhuj, luxury Tent City Dhordo accommodation, meals & sightseeing.',
@@ -318,6 +327,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Goa',
     category: 'West India',
     cityCode: 'GOI/GOX',
+    image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'From Golden Goa Beaches to the Ethereal White Desert of Kutch',
     metaTitle: 'Goa to Rann Utsav Tour Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Goa to Rann Utsav holiday packages. Convenient flights from GOI/GOX to Gujarat, luxury Tent City Dhordo stays, Bhuj transfers & desert safaris.',
@@ -351,6 +361,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Kerala',
     category: 'South India',
     cityCode: 'TRV/COK',
+    image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'Statewide Kerala Packages to the Magical White Desert of Kutch',
     metaTitle: 'Kerala to Rann Utsav Tour Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Complete Kerala to Rann Utsav Kutch packages. Flight departures from Kochi, Trivandrum & Calicut, luxury Dhordo Tent City stay, Bhuj transfers & meals.',
@@ -384,6 +395,7 @@ export const CITY_ROUTES: CityRoute[] = [
     state: 'Tamil Nadu',
     category: 'South India',
     cityCode: 'CAPE',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop',
     heroTagline: 'From India’s Southernmost Tip to the White Desert of the Far West',
     metaTitle: 'Kanyakumari to Rann Utsav Tour Packages 2026–2027 | Sobhavi Holidays',
     metaDescription: 'Kanyakumari to Rann Utsav tour packages. Convenient transit via Trivandrum (TRV), luxury Dhordo Tent City stays, Bhuj transfers, and full Kutch sightseeing.',

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { CityRoute } from '@/lib/rannUtsavRoutes';
 import styles from './RannCityPackages.module.css';
@@ -11,6 +11,7 @@ interface RannCityPackagesProps {
 
 export default function RannCityPackages({ routes }: RannCityPackagesProps) {
   const [selectedCategory, setSelectedCategory] = useState<'All' | 'South India' | 'West India'>('All');
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   const filteredRoutes = selectedCategory === 'All'
     ? routes
@@ -18,6 +19,18 @@ export default function RannCityPackages({ routes }: RannCityPackagesProps) {
 
   const southCount = routes.filter(r => r.category === 'South India').length;
   const westCount = routes.filter(r => r.category === 'West India').length;
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className={styles.section}>
@@ -52,47 +65,65 @@ export default function RannCityPackages({ routes }: RannCityPackagesProps) {
         </button>
       </div>
 
-      {/* Cards Grid */}
-      <div className={styles.cardsGrid}>
+      {/* Mobile Swipe Notice */}
+      <div className={styles.swipeNotice}>
+        <span>👉 <strong>Swipe horizontally</strong> to explore all {filteredRoutes.length} departure hubs</span>
+        <span className={styles.swipeArrowHint}>&rarr;</span>
+      </div>
+
+      {/* Cards Slider / Grid */}
+      <div className={styles.cardsGrid} ref={scrollContainerRef}>
         {filteredRoutes.map((route) => (
           <article key={route.slug} className={styles.cityCard}>
-            <div>
-              <div className={styles.cardHeader}>
-                <div>
-                  <h3 className={styles.cityName}>{route.cityName}</h3>
-                  <span className={styles.categoryPill}>{route.category} Departure</span>
-                </div>
-                <span className={styles.cityCodeBadge}>{route.cityCode}</span>
-              </div>
-
-              <div className={styles.routeMeta}>
-                <div className={styles.metaRow}>
-                  <span className={styles.metaIcon}>✈️</span>
-                  <span><strong>Flight:</strong> Via Ahmedabad / Direct Bhuj</span>
-                </div>
-                <div className={styles.metaRow}>
-                  <span className={styles.metaIcon}>🚌</span>
-                  <span><strong>Transfers:</strong> Bhuj Station/Airport to Dhordo</span>
-                </div>
-                <div className={styles.metaRow}>
-                  <span className={styles.metaIcon}>⏱️</span>
-                  <span><strong>Duration:</strong> 2N/3D or 3N/4D (Recommended)</span>
-                </div>
-              </div>
-
-              <ul className={styles.featuresList}>
-                <li>Luxury Tent City Dhordo stay</li>
-                <li>Sunset & Full Moon White Desert walks</li>
-                <li>Kala Dungar & Kutchi craft villages</li>
-              </ul>
+            {/* Distinct Popular City Image */}
+            <div className={styles.cardImgWrapper}>
+              <img
+                src={route.image}
+                alt={`${route.cityName} to Rann Utsav`}
+                loading="lazy"
+                className={styles.cardImg}
+              />
+              <div className={styles.cardImgOverlay} />
+              <span className={styles.floatingCategoryBadge}>{route.category}</span>
+              <span className={styles.floatingCodeBadge}>{route.cityCode}</span>
             </div>
 
-            <Link
-              href={`/rann-utsav/${route.slug}`}
-              className={styles.cardActionBtn}
-            >
-              View Package &amp; Itinerary &rarr;
-            </Link>
+            <div className={styles.cardBody}>
+              <div>
+                <div className={styles.cardHeader}>
+                  <h3 className={styles.cityName}>{route.cityName}</h3>
+                  <span className={styles.stateLabel}>{route.state} Departure</span>
+                </div>
+
+                <div className={styles.routeMeta}>
+                  <div className={styles.metaRow}>
+                    <span className={styles.metaIcon}>✈️</span>
+                    <span><strong>Flight:</strong> Via Ahmedabad / Bhuj Direct</span>
+                  </div>
+                  <div className={styles.metaRow}>
+                    <span className={styles.metaIcon}>🚌</span>
+                    <span><strong>Transfers:</strong> Bhuj Station/Airport to Dhordo</span>
+                  </div>
+                  <div className={styles.metaRow}>
+                    <span className={styles.metaIcon}>⏱️</span>
+                    <span><strong>Stay:</strong> 2N/3D or 3N/4D (Recommended)</span>
+                  </div>
+                </div>
+
+                <ul className={styles.featuresList}>
+                  <li>Luxury Tent City Dhordo stay</li>
+                  <li>Full Moon &amp; Sunset White Desert</li>
+                  <li>Kala Dungar &amp; Kutchi Artisan Hamlets</li>
+                </ul>
+              </div>
+
+              <Link
+                href={`/rann-utsav/${route.slug}`}
+                className={styles.cardActionBtn}
+              >
+                View {route.cityName.split(' ')[0]} Package &rarr;
+              </Link>
+            </div>
           </article>
         ))}
       </div>

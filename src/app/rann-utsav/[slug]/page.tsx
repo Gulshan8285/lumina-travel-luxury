@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: PageProps) {
       siteName: 'Sobhavi Holidays',
       images: [
         {
-          url: '/blogs/white-rann-kutch.jpg',
+          url: route.image,
           width: 1200,
           height: 630,
           alt: `${route.cityName} to Rann Utsav Kutch Tour Packages`,
@@ -81,8 +81,24 @@ export default async function CityRoutePage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Hero Section */}
-        <section className={styles.heroSection}>
+        {/* Mobile Sticky Quick Jump Bar to reduce excessive scrolling */}
+        <nav className={styles.stickyJumpBar} aria-label="Page Quick Navigation">
+          <div className="container">
+            <div className={styles.jumpLinksList}>
+              <a href="#transit-guide" className={styles.jumpLink}>✈️ Transit Guide</a>
+              <a href="#packages" className={styles.jumpLink}>⏱️ Packages</a>
+              <a href="#itinerary" className={styles.jumpLink}>🗺️ Itinerary</a>
+              <a href="#book-trip" className={styles.jumpLink}>📝 Get Quote</a>
+              <a href="#faqs" className={styles.jumpLink}>❓ FAQs</a>
+            </div>
+          </div>
+        </nav>
+
+        {/* Hero Section with Distinct City Popular Image */}
+        <section
+          className={styles.heroSection}
+          style={{ backgroundImage: `url('${route.image}')` }}
+        >
           <div className={styles.heroOverlay} />
           <div className="container">
             <div className={styles.heroContent}>
@@ -126,7 +142,7 @@ export default async function CityRoutePage({ params }: PageProps) {
         </section>
 
         {/* City-to-Bhuj Transit Details */}
-        <section className={`${styles.section} ${styles.bgCard}`}>
+        <section id="transit-guide" className={`${styles.section} ${styles.bgCard}`}>
           <div className="container">
             <div className={styles.sectionHeader}>
               <span className={styles.eyebrow}>SEAMLESS CONNECTIVITY</span>
@@ -136,6 +152,12 @@ export default async function CityRoutePage({ params }: PageProps) {
               <p className={styles.sectionSubtitle}>
                 Recommended transit options coordinated smoothly with your Tent City Dhordo check-in.
               </p>
+            </div>
+
+            {/* Mobile Swipe Notice */}
+            <div className={styles.swipeNotice}>
+              <span>👉 <strong>Swipe horizontally</strong> to view all transit modes</span>
+              <span>&rarr;</span>
             </div>
 
             <div className={styles.transitGrid}>
@@ -161,7 +183,7 @@ export default async function CityRoutePage({ params }: PageProps) {
         </section>
 
         {/* Duration Packages */}
-        <section className={`${styles.section} ${styles.bgDarker}`}>
+        <section id="packages" className={`${styles.section} ${styles.bgDarker}`}>
           <div className="container">
             <div className={styles.sectionHeader}>
               <span className={styles.eyebrow}>CUSTOMIZABLE ITINERARIES</span>
@@ -169,6 +191,12 @@ export default async function CityRoutePage({ params }: PageProps) {
               <p className={styles.sectionSubtitle}>
                 Choose the duration that best matches your schedule and travel pace.
               </p>
+            </div>
+
+            {/* Mobile Swipe Notice */}
+            <div className={styles.swipeNotice}>
+              <span>👉 <strong>Swipe horizontally</strong> to compare durations</span>
+              <span>&rarr;</span>
             </div>
 
             <div className={styles.durationGrid}>
@@ -191,7 +219,7 @@ export default async function CityRoutePage({ params }: PageProps) {
         </section>
 
         {/* Suggested Itinerary Timeline */}
-        <section className={`${styles.section} ${styles.bgCard}`}>
+        <section id="itinerary" className={`${styles.section} ${styles.bgCard}`}>
           <div className="container">
             <div className={styles.sectionHeader}>
               <span className={styles.eyebrow}>DAY-BY-DAY EXPERIENCE</span>
@@ -238,7 +266,7 @@ export default async function CityRoutePage({ params }: PageProps) {
         </section>
 
         {/* FAQ Section */}
-        <section className={`${styles.section} ${styles.bgCard}`}>
+        <section id="faqs" className={`${styles.section} ${styles.bgCard}`}>
           <div className="container">
             <div className={styles.sectionHeader}>
               <span className={styles.eyebrow}>TRANSIT &amp; STAY QUESTIONS</span>

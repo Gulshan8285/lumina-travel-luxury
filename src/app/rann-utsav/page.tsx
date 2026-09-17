@@ -73,6 +73,21 @@ export default function RannUtsavPage() {
       <Navbar />
 
       <main className={styles.main}>
+        {/* Mobile Sticky Quick Jump Bar to eliminate excessive scrolling */}
+        <nav className={styles.stickyJumpBar} aria-label="Quick Page Navigation">
+          <div className="container">
+            <div className={styles.jumpLinksList}>
+              <a href="#city-packages" className={styles.jumpLink}>🏙️ City Hubs</a>
+              <a href="#stay-duration" className={styles.jumpLink}>⏱️ Duration</a>
+              <a href="#tents" className={styles.jumpLink}>🎪 Tents</a>
+              <a href="#experiences" className={styles.jumpLink}>✨ Sights</a>
+              <a href="#inclusions" className={styles.jumpLink}>🚌 Inclusions</a>
+              <a href="#enquire-form" className={styles.jumpLink}>📝 Get Quote</a>
+              <a href="#faqs" className={styles.jumpLink}>❓ FAQs</a>
+            </div>
+          </div>
+        </nav>
+
         {/* Luxury Hero */}
         <section className={styles.heroSection}>
           <div className={styles.heroOverlay} />
@@ -133,7 +148,7 @@ export default function RannUtsavPage() {
         </section>
 
         {/* How long should you stay? */}
-        <section className={styles.stayDurationSection}>
+        <section id="stay-duration" className={styles.stayDurationSection}>
           <div className="container">
             <div className={styles.sectionHeader}>
               <span className={styles.eyebrow}>RECOMMENDED DURATION</span>
@@ -141,6 +156,12 @@ export default function RannUtsavPage() {
               <p className={styles.sectionSubtitle}>
                 Whether a fast weekend getaway or an in-depth desert expedition across Kutch.
               </p>
+            </div>
+
+            {/* Mobile Swipe Notice */}
+            <div className={styles.swipeNotice}>
+              <span>👉 <strong>Swipe horizontally</strong> to compare durations</span>
+              <span>&rarr;</span>
             </div>
 
             <div className={styles.durationCards}>
@@ -172,7 +193,7 @@ export default function RannUtsavPage() {
         </section>
 
         {/* Staying at Rann Utsav Tent City */}
-        <section className={styles.tentCitySection}>
+        <section id="tents" className={styles.tentCitySection}>
           <div className="container">
             <div className={styles.sectionHeader}>
               <span className={styles.eyebrow}>COMFORT &amp; HOSPITALITY</span>
@@ -180,6 +201,12 @@ export default function RannUtsavPage() {
               <p className={styles.sectionSubtitle}>
                 Modern luxury meets Kutchi warmth inside Dhordo Tent City and nearby boutique heritage resorts.
               </p>
+            </div>
+
+            {/* Mobile Swipe Notice */}
+            <div className={styles.swipeNotice}>
+              <span>👉 <strong>Swipe horizontally</strong> to view all tent categories</span>
+              <span>&rarr;</span>
             </div>
 
             <div className={styles.tentCategoriesGrid}>
@@ -208,7 +235,7 @@ export default function RannUtsavPage() {
         </section>
 
         {/* What can you do on a Rann Utsav trip? */}
-        <section className={styles.activitiesSection}>
+        <section id="experiences" className={styles.activitiesSection}>
           <div className="container">
             <div className={styles.sectionHeader}>
               <span className={styles.eyebrow}>CURATED EXPERIENCES</span>
@@ -216,6 +243,12 @@ export default function RannUtsavPage() {
               <p className={styles.sectionSubtitle}>
                 From endless white salt horizons to royal coastal palaces and artisan handicraft villages.
               </p>
+            </div>
+
+            {/* Mobile Swipe Notice */}
+            <div className={styles.swipeNotice}>
+              <span>👉 <strong>Swipe horizontally</strong> to see all experiences</span>
+              <span>&rarr;</span>
             </div>
 
             <div className={styles.activitiesGrid}>
@@ -231,7 +264,7 @@ export default function RannUtsavPage() {
         </section>
 
         {/* Inclusions */}
-        <section className={styles.inclusionsSection}>
+        <section id="inclusions" className={styles.inclusionsSection}>
           <div className="container">
             <div className={styles.sectionHeader}>
               <span className={styles.eyebrow}>TRANSPARENT VALUE</span>
@@ -239,6 +272,12 @@ export default function RannUtsavPage() {
               <p className={styles.sectionSubtitle}>
                 Everything arranged from arrival to departure for a completely seamless holiday.
               </p>
+            </div>
+
+            {/* Mobile Swipe Notice */}
+            <div className={styles.swipeNotice}>
+              <span>👉 <strong>Swipe horizontally</strong> to see inclusions</span>
+              <span>&rarr;</span>
             </div>
 
             <div className={styles.inclusionsGrid}>
@@ -307,7 +346,7 @@ export default function RannUtsavPage() {
         </section>
 
         {/* Interactive FAQs Accordion */}
-        <section className={styles.faqSection}>
+        <section id="faqs" className={styles.faqSection}>
           <div className="container">
             <div className={styles.sectionHeader}>
               <span className={styles.eyebrow}>FREQUENTLY ASKED QUESTIONS</span>
