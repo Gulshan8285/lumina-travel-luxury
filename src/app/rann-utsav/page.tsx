@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
-import SinglePageForm from '@/components/ui/SinglePageForm';
 import RannCityPackages from '@/components/ui/RannCityPackages';
 import RannFaqAccordion, { FaqItem } from '@/components/ui/RannFaqAccordion';
 import { CITY_ROUTES } from '@/lib/rannUtsavRoutes';
@@ -68,6 +68,8 @@ const FAQS: FaqItem[] = [
 ];
 
 export default function RannUtsavPage() {
+  const whatsappUrl = "https://wa.me/917406994752?text=Hello%20Sobhavi%20Holidays,%20I%20want%20to%20plan%20a%20Rann%20Utsav%20trip%20to%20Kutch.%20Please%20share%20tent%20availability%20and%20packages.";
+
   return (
     <>
       <Navbar />
@@ -82,7 +84,7 @@ export default function RannUtsavPage() {
               <a href="#tents" className={styles.jumpLink}>🎪 Tents</a>
               <a href="#experiences" className={styles.jumpLink}>✨ Sights</a>
               <a href="#inclusions" className={styles.jumpLink}>🚌 Inclusions</a>
-              <a href="#enquire-form" className={styles.jumpLink}>📝 Get Quote</a>
+              <a href="#enquire-cta" className={styles.jumpLink}>📝 Get Quote</a>
               <a href="#faqs" className={styles.jumpLink}>❓ FAQs</a>
             </div>
           </div>
@@ -120,7 +122,7 @@ export default function RannUtsavPage() {
                   ✦ Explore Packages by City &rarr;
                 </a>
                 <a
-                  href="https://wa.me/917406994752?text=Hello%20Sobhavi%20Holidays,%20I%20want%20to%20plan%20a%20Rann%20Utsav%20trip%20to%20Kutch."
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.secondaryBtn}
@@ -327,21 +329,46 @@ export default function RannUtsavPage() {
           </div>
         </section>
 
-        {/* Enquiry Form */}
-        <section id="enquire-form" className={styles.formSection}>
+        {/* Luxury Enquiry CTA Card (Replaces embedded form) */}
+        <section id="enquire-cta" className={styles.enquireCtaSection}>
           <div className="container">
-            <div className={styles.formIntro}>
-              <span className={styles.eyebrow}>FAST &amp; BESPOKE</span>
-              <h2 className={styles.sectionTitle}>Get Your Custom Rann Utsav Quote</h2>
-              <p className={styles.sectionSubtitle}>
-                Tell us your preferred dates and group size. Our Kutch specialists will check live tent availability and coordinate your flights, transfers, and stay.
+            <div className={styles.enquireCtaCard}>
+              <span className={styles.eyebrow}>GET STARTED TODAY</span>
+              <h2 className={styles.ctaCardTitle}>Ready to Experience Rann Utsav?</h2>
+              <p className={styles.ctaCardSubtitle}>
+                Tell us your travel dates, who is travelling and what you&apos;re looking for. Our Kutch holiday specialists will check live tent inventory and coordinate every detail for your journey.
               </p>
-            </div>
 
-            <SinglePageForm
-              initialDestination="Rann Utsav - Great Rann of Kutch"
-              initialService="Domestic Holiday"
-            />
+              <div className={styles.ctaButtonsGroup}>
+                <Link
+                  href="/enquire?destination=Rann+Utsav+-+Great+Rann+of+Kutch&service=Domestic+Holiday"
+                  className={styles.ctaMainButton}
+                >
+                  ✦ Plan Your Trip &amp; Get Custom Quote &rarr;
+                </Link>
+
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.ctaWhatsappButton}
+                >
+                  💬 Chat on WhatsApp (+91 74069 94752)
+                </a>
+              </div>
+
+              <div className={styles.trustBadgesRow}>
+                <div className={styles.trustBadgeItem}>
+                  <span>⚡</span> <strong>15-Min Quick Response</strong>
+                </div>
+                <div className={styles.trustBadgeItem}>
+                  <span>🎪</span> <strong>Official Tent City Inventory</strong>
+                </div>
+                <div className={styles.trustBadgeItem}>
+                  <span>🛡️</span> <strong>100% Verified Transfers &amp; Stays</strong>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -356,7 +383,7 @@ export default function RannUtsavPage() {
               </p>
             </div>
 
-            <RannFaqAccordion faqs={FAQS} enquireAnchor="#enquire-form" />
+            <RannFaqAccordion faqs={FAQS} enquireAnchor="#enquire-cta" />
           </div>
         </section>
       </main>

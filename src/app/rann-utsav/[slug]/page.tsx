@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
-import SinglePageForm from '@/components/ui/SinglePageForm';
 import RannFaqAccordion from '@/components/ui/RannFaqAccordion';
 import { getAllCityRoutes, getCityRouteBySlug } from '@/lib/rannUtsavRoutes';
 import styles from './page.module.css';
@@ -62,6 +61,8 @@ export default async function CityRoutePage({ params }: PageProps) {
 
   const allRoutes = getAllCityRoutes();
   const otherRoutes = allRoutes.filter((r) => r.slug !== route.slug);
+  const destinationQuery = encodeURIComponent(`Rann Utsav (From ${route.cityName})`);
+  const whatsappUrl = `https://wa.me/917406994752?text=Hello%20Sobhavi%20Holidays,%20I%20am%20planning%20a%20Rann%20Utsav%20trip%20from%20${encodeURIComponent(route.cityName)}.%20Please%20share%20tent%20availability%20and%20package%20details.`;
 
   return (
     <>
@@ -81,7 +82,7 @@ export default async function CityRoutePage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Mobile Sticky Quick Jump Bar to reduce excessive scrolling */}
+        {/* Mobile Sticky Quick Jump Bar to eliminate excessive scrolling */}
         <nav className={styles.stickyJumpBar} aria-label="Page Quick Navigation">
           <div className="container">
             <div className={styles.jumpLinksList}>
@@ -108,6 +109,44 @@ export default async function CityRoutePage({ params }: PageProps) {
               <h1 className={styles.title}>{route.cityName} to Rann Utsav</h1>
               <p className={styles.tagline}>{route.heroTagline}</p>
 
+              {/* Prominent Visual Route Showcase: Departure City Photo to White Desert */}
+              <div className={styles.visualShowcase}>
+                <div className={styles.showcaseCard}>
+                  <div className={styles.showcaseImgWrapper}>
+                    <img
+                      src={route.image}
+                      alt={`${route.cityName} Departure`}
+                      className={styles.showcaseImg}
+                    />
+                    <div className={styles.showcaseImgOverlay} />
+                    <div className={styles.showcaseImgLabel}>
+                      <span>📍 Departure Hub</span>
+                      <strong>{route.cityName}</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.showcaseConnector}>
+                  <div className={styles.connectorIcon}>✈️</div>
+                  <span className={styles.connectorBadge}>Fast Transit</span>
+                </div>
+
+                <div className={styles.showcaseCard}>
+                  <div className={styles.showcaseImgWrapper}>
+                    <img
+                      src="/blogs/white-rann-kutch.jpg"
+                      alt="White Desert of Kutch Tent City Dhordo"
+                      className={styles.showcaseImg}
+                    />
+                    <div className={styles.showcaseImgOverlay} />
+                    <div className={styles.showcaseImgLabel}>
+                      <span>✨ Destination</span>
+                      <strong>Great Rann &amp; Tent City</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Highlights Pill Strip */}
               <div className={styles.highlightsStrip}>
                 <div className={styles.highlightPill}>
@@ -129,7 +168,7 @@ export default async function CityRoutePage({ params }: PageProps) {
                   ✦ Request Custom Package Quote &rarr;
                 </a>
                 <a
-                  href={`https://wa.me/917406994752?text=Hello%20Sobhavi%20Holidays,%20I%20am%20planning%20a%20Rann%20Utsav%20trip%20from%20${encodeURIComponent(route.cityName)}.`}
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.secondaryBtn}
@@ -245,23 +284,48 @@ export default async function CityRoutePage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Form Section */}
-        <section id="book-trip" className={`${styles.section} ${styles.bgDarker}`}>
+        {/* Luxury Enquiry CTA Card (No heavy embedded form - Direct High-Converting Button) */}
+        <section id="book-trip" className={styles.enquireCtaSection}>
           <div className="container">
-            <div className={styles.sectionHeader}>
-              <span className={styles.eyebrow}>HASSLE-FREE BOOKING</span>
-              <h2 className={styles.sectionTitle}>
-                Book Your {route.cityName} to Rann Utsav Package
+            <div className={styles.enquireCtaCard}>
+              <span className={styles.eyebrow}>FAST &amp; BESPOKE PLANNING</span>
+              <h2 className={styles.ctaCardTitle}>
+                Book Your {route.cityName} to Rann Utsav Tour
               </h2>
-              <p className={styles.sectionSubtitle}>
-                Share your dates and passenger count. We will craft your personalized quotation including Tent City accommodation, transfers, and flight/train assistance.
+              <p className={styles.ctaCardSubtitle}>
+                Check live tent availability at Dhordo Tent City, compare flight/train options from {route.cityName}, and receive your custom itemized quotation with zero obligation.
               </p>
-            </div>
 
-            <SinglePageForm
-              initialDestination={`Rann Utsav (From ${route.cityName})`}
-              initialService="Domestic Holiday"
-            />
+              <div className={styles.ctaButtonsGroup}>
+                <Link
+                  href={`/enquire?destination=${destinationQuery}&service=Domestic+Holiday`}
+                  className={styles.ctaMainButton}
+                >
+                  ✦ Plan Your Trip &amp; Get Quote &rarr;
+                </Link>
+
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.ctaWhatsappButton}
+                >
+                  💬 Chat on WhatsApp (+91 74069 94752)
+                </a>
+              </div>
+
+              <div className={styles.trustBadgesRow}>
+                <div className={styles.trustBadgeItem}>
+                  <span>⚡</span> <strong>15-Min Fast Response</strong>
+                </div>
+                <div className={styles.trustBadgeItem}>
+                  <span>🎪</span> <strong>Official Tent City Inventory</strong>
+                </div>
+                <div className={styles.trustBadgeItem}>
+                  <span>🛡️</span> <strong>100% Verified Transfers &amp; Stays</strong>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

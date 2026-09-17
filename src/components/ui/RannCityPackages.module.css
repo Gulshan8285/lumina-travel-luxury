@@ -120,7 +120,7 @@
 .cardImgWrapper {
   position: relative;
   width: 100%;
-  height: 180px;
+  height: 190px;
   overflow: hidden;
   background: #1f2937;
 }
@@ -139,39 +139,41 @@
 .cardImgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 15, 25, 0.2) 0%, rgba(15, 20, 32, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(11, 15, 25, 0.05) 0%, rgba(15, 20, 32, 0.35) 100%);
 }
 
 .floatingCodeBadge {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: rgba(11, 15, 25, 0.85);
+  background: rgba(11, 15, 25, 0.9);
   color: #fceda2;
-  border: 1px solid rgba(212, 175, 55, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.5);
   padding: 0.25rem 0.65rem;
   border-radius: 6px;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
   z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 .floatingCategoryBadge {
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(212, 175, 55, 0.2);
+  background: rgba(11, 15, 25, 0.85);
   color: #ffffff;
-  border: 1px solid rgba(212, 175, 55, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.5);
   padding: 0.25rem 0.65rem;
   border-radius: 20px;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
   z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 /* Card Body */
@@ -198,7 +200,7 @@
 
 .stateLabel {
   font-size: 0.78rem;
-  color: #9ca3af;
+  color: #d4af37;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 600;
@@ -258,12 +260,12 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: rgba(212, 175, 55, 0.12);
-  color: #fceda2;
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: #d4af37;
+  color: #0b0f19;
+  border: 1px solid #d4af37;
   border-radius: 8px;
   padding: 0.75rem 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
   text-decoration: none;
   transition: all 0.25s ease;
@@ -271,10 +273,9 @@
 }
 
 .cardActionBtn:hover {
-  background: #d4af37;
-  color: #0b0f19;
-  border-color: #d4af37;
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  background: #fceda2;
+  border-color: #fceda2;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
 }
 
 /* Tablet & Mobile Responsiveness with Horizontal Carousel */
@@ -318,7 +319,7 @@
   }
 
   .cardImgWrapper {
-    height: 160px;
+    height: 175px;
   }
 
   .cardBody {
