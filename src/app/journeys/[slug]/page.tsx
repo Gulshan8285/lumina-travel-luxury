@@ -21,12 +21,49 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
   const [selectedCategoryIdx, setSelectedCategoryIdx] = useState(0);
   const [selectedDayIdx, setSelectedDayIdx] = useState<number | 'all'>(0);
 
-  // Active Category Data
-  const currentCategory = (journey.packageOptions && journey.packageOptions.length > 0)
-    ? journey.packageOptions[selectedCategoryIdx] || journey.packageOptions[0]
-    : null;
+  // Dynamic Package Options (Fallback to 3 Luxury Tiers for bespoke journeys)
+  const packageOptionsList = (journey.packageOptions && journey.packageOptions.length > 0)
+    ? journey.packageOptions
+    : [
+        {
+          category: "Standard Category",
+          price: journey.price.startsWith("Starting") ? journey.price.replace("Starting from ", "") : journey.price === "Bespoke / On Request" ? "₹35,000 per person sharing" : journey.price,
+          details: `${journey.destination}: 4-Star Premium Hotel Accommodations • Daily Gourmet Breakfast • Private AC Transfers`
+        },
+        {
+          category: "Deluxe Category",
+          price: journey.price === "Bespoke / On Request" ? "₹48,500 per person sharing" : "₹42,800 per person sharing",
+          details: `${journey.destination}: 5-Star Luxury Resorts & Heritage Properties • Daily Breakfast & Dinner • Private Dedicated Chauffeur`
+        },
+        {
+          category: "Luxury Category",
+          price: journey.price === "Bespoke / On Request" ? "₹75,000 per person sharing" : "₹62,000 per person sharing",
+          details: `${journey.destination}: Signature Palace Suites & Private Villas • All Gourmet Meals • VIP Concierge & Fast-Track Access`
+        }
+      ];
 
-  const currentPrice = currentCategory ? currentCategory.price : journey.price;
+  // Active Category Data
+  const currentCategory = packageOptionsList[selectedCategoryIdx] || packageOptionsList[0];
+  const currentPrice = currentCategory.price;
+  const priceIncludesText = journey.priceIncludesText || `Price Includes: ${journey.itinerary.length} Days Itinerary, Luxury Hotel Accommodations, Daily Gourmet Breakfast, Private Dedicated Vehicle with Chauffeur, Airport Transfers, and Guided Sightseeing.`;
+
+  const termsList = (journey.termsAndConditions && journey.termsAndConditions.length > 0)
+    ? journey.termsAndConditions
+    : [
+        "Package rates are dynamic and subject to availability at the time of final confirmation.",
+        "Rates are valid for Indian and international travelers with standard booking validity.",
+        "The dedicated vehicle is provided as per the approved itinerary route.",
+        "Special dietary requests (such as Jain, vegan, or gluten-free) must be communicated in advance.",
+        "100% advance payment is required for confirmation during peak festive seasons."
+      ];
+
+  const cancellationList = (journey.cancellationPolicy && journey.cancellationPolicy.length > 0)
+    ? journey.cancellationPolicy
+    : [
+        "Cancellation 30+ days prior to departure: 10% administrative retention fee.",
+        "Cancellation between 15 to 30 days prior to departure: 50% package retention.",
+        "Cancellation within 14 days of departure or no-show: 100% non-refundable."
+      ];
 
   // Quick Enquiry Form state
   const [formData, setFormData] = useState({
@@ -49,7 +86,7 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
         body: JSON.stringify({
           ...formData,
           destination: journey.destination,
-          journey: `${journey.name} (${currentCategory ? currentCategory.category : 'Standard'})`,
+          journey: `${journey.name} (${currentCategory.category})`,
           duration: journey.duration
         })
       });
@@ -184,76 +221,72 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
               </div>
 
               {/* === INTERACTIVE CATEGORY TIER SELECTOR (Only Active Tier Highlighted) === */}
-              {journey.packageOptions && journey.packageOptions.length > 0 && (
-                <div className={styles.tierSelectorWrapper}>
-                  <div className={styles.tierSelectorTop}>
-                    <div>
-                      <span className={styles.tierSelectorBadge}>TAILORED HOTEL CATEGORIES</span>
-                      <h3 className={styles.tierSelectorTitle}>Choose Your Preferred Package Tier</h3>
-                    </div>
-                    <span className={styles.tierHintText}>Click a tier to view included hotels &amp; live pricing</span>
+              <div className={styles.tierSelectorWrapper}>
+                <div className={styles.tierSelectorTop}>
+                  <div>
+                    <span className={styles.tierSelectorBadge}>TAILORED HOTEL CATEGORIES</span>
+                    <h3 className={styles.tierSelectorTitle}>Choose Your Preferred Package Tier</h3>
                   </div>
-                  
-                  <div className={styles.categoryTiersGrid}>
-                    {journey.packageOptions.map((opt, idx) => {
-                      const isSelected = selectedCategoryIdx === idx;
-                      const isPopular = idx === 1;
-                      const isLuxury = idx === 2;
-                      return (
-                        <button
-                          key={idx}
-                          type="button"
-                          className={`${styles.tierCardBtn} ${isSelected ? styles.selectedTierCard : ''}`}
-                          onClick={() => setSelectedCategoryIdx(idx)}
-                        >
-                          <div className={styles.tierCardTopRow}>
-                            <div className={styles.tierCardHeader}>
-                              <span className={styles.tierRadioIcon}>{isSelected ? '●' : '○'}</span>
-                              <span className={styles.tierCardName}>{opt.category}</span>
-                            </div>
-                            {isPopular && <span className={styles.tierTopBadge}>★ POPULAR</span>}
-                            {isLuxury && <span className={styles.tierTopBadge}>👑 LUXURY</span>}
-                          </div>
-                          <div className={styles.tierCardPrice}>{opt.price}</div>
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {/* Active Selected Tier Hotel Details Box */}
-                  {currentCategory?.details && (
-                    <div className={styles.selectedHotelDetailsBanner}>
-                      <div className={styles.hotelDetailsHeader}>
-                        <span className={styles.hotelDetailsBadge}>🏨 INCLUDED HOTELS &middot; {currentCategory.category.toUpperCase()}</span>
-                        <span className={styles.hotelDetailsNote}>Handpicked Luxury Accommodations</span>
-                      </div>
-                      <div className={styles.hotelChipsGrid}>
-                        {currentCategory.details.split('•').map((hotelItem, hIdx) => {
-                          const parts = hotelItem.trim().split(':');
-                          const city = parts.length > 1 ? parts[0].trim() : '';
-                          const name = parts.length > 1 ? parts.slice(1).join(':').trim() : hotelItem.trim();
-                          return (
-                            <div key={hIdx} className={styles.hotelChip}>
-                              <span className={styles.hotelChipIcon}>🏛️</span>
-                              <div className={styles.hotelChipText}>
-                                {city && <strong className={styles.hotelCityTag}>{city}:</strong>}
-                                <span className={styles.hotelNameTag}>{name}</span>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
+                  <span className={styles.tierHintText}>Click a tier to view included hotels &amp; live pricing</span>
                 </div>
-              )}
+                
+                <div className={styles.categoryTiersGrid}>
+                  {packageOptionsList.map((opt, idx) => {
+                    const isSelected = selectedCategoryIdx === idx;
+                    const isPopular = idx === 1;
+                    const isLuxury = idx === 2;
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        className={`${styles.tierCardBtn} ${isSelected ? styles.selectedTierCard : ''}`}
+                        onClick={() => setSelectedCategoryIdx(idx)}
+                      >
+                        <div className={styles.tierCardTopRow}>
+                          <div className={styles.tierCardHeader}>
+                            <span className={styles.tierRadioIcon}>{isSelected ? '●' : '○'}</span>
+                            <span className={styles.tierCardName}>{opt.category}</span>
+                          </div>
+                          {isPopular && <span className={styles.tierTopBadge}>★ POPULAR</span>}
+                          {isLuxury && <span className={styles.tierTopBadge}>👑 LUXURY</span>}
+                        </div>
+                        <div className={styles.tierCardPrice}>{opt.price}</div>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Active Selected Tier Hotel Details Box */}
+                {currentCategory?.details && (
+                  <div className={styles.selectedHotelDetailsBanner}>
+                    <div className={styles.hotelDetailsHeader}>
+                      <span className={styles.hotelDetailsBadge}>🏨 INCLUDED HOTELS &middot; {currentCategory.category.toUpperCase()}</span>
+                      <span className={styles.hotelDetailsNote}>Handpicked Luxury Accommodations</span>
+                    </div>
+                    <div className={styles.hotelChipsGrid}>
+                      {currentCategory.details.split('•').map((hotelItem, hIdx) => {
+                        const parts = hotelItem.trim().split(':');
+                        const city = parts.length > 1 ? parts[0].trim() : '';
+                        const name = parts.length > 1 ? parts.slice(1).join(':').trim() : hotelItem.trim();
+                        return (
+                          <div key={hIdx} className={styles.hotelChip}>
+                            <span className={styles.hotelChipIcon}>🏛️</span>
+                            <div className={styles.hotelChipText}>
+                              {city && <strong className={styles.hotelCityTag}>{city}:</strong>}
+                              <span className={styles.hotelNameTag}>{name}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* Price Includes Summary Line */}
-              {journey.priceIncludesText && (
-                <div className={styles.priceIncludesSummary}>
-                  <strong>Price Includes:</strong> {journey.priceIncludesText}
-                </div>
-              )}
+              <div className={styles.priceIncludesSummary}>
+                <strong>Price Includes:</strong> {priceIncludesText}
+              </div>
 
               {/* Horizontal Tabs Bar */}
               <div className={styles.tabsNav} role="tablist">
@@ -275,28 +308,24 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                 >
                   ✓ Inclusions &amp; Exclusions
                 </button>
-                {journey.termsAndConditions && journey.termsAndConditions.length > 0 && (
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={activeTab === 'terms'}
-                    className={`${styles.tabBtn} ${activeTab === 'terms' ? styles.activeTabBtn : ''}`}
-                    onClick={() => setActiveTab('terms')}
-                  >
-                    📋 Terms &amp; Conditions
-                  </button>
-                )}
-                {journey.cancellationPolicy && journey.cancellationPolicy.length > 0 && (
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={activeTab === 'cancellation'}
-                    className={`${styles.tabBtn} ${activeTab === 'cancellation' ? styles.activeTabBtn : ''}`}
-                    onClick={() => setActiveTab('cancellation')}
-                  >
-                    🔄 Cancellation Policy
-                  </button>
-                )}
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeTab === 'terms'}
+                  className={`${styles.tabBtn} ${activeTab === 'terms' ? styles.activeTabBtn : ''}`}
+                  onClick={() => setActiveTab('terms')}
+                >
+                  📋 Terms &amp; Conditions
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeTab === 'cancellation'}
+                  className={`${styles.tabBtn} ${activeTab === 'cancellation' ? styles.activeTabBtn : ''}`}
+                  onClick={() => setActiveTab('cancellation')}
+                >
+                  🔄 Cancellation Policy
+                </button>
               </div>
             </div>
 
@@ -385,50 +414,44 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                         <p className={styles.featuredDayDesc}>{activeDay.desc}</p>
 
                         {/* Sightseeing Included Tags */}
-                        {activeDay.sightseeing && activeDay.sightseeing.length > 0 && (
-                          <div className={styles.sightseeingBox}>
-                            <span className={styles.sightseeingLabel}>📍 Sight Seeing Included:</span>
-                            <div className={styles.sightseeingTags}>
-                              {activeDay.sightseeing.map((place, pIdx) => (
-                                <span key={pIdx} className={styles.sightseeingTag}>
-                                  ✦ {place}
-                                </span>
-                              ))}
-                            </div>
+                        <div className={styles.sightseeingBox}>
+                          <span className={styles.sightseeingLabel}>📍 Sight Seeing Included:</span>
+                          <div className={styles.sightseeingTags}>
+                            {((activeDay.sightseeing && activeDay.sightseeing.length > 0) ? activeDay.sightseeing : [activeDay.title]).map((place, pIdx) => (
+                              <span key={pIdx} className={styles.sightseeingTag}>
+                                ✦ {place}
+                              </span>
+                            ))}
                           </div>
-                        )}
+                        </div>
 
                         {/* Transfer Route Tag */}
-                        {activeDay.transfers && (
-                          <div className={styles.transferRow}>
-                            <span className={styles.transferIcon}>🚘</span>
-                            <div className={styles.transferText}>
-                              <span className={styles.transferLabel}>Transit Route:</span>
-                              <span className={styles.transferVal}>{activeDay.transfers}</span>
-                            </div>
+                        <div className={styles.transferRow}>
+                          <span className={styles.transferIcon}>🚘</span>
+                          <div className={styles.transferText}>
+                            <span className={styles.transferLabel}>Transit Route:</span>
+                            <span className={styles.transferVal}>{activeDay.transfers || `${journey.destination} Sightseeing Circuit : Private Dedicated AC Cab`}</span>
                           </div>
-                        )}
+                        </div>
 
                         {/* Meals Inclusions Bar */}
-                        {activeDay.meals && (
-                          <div className={styles.mealsBar}>
-                            <span className={styles.mealsBarLabel}>🍽️ Meals Included:</span>
-                            <div className={styles.mealsItemsList}>
-                              <div className={`${styles.mealItem} ${activeDay.meals.breakfast ? styles.mealIncluded : styles.mealExcluded}`}>
-                                <span className={styles.mealDot}>{activeDay.meals.breakfast ? '✓' : '✕'}</span>
-                                <span>Breakfast: <strong>{activeDay.meals.breakfast ? 'Included' : 'Not Included'}</strong></span>
-                              </div>
-                              <div className={`${styles.mealItem} ${activeDay.meals.lunch ? styles.mealIncluded : styles.mealExcluded}`}>
-                                <span className={styles.mealDot}>{activeDay.meals.lunch ? '✓' : '✕'}</span>
-                                <span>Lunch: <strong>{activeDay.meals.lunch ? 'Included' : 'Not Included'}</strong></span>
-                              </div>
-                              <div className={`${styles.mealItem} ${activeDay.meals.dinner ? styles.mealIncluded : styles.mealExcluded}`}>
-                                <span className={styles.mealDot}>{activeDay.meals.dinner ? '✓' : '✕'}</span>
-                                <span>Dinner: <strong>{activeDay.meals.dinner ? 'Included' : 'Not Included'}</strong></span>
-                              </div>
+                        <div className={styles.mealsBar}>
+                          <span className={styles.mealsBarLabel}>🍽️ Meals Included:</span>
+                          <div className={styles.mealsItemsList}>
+                            <div className={`${styles.mealItem} ${(activeDay.meals ? activeDay.meals.breakfast : true) ? styles.mealIncluded : styles.mealExcluded}`}>
+                              <span className={styles.mealDot}>{(activeDay.meals ? activeDay.meals.breakfast : true) ? '✓' : '✕'}</span>
+                              <span>Breakfast: <strong>{(activeDay.meals ? activeDay.meals.breakfast : true) ? 'Included' : 'Not Included'}</strong></span>
+                            </div>
+                            <div className={`${styles.mealItem} ${(activeDay.meals ? activeDay.meals.lunch : false) ? styles.mealIncluded : styles.mealExcluded}`}>
+                              <span className={styles.mealDot}>{(activeDay.meals ? activeDay.meals.lunch : false) ? '✓' : '✕'}</span>
+                              <span>Lunch: <strong>{(activeDay.meals ? activeDay.meals.lunch : false) ? 'Included' : 'Not Included'}</strong></span>
+                            </div>
+                            <div className={`${styles.mealItem} ${(activeDay.meals ? activeDay.meals.dinner : false) ? styles.mealIncluded : styles.mealExcluded}`}>
+                              <span className={styles.mealDot}>{(activeDay.meals ? activeDay.meals.dinner : false) ? '✓' : '✕'}</span>
+                              <span>Dinner: <strong>{(activeDay.meals ? activeDay.meals.dinner : false) ? 'Included' : 'Not Included'}</strong></span>
                             </div>
                           </div>
-                        )}
+                        </div>
                       </article>
                     )}
 
@@ -523,12 +546,12 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                 )}
 
                 {/* TAB 3: TERMS & CONDITIONS */}
-                {activeTab === 'terms' && journey.termsAndConditions && (
+                {activeTab === 'terms' && (
                   <div className={styles.tabPanel}>
                     <div className={styles.policyCard}>
                       <h3 className={styles.policyTitle}>Terms and Conditions</h3>
                       <ul className={styles.policyList}>
-                        {journey.termsAndConditions.map((term, idx) => (
+                        {termsList.map((term, idx) => (
                           <li key={idx} className={styles.policyItem}>
                             <span className={styles.policyBullet}>•</span>
                             <span>{term}</span>
@@ -540,12 +563,12 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                 )}
 
                 {/* TAB 4: CANCELLATION POLICY */}
-                {activeTab === 'cancellation' && journey.cancellationPolicy && (
+                {activeTab === 'cancellation' && (
                   <div className={styles.tabPanel}>
                     <div className={styles.policyCard}>
                       <h3 className={styles.policyTitle}>Cancellation Policy</h3>
                       <ul className={styles.policyList}>
-                        {journey.cancellationPolicy.map((rule, idx) => (
+                        {cancellationList.map((rule, idx) => (
                           <li key={idx} className={styles.policyItem}>
                             <span className={styles.policyBullet}>•</span>
                             <span>{rule}</span>

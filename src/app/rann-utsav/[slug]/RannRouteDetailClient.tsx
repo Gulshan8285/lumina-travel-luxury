@@ -49,6 +49,39 @@ export default function RannRouteDetailClient({
   const currentCategory = TENT_CATEGORIES[selectedCategoryIdx];
   const activeDay = selectedDayIdx !== 'all' ? route.suggestedItinerary[selectedDayIdx] : null;
 
+  // Quick Enquiry Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    date: '',
+    travellers: '2 Adults'
+  });
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      await fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          destination: `Rann Utsav (${route.cityName})`,
+          journey: `Rann Utsav from ${route.cityName} (${currentCategory.category})`,
+          duration: '3 Nights / 4 Days'
+        })
+      });
+      setFormSubmitted(true);
+    } catch {
+      setFormSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const getCleanDayTitle = (dayItem: { day: string; title: string }, index: number) => {
     if (index === 0) return `${route.cityName} to Dhordo`;
     if (index === 1) return 'Kala Dungar & White Rann';
@@ -551,42 +584,100 @@ export default function RannRouteDetailClient({
               {/* Sticky Right Booking Card */}
               <aside className={styles.stickyBookingCol}>
                 <div className={styles.stickyBookingCard}>
-                  <span className={styles.stickyBookingBadge}>RESERVE TENT CITY</span>
-                  <h3 className={styles.stickyPackageName}>Rann Utsav ({route.cityName})</h3>
-                  <div className={styles.stickyTierName}>{currentCategory.category}</div>
-                  <div className={styles.stickyPriceRow}>
-                    <span className={styles.stickyPriceVal}>{currentCategory.price}</span>
+                  <div className={styles.bookingCardHeader}>
+                    <span className={styles.stickyBookingBadge}>SELECTED PACKAGE</span>
+                    <h3 className={styles.stickyPackageName}>Rann Utsav ({route.cityName})</h3>
+                    <div className={styles.selectedTierBadge}>
+                      {currentCategory.category}
+                    </div>
+                    <div className={styles.stickyPriceVal}>{currentCategory.price}</div>
                   </div>
 
-                  <div className={styles.quickFormBox}>
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.whatsappBookingBtn}
-                    >
-                      💬 WhatsApp Instant Tent Booking
-                    </a>
+                  {formSubmitted ? (
+                    <div className={styles.bookingSuccessBox}>
+                      <h4>✦ Enquiry Received!</h4>
+                      <p>Our Kutch travel specialist will contact you on WhatsApp with customized flight transit guidance and official Dhordo Tent City pass.</p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleFormSubmit} className={styles.quickForm}>
+                      <div className={styles.formField}>
+                        <label className={styles.formLabel}>Your Name *</label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="e.g. Rahul Sharma"
+                          value={formData.name}
+                          onChange={e => setFormData({ ...formData, name: e.target.value })}
+                          className={styles.formInput}
+                        />
+                      </div>
 
-                    <Link
-                      href={`/enquire?destination=${destinationQuery}&duration=3+Nights+%2F+4+Days&service=Rann+Utsav+(${encodeURIComponent(currentCategory.category)})`}
-                      className={styles.onlineEnquiryBtn}
-                    >
-                      ✦ Request Custom PDF Quote &rarr;
-                    </Link>
-                  </div>
+                      <div className={styles.formField}>
+                        <label className={styles.formLabel}>WhatsApp / Mobile *</label>
+                        <input
+                          type="tel"
+                          required
+                          placeholder="+91 98765 43210"
+                          value={formData.phone}
+                          onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                          className={styles.formInput}
+                        />
+                      </div>
 
-                  <div className={styles.trustBulletsList}>
-                    <div className={styles.trustBullet}>
-                      <span>⚡</span> <span>Instant 15-Minute Quotation</span>
-                    </div>
-                    <div className={styles.trustBullet}>
-                      <span>🎪</span> <span>100% Official Dhordo Tent Inventory</span>
-                    </div>
-                    <div className={styles.trustBullet}>
-                      <span>🛡️</span> <span>Verified AC Transfers from Bhuj</span>
-                    </div>
-                  </div>
+                      <div className={styles.formField}>
+                        <label className={styles.formLabel}>Email Address</label>
+                        <input
+                          type="email"
+                          placeholder="yourname@gmail.com"
+                          value={formData.email}
+                          onChange={e => setFormData({ ...formData, email: e.target.value })}
+                          className={styles.formInput}
+                        />
+                      </div>
+
+                      <div className={styles.formRow}>
+                        <div className={styles.formField}>
+                          <label className={styles.formLabel}>Travel Date</label>
+                          <input
+                            type="date"
+                            value={formData.date}
+                            onChange={e => setFormData({ ...formData, date: e.target.value })}
+                            className={styles.formInput}
+                          />
+                        </div>
+                        <div className={styles.formField}>
+                          <label className={styles.formLabel}>Guests</label>
+                          <select
+                            value={formData.travellers}
+                            onChange={e => setFormData({ ...formData, travellers: e.target.value })}
+                            className={styles.formSelect}
+                          >
+                            <option value="2 Adults">2 Adults</option>
+                            <option value="Family (3-4)">Family (3-4)</option>
+                            <option value="Group (5+)">Group (5+)</option>
+                            <option value="Solo">Solo</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className={styles.submitEnquiryBtn}
+                      >
+                        {isSubmitting ? "Sending..." : `✦ Get Quote for ${currentCategory.category.split(' ')[0]} →`}
+                      </button>
+
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.quickWaBtn}
+                      >
+                        💬 Instant WhatsApp Specialist
+                      </a>
+                    </form>
+                  )}
                 </div>
               </aside>
             </div>

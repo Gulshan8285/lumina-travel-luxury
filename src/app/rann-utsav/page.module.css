@@ -1592,6 +1592,12 @@
   box-shadow: 0 12px 35px rgba(0,0,0,0.5);
 }
 
+.bookingCardHeader {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
 .stickyBookingBadge {
   font-size: 0.7rem;
   font-weight: 700;
@@ -1604,26 +1610,23 @@
 
 .stickyPackageName {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
-  color: #ffffff;
-  margin: 0 0 0.35rem;
-}
-
-.stickyTierName {
-  font-size: 0.85rem;
-  color: #d4af37;
+  font-size: 1.35rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.65rem;
+  color: #ffffff;
+  margin: 0 0 0.4rem;
 }
 
-.stickyPriceRow {
-  background: rgba(8, 11, 17, 0.8);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  margin-bottom: 1.5rem;
+.selectedTierBadge {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #f3cf65;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 
 .stickyPriceVal {
@@ -1632,30 +1635,110 @@
   color: #f3cf65;
 }
 
-.quickFormBox {
+.bookingSuccessBox {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.bookingSuccessBox h4 {
+  color: #34d399;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.bookingSuccessBox p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.quickForm {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
 }
 
-.whatsappBookingBtn {
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.formLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.formInput, .formSelect {
+  background: #0b0e15;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.88rem;
+  color: #ffffff;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.formInput:focus, .formSelect:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.submitEnquiryBtn {
+  background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
+  color: #080808;
+  border: none;
+  padding: 0.95rem;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.submitEnquiryBtn:hover {
+  background: linear-gradient(135deg, #f5d369 0%, #d4af37 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+}
+
+.quickWaBtn {
+  display: block;
+  text-align: center;
   background: #25D366;
   color: #ffffff;
-  padding: 0.95rem 1.2rem;
-  border-radius: 8px;
+  padding: 0.85rem;
+  border-radius: 6px;
   font-weight: 700;
   font-size: 0.88rem;
-  text-align: center;
   text-decoration: none;
   transition: all 0.25s ease;
-  display: block;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
 
-.whatsappBookingBtn:hover {
+.quickWaBtn:hover {
   background: #1ebe5a;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .onlineEnquiryBtn {
