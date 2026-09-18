@@ -206,11 +206,13 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                           className={`${styles.tierCardBtn} ${isSelected ? styles.selectedTierCard : ''}`}
                           onClick={() => setSelectedCategoryIdx(idx)}
                         >
-                          {isPopular && <span className={styles.tierTopBadge}>★ MOST POPULAR</span>}
-                          {isLuxury && <span className={styles.tierTopBadge}>👑 ROYAL LUXURY</span>}
-                          <div className={styles.tierCardHeader}>
-                            <span className={styles.tierRadioIcon}>{isSelected ? '●' : '○'}</span>
-                            <span className={styles.tierCardName}>{opt.category}</span>
+                          <div className={styles.tierCardTopRow}>
+                            <div className={styles.tierCardHeader}>
+                              <span className={styles.tierRadioIcon}>{isSelected ? '●' : '○'}</span>
+                              <span className={styles.tierCardName}>{opt.category}</span>
+                            </div>
+                            {isPopular && <span className={styles.tierTopBadge}>★ POPULAR</span>}
+                            {isLuxury && <span className={styles.tierTopBadge}>👑 LUXURY</span>}
                           </div>
                           <div className={styles.tierCardPrice}>{opt.price}</div>
                         </button>
