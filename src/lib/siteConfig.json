@@ -338,5 +338,23 @@
         "Complimentary Snorkeling Equipment & Dolphin Cruise"
       ]
     }
-  ]
+  ],
+  "navigation": {
+    "menuItems": [
+      { "id": "home", "label": "Home", "href": "/", "enabled": true, "showInHeader": true, "showInMobile": true, "showInFooter": true },
+      { "id": "domestic", "label": "Domestic", "href": "/domestic", "enabled": true, "showInHeader": true, "showInMobile": true, "showInFooter": true },
+      { "id": "international", "label": "International", "href": "/international", "enabled": true, "showInHeader": true, "showInMobile": true, "showInFooter": true },
+      { "id": "travel-buddy", "label": "Travel Buddy", "href": "/travel-buddy", "enabled": true, "showInHeader": true, "showInMobile": true, "showInFooter": true },
+      { "id": "rann-utsav", "label": "Rann Utsav", "href": "/rann-utsav", "enabled": true, "showInHeader": true, "showInMobile": true, "showInFooter": true, "badge": "TRENDING" },
+      { "id": "journeys", "label": "Journeys", "href": "/journeys", "enabled": true, "showInHeader": false, "showInMobile": true, "showInFooter": true },
+      { "id": "blogs", "label": "Blogs", "href": "/blog", "enabled": true, "showInHeader": true, "showInMobile": true, "showInFooter": true },
+      { "id": "about", "label": "About Us", "href": "/about", "enabled": true, "showInHeader": false, "showInMobile": true, "showInFooter": true },
+      { "id": "visa", "label": "Visa Services", "href": "/visa", "enabled": true, "showInHeader": false, "showInMobile": true, "showInFooter": true },
+      { "id": "flights", "label": "Flight Booking", "href": "/flights", "enabled": true, "showInHeader": false, "showInMobile": true, "showInFooter": true },
+      { "id": "hotels", "label": "Hotel Booking", "href": "/hotels", "enabled": true, "showInHeader": false, "showInMobile": true, "showInFooter": true },
+      { "id": "honeymoon", "label": "Honeymoon", "href": "/honeymoon", "enabled": true, "showInHeader": false, "showInMobile": true, "showInFooter": true },
+      { "id": "group-tours", "label": "Group Tours", "href": "/group-tours", "enabled": true, "showInHeader": false, "showInMobile": true, "showInFooter": true },
+      { "id": "contact", "label": "Contact Us", "href": "/contact", "enabled": true, "showInHeader": false, "showInMobile": true, "showInFooter": true }
+    ]
+  }
 }

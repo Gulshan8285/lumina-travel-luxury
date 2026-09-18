@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BlogPost } from '@/lib/blogs';
-import { SiteConfig, DestinationPackage, HeroSlide, HeaderConfig, FooterConfig, SocialConfig } from '@/lib/siteConfig';
+import { SiteConfig, DestinationPackage, HeroSlide, HeaderConfig, FooterConfig, SocialConfig, MenuItemConfig, NavigationConfig, defaultMenuItems, defaultNavigation } from '@/lib/siteConfig';
 import { TravelCategory } from '@/lib/categories';
 import ImageUploader, { CURATED_PHOTOS } from './ImageUploader';
 import VideoUploader from './VideoUploader';
@@ -38,8 +38,9 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
   const [loginError, setLoginError] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
 
-  // Active Tab - Supports dedicated Header & Footer controls
-  const [activeTab, setActiveTab] = useState<'header' | 'footer' | 'hero' | 'categories' | 'domestic' | 'international' | 'contact' | 'blogs' | 'enquiries'>('footer');
+  // Active Tab - Includes Menu & Page Visibility Controller
+  const [activeTab, setActiveTab] = useState<'menu' | 'header' | 'footer' | 'hero' | 'categories' | 'domestic' | 'international' | 'contact' | 'blogs' | 'enquiries'>('menu');
+  const [menuFilter, setMenuFilter] = useState<'all' | 'visible' | 'hidden'>('all');
 
   // Site Configuration State
   const [config, setConfig] = useState<SiteConfig>(initialConfig);
@@ -240,6 +241,91 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
     const updatedSocial = { ...socialData, [field]: value };
     setConfig({ ...config, social: updatedSocial });
   };
+
+  // =========================================================================
+  // NAVIGATION & PAGE VISIBILITY HANDLERS (HIDE / UNHIDE)
+  // =========================================================================
+  const navigationData: NavigationConfig = config.navigation || defaultNavigation;
+  const menuItems: MenuItemConfig[] = (navigationData.menuItems && navigationData.menuItems.length > 0)
+    ? navigationData.menuItems
+    : defaultMenuItems;
+
+  const handleMenuItemChange = (index: number, field: keyof MenuItemConfig, value: any) => {
+    const updated = [...menuItems];
+    updated[index] = { ...updated[index], [field]: value };
+    setConfig(prev => ({
+      ...prev,
+      navigation: {
+        ...(prev.navigation || defaultNavigation),
+        menuItems: updated
+      }
+    }));
+  };
+
+  const handleToggleMenuEnabled = (index: number) => {
+    const updated = [...menuItems];
+    const newEnabled = !updated[index].enabled;
+    updated[index] = { ...updated[index], enabled: newEnabled };
+    setConfig(prev => ({
+      ...prev,
+      navigation: {
+        ...(prev.navigation || defaultNavigation),
+        menuItems: updated
+      }
+    }));
+    showToast(newEnabled ? `✓ "${updated[index].label}" is now LIVE & VISIBLE on website!` : `✓ "${updated[index].label}" is now HIDDEN from website.`);
+  };
+
+  const handleAddCustomMenuItem = () => {
+    const newItem: MenuItemConfig = {
+      id: 'custom-' + Date.now(),
+      label: 'New Page Link',
+      href: '/new-page',
+      enabled: true,
+      showInHeader: true,
+      showInMobile: true,
+      showInFooter: true,
+      isCustom: true
+    };
+    setConfig(prev => ({
+      ...prev,
+      navigation: {
+        ...(prev.navigation || defaultNavigation),
+        menuItems: [...menuItems, newItem]
+      }
+    }));
+    showToast('✓ New custom page link added! Customize name & URL, then save.');
+  };
+
+  const handleDeleteMenuItem = (index: number) => {
+    const itemToDelete = menuItems[index];
+    const updated = menuItems.filter((_, i) => i !== index);
+    setConfig(prev => ({
+      ...prev,
+      navigation: {
+        ...(prev.navigation || defaultNavigation),
+        menuItems: updated
+      }
+    }));
+    showToast(`✓ Removed "${itemToDelete?.label || 'Item'}".`);
+  };
+
+  const handleResetNavigation = () => {
+    if (window.confirm("Are you sure you want to reset all navigation items to default?")) {
+      setConfig(prev => ({
+        ...prev,
+        navigation: defaultNavigation
+      }));
+      showToast('✓ Navigation reset to default.');
+    }
+  };
+
+  // Filtered menu items according to search/filter status
+  const filteredMenuItems = menuItems.filter(item => {
+    if (menuFilter === 'visible') return item.enabled !== false;
+    if (menuFilter === 'hidden') return item.enabled === false;
+    return true;
+  });
 
   // =========================================================================
   // CATEGORIES / EXPERIENCES MANAGEMENT
@@ -616,6 +702,14 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
       <nav className={styles.tabBar} aria-label="Admin Navigation Tabs">
         <button
           type="button"
+          className={`${styles.tabBtn} ${activeTab === 'menu' ? styles.activeTab : ''}`}
+          onClick={() => setActiveTab('menu')}
+          style={{ background: activeTab === 'menu' ? '#d4af37' : 'rgba(212, 175, 55, 0.15)', color: activeTab === 'menu' ? '#080808' : '#fceda2', borderColor: 'rgba(212, 175, 55, 0.5)', fontWeight: 700 }}
+        >
+          🧭 Menu &amp; Pages (Hide / Unhide)
+        </button>
+        <button
+          type="button"
           className={`${styles.tabBtn} ${activeTab === 'header' ? styles.activeTab : ''}`}
           onClick={() => setActiveTab('header')}
         >
@@ -678,6 +772,318 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
           📬 Leads ({enquiries.length})
         </button>
       </nav>
+
+      {/* ===================================================================
+          TAB: MENU & PAGE VISIBILITY CONTROLS (HIDE / UNHIDE)
+          =================================================================== */}
+      {activeTab === 'menu' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div className={styles.editorCard}>
+            <div className={styles.cardHeader}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', width: '100%' }}>
+                <div>
+                  <h2 className={styles.cardTitle}>🧭 Menu Items &amp; Page Visibility Controller</h2>
+                  <p className={styles.cardDesc}>
+                    Instantly hide or unhide any menu item or page from the website navigation without writing code. Changes take effect live immediately upon saving.
+                  </p>
+                </div>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  <button
+                    type="button"
+                    onClick={handleAddCustomMenuItem}
+                    className={styles.addBtn}
+                  >
+                    + Add New Menu Link
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleResetNavigation}
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: '#cbd5e1',
+                      padding: '0.65rem 1rem',
+                      borderRadius: '8px',
+                      fontSize: '0.8rem',
+                      fontWeight: 600,
+                      cursor: 'pointer'
+                    }}
+                  >
+                    ↺ Reset Default
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSaveConfig("Menu & Navigation")}
+                    className={styles.saveSectionBtn}
+                    disabled={savingSection === "Menu & Navigation"}
+                  >
+                    {savingSection === "Menu & Navigation" ? "Saving..." : "💾 Save Menu Changes"}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Stats & Filter Bar */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              borderRadius: '10px',
+              padding: '1rem 1.25rem',
+              marginBottom: '1.75rem',
+              flexWrap: 'wrap',
+              gap: '1rem'
+            }}>
+              <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
+                  Total Pages: <strong style={{ color: '#ffffff' }}>{menuItems.length}</strong>
+                </span>
+                <span style={{ fontSize: '0.85rem', color: '#10b981' }}>
+                  ● Visible on Site: <strong>{menuItems.filter(m => m.enabled !== false).length}</strong>
+                </span>
+                <span style={{ fontSize: '0.85rem', color: '#ef4444' }}>
+                  ● Hidden: <strong>{menuItems.filter(m => m.enabled === false).length}</strong>
+                </span>
+              </div>
+
+              {/* Filter Pills */}
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <button
+                  type="button"
+                  onClick={() => setMenuFilter('all')}
+                  style={{
+                    background: menuFilter === 'all' ? '#d4af37' : 'rgba(255,255,255,0.06)',
+                    color: menuFilter === 'all' ? '#0b0f19' : '#ffffff',
+                    border: '1px solid ' + (menuFilter === 'all' ? '#d4af37' : 'rgba(255,255,255,0.15)'),
+                    padding: '0.35rem 0.85rem',
+                    borderRadius: '20px',
+                    fontSize: '0.78rem',
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  }}
+                >
+                  All ({menuItems.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMenuFilter('visible')}
+                  style={{
+                    background: menuFilter === 'visible' ? '#10b981' : 'rgba(255,255,255,0.06)',
+                    color: menuFilter === 'visible' ? '#ffffff' : '#ffffff',
+                    border: '1px solid ' + (menuFilter === 'visible' ? '#10b981' : 'rgba(255,255,255,0.15)'),
+                    padding: '0.35rem 0.85rem',
+                    borderRadius: '20px',
+                    fontSize: '0.78rem',
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  }}
+                >
+                  Visible ({menuItems.filter(m => m.enabled !== false).length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMenuFilter('hidden')}
+                  style={{
+                    background: menuFilter === 'hidden' ? '#ef4444' : 'rgba(255,255,255,0.06)',
+                    color: menuFilter === 'hidden' ? '#ffffff' : '#ffffff',
+                    border: '1px solid ' + (menuFilter === 'hidden' ? '#ef4444' : 'rgba(255,255,255,0.15)'),
+                    padding: '0.35rem 0.85rem',
+                    borderRadius: '20px',
+                    fontSize: '0.78rem',
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  }}
+                >
+                  Hidden ({menuItems.filter(m => m.enabled === false).length})
+                </button>
+              </div>
+            </div>
+
+            {/* Menu Items List */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {filteredMenuItems.map((item, idx) => {
+                const originalIndex = menuItems.findIndex(m => m.id === item.id);
+                const isEnabled = item.enabled !== false;
+
+                return (
+                  <div
+                    key={item.id || idx}
+                    style={{
+                      background: isEnabled ? 'rgba(17, 24, 39, 0.8)' : 'rgba(239, 68, 68, 0.04)',
+                      border: '1px solid ' + (isEnabled ? 'rgba(212, 175, 55, 0.25)' : 'rgba(239, 68, 68, 0.3)'),
+                      borderRadius: '12px',
+                      padding: '1.25rem 1.5rem',
+                      transition: 'all 0.25s ease',
+                      opacity: isEnabled ? 1 : 0.8
+                    }}
+                  >
+                    {/* Top Row of Item Card */}
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexWrap: 'wrap',
+                      gap: '0.85rem',
+                      borderBottom: '1px solid rgba(255,255,255,0.08)',
+                      paddingBottom: '0.85rem',
+                      marginBottom: '1rem'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+                        <span style={{
+                          fontFamily: 'var(--font-heading)',
+                          fontSize: '1.05rem',
+                          fontWeight: 700,
+                          color: isEnabled ? '#ffffff' : '#9ca3af'
+                        }}>
+                          {item.label}
+                        </span>
+                        <code style={{
+                          fontSize: '0.76rem',
+                          background: 'rgba(0,0,0,0.4)',
+                          padding: '0.2rem 0.55rem',
+                          borderRadius: '4px',
+                          color: '#fceda2'
+                        }}>
+                          {item.href}
+                        </code>
+                        {item.badge && (
+                          <span style={{
+                            fontSize: '0.62rem',
+                            fontWeight: 800,
+                            letterSpacing: '0.08em',
+                            background: '#d4af37',
+                            color: '#080808',
+                            padding: '0.15rem 0.45rem',
+                            borderRadius: '4px',
+                            textTransform: 'uppercase'
+                          }}>
+                            {item.badge}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Status Indicator & Master Hide/Show Toggle */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                        <span style={{
+                          fontSize: '0.76rem',
+                          fontWeight: 700,
+                          padding: '0.25rem 0.75rem',
+                          borderRadius: '20px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.35rem',
+                          background: isEnabled ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)',
+                          color: isEnabled ? '#10b981' : '#f87171',
+                          border: '1px solid ' + (isEnabled ? 'rgba(16, 185, 129, 0.4)' : 'rgba(239, 68, 68, 0.4)')
+                        }}>
+                          {isEnabled ? '🟢 LIVE ON WEBSITE' : '🔴 HIDDEN'}
+                        </span>
+
+                        <button
+                          type="button"
+                          onClick={() => handleToggleMenuEnabled(originalIndex)}
+                          style={{
+                            background: isEnabled ? 'rgba(239, 68, 68, 0.12)' : 'rgba(16, 185, 129, 0.18)',
+                            color: isEnabled ? '#f87171' : '#10b981',
+                            border: '1px solid ' + (isEnabled ? 'rgba(239, 68, 68, 0.35)' : 'rgba(16, 185, 129, 0.45)'),
+                            padding: '0.45rem 0.95rem',
+                            borderRadius: '6px',
+                            fontSize: '0.78rem',
+                            fontWeight: 700,
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease'
+                          }}
+                        >
+                          {isEnabled ? '🙈 Hide Menu & Page' : '👁️ Unhide (Show Live)'}
+                        </button>
+
+                        {item.isCustom && (
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteMenuItem(originalIndex)}
+                            className={styles.deleteItemBtn}
+                            style={{ padding: '0.45rem 0.75rem' }}
+                          >
+                            🗑️ Delete
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Configuration Form Row */}
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', alignItems: 'flex-start' }}>
+                      <div className={styles.formGroup}>
+                        <label className={styles.formLabel}>Menu Display Label</label>
+                        <input
+                          type="text"
+                          className={styles.formInput}
+                          value={item.label}
+                          onChange={(e) => handleMenuItemChange(originalIndex, 'label', e.target.value)}
+                          placeholder="e.g. Domestic Holidays"
+                        />
+                      </div>
+
+                      <div className={styles.formGroup}>
+                        <label className={styles.formLabel}>Page Route / URL Link</label>
+                        <input
+                          type="text"
+                          className={styles.formInput}
+                          value={item.href}
+                          onChange={(e) => handleMenuItemChange(originalIndex, 'href', e.target.value)}
+                          placeholder="e.g. /domestic"
+                        />
+                      </div>
+
+                      <div className={styles.formGroup}>
+                        <label className={styles.formLabel}>Optional Badge Tag</label>
+                        <input
+                          type="text"
+                          className={styles.formInput}
+                          value={item.badge || ''}
+                          onChange={(e) => handleMenuItemChange(originalIndex, 'badge', e.target.value)}
+                          placeholder="e.g. TRENDING, HOT, NEW"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Location Checkboxes */}
+                    <div style={{
+                      display: 'flex',
+                      gap: '1.5rem',
+                      flexWrap: 'wrap',
+                      marginTop: '1rem',
+                      paddingTop: '0.75rem',
+                      borderTop: '1px dashed rgba(255,255,255,0.06)'
+                    }}>
+                      <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '0.82rem', color: '#e2e8f0' }}>
+                        <input
+                          type="checkbox"
+                          checked={item.showInHeader !== false}
+                          onChange={(e) => handleMenuItemChange(originalIndex, 'showInHeader', e.target.checked)}
+                          style={{ accentColor: '#d4af37', width: '16px', height: '16px' }}
+                        />
+                        <span>Show in Desktop Top Navbar</span>
+                      </label>
+
+                      <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '0.82rem', color: '#e2e8f0' }}>
+                        <input
+                          type="checkbox"
+                          checked={item.showInMobile !== false}
+                          onChange={(e) => handleMenuItemChange(originalIndex, 'showInMobile', e.target.checked)}
+                          style={{ accentColor: '#d4af37', width: '16px', height: '16px' }}
+                        />
+                        <span>Show in Mobile Drawer Menu</span>
+                      </label>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ===================================================================
           TAB: HEADER & NAVBAR SETTINGS

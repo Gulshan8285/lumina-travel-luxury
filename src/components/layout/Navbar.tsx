@@ -87,14 +87,29 @@ export default function Navbar() {
   const cleanWa = (header.whatsapp || config.company?.whatsapp || '7406994752').replace(/[^0-9]/g, '');
   const waUrl = `https://wa.me/${cleanWa.startsWith('91') ? cleanWa : '91' + cleanWa}?text=${encodeURIComponent('Hello ' + brandName + '! I want to plan a luxury trip.')}`;
 
-  const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Domestic", href: "/domestic" },
-    { label: "International", href: "/international" },
-    { label: "Travel Buddy", href: "/travel-buddy" },
-    { label: "Rann Utsav", href: "/rann-utsav" },
-    { label: "Blogs", href: "/blog" },
-  ];
+  const allMenuItems = config.navigation?.menuItems && config.navigation.menuItems.length > 0 
+    ? config.navigation.menuItems 
+    : [
+        { id: "home", label: "Home", href: "/", enabled: true, showInHeader: true, showInMobile: true },
+        { id: "domestic", label: "Domestic", href: "/domestic", enabled: true, showInHeader: true, showInMobile: true },
+        { id: "international", label: "International", href: "/international", enabled: true, showInHeader: true, showInMobile: true },
+        { id: "travel-buddy", label: "Travel Buddy", href: "/travel-buddy", enabled: true, showInHeader: true, showInMobile: true },
+        { id: "rann-utsav", label: "Rann Utsav", href: "/rann-utsav", enabled: true, showInHeader: true, showInMobile: true, badge: "TRENDING" },
+        { id: "blogs", label: "Blogs", href: "/blog", enabled: true, showInHeader: true, showInMobile: true },
+        { id: "about", label: "About Us", href: "/about", enabled: true, showInHeader: false, showInMobile: true },
+        { id: "visa", label: "Visa Services", href: "/visa", enabled: true, showInHeader: false, showInMobile: true },
+        { id: "flights", label: "Flight Booking", href: "/flights", enabled: true, showInHeader: false, showInMobile: true },
+        { id: "hotels", label: "Hotel Booking", href: "/hotels", enabled: true, showInHeader: false, showInMobile: true },
+        { id: "honeymoon", label: "Honeymoon", href: "/honeymoon", enabled: true, showInHeader: false, showInMobile: true },
+        { id: "group-tours", label: "Group Tours", href: "/group-tours", enabled: true, showInHeader: false, showInMobile: true },
+        { id: "contact", label: "Contact Us", href: "/contact", enabled: true, showInHeader: false, showInMobile: true }
+      ];
+
+  // Desktop Links: only enabled and configured for header
+  const desktopLinks = allMenuItems.filter(item => item.enabled !== false && item.showInHeader !== false);
+
+  // Mobile Links: only enabled and configured for mobile drawer
+  const mobileLinks = allMenuItems.filter(item => item.enabled !== false && item.showInMobile !== false);
 
   return (
     <>
@@ -119,9 +134,9 @@ export default function Navbar() {
 
           {/* Center: Desktop Links */}
           <div className={styles.centerLinks}>
-            {navLinks.map((link) => (
+            {desktopLinks.map((link) => (
               <Link
-                key={link.href}
+                key={link.id || link.href}
                 href={link.href}
                 className={`${styles.navLink} ${pathname === link.href ? styles.activeNavLink : ''}`}
               >
@@ -169,37 +184,15 @@ export default function Navbar() {
               className={styles.mobileDrawer}
             >
               <div className={styles.mobileDrawerContent}>
-                {navLinks.map((link) => (
+                {mobileLinks.map((link) => (
                   <Link
-                    key={link.href}
+                    key={link.id || link.href}
                     href={link.href}
                     className={`${styles.mobileNavLink} ${pathname === link.href ? styles.mobileActive : ''}`}
                   >
                     {link.label}
                   </Link>
                 ))}
-                <div className={styles.mobileDivider} />
-                <Link href="/about" className={styles.mobileNavLink}>
-                  About Us
-                </Link>
-                <Link href="/visa" className={styles.mobileNavLink}>
-                  Visa Services
-                </Link>
-                <Link href="/flights" className={styles.mobileNavLink}>
-                  Flight Booking
-                </Link>
-                <Link href="/hotels" className={styles.mobileNavLink}>
-                  Hotel Booking
-                </Link>
-                <Link href="/honeymoon" className={styles.mobileNavLink}>
-                  Honeymoon
-                </Link>
-                <Link href="/group-tours" className={styles.mobileNavLink}>
-                  Group Tours
-                </Link>
-                <Link href="/contact" className={styles.mobileNavLink}>
-                  Contact Us
-                </Link>
                 <div className={styles.mobileContactBox}>
                   <a 
                     href={waUrl} 
