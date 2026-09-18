@@ -1068,6 +1068,321 @@ export const featuredDestinations: Destination[] = [
 
 export const popularJourneys: Journey[] = [
   {
+    "slug": "highlights-of-rajasthan",
+    "name": "Highlights of Rajasthan",
+    "duration": "5 Nights / 6 Days",
+    "destination": "Rajasthan",
+    "imageUrl": "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=720&q=72&auto=format&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=720&q=72&auto=format&fit=crop"
+    ],
+    "videoUrl": "/videos/ocean.mp4",
+    "price": "Starting from ₹25,084 / person",
+    "overview": "Experience the colours, forts, palaces and lakes of Rajasthan with accommodation, daily breakfast, private transfers, intercity transport and sightseeing across Jaipur (2 Nights), Jodhpur (1 Night), and Udaipur (2 Nights).",
+    "highlights": [
+      "Amer Fort & City Palace in Jaipur",
+      "Ajmer Sharif & Brahma Temple Pushkar",
+      "Mehrangarh Fort, Phool Mahal & Sheesh Mahal in Jodhpur",
+      "Ranakpur Jain Temples & Udaipur Lake Palace"
+    ],
+    "article": {
+      "intro": "Experience the regal heritage and architecture of Rajasthan through an authentic 6-day voyage across the Golden Triangle of Jaipur, Jodhpur, and Udaipur.",
+      "body": [
+        "Arrive in the royal capital of Jaipur, where the sandstone walls of Amer Fort and the intricate courtyards of City Palace showcase the heights of Rajput elegance.",
+        "Journey onward to the Blue City of Jodhpur via the sacred ghats of Pushkar and historic Ajmer. Marvel at the sheer cliff ramparts of Mehrangarh Fort and the royal Sheesh Mahal.",
+        "Conclude in Udaipur, the City of Lakes, with half-day sightseeing of Bharatiya Lok Kala Mandal, Jag Mandir, and Saheliyon Ki Bari, relaxing along serene waterfront promenades."
+      ],
+      "quote": "Rajasthan is not merely a destination; it is an aristocratic state of mind where every palace threshold welcomes you as royalty.",
+      "quoteAuthor": "Sobhavi Royal Concierge"
+    },
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Arrive in Jaipur",
+        "desc": "Arrive in Jaipur and transfer by private vehicle from the airport to your hotel. Check in and relax. Meals: Breakfast, lunch and dinner are not included."
+      },
+      {
+        "day": "Day 2",
+        "title": "Jaipur Sightseeing",
+        "desc": "After breakfast, proceed for a full-day Jaipur city tour covering Amer Fort and City Palace. Meals: Breakfast included. Lunch and dinner are not included."
+      },
+      {
+        "day": "Day 3",
+        "title": "Jaipur - Ajmer - Pushkar - Jodhpur (400 km)",
+        "desc": "After breakfast, drive to Jodhpur. En route, visit Ajmer and Pushkar, including Brahma Temple, Dargah and Sagar Lake. Meals: Breakfast included. Lunch and dinner are not included."
+      },
+      {
+        "day": "Day 4",
+        "title": "Jodhpur - Ranakpur - Udaipur (300 km)",
+        "desc": "After breakfast, proceed for Jodhpur sightseeing, including Clock Tower, Mehrangarh Fort, Phool Mahal and Sheesh Mahal. Continue to Udaipur via Ranakpur. Meals: Breakfast included. Lunch and dinner are not included."
+      },
+      {
+        "day": "Day 5",
+        "title": "Udaipur Sightseeing",
+        "desc": "After breakfast, proceed for a half-day Udaipur city tour covering Bharatiya Lok Kala Mandal, City Palace, Jag Mandir and Saheliyon Ki Bari. Meals: Breakfast included. Lunch and dinner are not included."
+      },
+      {
+        "day": "Day 6",
+        "title": "Depart Udaipur",
+        "desc": "After breakfast, transfer by private vehicle to Udaipur Airport or Railway Station for your onward journey. Meals: Breakfast included."
+      }
+    ],
+    "included": [
+      "5 nights' accommodation at listed hotels (Standard: Clarks Inn Express, Chandra Grand, Mukund Vilas | Deluxe: The Rudra Vilas, Lords Inn, Crimson Park | Luxury: Fern Ecotel, Park Plaza, Radiant Globus)",
+      "Daily buffet breakfast at all hotels",
+      "Private airport and railway-station transfers",
+      "Intercity transfers and sightseeing by air-conditioned All India Tourist Permit vehicle",
+      "Road taxes, parking fees, fuel charges and interstate taxes",
+      "13 sightseeing points as listed in the itinerary"
+    ],
+    "notIncluded": [
+      "Airfare and train fare",
+      "Monument entrance fees and local guide services",
+      "Optional elephant/jeep ride at Amber Fort and Lake Pichola boat ride",
+      "Lunch, dinner and personal expenses",
+      "GST as per government regulations"
+    ]
+  },
+  {
+    "slug": "highlights-of-andaman",
+    "name": "Highlights of Andaman and Nicobar",
+    "duration": "5 Nights / 6 Days",
+    "destination": "Andaman",
+    "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=720&q=72&auto=format&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=720&q=72&auto=format&fit=crop"
+    ],
+    "videoUrl": "/videos/ocean.mp4",
+    "price": "Starting from ₹24,034 / person",
+    "overview": "Experience the white-sand beaches, coral reefs and island ferries of the Andaman Islands with accommodation, daily breakfast, private transfers, inter-island ferry and sightseeing across Havelock Island (2N), Neil Island (1N), and Port Blair (2N).",
+    "highlights": [
+      "Blue Flag Certified Radhanagar Beach Sunset",
+      "Elephant Beach Snorkelling & Water Sports",
+      "Bharatpur & Laxmanpur Beaches on Neil Island",
+      "Historic Ross Island & North Bay Coral Safari"
+    ],
+    "article": {
+      "intro": "Discover the turquoise lagoons, exotic marine life, and lush tropical islands of Andaman on a seamless 6-day island voyage.",
+      "body": [
+        "Arrive in Port Blair and board a scenic ferry to Havelock Island, checking into your tropical beach resort before experiencing the world-renowned sunsets of Radhanagar Beach.",
+        "Snorkel through pristine coral gardens at Elephant Beach, then journey across turquoise waters to Neil Island to witness the natural coral bridge formation at Howrah Bridge.",
+        "Return to Port Blair to uncover the British and Japanese colonial history of Ross Island and embark on an exciting underwater coral safari at North Bay."
+      ],
+      "quote": "The Andaman Islands offer India's most pristine waters and coral ecosystems, curated with effortless island luxury.",
+      "quoteAuthor": "Sobhavi Island Concierge"
+    },
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Arrive in Port Blair - Ferry to Havelock Island - Radhanagar Beach",
+        "desc": "Meet our representative at Veer Savarkar Airport, Port Blair, and transfer directly to the jetty for the ferry to Havelock Island. Transfer to hotel for check-in. In the late afternoon, visit the Blue Flag-certified Radhanagar Beach for a swim and relaxation."
+      },
+      {
+        "day": "Day 2",
+        "title": "Havelock Island - Elephant Beach",
+        "desc": "After breakfast, proceed to Elephant Beach (Coral Beach), popular for snorkelling, Jet Ski rides, banana rides and sea walking. Reached by an 11-seater shared boat from the jetty."
+      },
+      {
+        "day": "Day 3",
+        "title": "Havelock Island - Neil Island",
+        "desc": "After breakfast, proceed to the jetty for the onward ferry to Neil Island. In the afternoon, visit Bharatpur Beach, Laxmanpur Beach for sunset views, and the Natural Bridge (Howrah Bridge)."
+      },
+      {
+        "day": "Day 4",
+        "title": "Neil Island - Port Blair - Day at Leisure",
+        "desc": "After breakfast, check out and board the ferry to Port Blair. On arrival, transfer to your hotel. The day is free for shopping and leisure."
+      },
+      {
+        "day": "Day 5",
+        "title": "Port Blair - Ross Island and North Bay Island",
+        "desc": "After breakfast, board the speed boat to historic Ross Island to explore colonial heritage. Continue to North Bay Island (Coral Beach) for scuba diving, snorkelling, parasailing, and glass-bottom boat rides."
+      },
+      {
+        "day": "Day 6",
+        "title": "Depart Port Blair",
+        "desc": "After breakfast, transfer to Port Blair airport for your onward journey with unforgettable island memories."
+      }
+    ],
+    "included": [
+      "5 nights' accommodation at listed hotels (Standard: Radhakrishna Resort, Hotel Neha Palace, Hotel Seagull | Deluxe: Haywizz Resort, Coral Garden Resort, Hotel Red Carpet)",
+      "Daily breakfast (CP Meal Plan) at all hotels",
+      "Inter-island ferry transfers (Port Blair - Havelock - Neil - Port Blair) by private ferry",
+      "Return airport and jetty transfers by air-conditioned vehicle",
+      "All transportation for local sightseeing tours by air-conditioned vehicle"
+    ],
+    "notIncluded": [
+      "Flights to and from Port Blair",
+      "Lunch, dinner and any meals not mentioned under inclusions",
+      "Ross Island entry fee (₹50/adult, ₹25/child payable directly)",
+      "Personal expenses, optional water sports, camera fees and travel insurance"
+    ]
+  },
+  {
+    "slug": "highlights-of-kerala",
+    "name": "Highlights of Kerala",
+    "duration": "5 Nights / 6 Days",
+    "destination": "Kerala",
+    "imageUrl": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=720&q=72&auto=format&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=720&q=72&auto=format&fit=crop"
+    ],
+    "videoUrl": "/videos/ocean.mp4",
+    "price": "Starting from ₹32,084 / person",
+    "overview": "Explore Cochin's colonial heritage, the waterfalls and tea gardens of Munnar (2N), the wildlife and spice plantations of Thekkady (1N) and the backwaters of Alleppey (1N), with accommodation, daily breakfast and an air-conditioned cab.",
+    "highlights": [
+      "Fort Kochi Dutch Palace & Jewish Synagogue",
+      "Cheeyapara Waterfalls & Munnar Tea Museum",
+      "Mattupetty Dam & Kundala Echo Point",
+      "Periyar Wildlife Tiger Reserve & Alleppey Shikara Cruise"
+    ],
+    "article": {
+      "intro": "Uncover the lush greenery, spice-scented mountain air, and tranquil backwaters of God's Own Country across a 6-day private holiday.",
+      "body": [
+        "Begin in the historic trading port of Cochin, wandering past 16th-century European churches, Jewish synagogues, and Chinese fishing nets on Marine Drive.",
+        "Ascend into the misty Western Ghats to Munnar, standing at 1,800m above sea level amidst rolling emerald tea plantations, roaring waterfalls, and serene mountain lakes.",
+        "Explore the spice plantations and Periyar Lake wildlife sanctuary in Thekkady before unwinding along the tranquil backwater canals of Alleppey."
+      ],
+      "quote": "Kerala moves to an ancient, unhurried rhythm where every backwater canal and misty tea estate restores the soul.",
+      "quoteAuthor": "Sobhavi Kerala Specialist"
+    },
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Arrive in Cochin - Cochin Sightseeing",
+        "desc": "Welcome at Cochin airport or railway station and transfer to hotel. Visit Dutch Palace, Jewish Synagogue, St. Francis Church, Santa Cruz Basilica, and Marine Drive. Overnight in Cochin."
+      },
+      {
+        "day": "Day 2",
+        "title": "Cochin - Munnar",
+        "desc": "After breakfast, proceed to Munnar (1,800m). En route visit Cheeyapara Waterfalls, Valara Waterfalls, and scenic tea gardens. Check in and overnight in Munnar."
+      },
+      {
+        "day": "Day 3",
+        "title": "Munnar Sightseeing",
+        "desc": "After breakfast, proceed for Munnar sightseeing covering Mattupetty Dam, Kundala Dam Lake, Echo Point, and the Tea Museum. Overnight in Munnar."
+      },
+      {
+        "day": "Day 4",
+        "title": "Munnar - Thekkady",
+        "desc": "After breakfast, proceed to Thekkady. Enjoy a guided spice plantation tour (tea, coffee, pepper, cardamom) and a boat safari on Periyar Lake in the Tiger Reserve. Overnight in Thekkady."
+      },
+      {
+        "day": "Day 5",
+        "title": "Thekkady - Alleppey",
+        "desc": "After breakfast, proceed to Alleppey ('Venice of the East'). Check in to the hotel and enjoy a scenic Shikara boat cruise along the palm-fringed backwaters. Overnight in Alleppey."
+      },
+      {
+        "day": "Day 6",
+        "title": "Depart from Cochin",
+        "desc": "After breakfast, transfer to Cochin airport or railway station for your onward journey."
+      }
+    ],
+    "included": [
+      "5 nights' accommodation at listed hotels (Standard: The Classik Fort, The Arbour Resort, Tiger Trails, Pagoda Resorts | Deluxe: Marine Inn Hotel, Trivers Resort, Hotel CITADEL, Classic Regency)",
+      "Daily breakfast at all hotels (Bed & Breakfast plan)",
+      "Air-conditioned cab for all transfers and sightseeing as per itinerary",
+      "Airport transfers and intercity transfers",
+      "Toll, parking, driver's bata, road tax and fuel charges included"
+    ],
+    "notIncluded": [
+      "Flights to and from Cochin",
+      "Lunch, dinner and any meals not mentioned under inclusions",
+      "Monument and palace entry fees, activity charges and guide fees",
+      "Personal expenses, Ayurveda charges, and GST"
+    ]
+  },
+  {
+    "slug": "exotic-shimla-manali",
+    "name": "Exotic Shimla Manali",
+    "duration": "5 Nights / 6 Days",
+    "destination": "Shimla & Manali",
+    "imageUrl": "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=720&q=72&auto=format&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1517511620798-cec17d428bc0?q=80&w=720&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=720&q=72&auto=format&fit=crop"
+    ],
+    "videoUrl": "/videos/ocean.mp4",
+    "price": "Starting from ₹31,616 / person",
+    "overview": "Discover the colonial hill station charm of Shimla (2N) with Kufri excursion, and the majestic pine valleys of Manali (3N) with Hadimba Temple, Buddhist Monastery and Solang Valley, including breakfast & dinner daily and private cab.",
+    "highlights": [
+      "Scenic Drive from Delhi to Shimla Hills",
+      "Kufri Himalayan National Park & Fagu Valley",
+      "Kullu Valley & Pandoh Dam Enroute to Manali",
+      "Hadimba Devi Temple & Solang Valley Snow Point"
+    ],
+    "article": {
+      "intro": "Escape to the snow-dusted summits and alpine cedar forests of Himachal Pradesh on a classic 6-day Shimla & Manali mountain expedition.",
+      "body": [
+        "Depart Delhi for the cool heights of Shimla, exploring colonial architecture, Mall Road, and an exhilarating excursion to Kufri's panoramic Himalayan lookouts.",
+        "Drive along the rushing Beas River through Kullu Valley to Manali, surrounded by towering snow-capped peaks, apple orchards, and sacred pine forests.",
+        "Explore the ancient timber architecture of Hadimba Devi Temple, visit serene Tibetan monasteries, and venture into Solang Valley for thrilling alpine views."
+      ],
+      "quote": "The Himalayas do not simply give you a view; they give you a renewed perspective on life.",
+      "quoteAuthor": "Sobhavi Mountain Concierge"
+    },
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Delhi - Shimla (350 km, approx. 8-10 hrs)",
+        "desc": "Pick up from Delhi railway station or airport and drive to Shimla by private cab. Check in to the hotel on arrival. Dinner and overnight in Shimla."
+      },
+      {
+        "day": "Day 2",
+        "title": "Shimla City Tour - Kufri Excursion",
+        "desc": "After breakfast, proceed for an excursion to Kufri, famous for its Himalayan National Park, adventure park, and Fagu valley. Dinner and overnight in Shimla."
+      },
+      {
+        "day": "Day 3",
+        "title": "Shimla - Manali (265 km, approx. 8-10 hrs)",
+        "desc": "After breakfast, check out and drive to Manali. En route, visit Pandoh Dam, Hanogi Mata temple and Kullu Valley. Check in on arrival. Dinner and overnight in Manali."
+      },
+      {
+        "day": "Day 4",
+        "title": "Manali Local Sightseeing",
+        "desc": "After breakfast, walk through the town visiting the Buddhist monastery and the ancient Hadimba Devi temple (built in 1553 CE in dense forest). Dinner and overnight in Manali."
+      },
+      {
+        "day": "Day 5",
+        "title": "Manali - Solang Valley",
+        "desc": "After breakfast, visit Solang Valley for mountain scenery and snow activities. Dinner and overnight in Manali."
+      },
+      {
+        "day": "Day 6",
+        "title": "Manali - Chandigarh (280 km, approx. 6-7 hrs)",
+        "desc": "After breakfast, check out and drive to Chandigarh. Drop at airport or railway station for your onward journey."
+      }
+    ],
+    "included": [
+      "5 nights' accommodation (2 nights in Shimla at Sukhsagar Regency & 3 nights in Manali at Sarthak Regency or similar)",
+      "Daily breakfast and dinner at the hotels (MAP plan)",
+      "8 sightseeing tours as per the itinerary",
+      "Airport and railway station transfers and intercity transfers by private cab",
+      "All tolls, parking, fuel charges and interstate permits"
+    ],
+    "notIncluded": [
+      "Lunch on all days, and breakfast on Day 1",
+      "Rohtang Pass / Atal Tunnel permit charges (payable directly)",
+      "Pony / yak rides at Kufri, entry fees and adventure activity tickets",
+      "Airfare and train tickets to Delhi / from Chandigarh",
+      "Personal expenses and travel insurance"
+    ]
+  },
+  {
     "slug": "royal-rajasthan",
     "name": "Royal Rajasthan Escape",
     "duration": "12 Nights / 13 Days",

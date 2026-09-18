@@ -31,80 +31,79 @@ interface DomesticDest {
 const FALLBACK_DOMESTIC: DomesticDest[] = [
   {
     name: "Rajasthan",
-    tagline: "Royal Palaces, Forts & Thar Desert Glamping",
+    tagline: "Highlights of Rajasthan: Jaipur, Jodhpur & Udaipur",
     image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=900&auto=format&fit=crop",
     videoUrl: "/videos/destinations/rajasthan.mp4",
-    duration: "6 Nights / 7 Days",
+    duration: "5 Nights / 6 Days",
     bestTime: "October – March",
-    startingPrice: "Starting ₹28,500 / person",
-    overview: "Experience regal Mewar hospitality across Jaipur, Udaipur, Jodhpur, and Jaisalmer. Stay in historic heritage palaces, embark on private desert camel safaris under starlit skies, and savor lavish royal thalis.",
+    startingPrice: "Starting ₹25,084 / person",
+    overview: "Experience the colours, forts, palaces and lakes of Rajasthan with accommodation, daily breakfast, private transfers, intercity transport and 13 sightseeing points across Jaipur (2N), Jodhpur (1N), and Udaipur (2N).",
     dayPlan: [
-      { day: "Day 1", title: "Arrive in Jaipur — Royal Welcome & Chokhi Dhani Heritage Evening" },
-      { day: "Day 2", title: "Jaipur Sightseeing — Amber Fort Elephant Ride & City Palace Private Tour" },
-      { day: "Day 3", title: "Jaipur to Jodhpur — Mehrangarh Fort Ramparts & Umaid Bhawan Palace" },
-      { day: "Day 4", title: "Jodhpur to Jaisalmer — Thar Desert Dunes & Luxury Tented Camp with Folk Music" },
-      { day: "Day 5", title: "Jaisalmer to Udaipur — Enroute Ranakpur Jain Temples & Lake Pichola Sunset" },
-      { day: "Day 6", title: "Udaipur Exploration — Saheliyon-ki-Bari & Jag Mandir Island" },
-      { day: "Day 7", title: "Departure from Udaipur with Regal Memories" }
+      { day: "Day 1", title: "Arrive in Jaipur — Private Airport Transfer to Hotel & Leisure" },
+      { day: "Day 2", title: "Jaipur Sightseeing — Full-Day Amer Fort & City Palace Tour" },
+      { day: "Day 3", title: "Jaipur to Jodhpur via Ajmer & Pushkar — Brahma Temple, Dargah & Sagar Lake" },
+      { day: "Day 4", title: "Jodhpur to Udaipur via Ranakpur — Mehrangarh Fort, Phool Mahal & Sheesh Mahal" },
+      { day: "Day 5", title: "Udaipur Sightseeing — Bharatiya Lok Kala Mandal, City Palace & Jag Mandir" },
+      { day: "Day 6", title: "Departure from Udaipur — Private Airport/Railway Station Drop" }
     ],
-    inclusions: ["5-Star Heritage Haveli Stays", "Daily Breakfast & Royal Dinner", "Private Chauffeur-Driven AC Sedan", "Guided Palace & Fort Tours", "Desert Safari with Cultural Performance"]
+    inclusions: ["5 Nights Accommodation at Selected Hotels (Standard, Deluxe or Luxury)", "Daily Buffet Breakfast at All Hotels", "Private Airport & Railway Station Transfers", "Intercity Transfers by AC All India Tourist Permit Vehicle", "13 Sightseeing Points with Tolls, Parking & Fuel Included"]
   },
   {
     name: "Shimla & Manali",
-    tagline: "Snow Peaks, Alpine Pine Valleys & Thrilling Passes",
+    tagline: "Exotic Shimla Manali: Kufri, Kullu Valley & Solang",
     image: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=900&auto=format&fit=crop",
     videoUrl: "/videos/destinations/shimla-manali.mp4",
     duration: "5 Nights / 6 Days",
     bestTime: "Year-Round (Snow: Dec–Feb)",
-    startingPrice: "Starting ₹22,500 / person",
-    overview: "Breath-taking Himalayan panoramas, cedar forests, colonial heritage on Shimla's Mall Road, and high-altitude adventures in Solang Valley, Atal Tunnel, and Rohtang Pass.",
+    startingPrice: "Starting ₹31,616 / person",
+    overview: "Discover colonial charm in Shimla (2N) with Kufri excursion and the alpine pine valleys of Manali (3N) with Hadimba Temple, Buddhist Monastery, and Solang Valley with daily breakfast and dinner.",
     dayPlan: [
-      { day: "Day 1", title: "Delhi/Chandigarh to Shimla — Scenic Mountain Drive & Mall Road Stroll" },
-      { day: "Day 2", title: "Shimla to Kufri — Alpine Cedar Trails, Himalayan Nature Park & Jakhoo Temple" },
-      { day: "Day 3", title: "Shimla to Manali — Enroute Kullu River Rafting, Pandoh Dam & Shawl Weaving" },
-      { day: "Day 4", title: "Solang Valley & Atal Tunnel — Snow Activities, Paragliding & Sissu Waterfall" },
-      { day: "Day 5", title: "Manali Local Sightseeing — Hadimba Devi Temple, Vashisht Hot Springs & Old Manali Cafes" },
-      { day: "Day 6", title: "Scenic Return Drive to Chandigarh/Delhi" }
+      { day: "Day 1", title: "Delhi to Shimla (350 km) — Scenic Himalayan Drive & Hotel Check-in" },
+      { day: "Day 2", title: "Shimla City Tour & Kufri Excursion — Himalayan Nature Park & Fagu Valley" },
+      { day: "Day 3", title: "Shimla to Manali (265 km) — Enroute Pandoh Dam, Hanogi Mata & Kullu Valley" },
+      { day: "Day 4", title: "Manali Sightseeing — Ancient Hadimba Devi Temple (1553 CE) & Buddhist Monastery" },
+      { day: "Day 5", title: "Manali to Solang Valley — Alpine Mountain Views & Snow Adventures" },
+      { day: "Day 6", title: "Manali to Chandigarh (280 km) — Drop at Airport/Railway Station" }
     ],
-    inclusions: ["Luxury Cedar Chalet / 5-Star Mountain Resort", "Breakfast & Dinner Included Daily", "Private 4x4 Mountain Cab with Expert Driver", "Atal Tunnel & Solang Valley Excursion", "All Tolls, Parking & Fuel"]
+    inclusions: ["5 Nights Accommodation (Sukhsagar Regency & Sarthak Regency or similar)", "Daily Breakfast & Dinner at All Hotels (MAP Plan)", "8 Sightseeing Tours as per Itinerary", "Private Dedicated Cab for Transfers & Sightseeing", "All Road Taxes, Tolls, Driver Bata & Parking"]
   },
   {
     name: "Kerala",
-    tagline: "Tranquil Backwaters, Tea Plantations & Ayurvedic Wellness",
+    tagline: "Highlights of Kerala: Cochin, Munnar, Thekkady & Alleppey",
     image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=900&auto=format&fit=crop",
     videoUrl: "/videos/destinations/kerala.mp4",
     duration: "5 Nights / 6 Days",
     bestTime: "September – April",
-    startingPrice: "Starting ₹26,000 / person",
-    overview: "Cruise serene palm-fringed backwaters aboard private luxury houseboats, wander misty tea gardens in Munnar, encounter wild elephants in Periyar, and rejuvenate with authentic Ayurvedic spa therapies.",
+    startingPrice: "Starting ₹32,084 / person",
+    overview: "Explore Cochin's colonial heritage (1N), the waterfalls and tea gardens of Munnar (2N), the wildlife and spice plantations of Thekkady (1N) and the backwaters of Alleppey (1N).",
     dayPlan: [
-      { day: "Day 1", title: "Cochin to Munnar — Cheeyappara Waterfalls & Rolling Emerald Tea Gardens" },
-      { day: "Day 2", title: "Munnar Sightseeing — Eravikulam National Park, Mattupetty Dam & Echo Point" },
-      { day: "Day 3", title: "Munnar to Thekkady — Spice Plantation Tour & Periyar Lake Boat Safari" },
-      { day: "Day 4", title: "Thekkady to Alleppey — Board Private AC Houseboat with Personal Chef" },
-      { day: "Day 5", title: "Alleppey to Kovalam/Cochin — Marari Beach Relaxation & Fort Kochi Heritage" },
-      { day: "Day 6", title: "Departure from Cochin with Spice Souvenirs" }
+      { day: "Day 1", title: "Arrive in Cochin — Dutch Palace, Jewish Synagogue, St. Francis Church & Marine Drive" },
+      { day: "Day 2", title: "Cochin to Munnar — Cheeyapara & Valara Waterfalls, Rolling Tea Hills" },
+      { day: "Day 3", title: "Munnar Sightseeing — Mattupetty Dam, Kundala Dam Lake, Echo Point & Tea Museum" },
+      { day: "Day 4", title: "Munnar to Thekkady — Spice Plantation Tour & Periyar Tiger Reserve Lake Safari" },
+      { day: "Day 5", title: "Thekkady to Alleppey — Venice of the East Backwaters & Shikara Boat Cruise" },
+      { day: "Day 6", title: "Departure from Cochin — Private Airport/Railway Station Transfer" }
     ],
-    inclusions: ["Private Luxury AC Houseboat & 5-Star Resorts", "All Meals on Houseboat + Daily Buffet Breakfasts", "Private AC Cab & Expert Uniformed Chauffeur", "Spice Garden Walk & Kathakali Show Passes"]
+    inclusions: ["5 Nights Accommodation in Base Category Rooms at Selected Hotels/Resorts", "Daily Breakfast at All Hotels (Bed & Breakfast Plan)", "Air-Conditioned Cab for All Transfers & Sightseeing", "Periyar Spice Plantation & Backwater Shikara Assistance", "Toll, Parking, Driver Bata, Road Tax & Fuel Charges Included"]
   },
   {
     name: "Andaman & Nicobar Islands",
-    tagline: "Emerald Lagoons, Coral Reefs & Radhanagar Beach",
+    tagline: "Highlights of Andaman: Port Blair, Havelock & Neil Island",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop",
     videoUrl: "/videos/destinations/andaman.mp4",
     duration: "5 Nights / 6 Days",
     bestTime: "October – May",
-    startingPrice: "Starting ₹32,000 / person",
-    overview: "Pristine white coral beaches, turquoise lagoons, and world-class scuba diving. From Port Blair's historic Cellular Jail to Havelock's Radhanagar Beach (ranked among the world's best).",
+    startingPrice: "Starting ₹24,034 / person",
+    overview: "Experience white-sand beaches, coral reefs and island ferries across Havelock Island (2N), Neil Island (1N), and Port Blair (2N) with daily breakfast and private ferry transfers.",
     dayPlan: [
-      { day: "Day 1", title: "Arrive at Port Blair — Cellular Jail Light & Sound Show & Corbyn's Cove" },
-      { day: "Day 2", title: "High-Speed Catamaran Cruise to Havelock Island — Radhanagar Sunset" },
-      { day: "Day 3", title: "Elephant Beach Scuba Diving & Snorkeling in Turquoise Reefs" },
-      { day: "Day 4", title: "Havelock to Neil Island — Bharatpur Coral Beach & Natural Rock Bridge" },
-      { day: "Day 5", title: "Return to Port Blair — Chidiya Tapu Sunset & Local Handicraft Shopping" },
-      { day: "Day 6", title: "Airport Drop for Flight Home" }
+      { day: "Day 1", title: "Arrive in Port Blair — Private Ferry to Havelock Island & Radhanagar Beach Sunset" },
+      { day: "Day 2", title: "Havelock Island — Elephant Beach Snorkelling & Water Sports (Jet Ski, Banana Ride)" },
+      { day: "Day 3", title: "Havelock to Neil Island — Bharatpur Beach, Sunset Laxmanpur & Natural Coral Bridge" },
+      { day: "Day 4", title: "Neil Island to Port Blair — Scenic Inter-Island Ferry & Day at Leisure" },
+      { day: "Day 5", title: "Port Blair — Historic Ross Island (British/Japanese Remains) & North Bay Coral Safari" },
+      { day: "Day 6", title: "Departure from Port Blair — Airport Drop for Onward Journey" }
     ],
-    inclusions: ["Premium Beachfront Cottages & Resorts", "Daily Breakfast & Multi-Cuisine Dinners", "Private High-Speed Catamaran (Makruzz/Nautika) Tickets", "All Island Private AC Transfers", "Scuba & Snorkeling Assistance"]
+    inclusions: ["5 Nights Accommodation in Selected Island Hotels & Resorts", "Daily Breakfast (CP Plan) at All Hotels", "Inter-Island Private Ferry Transfers (Port Blair - Havelock - Neil - Port Blair)", "All Airport, Jetty & Sightseeing AC Transfers", "Radhanagar, Elephant Beach & Ross Island Sightseeing"]
   },
   {
     name: "Kashmir: Paradise on Earth",
