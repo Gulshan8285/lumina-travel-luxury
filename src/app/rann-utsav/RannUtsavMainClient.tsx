@@ -18,13 +18,13 @@ const TENT_CATEGORIES = [
   {
     category: "Deluxe Swiss AC Tent",
     price: "₹14,500 per person",
-    badge: "POPULAR VALUE",
+    badge: "POPULAR",
     details: "Dhordo Tent City • Attached Bathroom • AC & Heating • All Buffet Meals Included • Bhuj AC Transfers"
   },
   {
     category: "Premium AC Tent",
     price: "₹18,500 per person",
-    badge: "MOST RECOMMENDED",
+    badge: "RECOMMENDED",
     details: "Spacious Luxury Tent • Front Porch • Priority Golf Cart • All Buffet Meals Included • Guided Desert Excursions"
   },
   {

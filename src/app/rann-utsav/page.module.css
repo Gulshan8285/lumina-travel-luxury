@@ -872,23 +872,28 @@
 
 .categoryTiersGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
   margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .tierCardBtn {
   background: #111724;
   border: 1.5px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 1.1rem 1.25rem;
+  padding: 1rem 1.1rem;
   text-align: left;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.45rem;
   position: relative;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .tierCardBtn:hover {
@@ -910,14 +915,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.35rem;
   width: 100%;
+  min-width: 0;
+  flex-wrap: wrap;
 }
 
 .tierCardHeader {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.45rem;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .tierRadioIcon {
@@ -928,12 +937,15 @@
 
 .tierCardName {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #ffffff;
-  white-space: nowrap;
+  white-space: normal;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .selectedTierCard .tierCardName {
@@ -941,12 +953,12 @@
 }
 
 .tierTopBadge {
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
   color: #080808;
-  padding: 0.2rem 0.5rem;
+  padding: 0.18rem 0.45rem;
   border-radius: 4px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -955,10 +967,10 @@
 
 .tierCardPrice {
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #f3cf65;
-  padding-left: 1.65rem;
+  padding-left: 1.5rem;
 }
 
 /* Selected Tent Amenities Banner with Clean Chips */
