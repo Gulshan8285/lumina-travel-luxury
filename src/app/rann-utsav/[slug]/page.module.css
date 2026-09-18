@@ -1347,14 +1347,16 @@
   font-size: 1.1rem;
 }
 
-/* Responsive */
+/* Responsive (Sleek, Compact Phone View) */
 @media (max-width: 1024px) {
   .categoryTiersGrid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
   .tabContentGrid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
   .stickyBookingCol {
@@ -1371,19 +1373,417 @@
 }
 
 @media (max-width: 768px) {
-  .inclusionsGrid {
-    grid-template-columns: 1fr;
+  .heroSection {
+    padding: 3.5rem 0 2rem;
   }
 
-  .featuredDayCard {
-    padding: 1.5rem 1.25rem;
+  .badge {
+    font-size: 0.65rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .title {
+    font-size: clamp(1.75rem, 6vw, 2.2rem);
+    margin-bottom: 0.65rem;
+    line-height: 1.2;
+  }
+
+  .tagline {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .visualShowcase {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1.25rem auto 1.5rem;
+  }
+
+  .showcaseCard {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .showcaseImgWrapper {
+    height: 140px;
+  }
+
+  .connectorIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
+  }
+
+  .highlightsStrip {
+    gap: 0.45rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .highlightPill {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.74rem;
+  }
+
+  .primaryBtn, .secondaryBtn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .packageTiersSection {
+    padding: 2.5rem 0 3.5rem;
   }
 
   .tierSelectorBox {
-    padding: 1.5rem 1.25rem;
+    padding: 1.15rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .tierSelectorTop {
+    margin-bottom: 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .tierSelectorBadge {
+    font-size: 0.65rem;
+  }
+
+  .tierSelectorTitle {
+    font-size: 1.05rem;
+  }
+
+  .liveSelectedPriceBox {
+    padding: 0.5rem 0.85rem;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .livePriceLabel {
+    font-size: 0.6rem;
+  }
+
+  .livePriceValue {
+    font-size: 1.05rem;
+  }
+
+  .categoryTiersGrid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+  }
+
+  .tierCardBtn {
+    padding: 0.75rem 0.9rem;
+    gap: 0.35rem;
+    border-radius: 10px;
+  }
+
+  .tierCardName {
+    font-size: 0.78rem;
+  }
+
+  .tierTopBadge {
+    font-size: 0.58rem;
+    padding: 0.15rem 0.35rem;
+  }
+
+  .tierCardPrice {
+    font-size: 0.88rem;
+    padding-left: 1.35rem;
+  }
+
+  .selectedHotelDetailsBanner {
+    padding: 0.85rem 0.95rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+  }
+
+  .hotelDetailsHeader {
+    padding-bottom: 0.5rem;
+    gap: 0.35rem;
+  }
+
+  .hotelDetailsBadge {
+    font-size: 0.7rem;
+  }
+
+  .hotelDetailsNote {
+    font-size: 0.68rem;
+  }
+
+  .hotelChipsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    margin-top: 0.65rem;
+  }
+
+  .hotelChip {
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .hotelChipIcon {
+    font-size: 0.95rem;
+  }
+
+  .hotelNameTag {
+    font-size: 0.78rem;
+  }
+
+  .priceIncludesSummary {
+    padding: 0.75rem 0.95rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .tabsNav {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+    gap: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tabsNav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tabBtn {
+    white-space: nowrap;
+    padding: 0.55rem 0.95rem;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+  }
+
+  /* Day Navigator on mobile */
+  .daySelectorNav {
+    margin-bottom: 1.25rem;
+  }
+
+  .dayNavHeader {
+    margin-bottom: 0.75rem;
+    gap: 0.35rem;
+  }
+
+  .dayNavSubTitle {
+    font-size: 0.65rem;
+  }
+
+  .dayNavHeading {
+    font-size: 1.1rem;
+  }
+
+  .dayNavQuickCount {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  .dayButtonsScroll {
+    gap: 0.45rem;
+    padding: 0.2rem 0 0.5rem;
+  }
+
+  .dayNavPill {
+    padding: 0.45rem 0.8rem;
+    gap: 0.45rem;
+  }
+
+  .dayPillNumber {
+    font-size: 0.72rem;
+  }
+
+  .dayPillText {
+    font-size: 0.76rem;
+  }
+
+  /* Featured Day Card on mobile */
+  .featuredDayCard,
+  .dayCard {
+    padding: 1.15rem 1rem;
+    border-radius: 12px;
+  }
+
+  .featuredDayTopBar {
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .featuredDayBadge {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .dayProgressLabel {
+    font-size: 0.76rem;
+  }
+
+  .navArrowBtn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.72rem;
+    gap: 0.25rem;
+  }
+
+  .featuredDayTitle {
+    font-size: 1.15rem;
+    margin-bottom: 0.65rem;
+    line-height: 1.3;
+  }
+
+  .featuredDayDesc {
+    font-size: 0.86rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    padding-left: 0.75rem;
+    border-left-width: 2px;
+  }
+
+  .sightseeingBox {
+    padding: 0.85rem 0.95rem;
+    margin-bottom: 0.85rem;
+    border-radius: 10px;
+  }
+
+  .sightseeingLabel {
+    font-size: 0.72rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sightseeingTags {
+    gap: 0.45rem;
+  }
+
+  .sightseeingTag {
+    font-size: 0.76rem;
+    padding: 0.35rem 0.65rem;
+  }
+
+  .transferRow {
+    padding: 0.65rem 0.85rem;
+    margin-bottom: 0.85rem;
+    gap: 0.65rem;
+  }
+
+  .transferIcon {
+    font-size: 1.15rem;
+  }
+
+  .transferLabel, .transferVal {
+    font-size: 0.76rem;
+  }
+
+  .mealsBar {
+    padding-top: 0.85rem;
+    gap: 0.45rem;
+  }
+
+  .mealsBarLabel {
+    font-size: 0.72rem;
+  }
+
+  .mealsItemsList {
+    gap: 0.45rem;
+  }
+
+  .mealItem {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.74rem;
+    gap: 0.35rem;
+  }
+
+  .inclusionsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .inclusionsBox, .exclusionsBox {
+    padding: 1.25rem 1rem;
+  }
+
+  .inclusionsBoxTitle, .exclusionsBoxTitle {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  .includedRow, .excludedRow {
+    font-size: 0.82rem;
+    gap: 0.55rem;
+  }
+
+  /* Sticky Booking Card on Mobile */
+  .stickyBookingCard {
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+  }
+
+  .bookingCardHeader {
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .stickyBookingBadge {
+    font-size: 0.65rem;
+  }
+
+  .stickyPackageName {
+    font-size: 1.15rem;
+  }
+
+  .selectedTierBadge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.55rem;
+  }
+
+  .stickyPriceVal {
+    font-size: 1.1rem;
+  }
+
+  .quickForm {
+    gap: 0.75rem;
+  }
+
+  .formField {
+    gap: 0.25rem;
+  }
+
+  .formLabel {
+    font-size: 0.68rem;
+  }
+
+  .formInput, .formSelect {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.82rem;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .submitEnquiryBtn {
+    padding: 0.8rem;
+    font-size: 0.82rem;
+    margin-top: 0.35rem;
+  }
+
+  .quickWaBtn {
+    padding: 0.75rem;
+    font-size: 0.82rem;
+  }
+
+  .otherRoutesSection {
+    padding: 2.5rem 0;
   }
 
   .otherRoutesGrid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 }
+
