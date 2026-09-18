@@ -1,5 +1,21 @@
 [
   {
+    "id": "enq_1789669598759_solhi",
+    "name": "Gulshan Test",
+    "whatsapp": "7406994752",
+    "email": "gulshan@example.com",
+    "destination": "Kashmir, Kerala",
+    "journey": "Domestic Holiday",
+    "travellers": "2 Adults",
+    "travelDate": null,
+    "duration": "3 Nights / 4 Days",
+    "budget": "₹50,000 - ₹1,00,000",
+    "experience": "Domestic Holiday",
+    "specialRequirements": "[Duration: 3 Nights / 4 Days]\nTesting multi-destination and duration sync",
+    "status": "New",
+    "createdAt": "2026-09-17T18:26:38.759Z"
+  },
+  {
     "id": "enq_1789660714745_oqtdt",
     "name": "Single Row Verification",
     "whatsapp": "+917406994752",
