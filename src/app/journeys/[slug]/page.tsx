@@ -81,6 +81,24 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
     return () => clearInterval(timer);
   }, [galleryImages.length]);
 
+  const getCleanDayTitle = (day: { day: string; title: string }) => {
+    const t = day.title.toUpperCase();
+    if (t.includes('ARRIVE IN JAIPUR') || t.includes('ARRIVAL')) return 'Jaipur Arrival';
+    if (t.includes('JAIPUR FULL-DAY') || t.includes('JAIPUR SIGHTSEEING')) return 'Jaipur Sightseeing';
+    if (t.includes('AJMER') || t.includes('PUSHKAR') || (t.includes('JAIPUR') && t.includes('JODHPUR'))) return 'Pushkar & Jodhpur';
+    if (t.includes('RANAKPUR') || (t.includes('JODHPUR') && t.includes('UDAIPUR'))) return 'Ranakpur & Udaipur';
+    if (t.includes('UDAIPUR CITY') || t.includes('UDAIPUR SIGHTSEEING')) return 'Udaipur Highlights';
+    if (t.includes('DEPART')) return 'Depart Udaipur';
+    
+    // Generic fallback for any other journey
+    const clean = day.title
+      .replace(/\(\d+\s*KM\)/gi, '')
+      .split('-')[0]
+      .split(':')[0]
+      .trim();
+    return clean.length > 20 ? clean.substring(0, 18) + '…' : clean;
+  };
+
   const activeDay = selectedDayIdx !== 'all' ? journey.itinerary[selectedDayIdx] : null;
 
   return (
@@ -168,13 +186,19 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
               {/* === INTERACTIVE CATEGORY TIER SELECTOR (Only Active Tier Highlighted) === */}
               {journey.packageOptions && journey.packageOptions.length > 0 && (
                 <div className={styles.tierSelectorWrapper}>
-                  <div className={styles.tierSelectorLabel}>
-                    <span>SELECT PACKAGE TIER &amp; HOTEL CATEGORY:</span>
+                  <div className={styles.tierSelectorTop}>
+                    <div>
+                      <span className={styles.tierSelectorBadge}>TAILORED HOTEL CATEGORIES</span>
+                      <h3 className={styles.tierSelectorTitle}>Choose Your Preferred Package Tier</h3>
+                    </div>
+                    <span className={styles.tierHintText}>Click a tier to view included hotels &amp; live pricing</span>
                   </div>
                   
                   <div className={styles.categoryTiersGrid}>
                     {journey.packageOptions.map((opt, idx) => {
                       const isSelected = selectedCategoryIdx === idx;
+                      const isPopular = idx === 1;
+                      const isLuxury = idx === 2;
                       return (
                         <button
                           key={idx}
@@ -182,6 +206,8 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                           className={`${styles.tierCardBtn} ${isSelected ? styles.selectedTierCard : ''}`}
                           onClick={() => setSelectedCategoryIdx(idx)}
                         >
+                          {isPopular && <span className={styles.tierTopBadge}>★ MOST POPULAR</span>}
+                          {isLuxury && <span className={styles.tierTopBadge}>👑 ROYAL LUXURY</span>}
                           <div className={styles.tierCardHeader}>
                             <span className={styles.tierRadioIcon}>{isSelected ? '●' : '○'}</span>
                             <span className={styles.tierCardName}>{opt.category}</span>
@@ -195,10 +221,25 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                   {/* Active Selected Tier Hotel Details Box */}
                   {currentCategory?.details && (
                     <div className={styles.selectedHotelDetailsBanner}>
-                      <span className={styles.hotelDetailsIcon}>🏨</span>
-                      <div className={styles.hotelDetailsContent}>
-                        <strong>Included Hotels ({currentCategory.category}):</strong>
-                        <span>{currentCategory.details}</span>
+                      <div className={styles.hotelDetailsHeader}>
+                        <span className={styles.hotelDetailsBadge}>🏨 INCLUDED HOTELS &middot; {currentCategory.category.toUpperCase()}</span>
+                        <span className={styles.hotelDetailsNote}>Handpicked Luxury Accommodations</span>
+                      </div>
+                      <div className={styles.hotelChipsGrid}>
+                        {currentCategory.details.split('•').map((hotelItem, hIdx) => {
+                          const parts = hotelItem.trim().split(':');
+                          const city = parts.length > 1 ? parts[0].trim() : '';
+                          const name = parts.length > 1 ? parts.slice(1).join(':').trim() : hotelItem.trim();
+                          return (
+                            <div key={hIdx} className={styles.hotelChip}>
+                              <span className={styles.hotelChipIcon}>🏛️</span>
+                              <div className={styles.hotelChipText}>
+                                {city && <strong className={styles.hotelCityTag}>{city}:</strong>}
+                                <span className={styles.hotelNameTag}>{name}</span>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
@@ -267,27 +308,41 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                 {activeTab === 'itinerary' && (
                   <div className={styles.tabPanel}>
                     
-                    {/* Horizontal Day Selector Bar */}
+                    {/* Horizontal Luxury Day Navigator */}
                     <div className={styles.daySelectorNav}>
+                      <div className={styles.dayNavHeader}>
+                        <div className={styles.dayNavLeft}>
+                          <span className={styles.dayNavSubTitle}>STEP-BY-STEP ITINERARY</span>
+                          <h3 className={styles.dayNavHeading}>Explore Daily Schedule</h3>
+                        </div>
+                        <div className={styles.dayNavQuickCount}>
+                          <span>{journey.itinerary.length} Days Itinerary Plan</span>
+                        </div>
+                      </div>
+
                       <div className={styles.dayButtonsScroll}>
-                        {journey.itinerary.map((d, dIdx) => (
-                          <button
-                            key={dIdx}
-                            type="button"
-                            className={`${styles.dayNavBtn} ${selectedDayIdx === dIdx ? styles.activeDayNavBtn : ''}`}
-                            onClick={() => setSelectedDayIdx(dIdx)}
-                          >
-                            <span className={styles.dayNavNumber}>{d.day}</span>
-                            <span className={styles.dayNavMiniTitle}>{d.title.split('-')[0].split(':')[0].trim()}</span>
-                          </button>
-                        ))}
+                        {journey.itinerary.map((d, dIdx) => {
+                          const isSelected = selectedDayIdx === dIdx;
+                          return (
+                            <button
+                              key={dIdx}
+                              type="button"
+                              className={`${styles.dayNavPill} ${isSelected ? styles.activeDayNavPill : ''}`}
+                              onClick={() => setSelectedDayIdx(dIdx)}
+                            >
+                              <span className={styles.dayPillNumber}>{d.day}</span>
+                              <span className={styles.dayPillDivider}>•</span>
+                              <span className={styles.dayPillText}>{getCleanDayTitle(d)}</span>
+                            </button>
+                          );
+                        })}
                         <button
                           type="button"
-                          className={`${styles.dayNavBtn} ${selectedDayIdx === 'all' ? styles.activeDayNavBtn : ''}`}
+                          className={`${styles.dayNavPill} ${styles.allDaysPill} ${selectedDayIdx === 'all' ? styles.activeDayNavPill : ''}`}
                           onClick={() => setSelectedDayIdx('all')}
                         >
-                          <span className={styles.dayNavNumber}>✦ All</span>
-                          <span className={styles.dayNavMiniTitle}>View Full Plan</span>
+                          <span className={styles.dayPillIcon}>✦</span>
+                          <span className={styles.dayPillText}>Full Plan (All Days)</span>
                         </button>
                       </div>
                     </div>
@@ -330,11 +385,11 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                         {/* Sightseeing Included Tags */}
                         {activeDay.sightseeing && activeDay.sightseeing.length > 0 && (
                           <div className={styles.sightseeingBox}>
-                            <span className={styles.sightseeingLabel}>Sight Seeing Included:</span>
+                            <span className={styles.sightseeingLabel}>📍 Sight Seeing Included:</span>
                             <div className={styles.sightseeingTags}>
                               {activeDay.sightseeing.map((place, pIdx) => (
                                 <span key={pIdx} className={styles.sightseeingTag}>
-                                  📍 {place}
+                                  ✦ {place}
                                 </span>
                               ))}
                             </div>
@@ -345,24 +400,30 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                         {activeDay.transfers && (
                           <div className={styles.transferRow}>
                             <span className={styles.transferIcon}>🚘</span>
-                            <span><strong>Transit Route:</strong> {activeDay.transfers}</span>
+                            <div className={styles.transferText}>
+                              <span className={styles.transferLabel}>Transit Route:</span>
+                              <span className={styles.transferVal}>{activeDay.transfers}</span>
+                            </div>
                           </div>
                         )}
 
                         {/* Meals Inclusions Bar */}
                         {activeDay.meals && (
                           <div className={styles.mealsBar}>
-                            <div className={`${styles.mealItem} ${activeDay.meals.breakfast ? styles.mealIncluded : styles.mealExcluded}`}>
-                              <span className={styles.mealDot}>{activeDay.meals.breakfast ? '✓' : '✕'}</span>
-                              <span>Breakfast: <strong>{activeDay.meals.breakfast ? 'Included' : 'Not Included'}</strong></span>
-                            </div>
-                            <div className={`${styles.mealItem} ${activeDay.meals.lunch ? styles.mealIncluded : styles.mealExcluded}`}>
-                              <span className={styles.mealDot}>{activeDay.meals.lunch ? '✓' : '✕'}</span>
-                              <span>Lunch: <strong>{activeDay.meals.lunch ? 'Included' : 'Not Included'}</strong></span>
-                            </div>
-                            <div className={`${styles.mealItem} ${activeDay.meals.dinner ? styles.mealIncluded : styles.mealExcluded}`}>
-                              <span className={styles.mealDot}>{activeDay.meals.dinner ? '✓' : '✕'}</span>
-                              <span>Dinner: <strong>{activeDay.meals.dinner ? 'Included' : 'Not Included'}</strong></span>
+                            <span className={styles.mealsBarLabel}>🍽️ Meals Included:</span>
+                            <div className={styles.mealsItemsList}>
+                              <div className={`${styles.mealItem} ${activeDay.meals.breakfast ? styles.mealIncluded : styles.mealExcluded}`}>
+                                <span className={styles.mealDot}>{activeDay.meals.breakfast ? '✓' : '✕'}</span>
+                                <span>Breakfast: <strong>{activeDay.meals.breakfast ? 'Included' : 'Not Included'}</strong></span>
+                              </div>
+                              <div className={`${styles.mealItem} ${activeDay.meals.lunch ? styles.mealIncluded : styles.mealExcluded}`}>
+                                <span className={styles.mealDot}>{activeDay.meals.lunch ? '✓' : '✕'}</span>
+                                <span>Lunch: <strong>{activeDay.meals.lunch ? 'Included' : 'Not Included'}</strong></span>
+                              </div>
+                              <div className={`${styles.mealItem} ${activeDay.meals.dinner ? styles.mealIncluded : styles.mealExcluded}`}>
+                                <span className={styles.mealDot}>{activeDay.meals.dinner ? '✓' : '✕'}</span>
+                                <span>Dinner: <strong>{activeDay.meals.dinner ? 'Included' : 'Not Included'}</strong></span>
+                              </div>
                             </div>
                           </div>
                         )}
