@@ -184,6 +184,46 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Top Right Price Banner (Image 1 Style) */
+.topRightPriceBanner {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+}
+
+.topRightPriceBanner:hover {
+  transform: translateY(-2px);
+  border-color: #d4af37;
+  background: rgba(18, 22, 32, 0.95);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.priceBannerLabel {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #d4af37;
+}
+
+.priceBannerAmount {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 0.1rem;
+}
+
 .cardContent {
   padding: 2rem;
   display: flex;
@@ -252,53 +292,75 @@
   font-weight: bold;
 }
 
-.cardActions {
+/* Actions Stack (Image 1 Style) */
+.cardActionsStack {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding-top: 1.2rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.bookBtn {
-  flex: 1;
+.primaryEnquireBtn {
+  width: 100%;
   text-align: center;
-  padding: 0.85rem 1.2rem;
-  background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
+  padding: 0.9rem 1.25rem;
+  background: linear-gradient(135deg, #d4af37 0%, #c49d28 100%);
   color: #080808;
-  border-radius: 999px;
-  font-size: 0.82rem;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
-.bookBtn:hover {
-  background: linear-gradient(135deg, #f3cf65 0%, #d4af37 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+.primaryEnquireBtn:hover {
+  background: linear-gradient(135deg, #f5d369 0%, #d4af37 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
 }
 
-.whatsappBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.85rem 1.2rem;
-  background: #25d366;
+.secondaryPlanBtn {
+  width: 100%;
+  text-align: center;
+  padding: 0.85rem 1.25rem;
+  background: #181d27;
   color: #ffffff;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  gap: 0.4rem;
   transition: all 0.25s ease;
 }
 
-.whatsappBtn:hover {
-  background: #1ebc59;
+.secondaryPlanBtn:hover {
+  background: #232a39;
+  border-color: #d4af37;
+  color: #d4af37;
+  transform: translateY(-2px);
+}
+
+.cardWaRow {
+  display: block;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #25D366;
+  text-decoration: none;
+  padding-top: 0.2rem;
+  transition: color 0.2s ease;
+}
+
+.cardWaRow:hover {
+  color: #1ebe5a;
+  text-decoration: underline;
 }
 
 @media (max-width: 1024px) {
@@ -346,18 +408,6 @@
 
   .cardOverview {
     font-size: 0.88rem;
-  }
-
-  .cardActions {
-    flex-direction: column;
-    gap: 0.65rem;
-  }
-
-  .bookBtn,
-  .whatsappBtn {
-    width: 100%;
-    justify-content: center;
-    padding: 0.85rem;
   }
 }
 

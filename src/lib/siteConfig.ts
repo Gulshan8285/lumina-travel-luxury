@@ -65,6 +65,7 @@ export interface HeroSlide {
 
 export interface DestinationPackage {
   id: string;
+  slug?: string;
   name: string;
   tagline: string;
   image: string;

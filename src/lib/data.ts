@@ -25,12 +25,19 @@ export interface Destination {
 export interface Journey {
   slug: string;
   name: string;
+  subtitle?: string;
   duration: string;
   destination: string;
   imageUrl: string;
   images: string[];
   videoUrl?: string;
   price: string;
+  priceIncludesText?: string;
+  packageOptions?: {
+    category: string;
+    price: string;
+    details?: string;
+  }[];
   overview: string;
   highlights: string[];
   article: {
@@ -43,9 +50,18 @@ export interface Journey {
     day: string;
     title: string;
     desc: string;
+    sightseeing?: string[];
+    meals?: {
+      breakfast: boolean;
+      lunch: boolean;
+      dinner: boolean;
+    };
+    transfers?: string;
   }[];
   included: string[];
   notIncluded: string[];
+  termsAndConditions?: string[];
+  cancellationPolicy?: string[];
 }
 
 export const featuredDestinations: Destination[] = [
@@ -1070,6 +1086,7 @@ export const popularJourneys: Journey[] = [
   {
     "slug": "highlights-of-rajasthan",
     "name": "Highlights of Rajasthan",
+    "subtitle": "Jaipur (2N) • Jodhpur (1N) • Udaipur (2N)",
     "duration": "5 Nights / 6 Days",
     "destination": "Rajasthan",
     "imageUrl": "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=720&q=72&auto=format&fit=crop",
@@ -1082,6 +1099,12 @@ export const popularJourneys: Journey[] = [
     ],
     "videoUrl": "/videos/ocean.mp4",
     "price": "Starting from ₹25,084 / person",
+    "priceIncludesText": "Price Includes: 3 Hotel(s), 13 Sightseeing, Daily Breakfast, Airport Transfers, Intercity AC Tourist Cab",
+    "packageOptions": [
+      { "category": "Standard Category", "price": "₹25,084 per person sharing", "details": "Jaipur: Clarks Inn Express (2N) • Jodhpur: Chandra Grand (1N) • Udaipur: Mukund Vilas (2N)" },
+      { "category": "Deluxe Category", "price": "₹26,834 per person sharing", "details": "Jaipur: The Rudra Vilas (2N) • Jodhpur: Lords Inn (1N) • Udaipur: Crimson Park Shree Kanak (2N)" },
+      { "category": "Luxury Category", "price": "₹31,500 per person sharing", "details": "Jaipur: Fern Ecotel (2N) • Jodhpur: Park Plaza (1N) • Udaipur: Radiant Globus Hotels & Resorts (2N)" }
+    ],
     "overview": "Experience the colours, forts, palaces and lakes of Rajasthan with accommodation, daily breakfast, private transfers, intercity transport and sightseeing across Jaipur (2 Nights), Jodhpur (1 Night), and Udaipur (2 Nights).",
     "highlights": [
       "Amer Fort & City Palace in Jaipur",
@@ -1101,40 +1124,58 @@ export const popularJourneys: Journey[] = [
     },
     "itinerary": [
       {
-        "day": "Day 1",
-        "title": "Arrive in Jaipur",
-        "desc": "Arrive in Jaipur and transfer by private vehicle from the airport to your hotel. Check in and relax. Meals: Breakfast, lunch and dinner are not included."
+        "day": "Day 01",
+        "title": "ARRIVE IN JAIPUR",
+        "desc": "Arrive in Jaipur and transfer by private vehicle from the airport to your hotel. Check in and relax.",
+        "sightseeing": ["Jaipur Airport / Railway Station to Hotel Private Transfer"],
+        "transfers": "Airport to Hotel : Private AC Vehicle",
+        "meals": { "breakfast": false, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 2",
-        "title": "Jaipur Sightseeing",
-        "desc": "After breakfast, proceed for a full-day Jaipur city tour covering Amer Fort and City Palace. Meals: Breakfast included. Lunch and dinner are not included."
+        "day": "Day 02",
+        "title": "JAIPUR FULL-DAY SIGHTSEEING",
+        "desc": "After breakfast, proceed for a full-day Jaipur city tour covering Amer Fort, City Palace, Hawa Mahal and Jantar Mantar.",
+        "sightseeing": ["Amer Fort", "City Palace Jaipur", "Hawa Mahal", "Jantar Mantar"],
+        "transfers": "Sightseeing : Private AC Vehicle",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 3",
-        "title": "Jaipur - Ajmer - Pushkar - Jodhpur (400 km)",
-        "desc": "After breakfast, drive to Jodhpur. En route, visit Ajmer and Pushkar, including Brahma Temple, Dargah and Sagar Lake. Meals: Breakfast included. Lunch and dinner are not included."
+        "day": "Day 03",
+        "title": "JAIPUR - AJMER - PUSHKAR - JODHPUR (400 KM)",
+        "desc": "After breakfast, drive to Jodhpur. En route, visit Ajmer and Pushkar, including Brahma Temple, Dargah and Sagar Lake.",
+        "sightseeing": ["Ajmer Sharif Dargah", "Brahma Temple Pushkar", "Pushkar Sagar Lake"],
+        "transfers": "Intercity Drive : Private AC Vehicle (400 km)",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 4",
-        "title": "Jodhpur - Ranakpur - Udaipur (300 km)",
-        "desc": "After breakfast, proceed for Jodhpur sightseeing, including Clock Tower, Mehrangarh Fort, Phool Mahal and Sheesh Mahal. Continue to Udaipur via Ranakpur. Meals: Breakfast included. Lunch and dinner are not included."
+        "day": "Day 04",
+        "title": "JODHPUR - RANAKPUR - UDAIPUR (300 KM)",
+        "desc": "After breakfast, proceed for Jodhpur sightseeing, including Clock Tower, Mehrangarh Fort, Phool Mahal and Sheesh Mahal. Continue to Udaipur via Ranakpur.",
+        "sightseeing": ["Mehrangarh Fort", "Clock Tower", "Phool Mahal", "Sheesh Mahal", "Ranakpur Jain Temples"],
+        "transfers": "Intercity Drive : Private AC Vehicle (300 km)",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 5",
-        "title": "Udaipur Sightseeing",
-        "desc": "After breakfast, proceed for a half-day Udaipur city tour covering Bharatiya Lok Kala Mandal, City Palace, Jag Mandir and Saheliyon Ki Bari. Meals: Breakfast included. Lunch and dinner are not included."
+        "day": "Day 05",
+        "title": "UDAIPUR CITY SIGHTSEEING",
+        "desc": "After breakfast, proceed for a half-day Udaipur city tour covering Bharatiya Lok Kala Mandal, City Palace, Jag Mandir and Saheliyon Ki Bari.",
+        "sightseeing": ["City Palace Udaipur", "Jag Mandir Island", "Saheliyon Ki Bari", "Bharatiya Lok Kala Mandal"],
+        "transfers": "Sightseeing : Private AC Vehicle",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 6",
-        "title": "Depart Udaipur",
-        "desc": "After breakfast, transfer by private vehicle to Udaipur Airport or Railway Station for your onward journey. Meals: Breakfast included."
+        "day": "Day 06",
+        "title": "DEPART UDAIPUR",
+        "desc": "After breakfast, transfer by private vehicle to Udaipur Airport or Railway Station for your onward journey.",
+        "sightseeing": ["Hotel to Udaipur Airport / Railway Station Transfer"],
+        "transfers": "Hotel to Airport/Station : Private AC Vehicle",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       }
     ],
     "included": [
-      "5 nights' accommodation at listed hotels (Standard: Clarks Inn Express, Chandra Grand, Mukund Vilas | Deluxe: The Rudra Vilas, Lords Inn, Crimson Park | Luxury: Fern Ecotel, Park Plaza, Radiant Globus)",
+      "5 nights' accommodation at the hotels listed above or similar-category alternate hotels",
       "Daily buffet breakfast at all hotels",
-      "Private airport and railway-station transfers",
+      "Private airport and railway-station transfers as listed in the itinerary",
       "Intercity transfers and sightseeing by air-conditioned All India Tourist Permit vehicle",
       "Road taxes, parking fees, fuel charges and interstate taxes",
       "13 sightseeing points as listed in the itinerary"
@@ -1142,14 +1183,40 @@ export const popularJourneys: Journey[] = [
     "notIncluded": [
       "Airfare and train fare",
       "Monument entrance fees and local guide services",
-      "Optional elephant/jeep ride at Amber Fort and Lake Pichola boat ride",
-      "Lunch, dinner and personal expenses",
+      "Optional rides and activities, including elephant or jeep ride at Amber Fort and common boat ride on Lake Pichola",
+      "Lunch, dinner and any meals not mentioned under inclusions",
+      "Personal expenses such as tips, porterage, laundry, telephone charges, drinks and camera fees",
+      "Travel insurance, health insurance, visa fees and RT-PCR tests, if applicable",
+      "Vehicle use on leisure days or for additional shopping, market or restaurant visits",
+      "Costs caused by flight cancellation, bad weather, roadblocks, accidents or delays beyond control",
       "GST as per government regulations"
+    ],
+    "termsAndConditions": [
+      "Rates are dynamic and subject to availability and change at the time of confirmation.",
+      "Rates do not apply during peak season or blackout dates unless specifically confirmed.",
+      "The quoted rate is valid for 24 hours from the date of quotation.",
+      "Rates are applicable only to Indian nationals.",
+      "Rooms are not held until written confirmation is received.",
+      "Listed hotels may be replaced with similar or next-best available hotels. Any rate difference will apply.",
+      "Hotel check-in is at 2:00 PM and check-out is at 12:00 noon.",
+      "The vehicle is provided only as per the itinerary and is not at disposal.",
+      "Night driving is not permitted. Guests should leave in time to reach the next destination before 8:00 PM.",
+      "Christmas and New Year's Eve dinner supplements are mandatory where applicable.",
+      "Any new government tax, local tax amendment or fuel-price increase may change the tour price.",
+      "All Rajasthan monuments remain closed on Dhulandi, the day after Holi.",
+      "Special requests such as Jain meals or early check-in must be submitted by email at least 72 hours before arrival and remain subject to availability.",
+      "No refund is provided for unused services.",
+      "100% advance payment is required at the time of booking."
+    ],
+    "cancellationPolicy": [
+      "Cancellation within 60 days of departure: 100% of the total package cost.",
+      "Cancellation more than 60 days before departure: ₹10,000 cancellation charge."
     ]
   },
   {
     "slug": "highlights-of-andaman",
     "name": "Highlights of Andaman and Nicobar",
+    "subtitle": "Port Blair • Havelock Island (2N) • Neil Island (1N) • Port Blair (2N)",
     "duration": "5 Nights / 6 Days",
     "destination": "Andaman",
     "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=720&q=72&auto=format&fit=crop",
@@ -1162,6 +1229,11 @@ export const popularJourneys: Journey[] = [
     ],
     "videoUrl": "/videos/ocean.mp4",
     "price": "Starting from ₹24,034 / person",
+    "priceIncludesText": "Price Includes: 3 Hotel(s), Private Ferry, Daily Breakfast, Airport & Jetty Transfers, AC Sightseeing",
+    "packageOptions": [
+      { "category": "Standard Category", "price": "₹24,034 per person sharing", "details": "Havelock: Radhakrishna Resort (2N) • Neil Island: Hotel Neha Palace (1N) • Port Blair: Hotel Seagull (2N)" },
+      { "category": "Deluxe Category", "price": "₹28,000 per person sharing", "details": "Havelock: Haywizz Havelock Island Resort (2N) • Neil Island: Coral Garden Resort (1N) • Port Blair: Hotel Red Carpet (2N)" }
+    ],
     "overview": "Experience the white-sand beaches, coral reefs and island ferries of the Andaman Islands with accommodation, daily breakfast, private transfers, inter-island ferry and sightseeing across Havelock Island (2N), Neil Island (1N), and Port Blair (2N).",
     "highlights": [
       "Blue Flag Certified Radhanagar Beach Sunset",
@@ -1181,53 +1253,94 @@ export const popularJourneys: Journey[] = [
     },
     "itinerary": [
       {
-        "day": "Day 1",
-        "title": "Arrive in Port Blair - Ferry to Havelock Island - Radhanagar Beach",
-        "desc": "Meet our representative at Veer Savarkar Airport, Port Blair, and transfer directly to the jetty for the ferry to Havelock Island. Transfer to hotel for check-in. In the late afternoon, visit the Blue Flag-certified Radhanagar Beach for a swim and relaxation."
+        "day": "Day 01",
+        "title": "ARRIVE IN PORT BLAIR - FERRY TO HAVELOCK - RADHANAGAR BEACH",
+        "desc": "Meet our representative at Veer Savarkar Airport, Port Blair, and transfer directly to the jetty for the ferry to Havelock Island. Transfer to hotel for check-in. In the late afternoon, visit the Blue Flag-certified Radhanagar Beach for a swim and relaxation.",
+        "sightseeing": ["Veer Savarkar Airport Welcome", "High-Speed Private Ferry Transfer", "Radhanagar Beach Sunset"],
+        "transfers": "Airport to Jetty & Ferry to Havelock",
+        "meals": { "breakfast": false, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 2",
-        "title": "Havelock Island - Elephant Beach",
-        "desc": "After breakfast, proceed to Elephant Beach (Coral Beach), popular for snorkelling, Jet Ski rides, banana rides and sea walking. Reached by an 11-seater shared boat from the jetty."
+        "day": "Day 02",
+        "title": "HAVELOCK ISLAND - ELEPHANT BEACH",
+        "desc": "After breakfast, proceed to Elephant Beach (Coral Beach), popular for snorkelling, Jet Ski rides, banana rides and sea walking. Reached by an 11-seater shared boat from the jetty.",
+        "sightseeing": ["Elephant Beach (Coral Beach)", "Complimentary Snorkelling Experience", "Water Sports Hub"],
+        "transfers": "Speed Boat to Elephant Beach",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 3",
-        "title": "Havelock Island - Neil Island",
-        "desc": "After breakfast, proceed to the jetty for the onward ferry to Neil Island. In the afternoon, visit Bharatpur Beach, Laxmanpur Beach for sunset views, and the Natural Bridge (Howrah Bridge)."
+        "day": "Day 03",
+        "title": "HAVELOCK ISLAND - NEIL ISLAND",
+        "desc": "After breakfast, proceed to the jetty for the onward ferry to Neil Island. In the afternoon, visit Bharatpur Beach, Laxmanpur Beach for sunset views, and the Natural Bridge (Howrah Bridge).",
+        "sightseeing": ["Bharatpur Beach", "Laxmanpur Sunset Point", "Natural Coral Bridge (Howrah Bridge)"],
+        "transfers": "Inter-Island Ferry to Neil Island",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 4",
-        "title": "Neil Island - Port Blair - Day at Leisure",
-        "desc": "After breakfast, check out and board the ferry to Port Blair. On arrival, transfer to your hotel. The day is free for shopping and leisure."
+        "day": "Day 04",
+        "title": "NEIL ISLAND - PORT BLAIR - DAY AT LEISURE",
+        "desc": "After breakfast, check out and board the ferry to Port Blair. On arrival, transfer to your hotel. The day is free for shopping and leisure.",
+        "sightseeing": ["Port Blair City Waterfront", "Local Handicraft & Spice Markets"],
+        "transfers": "Inter-Island Ferry to Port Blair",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 5",
-        "title": "Port Blair - Ross Island and North Bay Island",
-        "desc": "After breakfast, board the speed boat to historic Ross Island to explore colonial heritage. Continue to North Bay Island (Coral Beach) for scuba diving, snorkelling, parasailing, and glass-bottom boat rides."
+        "day": "Day 05",
+        "title": "PORT BLAIR - ROSS ISLAND & NORTH BAY ISLAND",
+        "desc": "After breakfast, board the speed boat to historic Ross Island to explore colonial heritage. Continue to North Bay Island (Coral Beach) for scuba diving, snorkelling, parasailing, and glass-bottom boat rides.",
+        "sightseeing": ["Historic Ross Island Ruins", "North Bay Coral Safari Island", "Water Sports Complex"],
+        "transfers": "Speed Boat Excursion",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 6",
-        "title": "Depart Port Blair",
-        "desc": "After breakfast, transfer to Port Blair airport for your onward journey with unforgettable island memories."
+        "day": "Day 06",
+        "title": "DEPART PORT BLAIR",
+        "desc": "After breakfast, transfer to Port Blair airport for your onward journey with unforgettable island memories.",
+        "sightseeing": ["Hotel to Port Blair Airport Transfer"],
+        "transfers": "Hotel to Airport : Private AC Vehicle",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       }
     ],
     "included": [
-      "5 nights' accommodation at listed hotels (Standard: Radhakrishna Resort, Hotel Neha Palace, Hotel Seagull | Deluxe: Haywizz Resort, Coral Garden Resort, Hotel Red Carpet)",
-      "Daily breakfast (CP Meal Plan) at all hotels",
-      "Inter-island ferry transfers (Port Blair - Havelock - Neil - Port Blair) by private ferry",
+      "5 nights' accommodation at the hotels listed above for the chosen category",
+      "Meal plan CP: daily breakfast at all hotels",
+      "Sightseeing as per the itinerary",
+      "All monument, museum, cultural event and activity assistance as per itinerary",
       "Return airport and jetty transfers by air-conditioned vehicle",
-      "All transportation for local sightseeing tours by air-conditioned vehicle"
+      "All transportation for local sightseeing tours by air-conditioned vehicle",
+      "Inter-island ferry transfers (Port Blair - Havelock - Neil - Port Blair) by private ferry"
     ],
     "notIncluded": [
       "Flights to and from Port Blair",
       "Lunch, dinner and any meals not mentioned under inclusions",
-      "Ross Island entry fee (₹50/adult, ₹25/child payable directly)",
-      "Personal expenses, optional water sports, camera fees and travel insurance"
+      "Travel or health insurance",
+      "Guide services and guide fees",
+      "Ross Island entry fee (₹50 per adult, ₹25 per child), payable directly at the island",
+      "Personal expenses such as tips, porterage, laundry, telephone, drinks, camera fees and water sports",
+      "Costs arising from flight cancellation, bad weather, or factors beyond control",
+      "GST as per government regulations"
+    ],
+    "termsAndConditions": [
+      "Package rates are dynamic and subject to availability and change at the time of confirmation.",
+      "Rates are not valid during peak season, festival periods or blackout dates; supplements will apply.",
+      "The quoted rate is valid for 24 hours from the date of quotation.",
+      "Rates are applicable only to Indian nationals.",
+      "Rooms are subject to availability at the time of booking and confirmed only after written confirmation.",
+      "The itinerary can be altered at any point due to bad weather, ill health, or factors beyond control.",
+      "The vehicle is provided only as per the itinerary and is not at disposal.",
+      "No refund is provided for any unused services.",
+      "Special requests such as Jain meals or early check-in must be submitted by email at least 72 hours before arrival.",
+      "100% advance payment is required at the time of booking."
+    ],
+    "cancellationPolicy": [
+      "Cancellation within 60 days of departure: 100% of the total package cost.",
+      "Cancellation more than 60 days before departure: ₹10,000 cancellation charge."
     ]
   },
   {
     "slug": "highlights-of-kerala",
     "name": "Highlights of Kerala",
+    "subtitle": "Cochin (1N) • Munnar (2N) • Thekkady (1N) • Alleppey (1N)",
     "duration": "5 Nights / 6 Days",
     "destination": "Kerala",
     "imageUrl": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=720&q=72&auto=format&fit=crop",
@@ -1240,6 +1353,11 @@ export const popularJourneys: Journey[] = [
     ],
     "videoUrl": "/videos/ocean.mp4",
     "price": "Starting from ₹32,084 / person",
+    "priceIncludesText": "Price Includes: 4 Hotel(s), Daily Breakfast, Private AC Cab with Driver, Periyar Safari, Alleppey Shikara Cruise",
+    "packageOptions": [
+      { "category": "Standard Category", "price": "₹32,084 per person sharing", "details": "Cochin: The Classik Fort (1N) • Munnar: The Arbour Resort (2N) • Thekkady: Tiger Trails (1N) • Alleppey: Pagoda Resorts (1N)" },
+      { "category": "Deluxe Category", "price": "₹38,267 per person sharing", "details": "Cochin: Marine Inn Hotel (1N) • Munnar: Trivers Resort (2N) • Thekkady: Hotel CITADEL (1N) • Alleppey: Classic Regency (1N)" }
+    ],
     "overview": "Explore Cochin's colonial heritage, the waterfalls and tea gardens of Munnar (2N), the wildlife and spice plantations of Thekkady (1N) and the backwaters of Alleppey (1N), with accommodation, daily breakfast and an air-conditioned cab.",
     "highlights": [
       "Fort Kochi Dutch Palace & Jewish Synagogue",
@@ -1259,53 +1377,92 @@ export const popularJourneys: Journey[] = [
     },
     "itinerary": [
       {
-        "day": "Day 1",
-        "title": "Arrive in Cochin - Cochin Sightseeing",
-        "desc": "Welcome at Cochin airport or railway station and transfer to hotel. Visit Dutch Palace, Jewish Synagogue, St. Francis Church, Santa Cruz Basilica, and Marine Drive. Overnight in Cochin."
+        "day": "Day 01",
+        "title": "ARRIVE IN COCHIN - COCHIN SIGHTSEEING",
+        "desc": "Our representative will welcome you at Cochin airport or railway station and transfer you to the hotel for check-in. Visit the Dutch Palace, Jewish Synagogue, St. Francis Church, Santa Cruz Basilica, and Marine Drive. Overnight in Cochin.",
+        "sightseeing": ["Dutch Palace", "Jewish Synagogue", "St. Francis Church", "Santa Cruz Basilica", "Marine Drive"],
+        "transfers": "Airport to Hotel & Sightseeing : Private AC Cab",
+        "meals": { "breakfast": false, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 2",
-        "title": "Cochin - Munnar",
-        "desc": "After breakfast, proceed to Munnar (1,800m). En route visit Cheeyapara Waterfalls, Valara Waterfalls, and scenic tea gardens. Check in and overnight in Munnar."
+        "day": "Day 02",
+        "title": "COCHIN - MUNNAR (1,800M ELEVATION)",
+        "desc": "After breakfast, proceed to Munnar, known as 'Nature Lover's Paradise'. On the way, visit Cheeyapara Waterfalls and Valara Waterfalls, and see the lush tea gardens spread across the slopes of the hills. Overnight in Munnar.",
+        "sightseeing": ["Cheeyapara Waterfalls", "Valara Waterfalls", "Emerald Tea Estates"],
+        "transfers": "Intercity Drive : Private AC Cab",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 3",
-        "title": "Munnar Sightseeing",
-        "desc": "After breakfast, proceed for Munnar sightseeing covering Mattupetty Dam, Kundala Dam Lake, Echo Point, and the Tea Museum. Overnight in Munnar."
+        "day": "Day 03",
+        "title": "MUNNAR HILL SIGHTSEEING",
+        "desc": "After breakfast, proceed for Munnar sightseeing. Visit Mattupetty Dam, Kundala Dam Lake and Eco Point, where you can hear your own voice echo. Then visit the Tea Museum. Overnight in Munnar.",
+        "sightseeing": ["Mattupetty Dam", "Kundala Dam Lake", "Echo Point", "Tata Tea Museum"],
+        "transfers": "Sightseeing : Private AC Cab",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 4",
-        "title": "Munnar - Thekkady",
-        "desc": "After breakfast, proceed to Thekkady. Enjoy a guided spice plantation tour (tea, coffee, pepper, cardamom) and a boat safari on Periyar Lake in the Tiger Reserve. Overnight in Thekkady."
+        "day": "Day 04",
+        "title": "MUNNAR - THEKKADY (PERIYAR WILDLIFE)",
+        "desc": "After breakfast, check out and proceed to Thekkady. Enjoy a spice plantation tour covering tea, coffee, pepper and cardamom, and a boat ride on Periyar Lake in the Tiger Reserve. In the evening, visit the local spice market. Overnight in Thekkady.",
+        "sightseeing": ["Periyar Tiger Reserve Boat Safari", "Spice Plantation Guided Walk", "Kumily Spice Market"],
+        "transfers": "Intercity Drive : Private AC Cab",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 5",
-        "title": "Thekkady - Alleppey",
-        "desc": "After breakfast, proceed to Alleppey ('Venice of the East'). Check in to the hotel and enjoy a scenic Shikara boat cruise along the palm-fringed backwaters. Overnight in Alleppey."
+        "day": "Day 05",
+        "title": "THEKKADY - ALLEPPEY BACKWATERS",
+        "desc": "After breakfast, check out and proceed to Alappuzha (Alleppey), known as the 'Venice of the East'. Check in to the hotel and enjoy a scenic Shikara boat cruise to experience the tranquil backwaters. Overnight in Alleppey.",
+        "sightseeing": ["Venice of the East Backwaters", "Palm-Fringed Canal Shikara Cruise", "Alleppey Beach"],
+        "transfers": "Intercity Drive : Private AC Cab",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       },
       {
-        "day": "Day 6",
-        "title": "Depart from Cochin",
-        "desc": "After breakfast, transfer to Cochin airport or railway station for your onward journey."
+        "day": "Day 06",
+        "title": "DEPART FROM COCHIN",
+        "desc": "After breakfast, transfer to Cochin airport or railway station for your onward journey with beautiful backwater memories.",
+        "sightseeing": ["Hotel to Cochin Airport / Railway Station Drop"],
+        "transfers": "Hotel to Airport/Station : Private AC Cab",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       }
     ],
     "included": [
-      "5 nights' accommodation at listed hotels (Standard: The Classik Fort, The Arbour Resort, Tiger Trails, Pagoda Resorts | Deluxe: Marine Inn Hotel, Trivers Resort, Hotel CITADEL, Classic Regency)",
-      "Daily breakfast at all hotels (Bed & Breakfast plan)",
-      "Air-conditioned cab for all transfers and sightseeing as per itinerary",
+      "5 nights' accommodation in base category rooms at the hotels listed above for the chosen category",
+      "Daily breakfast at all hotels (bed and breakfast plan)",
+      "Air-conditioned cab for all transfers and sightseeing exactly as per the itinerary",
       "Airport transfers and intercity transfers",
-      "Toll, parking, driver's bata, road tax and fuel charges included"
+      "Sightseeing as per the itinerary",
+      "Toll, parking, driver's bata, road tax and fuel charges"
     ],
     "notIncluded": [
       "Flights to and from Cochin",
       "Lunch, dinner and any meals not mentioned under inclusions",
-      "Monument and palace entry fees, activity charges and guide fees",
-      "Personal expenses, Ayurveda charges, and GST"
+      "Entry fees to monuments and palaces, and ticket and activity charges",
+      "Guide services and guide fees",
+      "Travel or health insurance",
+      "Ayurveda charges",
+      "Porterage at hotels and airports, tips, laundry and personal expenses",
+      "GST as per government regulations"
+    ],
+    "termsAndConditions": [
+      "Package rates are dynamic and tentative, subject to change at the time of confirmation and dependent on availability.",
+      "Rates are not valid on peak season or blackout dates.",
+      "This is only a quotation; no reservation has been made and rooms are subject to availability.",
+      "100% advance payment is required at the time of booking.",
+      "The itinerary is prepared as per a morning arrival.",
+      "Only non-AC rooms are provided in hill stations such as Munnar and Thekkady.",
+      "Vehicle kilometre is calculated on a garage-to-garage basis; the cab is available between 08:00 and 18:00 hrs as per itinerary and is not at disposal.",
+      "Most monuments remain closed on Mondays and on certain other days.",
+      "No refund is provided for any unutilized service."
+    ],
+    "cancellationPolicy": [
+      "Cancellation within 60 days of departure: 100% of the total package cost.",
+      "Cancellation more than 60 days before departure: ₹10,000 cancellation charge."
     ]
   },
   {
     "slug": "exotic-shimla-manali",
     "name": "Exotic Shimla Manali",
+    "subtitle": "Delhi • Shimla (2N) • Manali (3N) • Chandigarh",
     "duration": "5 Nights / 6 Days",
     "destination": "Shimla & Manali",
     "imageUrl": "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=720&q=72&auto=format&fit=crop",
@@ -1318,6 +1475,10 @@ export const popularJourneys: Journey[] = [
     ],
     "videoUrl": "/videos/ocean.mp4",
     "price": "Starting from ₹31,616 / person",
+    "priceIncludesText": "Price Includes: 2 Hotel(s), 8 Sightseeing, Daily Breakfast & Dinner (MAP), Private Dedicated Cab, All Tolls & Parking",
+    "packageOptions": [
+      { "category": "Deluxe Category", "price": "₹31,616 per person on twin sharing", "details": "Shimla: Sukhsagar Regency (2N) • Manali: Sarthak Regency (3N)" }
+    ],
     "overview": "Discover the colonial hill station charm of Shimla (2N) with Kufri excursion, and the majestic pine valleys of Manali (3N) with Hadimba Temple, Buddhist Monastery and Solang Valley, including breakfast & dinner daily and private cab.",
     "highlights": [
       "Scenic Drive from Delhi to Shimla Hills",
@@ -1337,49 +1498,86 @@ export const popularJourneys: Journey[] = [
     },
     "itinerary": [
       {
-        "day": "Day 1",
-        "title": "Delhi - Shimla (350 km, approx. 8-10 hrs)",
-        "desc": "Pick up from Delhi railway station or airport and drive to Shimla by private cab. Check in to the hotel on arrival. Dinner and overnight in Shimla."
+        "day": "Day 01",
+        "title": "DELHI - SHIMLA (350 KM, APPROX. 8-10 HRS)",
+        "desc": "Pick up from Delhi railway station or airport and drive to Shimla by private cab. Check in to the hotel on arrival. Dinner and overnight in Shimla.",
+        "sightseeing": ["Scenic Mountain Highway Drive", "Shimla Hotel Check-in"],
+        "transfers": "Delhi to Shimla : Private Dedicated Cab (350 km)",
+        "meals": { "breakfast": false, "lunch": false, "dinner": true }
       },
       {
-        "day": "Day 2",
-        "title": "Shimla City Tour - Kufri Excursion",
-        "desc": "After breakfast, proceed for an excursion to Kufri, famous for its Himalayan National Park, adventure park, and Fagu valley. Dinner and overnight in Shimla."
+        "day": "Day 02",
+        "title": "SHIMLA CITY TOUR - KUFRI EXCURSION",
+        "desc": "After breakfast, proceed for an excursion to Kufri, famous for its Himalayan National Park, adventure park, and Fagu valley. Dinner and overnight in Shimla.",
+        "sightseeing": ["Kufri Himalayan Nature Park", "Fagu Valley Lookout", "Shimla Mall Road & Ridge"],
+        "transfers": "Sightseeing : Private Dedicated Cab",
+        "meals": { "breakfast": true, "lunch": false, "dinner": true }
       },
       {
-        "day": "Day 3",
-        "title": "Shimla - Manali (265 km, approx. 8-10 hrs)",
-        "desc": "After breakfast, check out and drive to Manali. En route, visit Pandoh Dam, Hanogi Mata temple and Kullu Valley. Check in on arrival. Dinner and overnight in Manali."
+        "day": "Day 03",
+        "title": "SHIMLA - MANALI (265 KM, APPROX. 8-10 HRS)",
+        "desc": "After breakfast, check out and drive to Manali. En route, visit Pandoh Dam, Hanogi Mata temple and Kullu Valley. Check in on arrival. Dinner and overnight in Manali.",
+        "sightseeing": ["Pandoh Dam", "Hanogi Mata Temple", "Kullu Valley Riverbank & Shawl Weaving"],
+        "transfers": "Intercity Drive : Private Dedicated Cab (265 km)",
+        "meals": { "breakfast": true, "lunch": false, "dinner": true }
       },
       {
-        "day": "Day 4",
-        "title": "Manali Local Sightseeing",
-        "desc": "After breakfast, walk through the town visiting the Buddhist monastery and the ancient Hadimba Devi temple (built in 1553 CE in dense forest). Dinner and overnight in Manali."
+        "day": "Day 04",
+        "title": "MANALI LOCAL SIGHTSEEING",
+        "desc": "After breakfast, walk through the town visiting the Buddhist monastery and the ancient Hadimba Devi temple (built in 1553 CE in dense forest). Dinner and overnight in Manali.",
+        "sightseeing": ["Hadimba Devi Temple (1553 CE)", "Tibetan Buddhist Monastery", "Vashisht Hot Springs"],
+        "transfers": "Sightseeing : Private Dedicated Cab",
+        "meals": { "breakfast": true, "lunch": false, "dinner": true }
       },
       {
-        "day": "Day 5",
-        "title": "Manali - Solang Valley",
-        "desc": "After breakfast, visit Solang Valley for mountain scenery and snow activities. Dinner and overnight in Manali."
+        "day": "Day 05",
+        "title": "MANALI - SOLANG VALLEY",
+        "desc": "After breakfast, visit Solang Valley for mountain scenery and snow activities. Dinner and overnight in Manali.",
+        "sightseeing": ["Solang Valley Alpine Pass", "Snow Activities & Paragliding Viewpoints"],
+        "transfers": "Sightseeing : Private Dedicated Cab",
+        "meals": { "breakfast": true, "lunch": false, "dinner": true }
       },
       {
-        "day": "Day 6",
-        "title": "Manali - Chandigarh (280 km, approx. 6-7 hrs)",
-        "desc": "After breakfast, check out and drive to Chandigarh. Drop at airport or railway station for your onward journey."
+        "day": "Day 06",
+        "title": "MANALI - CHANDIGARH (280 KM, APPROX. 6-7 HRS)",
+        "desc": "After breakfast, check out and drive to Chandigarh. Drop at airport or railway station for your onward journey.",
+        "sightseeing": ["Manali to Chandigarh Highway", "Chandigarh Airport / Station Drop"],
+        "transfers": "Drop Transfer : Private Dedicated Cab (280 km)",
+        "meals": { "breakfast": true, "lunch": false, "dinner": false }
       }
     ],
     "included": [
       "5 nights' accommodation (2 nights in Shimla at Sukhsagar Regency & 3 nights in Manali at Sarthak Regency or similar)",
-      "Daily breakfast and dinner at the hotels (MAP plan)",
-      "8 sightseeing tours as per the itinerary",
+      "Daily breakfast and dinner at the hotels (MAP plan), as per the itinerary",
+      "8 sightseeing tours, as per the itinerary",
       "Airport and railway station transfers and intercity transfers by private cab",
+      "Sightseeing exactly as per the itinerary",
       "All tolls, parking, fuel charges and interstate permits"
     ],
     "notIncluded": [
-      "Lunch on all days, and breakfast on Day 1",
-      "Rohtang Pass / Atal Tunnel permit charges (payable directly)",
-      "Pony / yak rides at Kufri, entry fees and adventure activity tickets",
-      "Airfare and train tickets to Delhi / from Chandigarh",
-      "Personal expenses and travel insurance"
+      "Lunch on all days, and breakfast and lunch on Day 1; any meals not specified under Package Inclusions",
+      "Visit to Snow Point / Rohtang Pass or Atal Tunnel beyond Gulaba Barrier (extra cost, subject to NGT permit)",
+      "Pony and yak rides at Kufri",
+      "Flights and train tickets to Delhi / from Chandigarh",
+      "Entry fees at monuments and sightseeing points, and camera fees",
+      "Guide services and guide fees",
+      "Travel or health insurance and personal expenses"
+    ],
+    "termsAndConditions": [
+      "Package rates are dynamic and subject to change at the time of confirmation; supplements apply during peak season.",
+      "Rates are per person on twin sharing and are applicable strictly for resident Indian citizens.",
+      "Check-in and check-out time at all properties is 12:00 noon.",
+      "100% advance payment is required at the time of booking.",
+      "Transport is by AC sedan (Etios or Dzire) or Innova depending on group size. The air-conditioning will not operate in the hills.",
+      "All monuments are closed on Mondays, and Rohtang Pass is closed on Tuesdays for maintenance.",
+      "Carrying a valid photo ID (Aadhaar card, driving licence or passport) is mandatory and must be presented at hotel check-in.",
+      "Special requests such as Jain meals or early check-in must be shared by email at least 72 hours before arrival."
+    ],
+    "cancellationPolicy": [
+      "34 days or more before departure: 25% of the tour cost.",
+      "23 to 33 days before departure: 50% of the tour cost.",
+      "9 to 22 days before departure: 75% of the tour cost.",
+      "8 days or less before departure, or no-show: 100% of the tour cost."
     ]
   },
   {
