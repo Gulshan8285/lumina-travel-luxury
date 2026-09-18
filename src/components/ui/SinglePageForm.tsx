@@ -401,7 +401,7 @@ export default function SinglePageForm({ initialDestination = "", initialService
 
         {/* RIGHT COLUMN: OTHER WAYS TO REACH US */}
         <div className={styles.infoColumn}>
-          <h2 className={styles.infoHeading}>Other ways to reach us</h2>
+          <h2 className={styles.infoHeading} style={{ whiteSpace: 'nowrap' }}>Other ways to reach us</h2>
 
           {/* Card 1: WhatsApp (fastest) */}
           <div className={styles.contactCard}>

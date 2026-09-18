@@ -199,12 +199,12 @@
 
 .infoHeading {
   font-family: var(--font-heading, "Playfair Display", Georgia, serif);
-  font-size: clamp(1.2rem, 1.75vw, 1.65rem);
+  font-size: clamp(1.1rem, 1.6vw, 1.55rem);
   font-weight: 700;
   color: #ffffff;
   margin: 0 0 2rem 0;
   letter-spacing: 0.02em;
-  white-space: nowrap;
+  white-space: nowrap !important;
 }
 
 .contactCard {
@@ -332,9 +332,9 @@
   }
 
   .infoHeading {
-    font-size: clamp(1.05rem, 4.4vw, 1.45rem);
+    font-size: clamp(0.95rem, 4.2vw, 1.35rem);
     margin-bottom: 1.25rem;
-    white-space: nowrap;
+    white-space: nowrap !important;
   }
 
   .input,
