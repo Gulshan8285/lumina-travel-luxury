@@ -42,8 +42,8 @@ export default function AboutPage() {
                   With direct WhatsApp concierge access to dedicated destination managers (+917406994752), you travel with total confidence that a personal travel advocate is always just a message away.
                 </p>
                 <div style={{ marginTop: '2rem' }}>
-                  <Link href="/enquire" className="btn-pink">
-                    Plan Your Journey With Us
+                  <Link href="/enquire" className="btn-gold">
+                    Start Planning Your Journey
                   </Link>
                 </div>
               </div>

@@ -202,7 +202,7 @@ export default function DomesticPage() {
               </p>
 
               <div className={styles.heroActions}>
-                <Link href="/enquire?destination=Rajasthan" className="btn-pink">
+                <Link href="/enquire?destination=Rajasthan" className="btn-gold">
                   Plan Your Trip &rarr;
                 </Link>
                 <a 

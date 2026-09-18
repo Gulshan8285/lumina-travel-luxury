@@ -256,6 +256,7 @@ a, button {
   color: #111111;
 }
 
+.btn-gold,
 .btn-pink {
   background: linear-gradient(135deg, #d4af37 0%, #b8972e 100%);
   color: #050811 !important;
@@ -270,6 +271,7 @@ a, button {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.btn-gold:hover,
 .btn-pink:hover {
   background: linear-gradient(135deg, #f3cf65 0%, #d4af37 100%);
   border-color: #f3cf65;

@@ -194,8 +194,8 @@ export default function InternationalPage() {
               </p>
 
               <div className={styles.heroActions}>
-                <Link href="/enquire?destination=Dubai" className="btn-pink">
-                  Plan Your Trip &rarr;
+                <Link href="/enquire?destination=Dubai" className="btn-gold">
+                  Plan International Trip &rarr;
                 </Link>
                 <a 
                   href={`https://wa.me/${cleanWa.startsWith('91') ? cleanWa : '91' + cleanWa}?text=Hello%20Sobhavi%20Travels!%20I%20want%20to%20plan%20an%20International%20holiday.`}

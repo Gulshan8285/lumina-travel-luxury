@@ -137,7 +137,7 @@ export default function CinematicHero({
         <div className={styles.actions}>
           {primaryButtonText && primaryButtonLink ? (
             <>
-              <Link href={primaryButtonLink} className="btn-pink">
+              <Link href={primaryButtonLink} className="btn-gold">
                 {primaryButtonText}
               </Link>
               <Link href="/enquire" className="btn-outline">
@@ -149,7 +149,7 @@ export default function CinematicHero({
               <Link href="/journeys" className="btn-outline">
                 Explore Our Trips
               </Link>
-              <Link href="/enquire" className="btn-pink">
+              <Link href="/enquire" className="btn-gold">
                 Plan My Trip
               </Link>
             </>
