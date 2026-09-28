@@ -256,6 +256,11 @@ export default function RannRouteDetailClient({
                 </div>
               </div>
 
+              <div className={styles.mobileSwipeHint}>
+                <span>👈 Swipe sideways to choose tent tier</span>
+                <span className={styles.swipeArrow}>👉</span>
+              </div>
+
               <div className={styles.categoryTiersGrid}>
                 {TENT_CATEGORIES.map((opt, idx) => {
                   const isSelected = selectedCategoryIdx === idx;

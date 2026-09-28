@@ -235,6 +235,11 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                   <span className={styles.tierHintText}>Click a tier to view included hotels &amp; live pricing</span>
                 </div>
                 
+                <div className={styles.mobileSwipeHint}>
+                  <span>👈 Swipe sideways to choose tier</span>
+                  <span className={styles.swipeArrow}>👉</span>
+                </div>
+
                 <div className={styles.categoryTiersGrid}>
                   {packageOptionsList.map((opt, idx) => {
                     const isSelected = selectedCategoryIdx === idx;

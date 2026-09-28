@@ -229,6 +229,11 @@ export default function RannUtsavMainClient({
                   <span className={styles.tierHintText}>Click to view included tent features &amp; pricing</span>
                 </div>
 
+                <div className={styles.mobileSwipeHint}>
+                  <span>👈 Swipe sideways to choose tent category</span>
+                  <span className={styles.swipeArrow}>👉</span>
+                </div>
+
                 <div className={styles.categoryTiersGrid}>
                   {TENT_CATEGORIES.map((opt, idx) => {
                     const isSelected = selectedCategoryIdx === idx;
@@ -547,6 +552,10 @@ export default function RannUtsavMainClient({
                 {/* TAB 3: STAY DURATIONS */}
                 {activeTab === 'durations' && (
                   <div className={styles.tabPanel}>
+                    <div className={styles.mobileSwipeHint}>
+                      <span>👈 Swipe sideways to choose stay duration</span>
+                      <span className={styles.swipeArrow}>👉</span>
+                    </div>
                     <div className={styles.durationCards}>
                       <div className={styles.durationCard}>
                         <div className={styles.durationBadge}>2 NIGHTS / 3 DAYS</div>
@@ -734,6 +743,11 @@ export default function RannUtsavMainClient({
               <p className={styles.sectionSubtitle}>
                 From endless white salt horizons to royal coastal palaces and artisan handicraft villages.
               </p>
+            </div>
+
+            <div className={styles.mobileSwipeHint}>
+              <span>👈 Swipe sideways to explore experiences</span>
+              <span className={styles.swipeArrow}>👉</span>
             </div>
 
             <div className={styles.activitiesGrid}>
