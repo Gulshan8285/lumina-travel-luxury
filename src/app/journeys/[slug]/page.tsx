@@ -153,16 +153,29 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
             <div className={styles.heroOverlay} />
           </div>
 
-          {/* Floating Luxury Price Badge in Hero Corner */}
-          <div className={styles.heroPriceBadge}>
-            <span className={styles.priceBadgeLabel}>STARTING FROM</span>
-            <span className={styles.priceBadgeValue}>{currentPrice.replace(/Starting\s*(from\s*)?/i, '') || '₹25,000'}</span>
-          </div>
-
           <div className={styles.heroContent}>
             <span className={styles.eyebrow}>SIGNATURE BESPOKE JOURNEY &middot; {journey.destination}</span>
             <h1 className={styles.heroTitle}>{journey.name}</h1>
             <p className={styles.heroTagline}>{journey.subtitle || journey.duration} &middot; 100% Tailored Private Itinerary</p>
+
+            {/* Prominent Starting Price Callout */}
+            <div className={styles.heroPriceCallout}>
+              <div className={styles.heroPriceCalloutInner}>
+                <span className={styles.heroPriceCalloutBadge}>✦ ALL-INCLUSIVE BESPOKE JOURNEY</span>
+                <div className={styles.heroPriceCalloutRow}>
+                  <span className={styles.heroPriceCalloutFrom}>Starting from</span>
+                  <span className={styles.heroPriceCalloutAmount}>
+                    {packageOptionsList[0]?.price.includes('₹')
+                      ? packageOptionsList[0].price.match(/₹[\d,]+/)?.[0] || '₹25,000'
+                      : '₹25,000'}
+                  </span>
+                  <span className={styles.heroPriceCalloutUnit}>/ person sharing</span>
+                </div>
+                <span className={styles.heroPriceCalloutNote}>
+                  Hotels &middot; Private AC Tourist Cab &middot; Daily Breakfast &middot; Sightseeing Included
+                </span>
+              </div>
+            </div>
             
             <div className={styles.heroActions}>
               <Link 
@@ -197,8 +210,18 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                   </h2>
                 </div>
                 <div className={styles.liveSelectedPriceBox}>
-                  <span className={styles.livePriceLabel}>Starting From</span>
-                  <strong className={styles.livePriceValue}>{currentPrice}</strong>
+                  <div className={styles.livePriceTagRow}>
+                    <span className={styles.livePriceBadge}>SELECTED TIER PRICE</span>
+                  </div>
+                  <div className={styles.livePriceMainRow}>
+                    <strong className={styles.livePriceValue}>
+                      {currentPrice.includes('₹') ? currentPrice.match(/₹[\d,]+/)?.[0] || currentPrice : currentPrice}
+                    </strong>
+                    <span className={styles.livePricePerson}>/ person sharing</span>
+                  </div>
+                  <span className={styles.livePriceSubtitle}>
+                    {currentCategory.category} &bull; Hotels, Cab &amp; Breakfast
+                  </span>
                 </div>
               </div>
 

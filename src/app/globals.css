@@ -133,31 +133,7 @@ h1, h2, h3, h4, h5, h6 {
 [class*="hero_"] h1,
 .heroSection h1,
 .heroSection h2,
-.heroSection h3,
-[class*="mainWrapper"] h1,
-[class*="mainWrapper"] h2,
-[class*="mainWrapper"] h3,
-[class*="mainWrapper"] h4,
-[class*="packageDetailsSection"] h1,
-[class*="packageDetailsSection"] h2,
-[class*="packageDetailsSection"] h3,
-[class*="packageDetailsSection"] h4,
-[class*="packageHeaderBox"] h1,
-[class*="packageHeaderBox"] h2,
-[class*="packageHeaderBox"] h3,
-[class*="packageHeaderBox"] h4,
-[class*="tierSelector"] h1,
-[class*="tierSelector"] h2,
-[class*="tierSelector"] h3,
-[class*="tierSelector"] h4,
-[class*="itinerarySection"] h1,
-[class*="itinerarySection"] h2,
-[class*="itinerarySection"] h3,
-[class*="itinerarySection"] h4,
-[class*="dayCard"] h1,
-[class*="dayCard"] h2,
-[class*="dayCard"] h3,
-[class*="dayCard"] h4 {
+.heroSection h3 {
   color: #ffffff !important;
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
 }

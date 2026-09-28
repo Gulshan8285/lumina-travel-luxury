@@ -196,6 +196,21 @@ export default function RannRouteDetailClient({
                 </div>
               </div>
 
+              {/* Prominent Starting Price Callout in Hero */}
+              <div className={styles.heroPriceCallout}>
+                <div className={styles.heroPriceCalloutInner}>
+                  <span className={styles.heroPriceCalloutBadge}>✦ {route.cityName.toUpperCase()} TO RANN UTSAV EXCLUSIVE</span>
+                  <div className={styles.heroPriceCalloutRow}>
+                    <span className={styles.heroPriceCalloutFrom}>Starting from</span>
+                    <span className={styles.heroPriceCalloutAmount}>₹14,500</span>
+                    <span className={styles.heroPriceCalloutUnit}>/ person sharing</span>
+                  </div>
+                  <span className={styles.heroPriceCalloutNote}>
+                    Includes Tent City Dhordo &middot; All Gourmet Meals &middot; Bhuj AC Transfers &middot; White Desert Entry
+                  </span>
+                </div>
+              </div>
+
               <div className={styles.heroActions}>
                 <Link
                   href={`/enquire?destination=${encodeURIComponent('Rann Utsav (' + route.cityName + ')')}&service=Domestic+Holiday`}
@@ -226,8 +241,18 @@ export default function RannRouteDetailClient({
                   <h2 className={styles.tierSelectorTitle}>Select Your Rann Utsav Tent Category</h2>
                 </div>
                 <div className={styles.liveSelectedPriceBox}>
-                  <span className={styles.livePriceLabel}>Starting From</span>
-                  <strong className={styles.livePriceValue}>{currentCategory.price}</strong>
+                  <div className={styles.livePriceTagRow}>
+                    <span className={styles.livePriceBadge}>SELECTED TENT RATE</span>
+                  </div>
+                  <div className={styles.livePriceMainRow}>
+                    <strong className={styles.livePriceValue}>
+                      {currentCategory.price.includes('₹') ? currentCategory.price.match(/₹[\d,]+/)?.[0] || currentCategory.price : currentCategory.price}
+                    </strong>
+                    <span className={styles.livePricePerson}>/ person sharing</span>
+                  </div>
+                  <span className={styles.livePriceSubtitle}>
+                    {currentCategory.category} &bull; All Meals &amp; Transfers Included
+                  </span>
                 </div>
               </div>
 

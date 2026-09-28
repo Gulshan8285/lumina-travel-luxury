@@ -152,6 +152,21 @@ export default function RannUtsavMainClient({
                 </div>
               </div>
 
+              {/* Prominent Starting Price Callout in Hero */}
+              <div className={styles.heroPriceCallout}>
+                <div className={styles.heroPriceCalloutInner}>
+                  <span className={styles.heroPriceCalloutBadge}>✦ OFFICIAL FESTIVAL PACKAGES &bull; DHORDO</span>
+                  <div className={styles.heroPriceCalloutRow}>
+                    <span className={styles.heroPriceCalloutFrom}>Starting from</span>
+                    <span className={styles.heroPriceCalloutAmount}>₹14,500</span>
+                    <span className={styles.heroPriceCalloutUnit}>/ person sharing</span>
+                  </div>
+                  <span className={styles.heroPriceCalloutNote}>
+                    Includes Tent City Dhordo &middot; All Gourmet Meals &middot; Bhuj Transfers &middot; White Desert Visit
+                  </span>
+                </div>
+              </div>
+
               <div className={styles.heroActions}>
                 <Link
                   href="/enquire?destination=Rann+Utsav+-+Great+Rann+of+Kutch&service=Domestic+Holiday"
@@ -162,7 +177,6 @@ export default function RannUtsavMainClient({
                 <a
                   href="#tent-packages"
                   className={styles.secondaryBtn}
-                  style={{ background: 'rgba(255,255,255,0.08)' }}
                 >
                   View Tent Categories &amp; Pricing ↓
                 </a>
@@ -190,8 +204,18 @@ export default function RannUtsavMainClient({
                   <h2 className={styles.packageMainTitle}>Rann Utsav Dhordo Tent Packages &amp; Daily Plan</h2>
                 </div>
                 <div className={styles.liveSelectedPriceBox}>
-                  <span className={styles.livePriceLabel}>Starting From</span>
-                  <strong className={styles.livePriceValue}>{currentCategory.price}</strong>
+                  <div className={styles.livePriceTagRow}>
+                    <span className={styles.livePriceBadge}>SELECTED TENT RATE</span>
+                  </div>
+                  <div className={styles.livePriceMainRow}>
+                    <strong className={styles.livePriceValue}>
+                      {currentCategory.price.includes('₹') ? currentCategory.price.match(/₹[\d,]+/)?.[0] || currentCategory.price : currentCategory.price}
+                    </strong>
+                    <span className={styles.livePricePerson}>/ person sharing</span>
+                  </div>
+                  <span className={styles.livePriceSubtitle}>
+                    {currentCategory.category} &bull; All Meals &amp; Bhuj Transfers Included
+                  </span>
                 </div>
               </div>
 
