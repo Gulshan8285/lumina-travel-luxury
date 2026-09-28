@@ -49,7 +49,7 @@ export default function FlightsPage() {
                 <div className={styles.flightCardHeader}>
                   <span className={styles.cardBadge}>EXCLUSIVE FLIGHT DESK</span>
                   <h2 className={styles.flightCardTitle}>Request Flight Options</h2>
-                  <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.92rem', lineHeight: '1.6', marginTop: '0.6rem' }}>
+                  <p style={{ color: '#57534e', fontSize: '0.92rem', lineHeight: '1.6', marginTop: '0.6rem' }}>
                     Tell us your travel dates and route. Our flight ticketing specialists will compare non-stop and best-timed connections with negotiated corporate fares.
                   </p>
                 </div>
@@ -89,7 +89,7 @@ export default function FlightsPage() {
                       fontWeight: '600',
                       textDecoration: 'none',
                       background: 'rgba(37, 211, 102, 0.12)',
-                      color: '#25d366',
+                      color: '#15803d',
                       border: '1px solid rgba(37, 211, 102, 0.4)',
                       fontSize: '0.95rem',
                       textAlign: 'center'
@@ -99,14 +99,14 @@ export default function FlightsPage() {
                   </a>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #e7e0d3' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: '#44403c' }}>
                     <span>⚡</span> <span><strong>15-Minute Response:</strong> Express route &amp; fare quote</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: '#44403c' }}>
                     <span>🛡️</span> <span><strong>Zero Hidden Fees:</strong> Complete transparency on airline taxes</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.88rem', color: '#44403c' }}>
                     <span>💺</span> <span><strong>Complimentary Web Check-in:</strong> Boarding passes to your phone</span>
                   </div>
                 </div>

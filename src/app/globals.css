@@ -173,6 +173,28 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(255, 255, 255, 0.92) !important;
 }
 
+/* Light cards / forms inside heroes must strictly keep dark text */
+[class*="flightCard"],
+[class*="flightCard"] h1,
+[class*="flightCard"] h2,
+[class*="flightCard"] h3,
+[class*="flightCard"] h4,
+[class*="flightCard"] p,
+[class*="flightCard"] strong,
+[class*="flightCard"] span,
+[class*="flightCard"] label {
+  text-shadow: none !important;
+}
+[class*="flightCard"] h1,
+[class*="flightCard"] h2,
+[class*="flightCard"] h3,
+[class*="flightCard"] h4 {
+  color: #1c1917 !important;
+}
+[class*="flightCard"] p {
+  color: #57534e !important;
+}
+
 /* Outline buttons on dark hero sections */
 [class*="heroSection"] .btn-outline,
 [class*="Hero"] .btn-outline,

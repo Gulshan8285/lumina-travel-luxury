@@ -135,12 +135,23 @@
   font-weight: 700;
 }
 
+.cardBadge {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #b8972e;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
 .flightCardTitle {
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 700;
   margin: 0;
-  color: #1c1917;
+  color: #1c1917 !important;
+  text-shadow: none !important;
 }
 
 .flightForm {
