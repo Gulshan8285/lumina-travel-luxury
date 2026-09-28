@@ -143,17 +143,20 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
       <Navbar />
       
       <main className={styles.mainWrapper}>
-        {/* === 5-IMAGE HERO SLIDESHOW === */}
+        {/* === CLEAN LUXURY HERO === */}
         <section className={styles.hero}>
           <div className={styles.heroImageWrapper}>
-            {galleryImages.map((img, i) => (
-              <div
-                key={i}
-                className={`${styles.heroImage} ${i === activeImage ? styles.active : ''}`}
-                style={{ backgroundImage: `url(${img})` }}
-              />
-            ))}
+            <div
+              className={`${styles.heroImage} ${styles.active}`}
+              style={{ backgroundImage: `url(${galleryImages[0] || journey.imageUrl})` }}
+            />
             <div className={styles.heroOverlay} />
+          </div>
+
+          {/* Floating Luxury Price Badge in Hero Corner */}
+          <div className={styles.heroPriceBadge}>
+            <span className={styles.priceBadgeLabel}>STARTING FROM</span>
+            <span className={styles.priceBadgeValue}>{currentPrice.replace(/Starting\s*(from\s*)?/i, '') || '₹25,000'}</span>
           </div>
 
           <div className={styles.heroContent}>
@@ -177,27 +180,6 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
                 WhatsApp Concierge
               </a>
             </div>
-          </div>
-
-          {/* Floating Price Badge in Hero */}
-          <div className={styles.heroPriceBadge}>
-            <span className={styles.priceBadgeLabel}>BEST PRICE GUARANTEE</span>
-            <span className={styles.priceBadgeValue}>{currentPrice}</span>
-          </div>
-
-          {/* 5-Image Thumbnail Strip */}
-          <div className={styles.thumbnailStrip}>
-            {galleryImages.map((img, i) => (
-              <button
-                key={i}
-                className={`${styles.thumbnail} ${i === activeImage ? styles.activeThumbnail : ''}`}
-                onClick={() => setActiveImage(i)}
-                style={{ backgroundImage: `url(${img})` }}
-                aria-label={`View photo ${i + 1} of ${journey.name}`}
-              >
-                <span className={styles.thumbNumber}>0{i + 1}</span>
-              </button>
-            ))}
           </div>
         </section>
 
@@ -705,58 +687,6 @@ export default function JourneyDetail({ params }: { params: Promise<{ slug: stri
           </div>
         </section>
 
-        {/* === 5-PHOTO VISUAL GALLERY SECTION === */}
-        {galleryImages.length > 0 && (
-          <section className={styles.gallerySection}>
-            <div className="container">
-              <div className={styles.galleryHeader}>
-                <span className={styles.galleryEyebrow}>VISUAL JOURNAL</span>
-                <h2 className={styles.galleryTitle}>{journey.name} in Pictures</h2>
-              </div>
-              <div className={styles.galleryGrid}>
-                {galleryImages.map((img, idx) => (
-                  <div key={idx} className={styles.galleryCard}>
-                    <img 
-                      src={img} 
-                      alt={`${journey.name} photograph ${idx + 1}`} 
-                      className={styles.galleryImg} 
-                      loading="lazy"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* === CINEMATIC VIDEO SECTION === */}
-        {journey.videoUrl && (
-          <section className={styles.videoSection}>
-            <div className="container">
-              <div className={styles.videoHeader}>
-                <span className={styles.videoEyebrow}>SENSORY MOTION</span>
-                <h2 className={styles.videoTitle}>Feel the Journey</h2>
-                <p className={styles.videoSubtitle}>A cinematic preview of what awaits you.</p>
-              </div>
-              <div className={styles.videoWrapper}>
-                <video
-                  src={journey.videoUrl}
-                  poster={galleryImages[0]}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  preload="metadata"
-                  className={styles.video}
-                >
-                  <source src={journey.videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* === ENQUIRE CTA BANNER === */}
         <EnquireCtaBanner 

@@ -39,7 +39,7 @@ const FALLBACK_DOMESTIC: DomesticDest[] = [
     videoUrl: "/videos/destinations/rajasthan.mp4",
     duration: "5 Nights / 6 Days",
     bestTime: "October – March",
-    startingPrice: "Starting ₹25,084",
+    startingPrice: "Starting at ₹25,000",
     airportCode: "JAI / UDR",
     overview: "Experience the colours, forts, palaces and lakes of Rajasthan with accommodation, daily breakfast, private transfers, intercity transport and 13 sightseeing points across Jaipur (2N), Jodhpur (1N), and Udaipur (2N).",
     dayPlan: [
@@ -60,7 +60,7 @@ const FALLBACK_DOMESTIC: DomesticDest[] = [
     videoUrl: "/videos/destinations/shimla-manali.mp4",
     duration: "5 Nights / 6 Days",
     bestTime: "Year-Round (Snow: Dec–Feb)",
-    startingPrice: "Starting ₹31,616",
+    startingPrice: "Starting at ₹25,000",
     airportCode: "DEL / IXC",
     overview: "Discover colonial charm in Shimla (2N) with Kufri excursion and the alpine pine valleys of Manali (3N) with Hadimba Temple, Buddhist Monastery, and Solang Valley with daily breakfast and dinner.",
     dayPlan: [
@@ -81,7 +81,7 @@ const FALLBACK_DOMESTIC: DomesticDest[] = [
     videoUrl: "/videos/destinations/kerala.mp4",
     duration: "5 Nights / 6 Days",
     bestTime: "September – April",
-    startingPrice: "Starting ₹32,084",
+    startingPrice: "Starting at ₹25,000",
     airportCode: "COK / TRV",
     overview: "Explore Cochin's colonial heritage (1N), the waterfalls and tea gardens of Munnar (2N), the wildlife and spice plantations of Thekkady (1N) and the backwaters of Alleppey (1N).",
     dayPlan: [
@@ -102,7 +102,7 @@ const FALLBACK_DOMESTIC: DomesticDest[] = [
     videoUrl: "/videos/destinations/andaman.mp4",
     duration: "5 Nights / 6 Days",
     bestTime: "October – May",
-    startingPrice: "Starting ₹24,034",
+    startingPrice: "Starting at ₹25,000",
     airportCode: "IXZ",
     overview: "Experience white-sand beaches, coral reefs and island ferries across Havelock Island (2N), Neil Island (1N), and Port Blair (2N) with daily breakfast and private ferry transfers.",
     dayPlan: [
@@ -121,7 +121,7 @@ const FALLBACK_DOMESTIC: DomesticDest[] = [
     image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=900&auto=format&fit=crop",
     duration: "5 Nights / 6 Days",
     bestTime: "Year-Round (Snow: Dec–March, Tulips: April)",
-    startingPrice: "Starting ₹29,500",
+    startingPrice: "Starting at ₹25,000",
     airportCode: "SXR",
     overview: "Experience heaven on earth with private luxury houseboat stays on Dal Lake, high-altitude cable car thrills on the Gulmarg Gondola, and the pine meadows of Pahalgam and Sonamarg.",
     dayPlan: [

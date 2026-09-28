@@ -97,7 +97,7 @@
    ========================================================================== */
 .destinationsSection {
   padding: 4rem 0 5rem;
-  background: #111111;
+  background: #faf7f2;
 }
 
 .sectionHeader {
@@ -111,7 +111,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #d4af37;
+  color: #96751c;
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -123,12 +123,12 @@
   margin: 0 0 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #ffffff;
+  color: #1c1917;
 }
 
 .sectionDesc {
   font-size: 1rem;
-  color: rgba(255,255,255,0.7);
+  color: #57534e;
   line-height: 1.6;
 }
 
@@ -139,11 +139,11 @@
 }
 
 .destCard {
-  background: #111111;
+  background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 10px 30px rgba(28, 25, 23, 0.06);
+  border: 1px solid rgba(184, 151, 46, 0.25);
   transition: all 0.35s ease;
   display: flex;
   flex-direction: column;
@@ -151,8 +151,8 @@
 
 .destCard:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 20px 40px rgba(184, 151, 46, 0.16);
+  border-color: #b8972e;
 }
 
 .imageWrapper {
@@ -238,12 +238,12 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 0.35rem;
-  color: #ffffff;
+  color: #1c1917;
 }
 
 .destTagline {
   font-size: 0.9rem;
-  color: #d4af37;
+  color: #96751c;
   font-weight: 600;
   margin: 0 0 1rem;
 }
@@ -251,17 +251,18 @@
 .destOverview {
   font-size: 0.95rem;
   line-height: 1.65;
-  color: rgba(255,255,255,0.72);
+  color: #57534e;
   margin: 0 0 1.25rem;
   flex: 1;
 }
 
 .inclusionsBox {
-  background: #0e0e0e;
+  background: #fbf9f5;
   border-radius: 10px;
   padding: 1rem 1.2rem;
   margin-bottom: 1.5rem;
-  border-left: 3px solid #d4af37;
+  border-left: 3px solid #b8972e;
+  border: 1px solid rgba(28, 25, 23, 0.06);
 }
 
 .inclusionsTitle {
@@ -269,7 +270,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.82);
+  color: #1c1917;
   margin-bottom: 0.5rem;
 }
 
@@ -278,7 +279,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.4rem;
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.75);
+  color: #44403c;
 }
 
 .inclusionItem {
@@ -298,15 +299,15 @@
   flex-direction: column;
   gap: 0.75rem;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(28, 25, 23, 0.08);
 }
 
 .primaryEnquireBtn {
   width: 100%;
   text-align: center;
   padding: 0.9rem 1.25rem;
-  background: linear-gradient(135deg, #d4af37 0%, #c49d28 100%);
-  color: #080808;
+  background: linear-gradient(135deg, #b8972e 0%, #96751c 100%);
+  color: #ffffff;
   border-radius: 8px;
   font-family: var(--font-sans);
   font-size: 0.85rem;
@@ -315,22 +316,22 @@
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 15px rgba(184, 151, 46, 0.25);
 }
 
 .primaryEnquireBtn:hover {
-  background: linear-gradient(135deg, #f5d369 0%, #d4af37 100%);
+  background: linear-gradient(135deg, #c7a73a 0%, #a88523 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
+  box-shadow: 0 8px 25px rgba(184, 151, 46, 0.35);
 }
 
 .secondaryPlanBtn {
   width: 100%;
   text-align: center;
   padding: 0.85rem 1.25rem;
-  background: #181d27;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #f4efe6;
+  color: #1c1917;
+  border: 1px solid rgba(28, 25, 23, 0.15);
   border-radius: 8px;
   font-family: var(--font-sans);
   font-size: 0.84rem;
@@ -341,9 +342,9 @@
 }
 
 .secondaryPlanBtn:hover {
-  background: #232a39;
-  border-color: #d4af37;
-  color: #d4af37;
+  background: #ede6d8;
+  border-color: #b8972e;
+  color: #96751c;
   transform: translateY(-2px);
 }
 
@@ -433,10 +434,11 @@
   gap: 0.35rem;
   margin-bottom: 1.25rem;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.82);
-  background: #0e0e0e;
+  color: #44403c;
+  background: #fbf9f5;
   padding: 0.85rem 1rem;
   border-radius: 8px;
+  border: 1px solid rgba(28, 25, 23, 0.08);
 }
 
 .dayPlanItem {
@@ -447,7 +449,7 @@
 
 .dayNumber {
   font-weight: 700;
-  color: #d4af37;
+  color: #96751c;
   white-space: nowrap;
 }
 
@@ -456,8 +458,8 @@
    ========================================================================== */
 .faqSection {
   padding: 3.5rem 0 4.5rem;
-  background: #0e0e0e;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  background: #f4efe6;
+  border-top: 1px solid rgba(28, 25, 23, 0.08);
 }
 
 .faqHeader {
@@ -475,18 +477,18 @@
 }
 
 .faqCard {
-  background: #111111;
+  background: #ffffff;
   border-radius: 12px;
   padding: 1.75rem;
-  border: 1px solid rgba(212,175,55,0.18);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(184, 151, 46, 0.25);
+  box-shadow: 0 4px 16px rgba(28, 25, 23, 0.04);
 }
 
 .faqQuestion {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #1c1917;
   margin-bottom: 0.75rem;
   letter-spacing: 0.04em;
 }
@@ -494,6 +496,6 @@
 .faqAnswer {
   font-size: 0.92rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.72);
+  color: #57534e;
 }
 

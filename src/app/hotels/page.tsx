@@ -240,6 +240,10 @@ export default function HotelsPage() {
                   >
                     <div className={styles.cityImageOverlay} />
                     <span className={styles.cityBadge}>5-STAR HOSPITALITY</span>
+                    <div className={styles.topRightPriceBanner}>
+                      <span className={styles.priceBannerLabel}>Starting From</span>
+                      <span className={styles.priceBannerAmount}>₹25,000</span>
+                    </div>
                   </div>
 
                   <div className={styles.cityContent}>

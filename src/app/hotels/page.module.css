@@ -96,25 +96,25 @@
 
 /* HOTEL BOOKING CARD */
 .hotelCard {
-  background: #1a2336;
-  color: #ffffff;
+  background: #ffffff;
+  color: #1c1917;
   border-radius: 16px;
   padding: 2rem 2.2rem;
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(184, 151, 46, 0.25);
+  box-shadow: 0 15px 40px rgba(28, 25, 23, 0.08);
 }
 
 .hotelCardHeader {
   margin-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(28, 25, 23, 0.08);
   padding-bottom: 1rem;
 }
 
 .cardBadge {
   display: inline-block;
-  background: rgba(212, 175, 55, 0.15);
-  color: #f7d570;
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: rgba(184, 151, 46, 0.12);
+  color: #96751c;
+  border: 1px solid rgba(184, 151, 46, 0.35);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -129,7 +129,7 @@
   font-size: 1.3rem;
   font-weight: 700;
   margin: 0;
-  color: #ffffff;
+  color: #1c1917;
 }
 
 .hotelForm {
@@ -155,34 +155,34 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
+  color: #44403c;
 }
 
 .formInput,
 .formSelect {
   width: 100%;
   padding: 0.7rem 0.9rem;
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  border: 1px solid rgba(184, 151, 46, 0.25);
   border-radius: 8px;
   font-size: 0.88rem;
-  color: #ffffff;
-  background: #121826;
+  color: #1c1917;
+  background: #fdfbf7;
   transition: all 0.2s ease;
 }
 
 .formInput:focus,
 .formSelect:focus {
   outline: none;
-  border-color: #d4af37;
-  background: #182438;
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  border-color: #b8972e;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(184, 151, 46, 0.15);
 }
 
 .inclusionsChecklist {
-  background: #121826;
+  background: #fbf9f5;
   padding: 0.8rem 1rem;
   border-radius: 8px;
-  border: 1px solid rgba(212,175,55,0.25);
+  border: 1px solid rgba(184, 151, 46, 0.2);
 }
 
 .checklistLabel {
@@ -190,7 +190,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #f7d570;
+  color: #96751c;
   margin-bottom: 0.4rem;
 }
 
@@ -199,7 +199,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.4rem;
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.85);
+  color: #44403c;
 }
 
 .checkItem {
@@ -252,7 +252,7 @@
 /* CITY-WISE HOTEL DIRECTORY */
 .directorySection {
   padding: 4rem 0;
-  background: #121826;
+  background: #faf7f2;
 }
 
 .sectionHeader {
@@ -266,7 +266,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #d4af37;
+  color: #96751c;
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -278,12 +278,12 @@
   margin: 0 0 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #ffffff;
+  color: #1c1917;
 }
 
 .sectionDesc {
   font-size: 1rem;
-  color: rgba(255,255,255,0.75);
+  color: #57534e;
   line-height: 1.6;
 }
 
@@ -294,11 +294,11 @@
 }
 
 .cityCard {
-  background: #1a2336;
+  background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 10px 30px rgba(28, 25, 23, 0.06);
+  border: 1px solid rgba(184, 151, 46, 0.25);
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
 }
@@ -320,15 +320,15 @@
   position: absolute;
   top: 1.25rem;
   left: 1.25rem;
-  background: rgba(18, 24, 38, 0.85);
-  color: #f7d570;
+  background: rgba(28, 25, 23, 0.85);
+  color: #ffffff;
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: 1px solid rgba(212, 175, 55, 0.4);
+  border: 1px solid rgba(184, 151, 46, 0.4);
 }
 
 .cityContent {
@@ -342,7 +342,7 @@
   font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #1c1917;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 0.3rem;
@@ -350,7 +350,7 @@
 
 .cityTagline {
   font-size: 0.88rem;
-  color: #f7d570;
+  color: #96751c;
   font-weight: 600;
   margin: 0 0 1rem;
 }
@@ -364,7 +364,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.85);
+  color: #44403c;
   margin-bottom: 0.5rem;
 }
 
@@ -375,21 +375,22 @@
 }
 
 .hotelPill {
-  background: #121826;
-  border: 1px solid rgba(212,175,55,0.25);
+  background: #fbf9f5;
+  border: 1px solid rgba(184, 151, 46, 0.25);
   padding: 0.35rem 0.75rem;
   border-radius: 6px;
   font-size: 0.82rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.92);
+  color: #1c1917;
 }
 
 .stayFoodCarBox {
-  background: rgba(212, 175, 55, 0.08);
+  background: #fbf9f5;
   border-radius: 10px;
   padding: 1rem 1.2rem;
   margin-bottom: 1.5rem;
-  border-left: 3px solid #d4af37;
+  border-left: 3px solid #b8972e;
+  border: 1px solid rgba(28, 25, 23, 0.06);
 }
 
 .stayFoodCarTitle {
@@ -397,7 +398,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #f7d570;
+  color: #96751c;
   margin-bottom: 0.4rem;
 }
 
@@ -456,8 +457,8 @@
 /* ARTICLE / EDITORIAL GUIDE SECTION */
 .articleSection {
   padding: 5.5rem 0;
-  background-color: #121826;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #f4efe6;
+  border-top: 1px solid rgba(28, 25, 23, 0.08);
 }
 
 .articleContainer {
@@ -473,14 +474,14 @@
 .articleTitle {
   font-family: var(--font-heading, serif);
   font-size: clamp(2.1rem, 3.8vw, 2.9rem);
-  color: #ffffff;
+  color: #1c1917;
   line-height: 1.25;
   margin: 0.5rem 0 1rem;
 }
 
 .articleLead {
   font-size: 1.12rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: #57534e;
   line-height: 1.8;
   font-weight: 300;
   margin: 0;
@@ -493,23 +494,24 @@
 }
 
 .sectionBlock {
-  background: #1a2336;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(184, 151, 46, 0.25);
   border-radius: 14px;
   padding: 2.5rem;
+  box-shadow: 0 4px 16px rgba(28, 25, 23, 0.04);
 }
 
 .sectionBlock h3 {
   font-family: var(--font-heading, serif);
   font-size: 1.4rem;
-  color: #f7d570;
+  color: #96751c;
   margin: 0 0 1rem;
   letter-spacing: -0.01em;
 }
 
 .sectionBlock p {
   font-size: 0.96rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #57534e;
   line-height: 1.8;
   margin: 0 0 1rem;
 }
@@ -521,8 +523,8 @@
 /* FAQS */
 .faqSection {
   padding: 5.5rem 0;
-  background-color: #121826;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #faf7f2;
+  border-top: 1px solid rgba(28, 25, 23, 0.08);
 }
 
 .faqGrid {
@@ -534,22 +536,23 @@
 }
 
 .faqCard {
-  background: #1a2336;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(184, 151, 46, 0.25);
   border-radius: 12px;
   padding: 1.75rem;
+  box-shadow: 0 4px 16px rgba(28, 25, 23, 0.04);
 }
 
 .faqQuestion {
   font-family: var(--font-heading, serif);
   font-size: 1.15rem;
-  color: #ffffff;
+  color: #1c1917;
   margin: 0 0 0.65rem;
 }
 
 .faqAnswer {
   font-size: 0.92rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: #57534e;
   line-height: 1.65;
   margin: 0;
 }
@@ -557,8 +560,8 @@
 /* BOTTOM PROMINENT ENQUIRY CALLOUT BANNER */
 .enquiryBannerSection {
   padding: 6rem 0;
-  background: radial-gradient(circle at center, #182239 0%, #080c14 100%);
-  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  background: linear-gradient(180deg, #f4efe6 0%, #ede6d8 100%);
+  border-top: 1px solid rgba(184, 151, 46, 0.25);
   text-align: center;
 }
 
@@ -566,15 +569,14 @@
   max-width: 820px;
   margin: 0 auto;
   padding: 3.5rem 2.5rem;
-  background: rgba(17, 23, 40, 0.7);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: #ffffff;
+  border: 1px solid rgba(184, 151, 46, 0.35);
   border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(184, 151, 46, 0.12);
 }
 
 .bannerBadge {
-  color: #d4af37;
+  color: #96751c;
   font-size: 0.8rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -586,13 +588,13 @@
 .bannerTitle {
   font-family: var(--font-heading, serif);
   font-size: clamp(2rem, 4vw, 3rem);
-  color: #ffffff;
+  color: #1c1917;
   margin: 0 0 1rem;
 }
 
 .bannerDesc {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.82);
+  color: #57534e;
   line-height: 1.7;
   max-width: 650px;
   margin: 0 auto 2.25rem;

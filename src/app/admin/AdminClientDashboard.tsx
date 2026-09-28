@@ -336,12 +336,11 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
       name: "New Travel Experience",
       tagline: "Exclusive bespoke journey crafted for luxury travellers.",
       description: "Comprehensive itinerary with private transfers, luxury 5-star stays and dedicated chauffeur guide.",
+      startingPrice: "Starting at ₹25,000",
       heroImage: CURATED_PHOTOS[0].url,
       images: [
-        CURATED_PHOTOS[0].url,
-        CURATED_PHOTOS[1].url
+        CURATED_PHOTOS[0].url
       ],
-      videoUrl: "/videos/destinations/dubai.mp4",
       article: {
         intro: "Experience the extraordinary with Sobhavi Travels.",
         body: [
@@ -1798,6 +1797,17 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                     placeholder="Short catchy subtitle..."
                   />
                 </div>
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.formLabel}>Starting Price (Corner Badge)</label>
+                <input
+                  type="text"
+                  className={styles.formInput}
+                  value={cat.startingPrice || 'Starting at ₹25,000'}
+                  onChange={(e) => handleCategoryChange(index, 'startingPrice', e.target.value)}
+                  placeholder="e.g. Starting at ₹25,000"
+                />
               </div>
 
               <div className={styles.formGroup}>

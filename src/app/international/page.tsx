@@ -36,7 +36,7 @@ const FALLBACK_INTERNATIONAL: IntlDest[] = [
     videoUrl: "/videos/destinations/dubai.mp4",
     duration: "5 Nights / 6 Days",
     bestTime: "October – April",
-    startingPrice: "Starting ₹39,500 / person",
+    startingPrice: "Starting at ₹25,000",
     overview: "Ascend Burj Khalifa's 124th & 125th floor At The Top, race across golden red dunes in private 4x4 desert safaris with starlit BBQ dinner, cruise Dubai Marina on a private luxury yacht, and explore Abu Dhabi's Sheikh Zayed Grand Mosque.",
     dayPlan: [
       { day: "Day 1", title: "Arrive in Dubai — Private Chauffeur Airport Pickup & Marina Sunset Dhow Cruise" },
@@ -55,7 +55,7 @@ const FALLBACK_INTERNATIONAL: IntlDest[] = [
     videoUrl: "/videos/destinations/singapore.mp4",
     duration: "4 Nights / 5 Days",
     bestTime: "Year-Round",
-    startingPrice: "Starting ₹44,500 / person",
+    startingPrice: "Starting at ₹25,000",
     overview: "Marvel at Avatar-like Supertree structures, walk through the cooled Cloud Forest and Flower Dome, take a scenic cable car across to Sentosa Island, enjoy Universal Studios thrills, and dine along vibrant Clarke Quay.",
     dayPlan: [
       { day: "Day 1", title: "Arrive at Changi Jewel Airport — Check-in & Night Safari Tram Experience" },
@@ -73,7 +73,7 @@ const FALLBACK_INTERNATIONAL: IntlDest[] = [
     videoUrl: "/videos/destinations/bali.mp4",
     duration: "6 Nights / 7 Days",
     bestTime: "April – October",
-    startingPrice: "Starting ₹48,000 / person",
+    startingPrice: "Starting at ₹25,000",
     overview: "Wake up in a private jungle pool villa in Ubud, visit the dramatic sea temple at Tanah Lot and Uluwatu with Kecak fire dance, swing over emerald Tegallalang rice terraces, and speedboat to the white sands of Nusa Penida.",
     dayPlan: [
       { day: "Day 1", title: "Arrive in Denpasar — Transfer to Luxury Ubud Jungle Resort with Flower Bath" },
@@ -93,7 +93,7 @@ const FALLBACK_INTERNATIONAL: IntlDest[] = [
     videoUrl: "/videos/destinations/maldives.mp4",
     duration: "4 Nights / 5 Days",
     bestTime: "November – April",
-    startingPrice: "Starting ₹68,000 / person",
+    startingPrice: "Starting at ₹25,000",
     overview: "Pure tropical barefoot luxury. Sleep directly above vibrant turquoise lagoons in private overwater pool villas, snorkel with sea turtles and manta rays, and enjoy curated private sandbank dining.",
     dayPlan: [
       { day: "Day 1", title: "Arrive in Malé — Scenic Speedboat/Seaplane Transfer to Luxury Island Resort" },
@@ -110,7 +110,7 @@ const FALLBACK_INTERNATIONAL: IntlDest[] = [
     image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=900&auto=format&fit=crop",
     duration: "7 Nights / 8 Days",
     bestTime: "November – April",
-    startingPrice: "Starting ₹38,500 / person",
+    startingPrice: "Starting at ₹25,000",
     overview: "Combine the dazzling golden temples and street food wonders of Bangkok with the limestone karst waters of Ha Long Bay and the world-famous beaches of Phuket and Phi Phi Island.",
     dayPlan: [
       { day: "Day 1", title: "Arrive in Bangkok — Chaophraya River Luxury Dinner Cruise" },
@@ -253,15 +253,17 @@ export default function InternationalPage() {
                   >
                     <div className={styles.imageOverlay} />
                     <span className={styles.destBadge}>{dest.duration} • {dest.bestTime}</span>
+
+                    {/* Top Right Floating Price Banner */}
+                    <div className={styles.topRightPriceBanner}>
+                      <span className={styles.priceBannerLabel}>Starting From</span>
+                      <span className={styles.priceBannerAmount}>₹25,000</span>
+                    </div>
                   </div>
 
                   <div className={styles.cardContent}>
                     <h3 className={styles.destName}>{dest.name}</h3>
                     <div className={styles.destTagline}>{dest.tagline}</div>
-                    
-                    {dest.startingPrice && (
-                      <span className={styles.destPriceBadge}>{dest.startingPrice}</span>
-                    )}
 
                     <p className={styles.destOverview}>{dest.overview}</p>
 

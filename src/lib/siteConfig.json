@@ -119,92 +119,88 @@
       "name": "Chardham Yatra",
       "tagline": "Thoughtfully planned spiritual journeys, with the details taken care of.",
       "description": "Divine pilgrimage through Yamunotri, Gangotri, Kedarnath, and Badrinath with VIP darshan and helicopter charters.",
-      "heroImage": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=720&q=72&auto=format&fit=crop",
+      "startingPrice": "Starting at ₹25,000",
+      "heroImage": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=1200&auto=format&fit=crop",
       "images": [
-        "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=720&q=72&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=720&q=72&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=720&q=72&auto=format&fit=crop"
-      ],
-      "videoUrl": "/videos/adventure.mp4"
+        "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=1200&auto=format&fit=crop"
+      ]
     },
     {
       "slug": "honeymoon",
       "name": "Honeymoon Holidays",
       "tagline": "Beautiful destinations and memorable stays for a special beginning.",
       "description": "Romantic escapes designed to make your first adventure together truly unforgettable.",
-      "heroImage": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=720&q=72&auto=format&fit=crop",
+      "startingPrice": "Starting at ₹25,000",
+      "heroImage": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1200&auto=format&fit=crop",
       "images": [
-        "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=720&q=72&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=720&q=72&auto=format&fit=crop"
-      ],
-      "videoUrl": "/videos/ocean.mp4"
+        "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1200&auto=format&fit=crop"
+      ]
     },
     {
       "slug": "family",
       "name": "Family Holidays",
       "tagline": "More time together, less time spent planning.",
       "description": "Family adventures crafted so every age group — from toddlers to grandparents — finds their moment of wonder.",
-      "heroImage": "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=720&q=72&auto=format&fit=crop",
+      "startingPrice": "Starting at ₹25,000",
+      "heroImage": "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=1200&auto=format&fit=crop",
       "images": [
-        "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=720&q=72&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=720&q=72&auto=format&fit=crop"
-      ],
-      "videoUrl": "/videos/safari.mp4"
+        "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=1200&auto=format&fit=crop"
+      ]
     },
     {
       "slug": "group",
       "name": "Group Tours",
       "tagline": "Travel together. Make memories together.",
       "description": "From office offsites to friend reunions, we turn any group into an unforgettable journey.",
-      "heroImage": "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=720&q=72&auto=format&fit=crop",
+      "startingPrice": "Starting at ₹25,000",
+      "heroImage": "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=1200&auto=format&fit=crop",
       "images": [
-        "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=720&q=72&auto=format&fit=crop"
-      ],
-      "videoUrl": "/videos/adventure.mp4"
+        "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=1200&auto=format&fit=crop"
+      ]
     },
     {
       "slug": "luxury",
       "name": "Luxury Holidays",
       "tagline": "Exceptional stays and experiences for a little extra indulgence.",
       "description": "World-class 5-star resorts, private villas, chartered yachts, and bespoke itineraries tailored to the finest detail.",
-      "heroImage": "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=720&q=72&auto=format&fit=crop",
+      "startingPrice": "Starting at ₹25,000",
+      "heroImage": "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop",
       "images": [
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=720&q=72&auto=format&fit=crop"
-      ],
-      "videoUrl": "/videos/ocean.mp4"
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop"
+      ]
     },
     {
       "slug": "adventure",
       "name": "Adventure & Wildlife",
       "tagline": "For those who want to explore, discover and experience something different.",
       "description": "Jungle safaris, Himalayan treks, scuba diving, and thrilling encounters in nature.",
-      "heroImage": "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=720&q=72&auto=format&fit=crop",
+      "startingPrice": "Starting at ₹25,000",
+      "heroImage": "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop",
       "images": [
-        "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=720&q=72&auto=format&fit=crop"
-      ],
-      "videoUrl": "/videos/safari.mp4"
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop"
+      ]
     },
     {
       "slug": "anniversary",
       "name": "Anniversary Celebrations",
       "tagline": "Celebrate the years. Cherish the story.",
       "description": "Mark another year of love with a journey so extraordinary it feels like falling in love all over again.",
-      "heroImage": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=720&q=72&auto=format&fit=crop",
+      "startingPrice": "Starting at ₹25,000",
+      "heroImage": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop",
       "images": [
-        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=720&q=72&auto=format&fit=crop"
-      ],
-      "videoUrl": "/videos/ocean.mp4"
+        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop"
+      ]
     },
     {
       "slug": "wellness",
       "name": "Wellness & Retreat",
       "tagline": "Restore. Renew. Return whole.",
       "description": "Luxury wellness travel that goes beyond the spa — transformative experiences for mind and soul.",
-      "heroImage": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=720&q=72&auto=format&fit=crop",
+      "startingPrice": "Starting at ₹25,000",
+      "heroImage": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200&auto=format&fit=crop",
       "images": [
-        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=720&q=72&auto=format&fit=crop"
-      ],
-      "videoUrl": "/videos/ocean.mp4"
+        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200&auto=format&fit=crop"
+      ]
     }
   ],
   "domesticDestinations": [

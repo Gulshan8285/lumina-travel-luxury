@@ -1098,10 +1098,10 @@ export const popularJourneys: Journey[] = [
       "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=720&q=72&auto=format&fit=crop"
     ],
     "videoUrl": "/videos/ocean.mp4",
-    "price": "Starting from ₹25,084 / person",
+    "price": "Starting from ₹25,000 / person",
     "priceIncludesText": "Price Includes: 3 Hotel(s), 13 Sightseeing, Daily Breakfast, Airport Transfers, Intercity AC Tourist Cab",
     "packageOptions": [
-      { "category": "Standard Category", "price": "₹25,084 per person sharing", "details": "Jaipur: Clarks Inn Express (2N) • Jodhpur: Chandra Grand (1N) • Udaipur: Mukund Vilas (2N)" },
+      { "category": "Standard Category", "price": "₹25,000 per person sharing", "details": "Jaipur: Clarks Inn Express (2N) • Jodhpur: Chandra Grand (1N) • Udaipur: Mukund Vilas (2N)" },
       { "category": "Deluxe Category", "price": "₹26,834 per person sharing", "details": "Jaipur: The Rudra Vilas (2N) • Jodhpur: Lords Inn (1N) • Udaipur: Crimson Park Shree Kanak (2N)" },
       { "category": "Luxury Category", "price": "₹31,500 per person sharing", "details": "Jaipur: Fern Ecotel (2N) • Jodhpur: Park Plaza (1N) • Udaipur: Radiant Globus Hotels & Resorts (2N)" }
     ],
@@ -1228,10 +1228,10 @@ export const popularJourneys: Journey[] = [
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=720&q=72&auto=format&fit=crop"
     ],
     "videoUrl": "/videos/ocean.mp4",
-    "price": "Starting from ₹24,034 / person",
+    "price": "Starting from ₹25,000 / person",
     "priceIncludesText": "Price Includes: 3 Hotel(s), Private Ferry, Daily Breakfast, Airport & Jetty Transfers, AC Sightseeing",
     "packageOptions": [
-      { "category": "Standard Category", "price": "₹24,034 per person sharing", "details": "Havelock: Radhakrishna Resort (2N) • Neil Island: Hotel Neha Palace (1N) • Port Blair: Hotel Seagull (2N)" },
+      { "category": "Standard Category", "price": "₹25,000 per person sharing", "details": "Havelock: Radhakrishna Resort (2N) • Neil Island: Hotel Neha Palace (1N) • Port Blair: Hotel Seagull (2N)" },
       { "category": "Deluxe Category", "price": "₹28,000 per person sharing", "details": "Havelock: Haywizz Havelock Island Resort (2N) • Neil Island: Coral Garden Resort (1N) • Port Blair: Hotel Red Carpet (2N)" }
     ],
     "overview": "Experience the white-sand beaches, coral reefs and island ferries of the Andaman Islands with accommodation, daily breakfast, private transfers, inter-island ferry and sightseeing across Havelock Island (2N), Neil Island (1N), and Port Blair (2N).",
@@ -1352,10 +1352,10 @@ export const popularJourneys: Journey[] = [
       "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=720&q=72&auto=format&fit=crop"
     ],
     "videoUrl": "/videos/ocean.mp4",
-    "price": "Starting from ₹32,084 / person",
+    "price": "Starting from ₹25,000 / person",
     "priceIncludesText": "Price Includes: 4 Hotel(s), Daily Breakfast, Private AC Cab with Driver, Periyar Safari, Alleppey Shikara Cruise",
     "packageOptions": [
-      { "category": "Standard Category", "price": "₹32,084 per person sharing", "details": "Cochin: The Classik Fort (1N) • Munnar: The Arbour Resort (2N) • Thekkady: Tiger Trails (1N) • Alleppey: Pagoda Resorts (1N)" },
+      { "category": "Standard Category", "price": "₹25,000 per person sharing", "details": "Cochin: The Classik Fort (1N) • Munnar: The Arbour Resort (2N) • Thekkady: Tiger Trails (1N) • Alleppey: Pagoda Resorts (1N)" },
       { "category": "Deluxe Category", "price": "₹38,267 per person sharing", "details": "Cochin: Marine Inn Hotel (1N) • Munnar: Trivers Resort (2N) • Thekkady: Hotel CITADEL (1N) • Alleppey: Classic Regency (1N)" }
     ],
     "overview": "Explore Cochin's colonial heritage, the waterfalls and tea gardens of Munnar (2N), the wildlife and spice plantations of Thekkady (1N) and the backwaters of Alleppey (1N), with accommodation, daily breakfast and an air-conditioned cab.",
@@ -1474,10 +1474,10 @@ export const popularJourneys: Journey[] = [
       "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=720&q=72&auto=format&fit=crop"
     ],
     "videoUrl": "/videos/ocean.mp4",
-    "price": "Starting from ₹31,616 / person",
+    "price": "Starting from ₹25,000 / person",
     "priceIncludesText": "Price Includes: 2 Hotel(s), 8 Sightseeing, Daily Breakfast & Dinner (MAP), Private Dedicated Cab, All Tolls & Parking",
     "packageOptions": [
-      { "category": "Deluxe Category", "price": "₹31,616 per person on twin sharing", "details": "Shimla: Sukhsagar Regency (2N) • Manali: Sarthak Regency (3N)" }
+      { "category": "Standard Category", "price": "₹25,000 per person on twin sharing", "details": "Shimla: Sukhsagar Regency (2N) • Manali: Sarthak Regency (3N)" }
     ],
     "overview": "Discover the colonial hill station charm of Shimla (2N) with Kufri excursion, and the majestic pine valleys of Manali (3N) with Hadimba Temple, Buddhist Monastery and Solang Valley, including breakfast & dinner daily and private cab.",
     "highlights": [

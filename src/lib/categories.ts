@@ -3,6 +3,7 @@ export interface TravelCategory {
   name: string;
   tagline: string;
   description: string;
+  startingPrice?: string;
   heroImage: string;
   images: string[];
   videoUrl?: string;
@@ -20,15 +21,11 @@ export const travelCategories: TravelCategory[] = [
     name: "Chardham Yatra",
     tagline: "Thoughtfully planned spiritual journeys, with the details taken care of.",
     description: "Divine pilgrimage through Yamunotri, Gangotri, Kedarnath, and Badrinath with VIP darshan and helicopter charters.",
-    heroImage: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=720&q=72&auto=format&fit=crop",
+    startingPrice: "Starting at ₹25,000",
+    heroImage: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=1200&auto=format&fit=crop",
     images: [
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=720&q=72&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=1200&auto=format&fit=crop"
     ],
-    videoUrl: "/videos/adventure.mp4",
     article: {
       intro: "The sacred Chardham Yatra is a pilgrimage of a lifetime — a divine quest through the snow-crowned peaks of Uttarakhand to Yamunotri, Gangotri, Kedarnath, and Badrinath.",
       body: [
@@ -45,15 +42,11 @@ export const travelCategories: TravelCategory[] = [
     name: "Honeymoon Holidays",
     tagline: "Beautiful destinations and memorable stays for a special beginning.",
     description: "Romantic escapes designed to make your first adventure together truly unforgettable.",
-    heroImage: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=720&q=72&auto=format&fit=crop",
+    startingPrice: "Starting at ₹25,000",
+    heroImage: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1200&auto=format&fit=crop",
     images: [
-      "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?q=80&w=720&q=72&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1200&auto=format&fit=crop"
     ],
-    videoUrl: "/videos/ocean.mp4",
     article: {
       intro: "Your honeymoon is the most intimate journey you will ever take together — a celebration of love, connection, and the beginning of a shared life. At Sobhavi Travels, we believe it deserves nothing less than perfection.",
       body: [
@@ -70,15 +63,11 @@ export const travelCategories: TravelCategory[] = [
     name: "Family Holidays",
     tagline: "More time together, less time spent planning.",
     description: "Family adventures crafted so every age group — from toddlers to grandparents — finds their moment of wonder.",
-    heroImage: "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=720&q=72&auto=format&fit=crop",
+    startingPrice: "Starting at ₹25,000",
+    heroImage: "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=1200&auto=format&fit=crop",
     images: [
-      "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?q=80&w=720&q=72&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=1200&auto=format&fit=crop"
     ],
-    videoUrl: "/videos/safari.mp4",
     article: {
       intro: "Family travel is the greatest gift you can give your loved ones — the gift of perspective, shared laughter, and stories that will bind you together for generations.",
       body: [
@@ -95,15 +84,11 @@ export const travelCategories: TravelCategory[] = [
     name: "Group Tours",
     tagline: "Travel together. Make memories together.",
     description: "From office offsites to friend reunions, we turn any group into an unforgettable journey.",
-    heroImage: "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=720&q=72&auto=format&fit=crop",
+    startingPrice: "Starting at ₹25,000",
+    heroImage: "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=1200&auto=format&fit=crop",
     images: [
-      "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1554080353-a576cf803bda?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?q=80&w=720&q=72&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=1200&auto=format&fit=crop"
     ],
-    videoUrl: "/videos/adventure.mp4",
     article: {
       intro: "Some of the best moments in life are shared moments. A group trip, done right, becomes a legend you all reminisce about for years.",
       body: [
@@ -120,15 +105,11 @@ export const travelCategories: TravelCategory[] = [
     name: "Luxury Holidays",
     tagline: "Exceptional stays and experiences for a little extra indulgence.",
     description: "World-class 5-star resorts, private villas, chartered yachts, and bespoke itineraries tailored to the finest detail.",
-    heroImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=720&q=72&auto=format&fit=crop",
+    startingPrice: "Starting at ₹25,000",
+    heroImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop",
     images: [
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=720&q=72&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop"
     ],
-    videoUrl: "/videos/ocean.mp4",
     article: {
       intro: "True luxury is effortless elegance, absolute privacy, and experiences that cannot be booked off the shelf.",
       body: [
@@ -145,15 +126,11 @@ export const travelCategories: TravelCategory[] = [
     name: "Adventure & Wildlife",
     tagline: "For those who want to explore, discover and experience something different.",
     description: "Jungle safaris, Himalayan treks, scuba diving, and thrilling encounters in nature.",
-    heroImage: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=720&q=72&auto=format&fit=crop",
+    startingPrice: "Starting at ₹25,000",
+    heroImage: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop",
     images: [
-      "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=720&q=72&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop"
     ],
-    videoUrl: "/videos/safari.mp4",
     article: {
       intro: "Adventure is what happens when you leave the ordinary behind and embrace the thrill of discovery.",
       body: [
@@ -170,15 +147,11 @@ export const travelCategories: TravelCategory[] = [
     name: "Anniversary Celebrations",
     tagline: "Celebrate the years. Cherish the story.",
     description: "Mark another year of love with a journey so extraordinary it feels like falling in love all over again.",
-    heroImage: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=720&q=72&auto=format&fit=crop",
+    startingPrice: "Starting at ₹25,000",
+    heroImage: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop",
     images: [
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=720&q=72&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop"
     ],
-    videoUrl: "/videos/ocean.mp4",
     article: {
       intro: "An anniversary is a celebration of shared joy, resilience, and love. It deserves a setting as timeless as your bond.",
       body: [
@@ -195,15 +168,11 @@ export const travelCategories: TravelCategory[] = [
     name: "Wellness & Retreat",
     tagline: "Restore. Renew. Return whole.",
     description: "Luxury wellness travel that goes beyond the spa — transformative experiences for mind and soul.",
-    heroImage: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=720&q=72&auto=format&fit=crop",
+    startingPrice: "Starting at ₹25,000",
+    heroImage: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200&auto=format&fit=crop",
     images: [
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1602192509154-0b900ee1f851?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=720&q=72&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=720&q=72&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200&auto=format&fit=crop"
     ],
-    videoUrl: "/videos/ocean.mp4",
     article: {
       intro: "True luxury is the gift of peace, renewal, and reconnection with oneself.",
       body: [
