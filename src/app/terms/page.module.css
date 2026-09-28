@@ -1,7 +1,7 @@
 .main {
   min-height: 100vh;
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--background, #faf7f2);
+  color: var(--foreground, #1c1917);
 }
 
 .heroSection {
@@ -45,25 +45,27 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0;
+  color: #ffffff !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .heroDesc {
   font-family: var(--font-sans);
   font-size: 1.05rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.92) !important;
   margin: 0;
 }
 
 .lastUpdated {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.05em;
 }
 
 .contentSection {
   padding: 5rem 0 7rem;
-  background: #121826;
+  background: #faf7f2;
 }
 
 .contentContainer {
@@ -72,16 +74,16 @@
 }
 
 .introBox {
-  background: #1a2336;
-  border-left: 4px solid #d4af37;
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  border-left-width: 4px;
+  background: #ffffff;
+  border: 1px solid rgba(184, 151, 46, 0.25);
+  border-left: 4px solid #b8972e;
   padding: 1.75rem 2rem;
   border-radius: 0 12px 12px 0;
   margin-bottom: 3.5rem;
   font-size: 1.05rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.88);
+  color: #44403c;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .sectionBlock {
@@ -94,7 +96,7 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #1c1917;
   margin: 0 0 1.2rem;
   display: flex;
   align-items: center;
@@ -102,14 +104,14 @@
 }
 
 .sectionNumber {
-  color: #d4af37;
+  color: #8c7322;
   font-size: 1.1rem;
 }
 
 .text {
   font-size: 1rem;
   line-height: 1.8;
-  color: rgba(255,255,255,0.72);
+  color: #57534e;
   margin: 0 0 1rem;
 }
 
@@ -128,23 +130,24 @@
   gap: 0.75rem;
   font-size: 0.98rem;
   line-height: 1.65;
-  color: rgba(255,255,255,0.82);
+  color: #44403c;
 }
 
 .bulletIcon {
-  color: #d4af37;
+  color: #8c7322;
   font-weight: bold;
   font-size: 1.1rem;
   line-height: 1.4;
 }
 
 .contactCard {
-  background: #0a0a0a;
-  color: #ffffff;
+  background: #ffffff;
+  color: #1c1917;
   padding: 2.5rem;
   border-radius: 16px;
   margin-top: 4rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(184, 151, 46, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .contactCardTitle {
@@ -153,54 +156,49 @@
   margin: 0 0 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  color: #1c1917;
 }
 
 .contactCardDesc {
-  color: rgba(255, 255, 255, 0.75);
+  color: #57534e;
   font-size: 0.95rem;
   line-height: 1.6;
   margin: 0 0 1.5rem;
 }
 
-.contactDetails {
+.contactLinks {
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  font-size: 0.95rem;
-}
-
-.contactRow {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: rgba(255, 255, 255, 0.85);
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .contactLink {
-  color: #d4af37;
-  text-decoration: none;
+  color: #8c7322;
   font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
   transition: color 0.2s ease;
 }
 
 .contactLink:hover {
-  color: #fb7185;
+  color: #b8972e;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
   .heroSection {
-    padding: 7rem 0 3rem;
+    padding: 7rem 1rem 3rem;
   }
-  
+
   .contentSection {
-    padding: 3.5rem 0 5rem;
+    padding: 3.5rem 1rem 5rem;
   }
-  
+
   .introBox {
     padding: 1.25rem 1.5rem;
   }
-  
+
   .contactCard {
-    padding: 1.75rem;
+    padding: 1.75rem 1.25rem;
   }
 }

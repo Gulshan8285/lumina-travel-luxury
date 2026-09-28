@@ -32,29 +32,30 @@
   margin-bottom: 1.5rem;
   line-height: 1.1;
   max-width: 800px;
-  color: #ffffff;
+  color: #ffffff !important;
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .subtitle {
   font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.92) !important;
   max-width: 650px;
   line-height: 1.7;
 }
 
 .formSection {
   padding: 3rem 0 5rem;
-  background-color: #0c0c0c;
-  border-top: 1px solid rgba(212, 175, 55, 0.12);
+  background-color: #faf7f2;
+  border-top: 1px solid rgba(184, 151, 46, 0.15);
 }
 
 .loading {
   text-align: left;
   padding: 4rem 0;
   font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #57534e;
   font-style: italic;
 }
 

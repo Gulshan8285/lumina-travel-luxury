@@ -11,8 +11,8 @@ export default function NotFound() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(180deg, #0a0a0a 0%, #111827 100%)',
-        color: '#ffffff',
+        background: 'linear-gradient(180deg, #faf7f2 0%, #f4efe6 100%)',
+        color: '#1c1917',
         padding: '8rem 1.5rem 5rem',
         textAlign: 'center'
       }}>
@@ -23,8 +23,12 @@ export default function NotFound() {
             fontWeight: 700,
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#d4af37',
-            marginBottom: '1rem'
+            color: '#8c7322',
+            marginBottom: '1rem',
+            background: 'rgba(184, 151, 46, 0.1)',
+            padding: '0.35rem 1rem',
+            borderRadius: '999px',
+            border: '1px solid rgba(184, 151, 46, 0.25)'
           }}>
             ERROR 404 &bull; PAGE NOT FOUND
           </span>
@@ -36,7 +40,8 @@ export default function NotFound() {
             textTransform: 'uppercase',
             letterSpacing: '0.04em',
             margin: '0 0 1.2rem',
-            lineHeight: 1.15
+            lineHeight: 1.15,
+            color: '#1c1917'
           }}>
             Looking for Your Next Escape?
           </h1>
@@ -44,7 +49,7 @@ export default function NotFound() {
           <p style={{
             fontSize: '1.05rem',
             lineHeight: 1.7,
-            color: 'rgba(255, 255, 255, 0.75)',
+            color: '#57534e',
             margin: '0 0 2.5rem'
           }}>
             The page you are looking for might have been moved or does not exist. Let us guide you back to our curated journeys.
@@ -66,7 +71,7 @@ export default function NotFound() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline"
-              style={{ padding: '0.9rem 2rem', fontSize: '0.9rem' }}
+              style={{ padding: '0.9rem 2rem', fontSize: '0.9rem', color: '#1c1917', borderColor: 'rgba(28, 25, 23, 0.4)' }}
             >
               WhatsApp Concierge
             </a>
@@ -74,7 +79,7 @@ export default function NotFound() {
 
           <div style={{
             paddingTop: '2rem',
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            borderTop: '1px solid rgba(184, 151, 46, 0.2)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -82,19 +87,19 @@ export default function NotFound() {
             flexWrap: 'wrap',
             fontSize: '0.85rem'
           }}>
-            <Link href="/domestic" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none' }}>
+            <Link href="/domestic" style={{ color: '#57534e', textDecoration: 'none' }}>
               Domestic Holidays
             </Link>
-            <span style={{ color: 'rgba(255, 255, 255, 0.25)' }}>&bull;</span>
-            <Link href="/international" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none' }}>
+            <span style={{ color: 'rgba(184, 151, 46, 0.4)' }}>&bull;</span>
+            <Link href="/international" style={{ color: '#57534e', textDecoration: 'none' }}>
               International Holidays
             </Link>
-            <span style={{ color: 'rgba(255, 255, 255, 0.25)' }}>&bull;</span>
-            <Link href="/flights" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none' }}>
+            <span style={{ color: 'rgba(184, 151, 46, 0.4)' }}>&bull;</span>
+            <Link href="/flights" style={{ color: '#57534e', textDecoration: 'none' }}>
               Flight Bookings
             </Link>
-            <span style={{ color: 'rgba(255, 255, 255, 0.25)' }}>&bull;</span>
-            <Link href="/hotels" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none' }}>
+            <span style={{ color: 'rgba(184, 151, 46, 0.4)' }}>&bull;</span>
+            <Link href="/hotels" style={{ color: '#57534e', textDecoration: 'none' }}>
               Hotels
             </Link>
           </div>

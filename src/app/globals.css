@@ -104,7 +104,97 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   line-height: 1.12;
   letter-spacing: 0.06em;
-  color: #1c1917;
+  color: inherit;
+}
+
+/* ============================================================
+   UNIVERSAL CONTRAST GUARANTEE: HEROES & DARK CONTAINERS
+   Any hero section or dark container MUST have crisp white text
+   ============================================================ */
+[class*="heroSection"],
+[class*="Hero"],
+[class*="hero_"],
+[class*="heroWrapper"],
+[class*="heroContainer"],
+.heroSection {
+  color: #ffffff;
+}
+
+[class*="heroTitle"],
+[class*="HeroTitle"],
+[class*="hero_title"],
+.heroTitle,
+.heroTitleLarge,
+[class*="heroSection"] h1,
+[class*="heroSection"] h2,
+[class*="heroSection"] h3,
+[class*="Hero"] h1,
+[class*="Hero"] h2,
+[class*="hero_"] h1,
+.heroSection h1,
+.heroSection h2,
+.heroSection h3,
+[class*="mainWrapper"] h1,
+[class*="mainWrapper"] h2,
+[class*="mainWrapper"] h3,
+[class*="mainWrapper"] h4,
+[class*="packageDetailsSection"] h1,
+[class*="packageDetailsSection"] h2,
+[class*="packageDetailsSection"] h3,
+[class*="packageDetailsSection"] h4,
+[class*="packageHeaderBox"] h1,
+[class*="packageHeaderBox"] h2,
+[class*="packageHeaderBox"] h3,
+[class*="packageHeaderBox"] h4,
+[class*="tierSelector"] h1,
+[class*="tierSelector"] h2,
+[class*="tierSelector"] h3,
+[class*="tierSelector"] h4,
+[class*="itinerarySection"] h1,
+[class*="itinerarySection"] h2,
+[class*="itinerarySection"] h3,
+[class*="itinerarySection"] h4,
+[class*="dayCard"] h1,
+[class*="dayCard"] h2,
+[class*="dayCard"] h3,
+[class*="dayCard"] h4 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+}
+
+[class*="heroDesc"],
+[class*="heroSubtitle"],
+.heroDesc,
+.heroSubtitle,
+[class*="heroSection"] p,
+[class*="Hero"] p,
+[class*="hero_"] p,
+.heroSection p {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Outline buttons on dark hero sections */
+[class*="heroSection"] .btn-outline,
+[class*="Hero"] .btn-outline,
+[class*="hero_"] .btn-outline,
+.heroSection .btn-outline,
+.heroActions .btn-outline,
+[class*="heroActions"] .btn-outline {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(8px);
+}
+
+[class*="heroSection"] .btn-outline:hover,
+[class*="Hero"] .btn-outline:hover,
+[class*="hero_"] .btn-outline:hover,
+.heroSection .btn-outline:hover,
+.heroActions .btn-outline:hover,
+[class*="heroActions"] .btn-outline:hover {
+  background-color: #ffffff !important;
+  color: #1c1917 !important;
+  border-color: #ffffff !important;
 }
 
 h1 { font-size: clamp(2.2rem, 7vw, 6.5rem); }

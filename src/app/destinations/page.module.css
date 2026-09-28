@@ -61,7 +61,8 @@
   line-height: 0.95;
   letter-spacing: -0.01em;
   margin-bottom: 1.5rem;
-  color: #ffffff;
+  color: #ffffff !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .heroSubtitle {

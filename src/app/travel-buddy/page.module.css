@@ -1,7 +1,7 @@
 .main {
   min-height: 100vh;
-  background-color: var(--background, #0b0f19);
-  color: var(--foreground, #ffffff);
+  background-color: var(--background, #faf7f2);
+  color: var(--foreground, #1c1917);
 }
 
 /* Luxury Hero */
@@ -13,6 +13,7 @@
   background-position: center;
   text-align: center;
   overflow: hidden;
+  color: #ffffff;
 }
 
 .heroOverlay {
@@ -47,22 +48,23 @@
   margin: 0 0 0.5rem;
   letter-spacing: -0.01em;
   line-height: 1.1;
-  color: #ffffff;
+  color: #ffffff !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .hookTitle {
   font-family: var(--font-heading, Georgia, serif);
   font-size: clamp(1.3rem, 2.8vw, 1.8rem);
   font-style: italic;
-  color: #d4af37;
+  color: #d4af37 !important;
   margin: 0 0 2rem;
   font-weight: 500;
 }
 
 .storyCard {
   text-align: left;
-  background: rgba(17, 24, 39, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(28, 25, 23, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 16px;
   padding: 2.25rem;
   margin: 0 auto 2.5rem;
@@ -73,7 +75,7 @@
 .storyCard p {
   font-family: var(--font-sans);
   font-size: 1.08rem;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.92);
   line-height: 1.8;
   margin-bottom: 1.25rem;
 }
@@ -91,7 +93,7 @@
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(212, 175, 55, 0.12);
   border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 10px;
   padding: 1.2rem 1.4rem;
@@ -119,7 +121,7 @@
 }
 
 .primaryBtn {
-  background: #d4af37;
+  background: linear-gradient(135deg, #d4af37 0%, #b89727 100%);
   color: #0b0f19;
   padding: 0.95rem 2.4rem;
   border-radius: 8px;
@@ -135,20 +137,20 @@
 }
 
 .primaryBtn:hover {
-  background: #fceda2;
+  background: linear-gradient(135deg, #f7d570 0%, #d4af37 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 22px rgba(212, 175, 55, 0.55);
 }
 
 .secondaryBtn {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   padding: 0.95rem 2.2rem;
   border-radius: 8px;
   font-weight: 600;
   font-size: 0.98rem;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   transition: all 0.25s ease;
   display: inline-flex;
   align-items: center;
@@ -156,9 +158,9 @@
 }
 
 .secondaryBtn:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: #d4af37;
-  color: #d4af37;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
@@ -175,7 +177,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #d4af37;
+  color: #8c7322;
   font-weight: 700;
   margin-bottom: 0.75rem;
 }
@@ -184,22 +186,22 @@
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: #ffffff;
+  color: #1c1917;
   margin: 0 0 1rem;
   line-height: 1.2;
 }
 
 .sectionSubtitle {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: #57534e;
   line-height: 1.7;
 }
 
 /* Services Grid (7 items) */
 .servicesSection {
   padding: 6rem 0;
-  background: #0f1624;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #faf7f2;
+  border-top: 1px solid rgba(184, 151, 46, 0.15);
 }
 
 .servicesGrid {
@@ -209,17 +211,18 @@
 }
 
 .serviceCard {
-  background: #111827;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: #ffffff;
+  border: 1px solid rgba(184, 151, 46, 0.25);
   border-radius: 14px;
   padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   transition: all 0.25s ease;
 }
 
 .serviceCard:hover {
-  border-color: #d4af37;
+  border-color: #b8972e;
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 25px rgba(184, 151, 46, 0.12);
 }
 
 .serviceIcon {
@@ -230,13 +233,13 @@
 .serviceTitle {
   font-family: var(--font-heading);
   font-size: 1.25rem;
-  color: #ffffff;
+  color: #1c1917;
   margin: 0 0 0.75rem;
 }
 
 .serviceDesc {
   font-size: 0.94rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: #57534e;
   line-height: 1.65;
   margin: 0;
 }
@@ -244,18 +247,18 @@
 /* Philosophy Banner (AI vs Human) */
 .philosophySection {
   padding: 5rem 0;
-  background: #0b0f19;
+  background: #f4efe6;
 }
 
 .philosophyBox {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  background: linear-gradient(135deg, #162032 0%, #0d131f 100%);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+  border: 1px solid rgba(184, 151, 46, 0.4);
   border-radius: 16px;
   padding: 3.5rem 2.5rem;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
 }
 
 .aiBadge {
@@ -272,7 +275,7 @@
   font-family: var(--font-heading, Georgia, serif);
   font-size: clamp(1.4rem, 2.8vw, 2rem);
   font-style: italic;
-  color: #ffffff;
+  color: #ffffff !important;
   line-height: 1.45;
   margin: 0 0 1.5rem;
 }
@@ -287,12 +290,12 @@
 
 .allCitiesPill {
   display: inline-flex;
-  background: rgba(212, 175, 55, 0.12);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.4);
   padding: 0.6rem 1.4rem;
   border-radius: 30px;
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
   font-weight: 600;
   letter-spacing: 0.05em;
 }
@@ -300,8 +303,8 @@
 /* How It Works (4 Steps) */
 .howItWorksSection {
   padding: 6rem 0;
-  background: #0f1624;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #faf7f2;
+  border-top: 1px solid rgba(184, 151, 46, 0.15);
 }
 
 .stepsGrid {
@@ -311,37 +314,39 @@
 }
 
 .stepCard {
-  background: #111827;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1px solid rgba(184, 151, 46, 0.25);
   border-radius: 12px;
   padding: 1.85rem;
   position: relative;
-  transition: transform 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .stepCard:hover {
   transform: translateY(-2px);
-  border-color: rgba(212, 175, 55, 0.4);
+  border-color: #b8972e;
+  box-shadow: 0 8px 22px rgba(184, 151, 46, 0.12);
 }
 
 .stepNumber {
   font-family: var(--font-heading);
   font-size: 1.8rem;
   font-weight: 700;
-  color: #d4af37;
+  color: #8c7322;
   margin-bottom: 0.85rem;
 }
 
 .stepTitle {
   font-family: var(--font-heading);
   font-size: 1.15rem;
-  color: #ffffff;
+  color: #1c1917;
   margin: 0 0 0.65rem;
 }
 
 .stepDesc {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: #57534e;
   line-height: 1.6;
   margin: 0;
 }
@@ -349,8 +354,8 @@
 /* Form Section */
 .formSection {
   padding: 6rem 0;
-  background: #0b0f19;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f4efe6;
+  border-top: 1px solid rgba(184, 151, 46, 0.15);
 }
 
 .formIntro {
@@ -362,8 +367,8 @@
 /* FAQ Section */
 .faqSection {
   padding: 6rem 0 7rem;
-  background: #0f1624;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #faf7f2;
+  border-top: 1px solid rgba(184, 151, 46, 0.15);
 }
 
 .faqGrid {
@@ -375,28 +380,29 @@
 }
 
 .faqCard {
-  background: #111827;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: #ffffff;
+  border: 1px solid rgba(184, 151, 46, 0.25);
   border-radius: 12px;
   padding: 1.75rem 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   transition: border-color 0.25s ease;
 }
 
 .faqCard:hover {
-  border-color: rgba(212, 175, 55, 0.4);
+  border-color: #b8972e;
 }
 
 .faqQuestion {
   font-family: var(--font-heading);
   font-size: 1.2rem;
-  color: #ffffff;
+  color: #1c1917;
   margin: 0 0 0.75rem;
   font-weight: 600;
 }
 
 .faqAnswer {
   font-size: 0.98rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #57534e;
   line-height: 1.7;
   margin: 0;
 }

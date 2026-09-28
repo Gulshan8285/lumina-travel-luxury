@@ -1,4 +1,4 @@
-/* SinglePageForm.module.css - Clean Reference Layout */
+/* SinglePageForm.module.css - Warm Light Luxury Layout */
 
 .enquirySectionWrapper {
   width: 100%;
@@ -16,18 +16,18 @@
 
 /* LEFT COLUMN: FORM CARD */
 .formCard {
-  background: #1a2336;
-  border: 1px solid rgba(212,175,55,0.25);
+  background: #ffffff;
+  border: 1px solid rgba(184, 151, 46, 0.25);
   border-radius: 16px;
   padding: 2.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .formTitle {
   font-family: var(--font-heading, "Playfair Display", Georgia, serif);
   font-size: clamp(1.85rem, 2.5vw, 2.3rem);
   font-weight: 700;
-  color: #ffffff;
+  color: #1c1917;
   margin: 0 0 2rem 0;
   letter-spacing: -0.01em;
 }
@@ -48,7 +48,7 @@
   font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   font-size: 0.88rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.92);
+  color: #44403c;
 }
 
 .input,
@@ -56,28 +56,28 @@
 .textarea {
   font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   width: 100%;
-  background-color: #121826;
-  border: 1px solid rgba(212,175,55,0.25);
+  background-color: #fdfbf7;
+  border: 1px solid rgba(184, 151, 46, 0.3);
   border-radius: 8px;
   padding: 0.8rem 1rem;
   font-size: 0.95rem;
-  color: #ffffff;
+  color: #1c1917;
   transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
   box-sizing: border-box;
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: rgba(255,255,255,0.45);
+  color: #a8a29e;
 }
 
 .input:focus,
 .select:focus,
 .textarea:focus {
   outline: none;
-  background-color: #182438;
-  border-color: #d4af37;
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  background-color: #ffffff;
+  border-color: #b8972e;
+  box-shadow: 0 0 0 3px rgba(184, 151, 46, 0.18);
 }
 
 .selectWrapper {
@@ -132,7 +132,7 @@
   text-align: center;
   font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.55);
+  color: #78716c;
   margin-top: -0.25rem;
 }
 
@@ -159,12 +159,12 @@
 .successTitle {
   font-family: var(--font-heading, "Playfair Display", Georgia, serif);
   font-size: 1.65rem;
-  color: #ffffff;
+  color: #1c1917;
   margin: 0 0 0.75rem 0;
 }
 
 .successDesc {
-  color: rgba(255,255,255,0.55);
+  color: #57534e;
   font-size: 0.95rem;
   line-height: 1.6;
   max-width: 420px;
@@ -175,8 +175,8 @@
   display: block;
   width: 100%;
   background: transparent;
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  color: #d4af37;
+  border: 1px solid rgba(184, 151, 46, 0.4);
+  color: #8c7322;
   border-radius: 999px;
   padding: 0.75rem 1.5rem;
   font-size: 0.9rem;
@@ -187,8 +187,8 @@
 }
 
 .resetBtn:hover {
-  background: rgba(212, 175, 55, 0.1);
-  border-color: #d4af37;
+  background: rgba(184, 151, 46, 0.1);
+  border-color: #b8972e;
 }
 
 /* RIGHT COLUMN: OTHER WAYS TO REACH US */
@@ -201,40 +201,42 @@
   font-family: var(--font-heading, "Playfair Display", Georgia, serif);
   font-size: clamp(1.1rem, 1.6vw, 1.55rem);
   font-weight: 700;
-  color: #ffffff;
+  color: #1c1917;
   margin: 0 0 2rem 0;
   letter-spacing: 0.02em;
   white-space: nowrap !important;
 }
 
 .contactCard {
-  background: #1a2336;
-  border: 1px solid rgba(212,175,55,0.25);
+  background: #ffffff;
+  border: 1px solid rgba(184, 151, 46, 0.25);
   border-radius: 12px;
   padding: 1.15rem 1.4rem;
   margin-bottom: 1rem;
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .contactCard:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 24px rgba(184, 151, 46, 0.12);
   transform: translateY(-2px);
+  border-color: #b8972e;
 }
 
 .cardIconBox {
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  background: #121826;
+  background: #f4efe6;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(184, 151, 46, 0.3);
+  color: #8c7322;
 }
 
 .cardDetails {
@@ -245,39 +247,40 @@
   font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   font-size: 0.95rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #1c1917;
   margin-bottom: 0.25rem;
 }
 
 .cardText {
   font-size: 0.88rem;
   line-height: 1.5;
+  color: #57534e;
 }
 
 .amberLink {
-  color: #d4af37;
+  color: #8c7322;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .amberLink:hover {
-  color: #be123c;
+  color: #b8972e;
   text-decoration: underline;
 }
 
 .mutedText {
-  color: rgba(255,255,255,0.55);
+  color: #78716c;
 }
 
 .addressBlock {
   font-size: 0.86rem;
-  color: rgba(255,255,255,0.72);
+  color: #57534e;
   line-height: 1.55;
 }
 
 .addressBlock strong {
-  color: rgba(255,255,255,0.92);
+  color: #1c1917;
 }
 
 .socialLinks {
@@ -289,19 +292,19 @@
 }
 
 .socialLinks a {
-  color: #d4af37;
+  color: #8c7322;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .socialLinks a:hover {
-  color: #be123c;
+  color: #b8972e;
   text-decoration: underline;
 }
 
 .dotSeparator {
-  color: rgba(255,255,255,0.4);
+  color: #d6d3d1;
 }
 
 /* RESPONSIVE BREAKPOINTS */
@@ -366,8 +369,8 @@
 
 /* Referral Details Box */
 .referrerBox {
-  background: rgba(212, 175, 55, 0.05);
-  border: 1px dashed rgba(212, 175, 55, 0.35);
+  background: rgba(184, 151, 46, 0.05);
+  border: 1px dashed rgba(184, 151, 46, 0.4);
   border-radius: 10px;
   padding: 1.15rem;
   display: flex;
@@ -386,14 +389,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  border-bottom: 1px solid rgba(184, 151, 46, 0.15);
   padding-bottom: 0.5rem;
 }
 
 .referrerTitle {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #d4af37;
+  color: #8c7322;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -402,10 +405,9 @@
 .optionalTag {
   font-size: 0.72rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.65);
-  background: rgba(255, 255, 255, 0.08);
+  color: #57534e;
+  background: rgba(184, 151, 46, 0.12);
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
   letter-spacing: 0.02em;
 }
-
