@@ -1,12 +1,50 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import EnquireCtaBanner from '@/components/ui/EnquireCtaBanner';
+import DubaiGuideArticle from '@/components/blog/DubaiGuideArticle';
 import { getBlogBySlug, getAllBlogs, syncCloudBlogs } from '@/lib/blogs';
 import styles from './page.module.css';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  await syncCloudBlogs();
+  const post = getBlogBySlug(resolvedParams.slug);
+
+  if (!post) {
+    return {
+      title: "Story Not Found | Sobhavi Travels",
+    };
+  }
+
+  return {
+    title: `${post.title} | Sobhavi Travels`,
+    description: post.excerpt,
+    openGraph: {
+      title: `${post.title} | Sobhavi Travels`,
+      description: post.excerpt,
+      images: [
+        {
+          url: post.coverImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Sobhavi Travels`,
+      description: post.excerpt,
+      images: [post.coverImage],
+    },
+  };
+}
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -65,33 +103,39 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="container">
             <div className={styles.contentLayout}>
               <div className={styles.storyContent}>
-                {/* Intro with Dropcap */}
-                <p className={styles.introParagraph}>{post.article.intro}</p>
+                {post.slug === 'dubai-travel-guide-for-indians' ? (
+                  <DubaiGuideArticle />
+                ) : (
+                  <>
+                    {/* Intro with Dropcap */}
+                    <p className={styles.introParagraph}>{post.article.intro}</p>
 
-                {/* Body Paragraphs */}
-                {post.article.body.slice(0, 2).map((para, i) => (
-                  <p key={i} className={styles.bodyParagraph}>{para}</p>
-                ))}
+                    {/* Body Paragraphs */}
+                    {post.article.body.slice(0, 2).map((para, i) => (
+                      <p key={i} className={styles.bodyParagraph}>{para}</p>
+                    ))}
 
-                {post.inArticleImage && (
-                  <figure className={styles.inlinePhotoWrapper}>
-                    <img src={post.inArticleImage} alt={post.title} className={styles.inlinePhoto} />
-                    {post.inArticleCaption && (
-                      <figcaption className={styles.inlineCaption}>{post.inArticleCaption}</figcaption>
+                    {post.inArticleImage && (
+                      <figure className={styles.inlinePhotoWrapper}>
+                        <img src={post.inArticleImage} alt={post.title} className={styles.inlinePhoto} />
+                        {post.inArticleCaption && (
+                          <figcaption className={styles.inlineCaption}>{post.inArticleCaption}</figcaption>
+                        )}
+                      </figure>
                     )}
-                  </figure>
-                )}
 
-                {post.article.body.slice(2).map((para, i) => (
-                  <p key={i + 2} className={styles.bodyParagraph}>{para}</p>
-                ))}
+                    {post.article.body.slice(2).map((para, i) => (
+                      <p key={i + 2} className={styles.bodyParagraph}>{para}</p>
+                    ))}
 
-                {/* Pull Quote */}
-                {post.article.quote && (
-                  <blockquote className={styles.blockquote}>
-                    <p className={styles.quoteText}>"{post.article.quote}"</p>
-                    <cite className={styles.quoteAuthor}>— {post.article.quoteAuthor}</cite>
-                  </blockquote>
+                    {/* Pull Quote */}
+                    {post.article.quote && (
+                      <blockquote className={styles.blockquote}>
+                        <p className={styles.quoteText}>"{post.article.quote}"</p>
+                        <cite className={styles.quoteAuthor}>— {post.article.quoteAuthor}</cite>
+                      </blockquote>
+                    )}
+                  </>
                 )}
 
                 {/* Author Signoff Card */}
