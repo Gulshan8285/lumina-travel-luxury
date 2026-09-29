@@ -27,6 +27,22 @@ export default function Footer() {
     };
     loadConfig();
 
+    // Live remote sync with cloud/server siteConfig
+    fetch('/api/site-config', { cache: 'no-store' })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.config) {
+          const remote = data.config;
+          if (remote.company?.tagline === "Your journey. Our expertise.") remote.company.tagline = "Escape The Routine";
+          if (typeof remote.footer?.aboutText === 'string' && remote.footer.aboutText.includes("Your journey. Our expertise.")) {
+            remote.footer.aboutText = remote.footer.aboutText.replace(/Your journey\. Our expertise\./g, "Escape The Routine.");
+          }
+          localStorage.setItem('sobhavi_site_config', JSON.stringify(remote));
+          setConfig(remote);
+        }
+      })
+      .catch(err => console.warn('Could not sync remote siteConfig in Footer:', err));
+
     const handleStorage = () => loadConfig();
     window.addEventListener('storage', handleStorage);
     window.addEventListener('sobhavi_site_config_updated', handleStorage);

@@ -90,6 +90,17 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
       }
     }
 
+    // Sync latest site config from cloud/API
+    fetch('/api/site-config', { cache: 'no-store' })
+      .then(r => r.json())
+      .then(d => {
+        if (d.success && d.config) {
+          localStorage.setItem('sobhavi_site_config', JSON.stringify(d.config));
+          setConfig(prev => ({ ...prev, ...d.config }));
+        }
+      })
+      .catch(console.error);
+
     // Sync latest blogs from cloud/API
     fetch('/api/blogs')
       .then(r => r.json())
@@ -266,18 +277,43 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
     }));
   };
 
+  // Auto-sync navigation changes to local storage & cloud backend
+  const persistNavigationChanges = async (updatedItems: MenuItemConfig[], toastText: string) => {
+    const newConfig: SiteConfig = {
+      ...config,
+      navigation: {
+        ...(config.navigation || defaultNavigation),
+        menuItems: updatedItems
+      }
+    };
+    setConfig(newConfig);
+
+    // Save locally
+    localStorage.setItem('sobhavi_site_config', JSON.stringify(newConfig));
+    window.dispatchEvent(new Event('sobhavi_site_config_updated'));
+    window.dispatchEvent(new Event('storage'));
+    showToast(toastText);
+
+    // Persist to Cloud & Serverless API
+    try {
+      await fetch('/api/site-config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newConfig)
+      });
+    } catch (e) {
+      console.error('Failed to sync navigation to cloud:', e);
+    }
+  };
+
   const handleToggleMenuEnabled = (index: number) => {
     const updated = [...menuItems];
     const newEnabled = !updated[index].enabled;
     updated[index] = { ...updated[index], enabled: newEnabled };
-    setConfig(prev => ({
-      ...prev,
-      navigation: {
-        ...(prev.navigation || defaultNavigation),
-        menuItems: updated
-      }
-    }));
-    showToast(newEnabled ? `✓ "${updated[index].label}" is now LIVE & VISIBLE on website!` : `✓ "${updated[index].label}" is now HIDDEN from website.`);
+    const msg = newEnabled 
+      ? `✓ "${updated[index].label}" is now LIVE & VISIBLE on website!` 
+      : `✓ "${updated[index].label}" is now HIDDEN from website.`;
+    persistNavigationChanges(updated, msg);
   };
 
   const handleAddCustomMenuItem = () => {
@@ -291,36 +327,18 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
       showInFooter: true,
       isCustom: true
     };
-    setConfig(prev => ({
-      ...prev,
-      navigation: {
-        ...(prev.navigation || defaultNavigation),
-        menuItems: [...menuItems, newItem]
-      }
-    }));
-    showToast('✓ New custom page link added! Customize name & URL, then save.');
+    persistNavigationChanges([...menuItems, newItem], '✓ New custom page link added! Changes live.');
   };
 
   const handleDeleteMenuItem = (index: number) => {
     const itemToDelete = menuItems[index];
     const updated = menuItems.filter((_, i) => i !== index);
-    setConfig(prev => ({
-      ...prev,
-      navigation: {
-        ...(prev.navigation || defaultNavigation),
-        menuItems: updated
-      }
-    }));
-    showToast(`✓ Removed "${itemToDelete?.label || 'Item'}".`);
+    persistNavigationChanges(updated, `✓ Removed "${itemToDelete?.label || 'Item'}". Changes live.`);
   };
 
   const handleResetNavigation = () => {
     if (window.confirm("Are you sure you want to reset all navigation items to default?")) {
-      setConfig(prev => ({
-        ...prev,
-        navigation: defaultNavigation
-      }));
-      showToast('✓ Navigation reset to default.');
+      persistNavigationChanges(defaultMenuItems, '✓ Navigation reset to default. Changes live.');
     }
   };
 

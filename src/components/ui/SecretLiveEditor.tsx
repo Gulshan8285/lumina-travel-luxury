@@ -106,12 +106,14 @@ export default function SecretLiveEditor() {
       }
 
       // Then fetch latest from server API
-      const res = await fetch('/api/content-overrides');
+      const res = await fetch('/api/content-overrides', { cache: 'no-store' });
       if (res.ok) {
         const data = await res.json();
         if (data && data.overrides) {
           loadedOverridesRef.current = data.overrides;
-          localStorage.setItem('sobhavi_content_overrides', JSON.stringify(data.overrides));
+          try {
+            localStorage.setItem('sobhavi_content_overrides', JSON.stringify(data.overrides));
+          } catch {}
           const currentPath = pathname?.toLowerCase() || '/';
           if (data.overrides[currentPath]) {
             applyOverridesForPath(currentPath, data.overrides[currentPath]);
@@ -125,11 +127,20 @@ export default function SecretLiveEditor() {
 
   useEffect(() => {
     fetchAndApplyOverrides();
-    // Re-apply on dynamic page navigation
-    const timer = setTimeout(() => {
-      fetchAndApplyOverrides();
-    }, 400);
-    return () => clearTimeout(timer);
+    // Re-apply on dynamic page navigation and late hydration
+    const t1 = setTimeout(fetchAndApplyOverrides, 300);
+    const t2 = setTimeout(fetchAndApplyOverrides, 1000);
+    const t3 = setTimeout(fetchAndApplyOverrides, 2500);
+
+    const handleFocus = () => fetchAndApplyOverrides();
+    window.addEventListener('focus', handleFocus);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      window.removeEventListener('focus', handleFocus);
+    };
   }, [pathname, fetchAndApplyOverrides]);
 
   // 2. Secret Activation: Listen for Ctrl+Shift+E / Cmd+Shift+E or ?edit=sobhavi

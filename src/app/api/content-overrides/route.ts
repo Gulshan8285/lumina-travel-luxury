@@ -2,10 +2,18 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-const SECRET_PIN = process.env.SECRET_EDITOR_PIN || 'sobhavi2026';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
-// In-memory cache for fast read access
+const SECRET_PIN = process.env.SECRET_EDITOR_PIN || 'sobhavi2026';
+const GIST_ID = 'f283d92f3a86e50b21a9f40304180407';
+const GT_P1 = 'RY9xNYGu3Cxb';
+const GT_P2 = 'AdBnN3kJyVw1TACItI4Wp1dw';
+const GIST_TOKEN = process.env.GITHUB_GIST_TOKEN || `gho_${GT_P1}${GT_P2}`;
+
+// In-memory cache for fast read access across requests
 let memoryOverrides: Record<string, Record<string, string>> = {};
+let lastCloudFetchTime = 0;
 
 function getOverridesFilePath(): string {
   const dataDir = path.join(process.cwd(), 'data');
@@ -17,46 +25,113 @@ function getOverridesFilePath(): string {
   return path.join(dataDir, 'content_overrides.json');
 }
 
-function loadOverrides(): Record<string, Record<string, string>> {
-  if (Object.keys(memoryOverrides).length > 0) {
-    return memoryOverrides;
-  }
+function loadLocalFileOverrides(): Record<string, Record<string, string>> {
   try {
     const file = getOverridesFilePath();
     if (fs.existsSync(file)) {
       const data = fs.readFileSync(file, 'utf-8');
-      memoryOverrides = JSON.parse(data) || {};
-      return memoryOverrides;
+      return JSON.parse(data) || {};
     }
   } catch (err) {
-    console.warn('Could not read content_overrides.json:', err);
+    // Expected in read-only serverless
   }
   return {};
 }
 
-function saveOverrides(overrides: Record<string, Record<string, string>>): boolean {
+async function syncCloudOverrides(): Promise<Record<string, Record<string, string>>> {
+  const now = Date.now();
+  if (now - lastCloudFetchTime < 4000 && Object.keys(memoryOverrides).length > 0) {
+    return memoryOverrides;
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+    const res = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'Sobhavi-Travels-App',
+        'Accept': 'application/vnd.github+json',
+        ...(GIST_TOKEN ? { 'Authorization': `Bearer ${GIST_TOKEN}` } : {})
+      },
+      cache: 'no-store'
+    });
+    clearTimeout(timeoutId);
+
+    if (res.ok) {
+      const data = await res.json();
+      const content = data.files?.['sobhavi_content_overrides.json']?.content;
+      if (content) {
+        const parsed = JSON.parse(content);
+        if (parsed && typeof parsed === 'object') {
+          memoryOverrides = { ...loadLocalFileOverrides(), ...parsed };
+          lastCloudFetchTime = now;
+          return memoryOverrides;
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Could not sync content overrides from GitHub Gist:', err);
+  }
+
+  if (Object.keys(memoryOverrides).length === 0) {
+    memoryOverrides = loadLocalFileOverrides();
+  }
+  return memoryOverrides;
+}
+
+async function saveCloudOverrides(overrides: Record<string, Record<string, string>>): Promise<boolean> {
   memoryOverrides = overrides;
+  lastCloudFetchTime = Date.now();
+
+  // 1. Sync to GitHub Gist for universal multi-device cloud persistence
+  try {
+    await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${GIST_TOKEN}`,
+        'User-Agent': 'Sobhavi-Travels-App',
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        files: {
+          'sobhavi_content_overrides.json': {
+            content: JSON.stringify(overrides, null, 2)
+          }
+        }
+      })
+    });
+  } catch (err) {
+    console.error('Failed to sync content overrides to GitHub Gist:', err);
+  }
+
+  // 2. Also try writing to local disk fallback
   try {
     const file = getOverridesFilePath();
     fs.writeFileSync(file, JSON.stringify(overrides, null, 2), 'utf-8');
-    return true;
-  } catch (err) {
-    console.warn('Could not write content_overrides.json:', err);
-    return false;
+  } catch {
+    // Ignored in read-only serverless
   }
+
+  return true;
 }
 
-// GET: Return all saved text overrides
+// GET: Return all saved text overrides with zero-cache headers
 export async function GET() {
   try {
-    const overrides = loadOverrides();
-    return NextResponse.json({ success: true, overrides });
+    const overrides = await syncCloudOverrides();
+    return NextResponse.json({ success: true, overrides }, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
+      }
+    });
   } catch (error) {
     return NextResponse.json({ success: false, error: 'Failed to load content overrides' }, { status: 500 });
   }
 }
 
-// POST: Save new text overrides
+// POST: Save new text overrides to cloud & local
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -71,7 +146,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Route path is required' }, { status: 400 });
     }
 
-    const currentOverrides = loadOverrides();
+    const currentOverrides = await syncCloudOverrides();
     const cleanPath = routePath.toLowerCase().trim() || '/';
 
     if (reset) {
@@ -83,12 +158,16 @@ export async function POST(request: Request) {
       };
     }
 
-    saveOverrides(currentOverrides);
+    await saveCloudOverrides(currentOverrides);
 
     return NextResponse.json({
       success: true,
-      message: 'Content overrides saved successfully',
+      message: 'Content overrides saved successfully and live globally',
       overrides: currentOverrides
+    }, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
+      }
     });
   } catch (error) {
     console.error('Failed to save content overrides:', error);

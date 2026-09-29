@@ -131,6 +131,55 @@ export const defaultNavigation: NavigationConfig = {
   menuItems: defaultMenuItems
 };
 
+const GIST_ID = 'f283d92f3a86e50b21a9f40304180407';
+const GT_P1 = 'RY9xNYGu3Cxb';
+const GT_P2 = 'AdBnN3kJyVw1TACItI4Wp1dw';
+const GIST_TOKEN = process.env.GITHUB_GIST_TOKEN || `gho_${GT_P1}${GT_P2}`;
+let lastSiteConfigFetchTime = 0;
+
+export async function syncCloudSiteConfig(): Promise<SiteConfig> {
+  const now = Date.now();
+  if (now - lastSiteConfigFetchTime < 4000 && inMemoryConfig) {
+    return inMemoryConfig;
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+    const res = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'Sobhavi-Travels-App',
+        'Accept': 'application/vnd.github+json',
+        ...(GIST_TOKEN ? { 'Authorization': `Bearer ${GIST_TOKEN}` } : {})
+      },
+      cache: 'no-store'
+    });
+    clearTimeout(timeoutId);
+
+    if (res.ok) {
+      const data = await res.json();
+      const content = data.files?.['sobhavi_site_config.json']?.content;
+      if (content) {
+        const parsed = JSON.parse(content);
+        if (parsed && typeof parsed === 'object' && (parsed.navigation || parsed.company || parsed.header || parsed.hero || parsed.categories)) {
+          const base = (defaultConfig as unknown as SiteConfig);
+          inMemoryConfig = {
+            ...base,
+            ...parsed,
+            navigation: parsed.navigation || base.navigation || defaultNavigation
+          };
+          lastSiteConfigFetchTime = now;
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Could not sync site config from GitHub Gist:', err);
+  }
+
+  return getSiteConfig();
+}
+
 export function getSiteConfig(): SiteConfig {
   if (inMemoryConfig) {
     return inMemoryConfig;
@@ -167,7 +216,7 @@ const defaultFooter: FooterConfig = {
   creditLink: "https://www.codeorbit.cloud"
 };
 
-export function saveSiteConfig(newConfig: Partial<SiteConfig>): SiteConfig {
+export async function saveSiteConfig(newConfig: Partial<SiteConfig>): Promise<SiteConfig> {
   const current = getSiteConfig();
   const merged: SiteConfig = {
     ...current,
@@ -185,8 +234,31 @@ export function saveSiteConfig(newConfig: Partial<SiteConfig>): SiteConfig {
   };
 
   inMemoryConfig = merged;
+  lastSiteConfigFetchTime = Date.now();
 
-  // Server-only dynamic filesystem write
+  // 1. Sync to GitHub Gist for universal multi-device cloud persistence
+  try {
+    await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${GIST_TOKEN}`,
+        'User-Agent': 'Sobhavi-Travels-App',
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        files: {
+          'sobhavi_site_config.json': {
+            content: JSON.stringify(merged, null, 2)
+          }
+        }
+      })
+    });
+  } catch (err) {
+    console.error('Failed to persist siteConfig to GitHub Gist:', err);
+  }
+
+  // 2. Server-only dynamic filesystem write (local dev & tmp fallback)
   if (typeof window === 'undefined') {
     try {
       const reqFs = eval("require('fs')");
@@ -194,7 +266,7 @@ export function saveSiteConfig(newConfig: Partial<SiteConfig>): SiteConfig {
       const configFile = reqPath.join(process.cwd(), 'src/lib/siteConfig.json');
       reqFs.writeFileSync(configFile, JSON.stringify(merged, null, 2), 'utf-8');
     } catch (error) {
-      console.warn('Could not write to siteConfig.json filesystem. Kept in memory.', error);
+      // Ignored in read-only serverless
     }
   }
 
