@@ -29,7 +29,12 @@ export default function Home() {
       try {
         const saved = localStorage.getItem('sobhavi_site_config');
         if (saved) {
-          setSiteConfig(JSON.parse(saved));
+          const parsed = JSON.parse(saved);
+          if (parsed.company?.tagline === "Your journey. Our expertise.") parsed.company.tagline = "Escape The Routine";
+          if (typeof parsed.footer?.aboutText === 'string' && parsed.footer.aboutText.includes("Your journey. Our expertise.")) {
+            parsed.footer.aboutText = parsed.footer.aboutText.replace(/Your journey\. Our expertise\./g, "Escape The Routine.");
+          }
+          setSiteConfig(parsed);
         }
       } catch (e) {
         console.error(e);

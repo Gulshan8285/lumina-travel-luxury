@@ -14,7 +14,12 @@ export default function Footer() {
       try {
         const saved = localStorage.getItem('sobhavi_site_config');
         if (saved) {
-          setConfig(JSON.parse(saved));
+          const parsed = JSON.parse(saved);
+          if (parsed.company?.tagline === "Your journey. Our expertise.") parsed.company.tagline = "Escape The Routine";
+          if (typeof parsed.footer?.aboutText === 'string' && parsed.footer.aboutText.includes("Your journey. Our expertise.")) {
+            parsed.footer.aboutText = parsed.footer.aboutText.replace(/Your journey\. Our expertise\./g, "Escape The Routine.");
+          }
+          setConfig(parsed);
         }
       } catch (e) {
         console.error(e);

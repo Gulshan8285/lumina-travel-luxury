@@ -46,6 +46,10 @@ export default function Navbar() {
           if (parsed.company?.phone) parsed.company.phone = parsed.company.phone.replace(/\s+/g, '');
           if (parsed.header?.phone) parsed.header.phone = parsed.header.phone.replace(/\s+/g, '');
           if (parsed.footer?.phone) parsed.footer.phone = parsed.footer.phone.replace(/\s+/g, '');
+          if (parsed.company?.tagline === "Your journey. Our expertise.") parsed.company.tagline = "Escape The Routine";
+          if (typeof parsed.footer?.aboutText === 'string' && parsed.footer.aboutText.includes("Your journey. Our expertise.")) {
+            parsed.footer.aboutText = parsed.footer.aboutText.replace(/Your journey\. Our expertise\./g, "Escape The Routine.");
+          }
           localStorage.setItem('sobhavi_site_config', JSON.stringify(parsed));
           setConfig(parsed);
         }

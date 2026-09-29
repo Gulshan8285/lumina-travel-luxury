@@ -36,6 +36,19 @@ export const metadata: Metadata = {
   },
   title: "SOBHAVI TRAVELS | Escape The Routine",
   description: "From quick getaways to international holidays, family vacations to special occasions - we help you plan the trip, while taking care of the details.",
+  openGraph: {
+    title: "SOBHAVI TRAVELS | Escape The Routine",
+    description: "From quick getaways to international holidays, family vacations to special occasions - we help you plan the trip, while taking care of the details.",
+    url: "https://www.sobhavitravel.com",
+    siteName: "SOBHAVI TRAVELS",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SOBHAVI TRAVELS | Escape The Routine",
+    description: "From quick getaways to international holidays, family vacations to special occasions - we help you plan the trip, while taking care of the details.",
+  },
   verification: {
     google: "lr5HQ7i2Jfk-J7rcrNZVUanwyiFCueWDsVwS3pF3ylo",
   },
