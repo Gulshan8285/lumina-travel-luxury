@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: "SOBHAVI TRAVELS | Your journey. Our expertise.",
+  title: "SOBHAVI TRAVELS | Escape The Routine",
   description: "From quick getaways to international holidays, family vacations to special occasions - we help you plan the trip, while taking care of the details.",
   verification: {
     google: "lr5HQ7i2Jfk-J7rcrNZVUanwyiFCueWDsVwS3pF3ylo",

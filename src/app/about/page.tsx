@@ -15,7 +15,7 @@ export default function AboutPage() {
               <span className={styles.eyebrow}>THE SOBHAVI STORY</span>
               <h1 className={styles.heroTitle}>Travel Made Memorable.</h1>
               <p className={styles.heroDesc}>
-                Your journey. Our expertise. From quick getaways to international holidays, family vacations to sacred pilgrimages — we craft seamless travel experiences where every detail is taken care of.
+                Escape The Routine. From quick getaways to international holidays, family vacations to sacred pilgrimages — we craft seamless travel experiences where every detail is taken care of.
               </p>
             </div>
           </div>

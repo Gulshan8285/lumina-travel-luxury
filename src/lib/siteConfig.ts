@@ -155,7 +155,7 @@ const defaultHeader: HeaderConfig = {
 
 const defaultFooter: FooterConfig = {
   aboutTitle: "SOBHAVI TRAVELS",
-  aboutText: "Your journey. Our expertise. From quick getaways to international holidays, family vacations to special occasions — travel made memorable.",
+  aboutText: "Escape The Routine. From quick getaways to international holidays, family vacations to special occasions — travel made memorable.",
   phone: "+917406994752",
   whatsapp: "7406994752",
   email: "hello@sobhavitravel.com",

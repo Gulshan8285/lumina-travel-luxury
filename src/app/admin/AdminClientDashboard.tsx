@@ -194,7 +194,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
 
   const footerData: FooterConfig = config.footer || {
     aboutTitle: config.company?.brandName || "SOBHAVI TRAVELS",
-    aboutText: config.company?.tagline || "Your journey. Our expertise. From quick getaways to international holidays, family vacations to special occasions — travel made memorable.",
+    aboutText: config.company?.tagline || "Escape The Routine. From quick getaways to international holidays, family vacations to special occasions — travel made memorable.",
     phone: config.company?.phone || "+917406994752",
     whatsapp: config.company?.whatsapp || "7406994752",
     email: config.company?.email || "hello@sobhavitravel.com",
@@ -1256,7 +1256,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                 rows={3}
                 value={footerData.aboutText || ''}
                 onChange={(e) => handleFooterChange('aboutText', e.target.value)}
-                placeholder="Your journey. Our expertise. From quick getaways to international holidays, family vacations to special occasions — travel made memorable."
+                placeholder="Escape The Routine. From quick getaways to international holidays, family vacations to special occasions — travel made memorable."
               />
               <span style={{ fontSize: '0.74rem', color: '#94a3b8', marginTop: '4px' }}>
                 This is the primary summary paragraph shown right beneath the brand logo in the footer.
@@ -1494,7 +1494,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                   ...config,
                   company: { ...config.company, tagline: e.target.value }
                 })}
-                placeholder="Your journey. Our expertise."
+                placeholder="Escape The Routine"
               />
             </div>
           </div>
@@ -1606,7 +1606,7 @@ export default function AdminClientDashboard({ initialEnquiries, initialBlogs, i
                     ...config,
                     hero: { ...config.hero, tagline: e.target.value }
                   })}
-                  placeholder="Your journey. Our expertise."
+                  placeholder="Escape The Routine"
                 />
               </div>
             </div>
